@@ -6344,4 +6344,890 @@ if (
     initializeRegistrarStudentRecords();
 
 }
+/* =========================================================
+   PART 6E — REGISTRAR CLEARANCE MANAGEMENT
+   ========================================================= */
+
+
+/* ================= CLEARANCE STATUS BADGE ================= */
+
+function registrarClearanceStatusBadge(status) {
+
+    const safeStatus = status || "Pending";
+
+    let className = "clearance-status-pending";
+
+    if (safeStatus === "Under Review") {
+
+        className = "clearance-status-review";
+
+    }
+
+    else if (safeStatus === "Cleared") {
+
+        className = "clearance-status-cleared";
+
+    }
+
+    else if (safeStatus === "Not Cleared") {
+
+        className = "clearance-status-not-cleared";
+
+    }
+
+    return `
+        <span class="clearance-status ${className}">
+            ${safeStatus}
+        </span>
+    `;
+}
+
+
+/* ================= UPDATE REQUEST ================= */
+
+function updateRegistrarClearance(requestId, changes) {
+
+    const requests = getRequests();
+
+    const index = requests.findIndex(
+        request => request.requestId === requestId
+    );
+
+    if (index === -1) {
+
+        return false;
+
+    }
+
+    requests[index] = {
+        ...requests[index],
+        ...changes,
+        updatedAt: new Date().toISOString()
+    };
+
+    saveRequests(requests);
+
+    return true;
+}
+
+
+/* ================= CLEARANCE STATISTICS ================= */
+
+function loadRegistrarClearanceStatistics() {
+
+    const requests = getRequests();
+
+    const total = requests.length;
+
+    const pending = requests.filter(
+        request =>
+            !request.clearanceStatus ||
+            request.clearanceStatus === "Pending"
+    ).length;
+
+    const cleared = requests.filter(
+        request =>
+            request.clearanceStatus === "Cleared"
+    ).length;
+
+    const required = requests.filter(
+        request =>
+            request.clearanceStatus === "Not Cleared"
+    ).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "clearanceTotalRequests"
+        );
+
+    const pendingElement =
+        document.getElementById(
+            "clearancePending"
+        );
+
+    const clearedElement =
+        document.getElementById(
+            "clearanceCleared"
+        );
+
+    const requiredElement =
+        document.getElementById(
+            "clearanceRequired"
+        );
+
+
+    if (totalElement) {
+
+        totalElement.textContent = total;
+
+    }
+
+
+    if (pendingElement) {
+
+        pendingElement.textContent = pending;
+
+    }
+
+
+    if (clearedElement) {
+
+        clearedElement.textContent = cleared;
+
+    }
+
+
+    if (requiredElement) {
+
+        requiredElement.textContent = required;
+
+    }
+
+}
+
+
+/* ================= LOAD CLEARANCE TABLE ================= */
+
+function loadRegistrarClearanceManagement() {
+
+    const tableBody =
+        document.getElementById(
+            "clearanceRequestTable"
+        );
+
+    if (!tableBody) {
+
+        return;
+
+    }
+
+
+    const requests = getRequests();
+
+
+    if (requests.length === 0) {
+
+        tableBody.innerHTML = `
+            <tr>
+                <td
+                    colspan="7"
+                    class="empty-table"
+                >
+                    No document requests are available.
+                </td>
+            </tr>
+        `;
+
+        loadRegistrarClearanceStatistics();
+
+        return;
+
+    }
+
+
+    const sortedRequests = [...requests].sort(
+        (a, b) =>
+            new Date(b.dateRequested || 0) -
+            new Date(a.dateRequested || 0)
+    );
+
+
+    tableBody.innerHTML = "";
+
+
+    sortedRequests.forEach(request => {
+
+        const row =
+            document.createElement("tr");
+
+
+        const requestId =
+            request.requestId || "N/A";
+
+
+        const studentName =
+            request.fullName || "Unknown Student";
+
+
+        const studentId =
+            request.studentId || "N/A";
+
+
+        const documentType =
+            request.documentType || "Academic Document";
+
+
+        const dateRequested =
+            request.dateRequested
+                ? registrarRequestDate(
+                    request.dateRequested
+                )
+                : "N/A";
+
+
+        const clearanceStatus =
+            request.clearanceStatus ||
+            "Pending";
+
+
+        let studentStatus =
+            "Pending Verification";
+
+
+        const accounts =
+            getAccounts();
+
+
+        const student =
+            accounts.find(
+                account =>
+                    account.studentId ===
+                    request.studentId
+            );
+
+
+        if (student) {
+
+            studentStatus =
+                getStudentRecordStatus(student);
+
+        }
+
+
+        row.innerHTML = `
+
+            <td>
+
+                <span class="clearance-request-id">
+                    ${requestId}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="clearance-student-name">
+                    ${studentName}
+                </div>
+
+                <span class="clearance-student-id">
+                    ${studentId}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="clearance-document">
+                    ${documentType}
+                </span>
+
+            </td>
+
+
+            <td>
+                ${dateRequested}
+            </td>
+
+
+            <td>
+                ${studentStatus}
+            </td>
+
+
+            <td>
+
+                ${registrarClearanceStatusBadge(
+                    clearanceStatus
+                )}
+
+            </td>
+
+
+            <td>
+
+                <button
+                    type="button"
+                    class="clearance-view-button"
+                    onclick="openRegistrarClearanceDetails('${requestId}')"
+                >
+                    Review
+                </button>
+
+            </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    });
+
+
+    loadRegistrarClearanceStatistics();
+
+}
+
+
+/* ================= CLEARANCE MODAL ================= */
+
+let currentRegistrarClearanceRequestId = null;
+
+
+function createRegistrarClearanceModal() {
+
+    if (
+        document.getElementById(
+            "registrarClearanceModal"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+
+    modal.id =
+        "registrarClearanceModal";
+
+
+    modal.className =
+        "clearance-modal";
+
+
+    modal.innerHTML = `
+
+        <div class="clearance-modal-content">
+
+
+            <div class="clearance-modal-header">
+
+                <h3>
+                    Review Student Clearance
+                </h3>
+
+
+                <button
+                    type="button"
+                    class="clearance-modal-close"
+                    onclick="closeRegistrarClearanceDetails()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="clearance-modal-body">
+
+
+                <div
+                    id="clearanceModalDetails"
+                    class="clearance-details-grid"
+                >
+                </div>
+
+
+                <div class="clearance-control-box">
+
+                    <h4>
+                        Clearance Decision
+                    </h4>
+
+
+                    <div class="clearance-control-group">
+
+                        <label
+                            for="clearanceStatusControl"
+                        >
+                            Clearance Status
+                        </label>
+
+
+                        <select
+                            id="clearanceStatusControl"
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Under Review">
+                                Under Review
+                            </option>
+
+                            <option value="Cleared">
+                                Cleared
+                            </option>
+
+                            <option value="Not Cleared">
+                                Not Cleared
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        id="clearanceModalMessage"
+                        class="clearance-modal-message"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="clearance-modal-footer">
+
+                <button
+                    type="button"
+                    class="clearance-cancel-button"
+                    onclick="closeRegistrarClearanceDetails()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="clearance-save-button"
+                    onclick="saveRegistrarClearance()"
+                >
+                    Save Clearance
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(modal);
+
+
+    modal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === modal) {
+
+                closeRegistrarClearanceDetails();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= OPEN CLEARANCE DETAILS ================= */
+
+function openRegistrarClearanceDetails(requestId) {
+
+    const requests = getRequests();
+
+
+    const request =
+        requests.find(
+            item =>
+                item.requestId === requestId
+        );
+
+
+    if (!request) {
+
+        return;
+
+    }
+
+
+    currentRegistrarClearanceRequestId =
+        requestId;
+
+
+    const modal =
+        document.getElementById(
+            "registrarClearanceModal"
+        );
+
+
+    const details =
+        document.getElementById(
+            "clearanceModalDetails"
+        );
+
+
+    const statusControl =
+        document.getElementById(
+            "clearanceStatusControl"
+        );
+
+
+    if (!modal || !details) {
+
+        return;
+
+    }
+
+
+    const clearanceStatus =
+        request.clearanceStatus ||
+        "Pending";
+
+
+    const paymentStatus =
+        request.paymentStatus ||
+        "Pending";
+
+
+    const requestStatus =
+        request.status ||
+        "Pending";
+
+
+    details.innerHTML = `
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Request ID
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.requestId || "N/A"}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Date Requested
+            </span>
+
+            <span class="clearance-detail-value">
+                ${
+                    request.dateRequested
+                        ? registrarRequestDate(
+                            request.dateRequested
+                        )
+                        : "N/A"
+                }
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Student Name
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.fullName || "N/A"}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Student ID
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.studentId || "N/A"}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Document Requested
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.documentType || "N/A"}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Current Request Status
+            </span>
+
+            <span class="clearance-detail-value">
+                ${requestStatus}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Current Clearance
+            </span>
+
+            <span class="clearance-detail-value">
+                ${clearanceStatus}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card">
+
+            <span class="clearance-detail-label">
+                Payment Status
+            </span>
+
+            <span class="clearance-detail-value">
+                ${paymentStatus}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card full-width">
+
+            <span class="clearance-detail-label">
+                Purpose
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.purpose || "N/A"}
+            </span>
+
+        </div>
+
+
+        <div class="clearance-detail-card full-width">
+
+            <span class="clearance-detail-label">
+                Additional Details
+            </span>
+
+            <span class="clearance-detail-value">
+                ${request.additionalDetails || "None"}
+            </span>
+
+        </div>
+
+    `;
+
+
+    if (statusControl) {
+
+        statusControl.value =
+            clearanceStatus;
+
+    }
+
+
+    modal.classList.add("active");
+
+}
+
+
+/* ================= SAVE CLEARANCE ================= */
+
+function saveRegistrarClearance() {
+
+    if (!currentRegistrarClearanceRequestId) {
+
+        return;
+
+    }
+
+
+    const statusControl =
+        document.getElementById(
+            "clearanceStatusControl"
+        );
+
+
+    const message =
+        document.getElementById(
+            "clearanceModalMessage"
+        );
+
+
+    if (!statusControl) {
+
+        return;
+
+    }
+
+
+    const newStatus =
+        statusControl.value;
+
+
+    const registrarSession =
+        typeof getRegistrarSession === "function"
+            ? getRegistrarSession()
+            : null;
+
+
+    const success =
+        updateRegistrarClearance(
+            currentRegistrarClearanceRequestId,
+            {
+                clearanceStatus: newStatus,
+                clearanceReviewedBy:
+                    registrarSession
+                        ? registrarSession.fullName
+                        : "DLSJBC Registrar",
+                clearanceReviewedAt:
+                    new Date().toISOString()
+            }
+        );
+
+
+    if (!success) {
+
+        if (message) {
+
+            message.textContent =
+                "Unable to update clearance.";
+
+            message.style.color =
+                "#842029";
+
+        }
+
+        return;
+
+    }
+
+
+    if (message) {
+
+        message.textContent =
+            "Clearance successfully updated.";
+
+        message.style.color =
+            "#146c2e";
+
+    }
+
+
+    loadRegistrarClearanceManagement();
+
+
+    setTimeout(
+        function() {
+
+            closeRegistrarClearanceDetails();
+
+        },
+        700
+    );
+
+}
+
+
+/* ================= CLOSE MODAL ================= */
+
+function closeRegistrarClearanceDetails() {
+
+    const modal =
+        document.getElementById(
+            "registrarClearanceModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove("active");
+
+    }
+
+
+    currentRegistrarClearanceRequestId =
+        null;
+
+}
+
+
+/* ================= INITIALIZE CLEARANCE PAGE ================= */
+
+function initializeRegistrarClearance() {
+
+    if (
+        !document.body.classList.contains(
+            "registrar-clearance-page"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        typeof protectRegistrarPage === "function"
+    ) {
+
+        if (!protectRegistrarPage()) {
+
+            return;
+
+        }
+
+    }
+
+
+    if (
+        typeof loadRegistrarInformation === "function"
+    ) {
+
+        loadRegistrarInformation();
+
+    }
+
+
+    createRegistrarClearanceModal();
+
+
+    loadRegistrarClearanceManagement();
+
+
+    if (
+        typeof setupRegistrarLogout === "function"
+    ) {
+
+        setupRegistrarLogout();
+
+    }
+
+}
+
+
+/* ================= START CLEARANCE ================= */
+
+initializeRegistrarClearance();
+
+
 });
