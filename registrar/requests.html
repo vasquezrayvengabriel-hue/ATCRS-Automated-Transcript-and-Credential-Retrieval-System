@@ -5,41 +5,44 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Document Requests | ATCRS Registrar</title>
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet"
-          href="../css/style.css">
-
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
 </head>
 
-<body class="registrar-dashboard">
+<body class="registrar-request-page">
 
 <!-- =====================================================
      REGISTRAR HEADER
-===================================================== -->
+     ===================================================== -->
 
 <header class="dashboard-header">
 
     <div class="dashboard-brand">
 
-        <img src="../images/dlsjbc-logo.png"
-             alt="DLSJBC Logo">
+        <img
+            src="../images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
 
         <div>
 
-            <h1>ATCRS</h1>
+            <h1>
+                ATCRS
+            </h1>
 
-            <span>
+            <p>
                 Automated Transcript and Credential Retrieval System
-            </span>
+            </p>
 
         </div>
 
@@ -50,25 +53,26 @@
 
         <div class="dashboard-user-info">
 
-            <strong id="registrarName">
+            <span
+                class="dashboard-user-name"
+                id="registrarHeaderName"
+            >
                 DLSJBC Registrar
-            </strong>
+            </span>
 
-            <span>
+            <span class="dashboard-user-role">
                 Registrar
             </span>
 
         </div>
 
 
-        <button id="registrarLogoutButton"
-                class="logout-button"
-                type="button">
-
-            <i class="fas fa-sign-out-alt"></i>
-
+        <button
+            type="button"
+            class="logout-button"
+            id="registrarLogoutButton"
+        >
             Logout
-
         </button>
 
     </div>
@@ -77,177 +81,139 @@
 
 
 <!-- =====================================================
-     MAIN LAYOUT
-===================================================== -->
+     DASHBOARD LAYOUT
+     ===================================================== -->
 
 <div class="dashboard-layout">
 
 
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
+    <!-- =================================================
+         SIDEBAR
+         ================================================= -->
 
-<aside class="dashboard-sidebar">
+    <aside class="dashboard-sidebar">
 
-    <div class="sidebar-title">
-
-        <i class="fas fa-user-shield"></i>
-
-        <span>Registrar Panel</span>
-
-    </div>
+        <p class="sidebar-title">
+            Registrar Menu
+        </p>
 
 
-    <!-- DASHBOARD -->
+        <nav class="dashboard-nav">
 
-    <a href="dashboard.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-chart-line"></i>
-
-        <span>Dashboard</span>
-
-    </a>
+            <a
+                href="dashboard.html"
+                class="dashboard-nav-link"
+            >
+                Dashboard
+            </a>
 
 
-    <!-- DOCUMENT REQUESTS -->
-
-    <a href="requests.html"
-       class="dashboard-nav-link active">
-
-        <i class="fas fa-file-lines"></i>
-
-        <span>Document Requests</span>
-
-    </a>
+            <a
+                href="requests.html"
+                class="dashboard-nav-link active"
+            >
+                Document Requests
+            </a>
 
 
-    <!-- STUDENT RECORDS -->
-
-    <a href="students.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-user-graduate"></i>
-
-        <span>Student Records</span>
-
-    </a>
+            <a
+                href="students.html"
+                class="dashboard-nav-link"
+            >
+                Student Records
+            </a>
 
 
-    <!-- CLEARANCE -->
-
-    <a href="clearance.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-clipboard-check"></i>
-
-        <span>Clearance</span>
-
-    </a>
+            <a
+                href="clearance.html"
+                class="dashboard-nav-link"
+            >
+                Clearance
+            </a>
 
 
-    <!-- PAYMENTS -->
-
-    <a href="payments.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-credit-card"></i>
-
-        <span>Payments</span>
-
-    </a>
+            <a
+                href="payments.html"
+                class="dashboard-nav-link"
+            >
+                Payments
+            </a>
 
 
-    <!-- CREDENTIALS -->
-
-    <a href="credentials.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-certificate"></i>
-
-        <span>Credentials</span>
-
-    </a>
+            <a
+                href="credentials.html"
+                class="dashboard-nav-link"
+            >
+                Credentials
+            </a>
 
 
-    <!-- ARCHIVES -->
+            <a
+                href="archives.html"
+                class="dashboard-nav-link"
+            >
+                Archives
+            </a>
 
-    <a href="archives.html"
-       class="dashboard-nav-link">
-
-        <i class="fas fa-box-archive"></i>
-
-        <span>Archives</span>
-
-    </a>
+        </nav>
 
 
-    <!-- SECURITY -->
+        <div class="sidebar-security">
 
-    <div class="sidebar-security">
+            <strong>
+                Private Administrative Area
+            </strong>
 
-        <i class="fas fa-lock"></i>
-
-        <div>
-
-            <strong>Private Area</strong>
-
-            <small>
-                Authorized Registrar access only
-            </small>
+            <p>
+                This section is restricted to authorized
+                Registrar personnel.
+            </p>
 
         </div>
 
-    </div>
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="dashboard-main">
-
-
-    <!-- PAGE HEADER -->
-
-    <section class="dashboard-section">
-
-        <div class="dashboard-page-header">
-
-            <div>
-
-                <span class="dashboard-label">
-                    REGISTRAR MANAGEMENT
-                </span>
-
-                <h2>
-                    Document Requests
-                </h2>
-
-                <p>
-                    Review, verify, and process academic
-                    document requests submitted by students,
-                    applicants, and alumni.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
+    </aside>
 
 
     <!-- =================================================
-         REQUEST STATISTICS
-    ================================================= -->
+         MAIN CONTENT
+         ================================================= -->
 
-    <section class="dashboard-section">
+    <main class="dashboard-main">
 
-        <div class="dashboard-stats-grid">
+
+        <!-- PAGE HEADER -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-page-header">
+
+                <div>
+
+                    <div class="dashboard-label">
+                        Registrar Management
+                    </div>
+
+                    <h2>
+                        Document Requests
+                    </h2>
+
+                    <p>
+                        Review, verify, and process academic
+                        document requests submitted by users.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REQUEST STATISTICS
+             ================================================= -->
+
+        <section class="dashboard-stats-grid">
 
 
             <!-- TOTAL -->
@@ -255,20 +221,18 @@
             <div class="dashboard-stat-card">
 
                 <div class="dashboard-stat-icon">
-
-                    <i class="fas fa-file-lines"></i>
-
+                    #
                 </div>
 
                 <div>
 
-                    <span>
-                        Total Requests
-                    </span>
-
-                    <strong id="registrarRequestTotal">
+                    <h3 id="registrarRequestTotal">
                         0
-                    </strong>
+                    </h3>
+
+                    <p>
+                        Total Requests
+                    </p>
 
                 </div>
 
@@ -280,20 +244,18 @@
             <div class="dashboard-stat-card">
 
                 <div class="dashboard-stat-icon">
-
-                    <i class="fas fa-clock"></i>
-
+                    !
                 </div>
 
                 <div>
 
-                    <span>
-                        Pending
-                    </span>
-
-                    <strong id="registrarRequestPending">
+                    <h3 id="registrarRequestPending">
                         0
-                    </strong>
+                    </h3>
+
+                    <p>
+                        Pending
+                    </p>
 
                 </div>
 
@@ -305,20 +267,18 @@
             <div class="dashboard-stat-card">
 
                 <div class="dashboard-stat-icon">
-
-                    <i class="fas fa-credit-card"></i>
-
+                    ₱
                 </div>
 
                 <div>
 
-                    <span>
-                        Payment Pending
-                    </span>
-
-                    <strong id="registrarRequestPayment">
+                    <h3 id="registrarRequestPayment">
                         0
-                    </strong>
+                    </h3>
+
+                    <p>
+                        Payment Pending
+                    </p>
 
                 </div>
 
@@ -330,79 +290,44 @@
             <div class="dashboard-stat-card">
 
                 <div class="dashboard-stat-icon">
-
-                    <i class="fas fa-spinner"></i>
-
+                    ↻
                 </div>
 
                 <div>
 
-                    <span>
-                        Processing
-                    </span>
-
-                    <strong id="registrarRequestProcessing">
+                    <h3 id="registrarRequestProcessing">
                         0
-                    </strong>
+                    </h3>
+
+                    <p>
+                        Processing
+                    </p>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =================================================
+             REQUEST TABLE
+             ================================================= -->
 
-    <!-- =================================================
-         REQUEST MANAGEMENT
-    ================================================= -->
-
-    <section class="dashboard-section">
-
-        <div class="dashboard-card">
-
-
-            <!-- CARD HEADER -->
+        <section class="dashboard-card">
 
             <div class="dashboard-card-header">
 
                 <div>
 
                     <h3>
-                        Academic Document Requests
+                        All Document Requests
                     </h3>
-
-                    <p>
-                        Select a request to review its
-                        complete information.
-                    </p>
-
-                </div>
-
-
-                <div class="request-tools">
-
-                    <button type="button"
-                            class="section-link"
-                            onclick="loadRegistrarRequestManagement()">
-
-                        <i class="fas fa-rotate"></i>
-
-                        Refresh
-
-                    </button>
 
                 </div>
 
             </div>
 
-
-
-            <!-- =================================================
-                 REQUEST TABLE
-            ================================================= -->
 
             <div class="table-container">
 
@@ -449,13 +374,11 @@
 
                         <tr>
 
-                            <td colspan="7"
-                                class="empty-table">
-
-                                <i class="fas fa-spinner"></i>
-
-                                Loading requests...
-
+                            <td
+                                colspan="7"
+                                class="empty-table"
+                            >
+                                Loading document requests...
                             </td>
 
                         </tr>
@@ -466,128 +389,20 @@
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =================================================
+             WORKFLOW INFORMATION
+             ================================================= -->
 
-    <!-- =================================================
-         REQUEST WORKFLOW
-    ================================================= -->
-
-    <section class="dashboard-section">
-
-        <div class="info-card">
-
-            <div class="info-card-icon">
-
-                <i class="fas fa-route"></i>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Request Processing Workflow
-                </h3>
-
-                <p>
-
-                    <strong>1. Request Submitted</strong>
-
-                    — The student, applicant, or alumni
-                    submits an academic document request.
-
-                </p>
-
-                <p>
-
-                    <strong>2. Registrar Review</strong>
-
-                    — The Registrar reviews the request,
-                    student information, requested document,
-                    purpose, and supporting requirements.
-
-                </p>
-
-                <p>
-
-                    <strong>3. Clearance Verification</strong>
-
-                    — Required clearance and school records
-                    are checked before processing.
-
-                </p>
-
-                <p>
-
-                    <strong>4. Payment Verification</strong>
-
-                    — Payment status is reviewed before
-                    document processing.
-
-                </p>
-
-                <p>
-
-                    <strong>5. Processing</strong>
-
-                    — The Registrar prepares the requested
-                    academic credential.
-
-                </p>
-
-                <p>
-
-                    <strong>6. Ready for Release</strong>
-
-                    — The completed credential becomes
-                    available for the authorized delivery
-                    method.
-
-                </p>
-
-                <p>
-
-                    <strong>7. Completed</strong>
-
-                    — The request is officially completed
-                    after release.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         STATUS GUIDE
-    ================================================= -->
-
-    <section class="dashboard-section">
-
-        <div class="dashboard-card">
+        <section class="dashboard-card">
 
             <div class="dashboard-card-header">
 
-                <div>
-
-                    <h3>
-                        Request Status Guide
-                    </h3>
-
-                    <p>
-                        Statuses used by the Registrar
-                        throughout document processing.
-                    </p>
-
-                </div>
+                <h3>
+                    Registrar Processing Workflow
+                </h3>
 
             </div>
 
@@ -595,7 +410,111 @@
             <div class="status-guide-grid">
 
 
-                <!-- PENDING -->
+                <div class="status-guide-card">
+
+                    <strong>
+                        1. Request
+                    </strong>
+
+                    <p>
+                        Review the student's submitted
+                        document request.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        2. Verification
+                    </strong>
+
+                    <p>
+                        Verify the student's information
+                        and academic record.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        3. Clearance
+                    </strong>
+
+                    <p>
+                        Confirm that required clearance
+                        requirements are satisfied.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        4. Payment
+                    </strong>
+
+                    <p>
+                        Confirm the applicable payment
+                        status before processing.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        5. Processing
+                    </strong>
+
+                    <p>
+                        Prepare and process the requested
+                        academic document.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        6. Release
+                    </strong>
+
+                    <p>
+                        Mark the credential as ready for
+                        release or completion.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATUS GUIDE
+             ================================================= -->
+
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <h3>
+                    Request Status Guide
+                </h3>
+
+            </div>
+
+
+            <div class="status-guide-grid">
+
 
                 <div class="status-guide-card">
 
@@ -604,13 +523,11 @@
                     </span>
 
                     <p>
-                        New request waiting for Registrar review.
+                        New request awaiting review.
                     </p>
 
                 </div>
 
-
-                <!-- VERIFICATION -->
 
                 <div class="status-guide-card">
 
@@ -619,45 +536,11 @@
                     </span>
 
                     <p>
-                        Student information and requirements
-                        are currently being checked.
+                        Student information is being verified.
                     </p>
 
                 </div>
 
-
-                <!-- CLEARANCE -->
-
-                <div class="status-guide-card">
-
-                    <span class="status-badge status-warning">
-                        Clearance Required
-                    </span>
-
-                    <p>
-                        The request requires clearance before
-                        processing can continue.
-                    </p>
-
-                </div>
-
-
-                <!-- PAYMENT -->
-
-                <div class="status-guide-card">
-
-                    <span class="status-badge status-warning">
-                        Payment Pending
-                    </span>
-
-                    <p>
-                        Payment has not yet been verified.
-                    </p>
-
-                </div>
-
-
-                <!-- PROCESSING -->
 
                 <div class="status-guide-card">
 
@@ -666,14 +549,11 @@
                     </span>
 
                     <p>
-                        The Registrar is preparing the requested
-                        academic document.
+                        Document is currently being prepared.
                     </p>
 
                 </div>
 
-
-                <!-- READY -->
 
                 <div class="status-guide-card">
 
@@ -682,14 +562,11 @@
                     </span>
 
                     <p>
-                        The credential has been completed
-                        and is ready for authorized release.
+                        Credential is ready for the user.
                     </p>
 
                 </div>
 
-
-                <!-- COMPLETED -->
 
                 <div class="status-guide-card">
 
@@ -698,14 +575,11 @@
                     </span>
 
                     <p>
-                        The document request has been
-                        successfully completed.
+                        Request has been completed.
                     </p>
 
                 </div>
 
-
-                <!-- REJECTED -->
 
                 <div class="status-guide-card">
 
@@ -714,108 +588,69 @@
                     </span>
 
                     <p>
-                        The request cannot be processed
-                        because of an issue with the request
-                        or requirements.
+                        Request could not be processed.
                     </p>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =================================================
+             SECURITY INFORMATION
+             ================================================= -->
 
-    <!-- =================================================
-         SECURITY NOTICE
-    ================================================= -->
+        <section class="info-card">
 
-    <section class="dashboard-section">
+            <h4>
+                Registrar Security Notice
+            </h4>
 
-        <div class="security-notice">
+            <p>
+                Student academic records and document requests
+                are administrative information. Access to this
+                page is restricted to authorized Registrar
+                personnel. Do not expose real student records,
+                passwords, or sensitive information in a public
+                development repository.
+            </p>
 
-            <i class="fas fa-shield-halved"></i>
+        </section>
 
-            <div>
-
-                <strong>
-                    Registrar Security Notice
-                </strong>
-
-                <p>
-
-                    This page is intended for authorized
-                    DLSJBC Registrar personnel only.
-                    Student academic records and credentials
-                    must be handled according to institutional
-                    privacy and security requirements.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-</main>
+    </main>
 
 </div>
 
 
-
 <!-- =====================================================
      FOOTER
-===================================================== -->
+     ===================================================== -->
 
-<footer class="site-footer">
+<footer class="dashboard-footer">
 
-    <div class="footer-content">
+    <p>
 
-        <img src="../images/dlsjbc-logo.png"
-             alt="DLSJBC Logo"
-             class="footer-logo">
+        <strong>
+            De La Salle John Bosco College
+        </strong>
 
+        &nbsp; | &nbsp;
 
-        <div>
+        Automated Transcript and Credential Retrieval System
 
-            <h3>
-                De La Salle John Bosco College
-            </h3>
-
-            <p>
-                Automated Transcript and Credential
-                Retrieval System
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p>
-            &copy; 2026 DLSJBC ATCRS.
-            Registrar Administrative System.
-        </p>
-
-    </div>
+    </p>
 
 </footer>
 
 
-
 <!-- =====================================================
      JAVASCRIPT
-===================================================== -->
+     ===================================================== -->
 
 <script src="../js/script.js"></script>
 
 </body>
 
-      </html>
+    </html>
