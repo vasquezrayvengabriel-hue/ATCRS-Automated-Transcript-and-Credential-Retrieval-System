@@ -3407,6 +3407,23 @@ if (credentialInput) {
     );
 
 }
+/* =========================================
+   TERMS OF USE
+   ========================================= */
 
+const openTerms = document.getElementById("openTerms");
+const termsContent = document.getElementById("termsOfUse");
+
+if (openTerms && termsContent) {
+
+    openTerms.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        termsContent.classList.toggle("show");
+
+    });
+
+}
    
 });
