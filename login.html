@@ -3,11 +3,6 @@
 
 <head>
 
-    <!-- =========================================
-         ATCRS LOGIN PAGE
-         DE LA SALLE JOHN BOSCO COLLEGE
-         ========================================= -->
-
     <meta charset="UTF-8">
 
     <meta
@@ -17,22 +12,17 @@
 
     <meta
         name="description"
-        content="ATCRS - Automated Transcript and Credential Retrieval System of De La Salle John Bosco College"
+        content="ATCRS User Login and Registration - De La Salle John Bosco College"
     >
 
-    <meta
-        name="author"
-        content="De La Salle John Bosco College"
+    <title>Login | ATCRS</title>
+
+    <link
+        rel="icon"
+        href="images/dlsjbc-logo.png"
     >
 
-    <title>
-        Login | ATCRS - DLSJBC
-    </title>
-
-
-    <!-- =========================================
-         GOOGLE FONT
-         ========================================= -->
+    <!-- ================= GOOGLE FONTS ================= -->
 
     <link
         rel="preconnect"
@@ -46,14 +36,12 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet"
     >
 
 
-    <!-- =========================================
-         FONT AWESOME
-         ========================================= -->
+    <!-- ================= FONT AWESOME ================= -->
 
     <link
         rel="stylesheet"
@@ -61,778 +49,1038 @@
     >
 
 
-    <!-- =========================================
-         LOGIN PAGE CSS
-         ========================================= -->
+    <!-- ================= MAIN CSS ================= -->
 
-    <style>
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
-        /* =========================================
-           ROOT COLORS
-           ========================================= */
+</head>
 
-        :root {
 
-            --green: #0b5d3f;
+<body class="auth-page">
 
-            --green-dark: #063927;
 
-            --green-light: #16845b;
+<!-- ==================================================
+     AUTH HEADER
+================================================== -->
 
-            --gold: #d4af37;
+<header class="auth-header">
 
-            --gold-light: #f0d878;
+    <a
+        href="index.html"
+        class="auth-brand"
+    >
 
-            --white: #ffffff;
+        <img
+            src="images/dlsjbc-logo.png"
+            alt="De La Salle John Bosco College Logo"
+        >
 
-            --light: #f5f7f6;
+        <div>
 
-            --gray: #dcdcdc;
+            <strong>
+                ATCRS
+            </strong>
 
-            --gray-dark: #666666;
+            <span>
+                De La Salle John Bosco College
+            </span>
 
-            --black: #151515;
+        </div>
 
-            --danger: #b42318;
+    </a>
 
-            --success: #18794e;
 
-        }
+    <a
+        href="index.html"
+        class="back-home"
+    >
 
+        <i class="fa-solid fa-arrow-left"></i>
 
-        /* =========================================
-           RESET
-           ========================================= */
+        Back to Home
 
-        * {
+    </a>
 
-            margin: 0;
+</header>
 
-            padding: 0;
 
-            box-sizing: border-box;
 
-        }
+<!-- ==================================================
+     MAIN AUTH AREA
+================================================== -->
 
+<main class="auth-main">
 
-        html {
 
-            scroll-behavior: smooth;
+<!-- ==================================================
+     LEFT SIDE INFORMATION
+================================================== -->
 
-        }
+<section class="auth-information">
 
+    <div class="auth-overlay"></div>
 
-        body {
 
-            font-family: "Poppins", sans-serif;
+    <div class="auth-information-content">
 
-            min-height: 100vh;
+        <span class="section-label">
+            ATCRS USER PORTAL
+        </span>
 
-            color: var(--black);
 
-        }
+        <h1>
 
+            Academic Records,
 
-        button,
-        input {
+            <span>
+                Made Easier.
+            </span>
 
-            font-family: inherit;
+        </h1>
 
-        }
 
+        <p>
 
-        a {
+            Access the Automated Transcript and Credential
+            Retrieval System to request, monitor, and retrieve
+            authorized academic documents.
 
-            text-decoration: none;
+        </p>
 
-        }
 
 
-        /* =========================================
-           AUTH PAGE
-           ========================================= */
+        <!-- ================= FEATURES ================= -->
 
-        .auth-page {
+        <div class="auth-features">
 
-            min-height: 100vh;
 
-            background:
-                linear-gradient(
-                    rgba(6, 57, 39, 0.78),
-                    rgba(6, 57, 39, 0.88)
-                ),
-                url("images/background.jpg");
+            <div class="auth-feature">
 
-            background-size: cover;
+                <div class="auth-feature-icon">
 
-            background-position: center;
+                    <i class="fa-solid fa-user-plus"></i>
 
-            background-attachment: fixed;
+                </div>
 
-            display: flex;
+                <div>
 
-            justify-content: center;
+                    <h3>
+                        Create an Account
+                    </h3>
 
-            align-items: center;
+                    <p>
+                        Register your ATCRS account using your
+                        required information.
+                    </p>
 
-            padding: 40px 20px;
+                </div>
 
-        }
+            </div>
 
 
-        /* =========================================
-           AUTH CONTAINER
-           ========================================= */
 
-        .auth-container {
+            <div class="auth-feature">
 
-            width: 100%;
+                <div class="auth-feature-icon">
 
-            max-width: 720px;
+                    <i class="fa-solid fa-file-circle-plus"></i>
 
-        }
+                </div>
 
+                <div>
 
-        /* =========================================
-           AUTH CARD
-           ========================================= */
+                    <h3>
+                        Request Documents
+                    </h3>
 
-        .auth-card {
+                    <p>
+                        Submit academic document requests
+                        through your account.
+                    </p>
 
-            background: rgba(255, 255, 255, 0.97);
+                </div>
 
-            border-radius: 22px;
+            </div>
 
-            padding: 42px;
 
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.30);
 
-            border-top: 6px solid var(--gold);
+            <div class="auth-feature">
 
-        }
+                <div class="auth-feature-icon">
 
+                    <i class="fa-solid fa-clock-rotate-left"></i>
 
-        /* =========================================
-           LOGO
-           ========================================= */
+                </div>
 
-        .auth-logo {
+                <div>
 
-            width: 115px;
+                    <h3>
+                        Track Your Request
+                    </h3>
 
-            height: 115px;
+                    <p>
+                        Monitor the status of your academic
+                        document request.
+                    </p>
 
-            margin: 0 auto 20px;
+                </div>
 
-            display: flex;
+            </div>
 
-            justify-content: center;
 
-            align-items: center;
 
-            background: var(--white);
+            <div class="auth-feature">
 
-            border-radius: 50%;
+                <div class="auth-feature-icon">
 
-            padding: 10px;
+                    <i class="fa-solid fa-certificate"></i>
 
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.12);
+                </div>
 
-            border: 3px solid var(--gold);
+                <div>
 
-        }
+                    <h3>
+                        Retrieve Credentials
+                    </h3>
 
+                    <p>
+                        Access credentials released through
+                        the ATCRS system.
+                    </p>
 
-        .auth-logo img {
+                </div>
 
-            width: 100%;
+            </div>
 
-            height: 100%;
 
-            object-fit: contain;
+        </div>
 
-            border-radius: 50%;
+    </div>
 
-        }
+</section>
 
 
-        /* =========================================
-           MAIN TITLE
-           ========================================= */
 
-        .auth-card h1 {
+<!-- ==================================================
+     AUTH PANEL
+================================================== -->
 
-            text-align: center;
+<section class="auth-panel">
 
-            font-size: 42px;
 
-            font-weight: 800;
+<div class="auth-card">
 
-            color: var(--green);
 
-            letter-spacing: 2px;
+<!-- ==================================================
+     LOGIN HEADER
+================================================== -->
 
-        }
+<div class="auth-card-header">
 
+    <div class="auth-mobile-logo">
 
-        .auth-subtitle {
+        <img
+            src="images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
 
-            text-align: center;
+    </div>
 
-            font-size: 15px;
 
-            font-weight: 500;
+    <span class="section-label">
+        SECURE USER ACCESS
+    </span>
 
-            color: var(--gray-dark);
 
-            margin-top: 4px;
+    <h2>
+        Welcome Back
+    </h2>
 
-            line-height: 1.6;
 
-        }
+    <p>
+        Sign in to access your ATCRS account.
+    </p>
 
+</div>
 
-        .school-name {
 
-            text-align: center;
 
-            color: var(--green-dark);
+<!-- ==================================================
+     LOGIN FORM
+================================================== -->
 
-            font-size: 14px;
+<form
+    id="loginForm"
+    class="auth-form"
+    novalidate
+>
 
-            font-weight: 700;
 
-            margin-top: 8px;
+<!-- STUDENT ID -->
 
-        }
+<div class="form-group">
 
+    <label for="loginStudentId">
+        Student ID
+    </label>
 
-        /* =========================================
-           DIVIDER
-           ========================================= */
 
-        .auth-divider {
+    <div class="input-wrapper">
 
-            width: 80px;
+        <i class="fa-solid fa-id-card"></i>
 
-            height: 4px;
+        <input
+            type="text"
+            id="loginStudentId"
+            name="studentId"
+            placeholder="Enter your 7-digit Student ID"
+            maxlength="7"
+            minlength="7"
+            inputmode="numeric"
+            pattern="[0-9]{7}"
+            autocomplete="username"
+            required
+        >
 
-            background: var(--gold);
+    </div>
 
-            border-radius: 20px;
 
-            margin: 25px auto;
+    <small>
+        Student ID must contain exactly 7 digits.
+    </small>
 
-        }
+</div>
 
 
-        /* =========================================
-           LOGIN HEADING
-           ========================================= */
 
-        .auth-card h2 {
+<!-- PASSWORD -->
 
-            text-align: center;
+<div class="form-group">
 
-            color: var(--green-dark);
+    <label for="loginPassword">
+        Password
+    </label>
 
-            font-size: 25px;
 
-            margin-bottom: 8px;
+    <div class="input-wrapper">
 
-        }
+        <i class="fa-solid fa-lock"></i>
 
 
-        .auth-description {
+        <input
+            type="password"
+            id="loginPassword"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+        >
 
-            text-align: center;
 
-            color: var(--gray-dark);
+        <button
+            type="button"
+            class="password-toggle"
+            data-target="loginPassword"
+            aria-label="Show password"
+        >
 
-            font-size: 14px;
+            <i class="fa-solid fa-eye"></i>
 
-            line-height: 1.7;
+        </button>
 
-            margin-bottom: 28px;
+    </div>
 
-        }
-                /* =========================================
-           FORM STYLING
-           ========================================= */
+</div>
 
-        .form-group {
 
-            margin-bottom: 22px;
 
-        }
+<!-- LOGIN OPTIONS -->
 
+<div class="form-options">
 
-        .form-group label {
+    <label class="remember-option">
 
-            display: block;
+        <input
+            type="checkbox"
+            id="rememberMe"
+        >
 
-            color: var(--green-dark);
+        <span>
+            Remember me
+        </span>
 
-            font-size: 14px;
+    </label>
 
-            font-weight: 600;
 
-            margin-bottom: 8px;
+    <button
+        type="button"
+        class="forgot-password"
+        id="forgotPassword"
+    >
+        Forgot Password?
+    </button>
 
-        }
+</div>
 
 
-        .form-group label i {
 
-            margin-right: 6px;
+<!-- LOGIN BUTTON -->
 
-            color: var(--green);
+<button
+    type="submit"
+    class="auth-button"
+>
 
-        }
+    <i class="fa-solid fa-right-to-bracket"></i>
 
+    Sign In
 
-        /* =========================================
-           TEXT INPUT
-           ========================================= */
+</button>
 
-        .form-group input[type="text"],
-        .form-group input[type="password"] {
 
-            width: 100%;
 
-            padding: 14px 16px;
+<!-- LOGIN MESSAGE -->
 
-            border: 1px solid #cfcfcf;
+<div
+    id="loginMessage"
+    class="auth-message"
+    aria-live="polite"
+></div>
 
-            border-radius: 10px;
 
-            background: var(--white);
+</form>
 
-            color: var(--black);
 
-            font-size: 14px;
 
-            outline: none;
+<!-- ==================================================
+     REGISTER DIVIDER
+================================================== -->
 
-            transition: all 0.25s ease;
+<div class="auth-divider">
 
-        }
+    <span>
+        OR
+    </span>
 
+</div>
 
-        .form-group input[type="text"]:focus,
-        .form-group input[type="password"]:focus {
 
-            border-color: var(--green);
 
-            box-shadow:
-                0 0 0 3px rgba(11, 93, 63, 0.10);
+<!-- CREATE ACCOUNT -->
 
-        }
+<div class="auth-switch">
 
+    <p>
+        Don't have an ATCRS account?
+    </p>
 
-        .form-group input::placeholder {
 
-            color: #999;
+    <button
+        type="button"
+        id="showRegister"
+        class="secondary-auth-button"
+    >
 
-        }
+        <i class="fa-solid fa-user-plus"></i>
 
+        Create an Account
 
-        /* =========================================
-           FORM HELP TEXT
-           ========================================= */
+    </button>
 
-        .form-help {
+</div>
 
-            display: block;
 
-            margin-top: 6px;
 
-            color: #777;
+<!-- ==================================================
+     ADMIN ACCESS
+================================================== -->
 
-            font-size: 12px;
+<div class="admin-access">
 
-        }
+    <div class="admin-access-icon">
 
+        <i class="fa-solid fa-shield-halved"></i>
 
-        /* =========================================
-           PASSWORD CONTAINER
-           ========================================= */
+    </div>
 
-        .password-input {
 
-            position: relative;
+    <div>
 
-            width: 100%;
+        <strong>
+            Administrative Access
+        </strong>
 
-        }
 
+        <p>
+            Registrar and authorized Verifier accounts use
+            separate private login portals.
+        </p>
 
-        .password-input input {
 
-            padding-right: 75px !important;
+        <div class="admin-links">
 
-        }
+            <a href="registrar/login.html">
+                Registrar Login
+            </a>
 
 
-        /* =========================================
-           SHOW / HIDE PASSWORD BUTTON
-           ========================================= */
+            <a href="verifier/login.html">
+                Verifier Login
+            </a>
 
-        .password-toggle {
+        </div>
 
-            position: absolute;
+    </div>
 
-            top: 50%;
+</div>
 
-            right: 8px;
 
-            transform: translateY(-50%);
+</div>
 
-            padding: 8px;
+</section>
 
-            border: none;
+</main>
 
-            background: transparent;
 
-            color: var(--green);
 
-            font-size: 12px;
+<!-- ==================================================
+     REGISTRATION MODAL
+================================================== -->
 
-            font-weight: 700;
+<div
+    id="registerModal"
+    class="auth-modal"
+    aria-hidden="true"
+>
 
-            cursor: pointer;
 
-            transition: 0.2s ease;
+<div class="auth-modal-overlay"></div>
 
-        }
 
 
-        .password-toggle:hover {
+<div class="register-card">
 
-            color: var(--gold);
 
-        }
+<!-- REGISTRATION HEADER -->
 
+<div class="register-header">
 
-        /* =========================================
-           LOGIN OPTIONS
-           ========================================= */
+    <button
+        type="button"
+        class="modal-close"
+        id="closeRegister"
+        aria-label="Close registration"
+    >
 
-        .auth-options {
+        <i class="fa-solid fa-xmark"></i>
 
-            display: flex;
+    </button>
 
-            justify-content: space-between;
 
-            align-items: center;
+    <span class="section-label">
+        NEW ATCRS ACCOUNT
+    </span>
 
-            margin-bottom: 20px;
 
-        }
+    <h2>
+        Create Your Account
+    </h2>
 
 
-        .remember-option {
+    <p>
+        Register to request and manage your academic credentials.
+    </p>
 
-            display: flex;
+</div>
 
-            align-items: center;
 
-            gap: 8px;
 
-            color: #555;
+<!-- ==================================================
+     REGISTRATION FORM
+================================================== -->
 
-            font-size: 13px;
+<form
+    id="registerForm"
+    class="auth-form"
+    novalidate
+>
 
-            cursor: pointer;
 
-        }
+<!-- FULL NAME -->
 
+<div class="form-group">
 
-        .remember-option input {
+    <label for="registerFullName">
+        Full Name
+    </label>
 
-            width: 16px;
 
-            height: 16px;
+    <div class="input-wrapper">
 
-            accent-color: var(--green);
+        <i class="fa-solid fa-user"></i>
 
-            cursor: pointer;
 
-        }
+        <input
+            type="text"
+            id="registerFullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            maxlength="50"
+            autocomplete="name"
+            required
+        >
 
+    </div>
 
-        /* =========================================
-           TERMS OF USE BOX
-           ========================================= */
 
-        .terms-box {
+    <small>
+        Maximum of 50 characters.
+    </small>
 
-            width: 100%;
+</div>
 
-            margin: 25px 0;
 
-            border: 1px solid #d5d5d5;
 
-            border-radius: 15px;
+<!-- STUDENT ID -->
 
-            background: #fafcfa;
+<div class="form-group">
 
-            overflow: hidden;
+    <label for="registerStudentId">
+        Student ID
+    </label>
 
-        }
 
+    <div class="input-wrapper">
 
-        /* =========================================
-           TERMS HEADER
-           ========================================= */
+        <i class="fa-solid fa-id-card"></i>
 
-        .terms-header {
 
-            display: flex;
+        <input
+            type="text"
+            id="registerStudentId"
+            name="studentId"
+            placeholder="Enter your 7-digit Student ID"
+            maxlength="7"
+            minlength="7"
+            inputmode="numeric"
+            pattern="[0-9]{7}"
+            required
+        >
 
-            align-items: center;
+    </div>
 
-            gap: 14px;
 
-            padding: 18px 20px;
+    <small>
+        Enter exactly 7 numbers. Example: 1234567
+    </small>
 
-            background: var(--green);
+</div>
 
-            color: var(--white);
 
-        }
 
+<!-- ACCOUNT TYPE -->
 
-        .terms-icon {
+<div class="form-group">
 
-            width: 43px;
+    <label for="accountType">
+        Account Type
+    </label>
 
-            height: 43px;
 
-            display: flex;
+    <div class="input-wrapper">
 
-            justify-content: center;
+        <i class="fa-solid fa-user-tag"></i>
 
-            align-items: center;
 
-            flex-shrink: 0;
+        <select
+            id="accountType"
+            name="accountType"
+            required
+        >
 
-            background:
-                rgba(255, 255, 255, 0.15);
+            <option
+                value=""
+                selected
+                disabled
+            >
+                Select account type
+            </option>
 
-            border-radius: 50%;
 
-            font-size: 18px;
+            <option value="Applicant">
+                Applicant
+            </option>
 
-        }
 
+            <option value="Student">
+                Student
+            </option>
 
-        .terms-header h3 {
 
-            color: var(--white);
+            <option value="Alumni">
+                Alumni
+            </option>
 
-            font-size: 17px;
+        </select>
 
-            font-weight: 700;
+    </div>
 
-            margin-bottom: 2px;
+</div>
 
-        }
 
 
-        .terms-header p {
+<!-- EMAIL -->
 
-            color: rgba(255, 255, 255, 0.85);
+<div class="form-group">
 
-            font-size: 11px;
+    <label for="registerEmail">
+        Email Address
+    </label>
 
-            line-height: 1.5;
 
-        }
+    <div class="input-wrapper">
 
+        <i class="fa-solid fa-envelope"></i>
 
-        /* =========================================
-           TERMS SCROLL AREA
-           ========================================= */
 
-        .terms-content {
+        <input
+            type="email"
+            id="registerEmail"
+            name="email"
+            placeholder="Enter your email address"
+            autocomplete="email"
+            required
+        >
 
-            max-height: 360px;
+    </div>
 
-            overflow-y: auto;
+</div>
 
-            padding: 22px;
 
-            background: var(--white);
 
-        }
+<!-- PASSWORD -->
 
+<div class="form-group">
 
-        .terms-content::-webkit-scrollbar {
+    <label for="registerPassword">
+        Password
+    </label>
 
-            width: 7px;
 
-        }
+    <div class="input-wrapper">
 
+        <i class="fa-solid fa-lock"></i>
 
-        .terms-content::-webkit-scrollbar-track {
 
-            background: #f1f1f1;
+        <input
+            type="password"
+            id="registerPassword"
+            name="password"
+            placeholder="Create a password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+        >
 
-        }
 
+        <button
+            type="button"
+            class="password-toggle"
+            data-target="registerPassword"
+            aria-label="Show password"
+        >
 
-        .terms-content::-webkit-scrollbar-thumb {
+            <i class="fa-solid fa-eye"></i>
 
-            background: var(--green);
+        </button>
 
-            border-radius: 10px;
+    </div>
 
-        }
 
+    <small>
+        Password must contain at least 6 characters.
+    </small>
 
-        /* =========================================
-           TERMS HEADINGS
-           ========================================= */
+</div>
 
-        .terms-content h4 {
 
-            color: var(--green-dark);
 
-            font-size: 14px;
+<!-- CONFIRM PASSWORD -->
 
-            font-weight: 700;
+<div class="form-group">
 
-            margin-top: 18px;
+    <label for="confirmPassword">
+        Confirm Password
+    </label>
 
-            margin-bottom: 7px;
 
-        }
+    <div class="input-wrapper">
 
+        <i class="fa-solid fa-lock"></i>
 
-        .terms-content h4:first-child {
 
-            margin-top: 0;
+        <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+        >
 
-        }
 
+        <button
+            type="button"
+            class="password-toggle"
+            data-target="confirmPassword"
+            aria-label="Show password"
+        >
 
-        /* =========================================
-           TERMS PARAGRAPHS
-           ========================================= */
+            <i class="fa-solid fa-eye"></i>
 
-        .terms-content p {
+        </button>
 
-            color: #555;
+    </div>
 
-            font-size: 12px;
+</div>
 
-            line-height: 1.8;
 
-            margin-bottom: 10px;
 
-        }
+<!-- TERMS -->
 
+<label class="terms-option">
 
-        /* =========================================
-           TERMS IMPORTANT NOTICE
-           ========================================= */
+    <input
+        type="checkbox"
+        id="acceptTerms"
+        required
+    >
 
-        .terms-note {
 
-            margin-top: 20px;
+    <span>
 
-            padding: 16px;
+        I agree to the ATCRS
+        <a
+            href="#"
+            id="termsLink"
+        >
+            Terms of Use
+        </a>
 
-            border-left: 4px solid var(--gold);
+        and understand that my account information
+        will be used for academic credential processing.
 
-            border-radius: 8px;
+    </span>
 
-            background: #fffaf0;
+</label>
 
-        }
 
 
-        .terms-note strong {
+<!-- REGISTER BUTTON -->
 
-            display: block;
+<button
+    type="submit"
+    class="auth-button"
+>
 
-            color: var(--green-dark);
+    <i class="fa-solid fa-user-plus"></i>
 
-            font-size: 13px;
+    Create Account
 
-            margin-bottom: 5px;
+</button>
 
-        }
 
 
-        .terms-note p {
+<!-- REGISTER MESSAGE -->
 
-            margin-bottom: 0;
+<div
+    id="registerMessage"
+    class="auth-message"
+    aria-live="polite"
+></div>
 
-        }
 
+</form>
 
-        /* =========================================
-           TERMS AGREEMENT
-           ========================================= */
 
-        .terms-agreement {
 
-            padding: 17px 20px;
+<!-- BACK TO LOGIN -->
 
-            border-top: 1px solid #dddddd;
+<div class="back-login">
 
-            background: #f4f8f5;
+    <button
+        type="button"
+        id="backToLogin"
+    >
 
-        }
+        <i class="fa-solid fa-arrow-left"></i>
 
+        Back to Login
 
-        .terms-agreement label {
+    </button>
 
-            display: flex;
+</div>
 
-            align-items: flex-start;
 
-            gap: 10px;
+</div>
 
-            cursor: pointer;
+</div>
 
-        }
 
 
-        .terms-agreement input {
+<!-- ==================================================
+     TERMS MODAL
+================================================== -->
 
-            width: 18px;
+<div
+    id="termsModal"
+    class="terms-modal"
+    aria-hidden="true"
+>
 
-            height: 18px;
 
-            flex-shrink: 0;
+<div class="terms-overlay"></div>
 
-            margin-top: 2px;
 
-            accent-color: var(--green);
+<div class="terms-card">
 
-            cursor: pointer;
 
-        }
+<button
+    type="button"
+    id="closeTerms"
+    class="modal-close"
+    aria-label="Close terms"
+>
 
+    <i class="fa-solid fa-xmark"></i>
 
-        .terms-agreement span {
+</button>
 
-            color: #444;
 
-            font-size: 12px;
+<span class="section-label">
+    ATCRS
+</span>
 
-            line-height: 1.7;
 
-        }
+<h2>
+    Terms of Use
+</h2>
 
 
-        .terms-agreement strong {
+<p>
+    ATCRS is intended for authorized academic credential
+    and records processing. Users should provide accurate
+    information and use the system only for legitimate
+    academic purposes.
+</p>
 
-            color: var(--green-dark);
 
-        }
+<p>
+    This development version is a frontend prototype.
+    Do not enter real confidential student records,
+    passwords, payment information, or private academic
+    documents while testing the GitHub version.
+</p>
+
+
+<button
+    type="button"
+    class="auth-button"
+    id="closeTermsButton"
+>
+
+    Continue
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     FORGOT PASSWORD MODAL
+================================================== -->
+
+<div
+    id="forgotModal"
+    class="terms-modal"
+    aria-hidden="true"
+>
+
+
+<div class="terms-overlay"></div>
+
+
+<div class="terms-card">
+
+
+<button
+    type="button"
+    id="closeForgot"
+    class="modal-close"
+    aria-label="Close forgot password"
+>
+
+    <i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+<span class="section-label">
+    ACCOUNT RECOVERY
+</span>
+
+
+<h2>
+    Forgot Password?
+</h2>
+
+
+<p>
+    For this development version, password recovery is
+    handled through the account information stored locally
+    in your browser.
+</p>
+
+
+<p>
+    A real production version should use secure server-side
+    authentication and email-based password recovery.
+</p>
+
+
+<button
+    type="button"
+    class="auth-button"
+    id="closeForgotButton"
+>
+
+    Close
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="js/script.js"></script>
+
+
+</body>
+
+    </html>
+    
