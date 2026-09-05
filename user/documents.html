@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Documents | ATCRS - DLSJBC</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<header class="dashboard-header">
+
+    <div class="dashboard-header-container">
+
+        <a href="dashboard.html"
+           class="dashboard-logo">
+
+            <img src="../images/dlsjbc-logo.png"
+                 alt="DLSJBC Logo">
+
+            <div class="dashboard-logo-text">
+
+                <strong>ATCRS</strong>
+
+                <span>
+                    De La Salle John Bosco College
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="dashboard-user">
+
+            <div class="dashboard-user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="dashboard-user-info">
+
+                <strong>
+                    Public User
+                </strong>
+
+                <span>
+                    Student
+                </span>
+
+            </div>
+
+            <button type="button"
+                    class="dashboard-logout"
+                    id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="dashboard-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="dashboard-sidebar">
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="request.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <span>Request Document</span>
+
+            </a>
+
+            <a href="requests.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>My Requests</span>
+
+            </a>
+
+            <a href="documents.html"
+               class="dashboard-nav-link active">
+
+                <i class="fa-solid fa-folder-open"></i>
+                <span>My Documents</span>
+
+            </a>
+
+            <a href="profile.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-user-gear"></i>
+                <span>My Profile</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard-main">
+
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="dashboard-label">
+                    DIGITAL CREDENTIALS
+                </span>
+
+                <h1>
+                    My
+                    <strong>Documents</strong>
+                </h1>
+
+                <p>
+                    Access your officially released
+                    academic credentials.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DOCUMENT AREA -->
+
+        <section class="documents-user-grid"
+                 id="userDocuments">
+
+            <div class="user-document-card">
+
+                <div class="user-document-icon">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="document-status">
+                        RELEASED DOCUMENTS
+                    </span>
+
+                    <h3>
+                        No Documents Available
+                    </h3>
+
+                    <p>
+                        Your released academic credentials
+                        will appear here after your request
+                        has been completed by the Registrar.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECURITY -->
+
+        <section class="dashboard-information">
+
+            <div class="information-icon">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Credential Security
+                </h3>
+
+                <p>
+                    Digital credentials released through
+                    ATCRS should only be accessed through
+                    your authorized account. Credential
+                    verification may be performed using
+                    the official verification system.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<footer class="dashboard-footer">
+
+    <p>
+        © 2026 De La Salle John Bosco College.
+        Automated Transcript and Credential Retrieval System.
+    </p>
+
+</footer>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
