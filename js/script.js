@@ -4061,5 +4061,282 @@ if (registrarLoginForm) {
     );
 
 }
+/* =========================================================
+   PART 6B3 — REGISTRAR DASHBOARD JAVASCRIPT
+   ========================================================= */
 
+function getRegistrarSession() {
+    return JSON.parse(
+        localStorage.getItem("atcrsRegistrarSession") || "null"
+    );
+}
+
+
+/* ================= PROTECT REGISTRAR PAGE ================= */
+
+function protectRegistrarPage() {
+
+    const session = getRegistrarSession();
+
+    if (!session) {
+        window.location.href = "login.html";
+        return false;
+    }
+
+    if (session.role !== "Registrar") {
+        localStorage.removeItem("atcrsRegistrarSession");
+        window.location.href = "login.html";
+        return false;
+    }
+
+    return true;
+}
+
+
+/* ================= LOAD REGISTRAR INFORMATION ================= */
+
+function loadRegistrarInformation() {
+
+    const session = getRegistrarSession();
+
+    if (!session) return;
+
+    const registrarName =
+        document.getElementById("registrarName");
+
+    const registrarHeaderName =
+        document.getElementById("registrarHeaderName");
+
+    if (registrarName) {
+        registrarName.textContent = session.fullName;
+    }
+
+    if (registrarHeaderName) {
+        registrarHeaderName.textContent = session.fullName;
+    }
+}
+
+
+/* ================= LOAD STATISTICS ================= */
+
+function loadRegistrarStatistics() {
+
+    const requests = getRequests();
+
+    const totalRequests = requests.length;
+
+    const pendingRequests = requests.filter(
+        request =>
+            request.status === "Pending"
+    ).length;
+
+    const processingRequests = requests.filter(
+        request =>
+            request.status === "Processing" ||
+            request.status === "Under Verification" ||
+            request.status === "Clearance Required" ||
+            request.status === "Payment Pending"
+    ).length;
+
+    const readyRequests = requests.filter(
+        request =>
+            request.status === "Ready for Release"
+    ).length;
+
+
+    const totalElement =
+        document.getElementById("registrarTotalRequests");
+
+    const pendingElement =
+        document.getElementById("registrarPendingRequests");
+
+    const processingElement =
+        document.getElementById("registrarProcessingRequests");
+
+    const readyElement =
+        document.getElementById("registrarReadyRequests");
+
+
+    if (totalElement) {
+        totalElement.textContent = totalRequests;
+    }
+
+    if (pendingElement) {
+        pendingElement.textContent = pendingRequests;
+    }
+
+    if (processingElement) {
+        processingElement.textContent = processingRequests;
+    }
+
+    if (readyElement) {
+        readyElement.textContent = readyRequests;
+    }
+}
+
+
+/* ================= RECENT REQUESTS ================= */
+
+function loadRegistrarRecentRequests() {
+
+    const tableBody =
+        document.getElementById("registrarRecentRequests");
+
+    if (!tableBody) return;
+
+    const requests = getRequests();
+
+    if (!requests.length) {
+
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty-table">
+                    No document requests have been submitted yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    const sortedRequests = [...requests]
+        .sort(
+            (a, b) =>
+                new Date(b.dateRequested) -
+                new Date(a.dateRequested)
+        )
+        .slice(0, 5);
+
+
+    tableBody.innerHTML = "";
+
+
+    sortedRequests.forEach(request => {
+
+        let statusClass = "status-pending";
+
+        if (
+            request.status === "Processing" ||
+            request.status === "Under Verification" ||
+            request.status === "Payment Pending"
+        ) {
+            statusClass = "status-processing";
+        }
+
+        if (
+            request.status === "Ready for Release"
+        ) {
+            statusClass = "status-ready";
+        }
+
+        if (
+            request.status === "Completed"
+        ) {
+            statusClass = "status-completed";
+        }
+
+        if (
+            request.status === "Rejected"
+        ) {
+            statusClass = "status-rejected";
+        }
+
+
+        const dateRequested =
+            request.dateRequested
+                ? new Date(request.dateRequested)
+                    .toLocaleDateString()
+                : "—";
+
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>
+                <strong>${request.requestId || "—"}</strong>
+            </td>
+
+            <td>
+                ${request.fullName || "—"}
+            </td>
+
+            <td>
+                ${request.documentType || "—"}
+            </td>
+
+            <td>
+                ${dateRequested}
+            </td>
+
+            <td>
+                <span class="status-badge ${statusClass}">
+                    ${request.status || "Pending"}
+                </span>
+            </td>
+
+            <td>
+                ${request.paymentStatus || "Pending"}
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+
+/* ================= REGISTRAR LOGOUT ================= */
+
+function setupRegistrarLogout() {
+
+    const logoutButton =
+        document.getElementById("registrarLogoutButton");
+
+    if (!logoutButton) return;
+
+    logoutButton.addEventListener("click", function () {
+
+        const confirmLogout =
+            confirm(
+                "Are you sure you want to log out of the Registrar Dashboard?"
+            );
+
+        if (!confirmLogout) return;
+
+        localStorage.removeItem(
+            "atcrsRegistrarSession"
+        );
+
+        window.location.href = "login.html";
+
+    });
+}
+
+
+/* ================= INITIALIZE DASHBOARD ================= */
+
+function initializeRegistrarDashboard() {
+
+    const isRegistrarPage =
+        document.body.classList.contains(
+            "registrar-dashboard"
+        );
+
+    if (!isRegistrarPage) return;
+
+    if (!protectRegistrarPage()) return;
+
+    loadRegistrarInformation();
+
+    loadRegistrarStatistics();
+
+    loadRegistrarRecentRequests();
+
+    setupRegistrarLogout();
+}
+
+
+/* ================= START REGISTRAR DASHBOARD ================= */
+
+initializeRegistrarDashboard();
 });
