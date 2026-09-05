@@ -8,15 +8,14 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Login | ATCRS - DLSJBC
-    </title>
+    <meta name="description"
+          content="ATCRS Account Login - De La Salle John Bosco College">
 
-    <!-- Main CSS -->
+    <title>Login | ATCRS - DLSJBC</title>
+
     <link rel="stylesheet"
           href="css/style.css">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -32,34 +31,39 @@
 
 <header class="login-header">
 
-    <a href="index.html" class="logo">
+    <div class="container">
 
-        <img src="images/dlsjbc-logo.png"
-             alt="DLSJBC Logo">
+        <a href="index.html" class="back-home">
 
-        <div class="logo-text">
+            <i class="fa-solid fa-arrow-left"></i>
 
-            <strong>ATCRS</strong>
+            Back to ATCRS
 
-            <span>
-                DLSJBC
-            </span>
-
-        </div>
-
-    </a>
+        </a>
 
 
-    <a href="index.html"
-       class="back-home">
+        <a href="index.html" class="logo">
 
-        <i class="fa-solid fa-arrow-left"></i>
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="De La Salle John Bosco College Logo">
 
-        Back to Home
+            <div class="logo-text">
 
-    </a>
+                <strong>ATCRS</strong>
+
+                <span>
+                    De La Salle John Bosco College
+                </span>
+
+            </div>
+
+        </a>
+
+    </div>
 
 </header>
+
 
 
 <!-- =========================================
@@ -68,40 +72,74 @@
 
 <main class="login-main">
 
-    <div class="login-container">
+    <div class="container login-container">
 
-      <!-- =========================================
-     ROLE SELECTION
+
+        <div class="login-heading">
+
+            <span>
+                <i class="fa-solid fa-user-shield"></i>
+                SECURE ACCOUNT ACCESS
+            </span>
+
+            <h1>
+                Welcome to <strong>ATCRS</strong>
+            </h1>
+
+            <p>
+                Sign in to access your academic
+                credential services.
+            </p>
+
+        </div>
+
+
+<!-- =========================================
+     END OF PART 2A
+
+     >>> PASTE PART 2B BELOW THIS LINE <<<
 ========================================= -->
 
-<div class="login-heading">
-
-    <span>
-        SECURE PORTAL
-    </span>
-
-    <h1>
-        Welcome to ATCRS
-    </h1>
-
-    <p>
-        Select your account type to continue.
-    </p>
-
-</div>
-
+        <!-- =========================================
+     ACCOUNT TYPE SELECTION
+========================================= -->
 
 <div class="role-selector">
-
-
-    <!-- ALUMNI -->
 
     <button
         type="button"
         class="role-option active"
-        data-role="alumni">
+        data-role="student">
 
         <i class="fa-solid fa-user-graduate"></i>
+
+        <span>
+            Student
+        </span>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="role-option"
+        data-role="applicant">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        <span>
+            Applicant
+        </span>
+
+    </button>
+
+
+    <button
+        type="button"
+        class="role-option"
+        data-role="alumni">
+
+        <i class="fa-solid fa-user-tie"></i>
 
         <span>
             Alumni
@@ -109,54 +147,24 @@
 
     </button>
 
-
-    <!-- REGISTRAR -->
-
-    <button
-        type="button"
-        class="role-option"
-        data-role="registrar">
-
-        <i class="fa-solid fa-user-tie"></i>
-
-        <span>
-            Registrar
-        </span>
-
-    </button>
-
-
-    <!-- VERIFIER -->
-
-    <button
-        type="button"
-        class="role-option"
-        data-role="verifier">
-
-        <i class="fa-solid fa-building"></i>
-
-        <span>
-            Verifier
-        </span>
-
-    </button>
-
-
 </div>
 
 
+
 <!-- =========================================
-     LOGIN CARD
+     END OF PART 2B
+
+     >>> PASTE PART 2C BELOW THIS LINE <<<
 ========================================= -->
 
-<div class="login-card">
-
-  <!-- =========================================
-     ALUMNI LOGIN
+        <!-- =========================================
+     STUDENT LOGIN
 ========================================= -->
 
-<div class="login-form active"
-     id="alumniLogin">
+<div
+    class="login-card login-form active"
+    id="student-form">
+
 
     <div class="form-title">
 
@@ -169,11 +177,11 @@
         <div>
 
             <h2>
-                Alumni Login
+                Student Login
             </h2>
 
             <p>
-                Access your academic credentials.
+                Access your ATCRS student account.
             </p>
 
         </div>
@@ -181,7 +189,7 @@
     </div>
 
 
-    <form id="alumniForm">
+    <form id="studentLoginForm">
 
 
         <!-- STUDENT ID -->
@@ -194,6 +202,7 @@
 
             </label>
 
+
             <div class="input-wrapper">
 
                 <i class="fa-solid fa-id-card"></i>
@@ -204,12 +213,14 @@
                     name="studentId"
                     placeholder="Enter 7-digit Student ID"
                     maxlength="7"
-                    inputmode="numeric"
+                    minlength="7"
                     pattern="[0-9]{7}"
-                    required
-                >
+                    inputmode="numeric"
+                    autocomplete="username"
+                    required>
 
             </div>
+
 
             <small>
                 Student ID must contain exactly 7 digits.
@@ -218,15 +229,17 @@
         </div>
 
 
+
         <!-- PASSWORD -->
 
         <div class="form-group">
 
-            <label for="alumniPassword">
+            <label for="studentPassword">
 
                 Password
 
             </label>
+
 
             <div class="input-wrapper">
 
@@ -234,16 +247,18 @@
 
                 <input
                     type="password"
-                    id="alumniPassword"
+                    id="studentPassword"
                     name="password"
                     placeholder="Enter your password"
-                    required
-                >
+                    autocomplete="current-password"
+                    required>
+
 
                 <button
                     type="button"
                     class="password-toggle"
-                    data-target="alumniPassword">
+                    data-target="studentPassword"
+                    aria-label="Show password">
 
                     <i class="fa-solid fa-eye"></i>
 
@@ -254,15 +269,21 @@
         </div>
 
 
+
+        <!-- OPTIONS -->
+
         <div class="form-options">
 
             <label>
 
-                <input type="checkbox">
+                <input
+                    type="checkbox"
+                    name="remember">
 
                 Remember me
 
             </label>
+
 
             <a href="#">
                 Forgot Password?
@@ -271,32 +292,235 @@
         </div>
 
 
+
+        <!-- LOGIN BUTTON -->
+
         <button
             type="submit"
             class="btn btn-green login-submit">
 
             <i class="fa-solid fa-right-to-bracket"></i>
 
-            Sign In as Alumni
+            Sign In
 
         </button>
 
 
+        <div
+            class="login-message"
+            id="studentLoginMessage">
+
+        </div>
+
     </form>
 
 
-    <div class="login-message"
-         id="alumniMessage">
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="#register">
+            Create an Account
+        </a>
+
     </div>
 
 </div>
 
-  <!-- =========================================
-     REGISTRAR LOGIN
+
+
+<!-- =========================================
+     END OF PART 2C
+
+     >>> PASTE PART 2D BELOW THIS LINE <<<
 ========================================= -->
 
-<div class="login-form"
-     id="registrarLogin">
+        <!-- =========================================
+     APPLICANT LOGIN
+========================================= -->
+
+<div
+    class="login-card login-form"
+    id="applicant-form">
+
+
+    <div class="form-title">
+
+        <div class="form-icon">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Applicant Login
+            </h2>
+
+            <p>
+                Access your ATCRS applicant account.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="applicantLoginForm">
+
+
+        <!-- APPLICANT ID -->
+
+        <div class="form-group">
+
+            <label for="applicantId">
+
+                Applicant / Student ID
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <input
+                    type="text"
+                    id="applicantId"
+                    name="applicantId"
+                    placeholder="Enter 7-digit ID"
+                    maxlength="7"
+                    minlength="7"
+                    pattern="[0-9]{7}"
+                    inputmode="numeric"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+
+            <small>
+                Enter your assigned 7-digit identification number.
+            </small>
+
+        </div>
+
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="applicantPassword">
+
+                Password
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="applicantPassword"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="applicantPassword"
+                    aria-label="Show password">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- OPTIONS -->
+
+        <div class="form-options">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="remember">
+
+                Remember me
+
+            </label>
+
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+
+        <!-- LOGIN -->
+
+        <button
+            type="submit"
+            class="btn btn-green login-submit">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In
+
+        </button>
+
+
+        <div
+            class="login-message"
+            id="applicantLoginMessage">
+
+        </div>
+
+    </form>
+
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="#register">
+            Create an Account
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     END OF PART 2D
+
+     >>> PASTE PART 2E BELOW THIS LINE <<<
+========================================= -->
+
+        <!-- =========================================
+     ALUMNI LOGIN
+========================================= -->
+
+<div
+    class="login-card login-form"
+    id="alumni-form">
+
 
     <div class="form-title">
 
@@ -309,11 +533,11 @@
         <div>
 
             <h2>
-                Registrar Login
+                Alumni Login
             </h2>
 
             <p>
-                Access the administrative portal.
+                Access your ATCRS alumni account.
             </p>
 
         </div>
@@ -321,18 +545,279 @@
     </div>
 
 
-    <form id="registrarForm">
+    <form id="alumniLoginForm">
 
 
-        <!-- USERNAME -->
+        <!-- ALUMNI ID -->
 
         <div class="form-group">
 
-            <label for="registrarUsername">
+            <label for="alumniId">
 
-                Staff Username
+                Student ID
 
             </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <input
+                    type="text"
+                    id="alumniId"
+                    name="alumniId"
+                    placeholder="Enter 7-digit Student ID"
+                    maxlength="7"
+                    minlength="7"
+                    pattern="[0-9]{7}"
+                    inputmode="numeric"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+
+            <small>
+                Student ID must contain exactly 7 digits.
+            </small>
+
+        </div>
+
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="alumniPassword">
+
+                Password
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="alumniPassword"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="alumniPassword"
+                    aria-label="Show password">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- OPTIONS -->
+
+        <div class="form-options">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="remember">
+
+                Remember me
+
+            </label>
+
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+
+        <!-- LOGIN -->
+
+        <button
+            type="submit"
+            class="btn btn-green login-submit">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In
+
+        </button>
+
+
+        <div
+            class="login-message"
+            id="alumniLoginMessage">
+
+        </div>
+
+    </form>
+
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="#register">
+            Create an Account
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     END OF PART 2E
+
+     >>> PASTE PART 2F BELOW THIS LINE <<<
+========================================= -->
+
+        <!-- =========================================
+     CREATE ACCOUNT SECTION
+========================================= -->
+
+<div
+    class="login-card registration-card"
+    id="register">
+
+
+    <div class="form-title">
+
+        <div class="form-icon">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Create ATCRS Account
+            </h2>
+
+            <p>
+                Register for access to academic
+                credential services.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="registerForm">
+
+
+        <!-- ACCOUNT TYPE -->
+
+        <div class="form-group">
+
+            <label for="registerRole">
+
+                Account Type
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-users"></i>
+
+                <select
+                    id="registerRole"
+                    name="role"
+                    required>
+
+                    <option value="">
+                        Select Account Type
+                    </option>
+
+                    <option value="applicant">
+                        Applicant
+                    </option>
+
+                    <option value="student">
+                        Student
+                    </option>
+
+                    <option value="alumni">
+                        Alumni
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STUDENT ID -->
+
+        <div class="form-group">
+
+            <label for="registerStudentId">
+
+                Student ID
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <input
+                    type="text"
+                    id="registerStudentId"
+                    name="studentId"
+                    placeholder="Enter 7-digit Student ID"
+                    maxlength="7"
+                    minlength="7"
+                    pattern="[0-9]{7}"
+                    inputmode="numeric"
+                    required>
+
+            </div>
+
+
+            <small>
+                Student ID must contain exactly 7 digits.
+            </small>
+
+        </div>
+
+
+
+        <!-- FULL NAME -->
+
+        <div class="form-group">
+
+            <label for="registerFullName">
+
+                Full Name
+
+            </label>
+
 
             <div class="input-wrapper">
 
@@ -340,130 +825,34 @@
 
                 <input
                     type="text"
-                    id="registrarUsername"
-                    placeholder="Enter staff username"
-                    required
-                >
+                    id="registerFullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    maxlength="50"
+                    autocomplete="name"
+                    required>
 
             </div>
 
+
+            <small>
+                Maximum of 50 characters.
+            </small>
+
         </div>
 
 
-        <!-- PASSWORD -->
+
+        <!-- EMAIL -->
 
         <div class="form-group">
 
-            <label for="registrarPassword">
+            <label for="registerEmail">
 
-                Password
-
-            </label>
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
-
-                <input
-                    type="password"
-                    id="registrarPassword"
-                    placeholder="Enter password"
-                    required
-                >
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="registrarPassword">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="form-options">
-
-            <label>
-
-                <input type="checkbox">
-
-                Remember me
+                Email Address
 
             </label>
 
-            <a href="#">
-                Forgot Password?
-            </a>
-
-        </div>
-
-
-        <button
-            type="submit"
-            class="btn btn-green login-submit">
-
-            <i class="fa-solid fa-right-to-bracket"></i>
-
-            Sign In as Registrar
-
-        </button>
-
-
-    </form>
-
-
-    <div class="login-message"
-         id="registrarMessage">
-    </div>
-
-</div>
-
-  <!-- =========================================
-     VERIFIER LOGIN
-========================================= -->
-
-<div class="login-form"
-     id="verifierLogin">
-
-    <div class="form-title">
-
-        <div class="form-icon">
-
-            <i class="fa-solid fa-building"></i>
-
-        </div>
-
-        <div>
-
-            <h2>
-                Verifier Login
-            </h2>
-
-            <p>
-                Verify credentials for authorized purposes.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <form id="verifierForm">
-
-
-        <!-- ORGANIZATION EMAIL -->
-
-        <div class="form-group">
-
-            <label for="verifierEmail">
-
-                Organization Email
-
-            </label>
 
             <div class="input-wrapper">
 
@@ -471,25 +860,28 @@
 
                 <input
                     type="email"
-                    id="verifierEmail"
-                    placeholder="organization@example.com"
-                    required
-                >
+                    id="registerEmail"
+                    name="email"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                    required>
 
             </div>
 
         </div>
 
 
+
         <!-- PASSWORD -->
 
         <div class="form-group">
 
-            <label for="verifierPassword">
+            <label for="registerPassword">
 
                 Password
 
             </label>
+
 
             <div class="input-wrapper">
 
@@ -497,15 +889,18 @@
 
                 <input
                     type="password"
-                    id="verifierPassword"
-                    placeholder="Enter password"
-                    required
-                >
+                    id="registerPassword"
+                    name="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    required>
+
 
                 <button
                     type="button"
                     class="password-toggle"
-                    data-target="verifierPassword">
+                    data-target="registerPassword"
+                    aria-label="Show password">
 
                     <i class="fa-solid fa-eye"></i>
 
@@ -516,51 +911,110 @@
         </div>
 
 
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="confirmPassword">
+
+                Confirm Password
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    required>
+
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="confirmPassword"
+                    aria-label="Show password">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TERMS -->
+
         <div class="form-options">
 
             <label>
 
-                <input type="checkbox">
+                <input
+                    type="checkbox"
+                    name="terms"
+                    required>
 
-                Remember me
+                I agree to the ATCRS terms and
+                applicable policies.
 
             </label>
 
-            <a href="#">
-                Forgot Password?
-            </a>
-
         </div>
 
+
+
+        <!-- REGISTER BUTTON -->
 
         <button
             type="submit"
             class="btn btn-green login-submit">
 
-            <i class="fa-solid fa-right-to-bracket"></i>
+            <i class="fa-solid fa-user-plus"></i>
 
-            Sign In as Verifier
+            Create Account
 
         </button>
 
 
+        <div
+            class="login-message"
+            id="registerMessage">
+
+        </div>
+
     </form>
 
 
-    <div class="login-message"
-         id="verifierMessage">
+    <div class="register-link">
+
+        Already have an account?
+
+        <a href="login.html">
+            Sign In
+        </a>
+
     </div>
 
 </div>
 
-  <!-- =========================================
-     LOGIN CARD END
-========================================= -->
-
-</div>
 
 
 <!-- =========================================
+     END OF PART 2F
+
+     >>> PASTE PART 2G BELOW THIS LINE <<<
+========================================= -->
+
+        <!-- =========================================
      SECURITY NOTICE
 ========================================= -->
 
@@ -571,12 +1025,14 @@
     <div>
 
         <strong>
-            Secure Access
+            Secure Account Access
         </strong>
 
         <p>
-            Your academic information should only be
-            accessed by authorized users.
+            Your ATCRS account is intended only
+            for authorized use. Do not share your
+            password or account information with
+            other individuals.
         </p>
 
     </div>
@@ -584,47 +1040,29 @@
 </div>
 
 
-<!-- =========================================
-     CREATE ACCOUNT
-========================================= -->
-
-<div class="register-link">
-
-    <p>
-
-        Don't have an Alumni account?
-
-        <a href="#">
-            Create an Account
-        </a>
-
-    </p>
-
-</div>
-
-
-    </div>
-
-</main>
-
 
 <!-- =========================================
-     FOOTER
+     LOGIN FOOTER
 ========================================= -->
 
 <footer class="login-footer">
 
-    <p>
-        © 2026 De La Salle John Bosco College.
-        All Rights Reserved.
-    </p>
+    <div class="container">
 
-    <span>
-        ATCRS — Automated Transcript and
-        Credential Retrieval System
-    </span>
+        <span>
+            © 2026 De La Salle John Bosco College.
+            All Rights Reserved.
+        </span>
+
+        <span>
+            ATCRS — Automated Transcript and
+            Credential Retrieval System
+        </span>
+
+    </div>
 
 </footer>
+
 
 
 <!-- =========================================
@@ -632,6 +1070,11 @@
 ========================================= -->
 
 <script src="js/script.js"></script>
+
+
+</div>
+
+</main>
 
 
 </body>
@@ -642,3 +1085,5 @@
 <!-- =========================================
      END OF PART 2
 ========================================= -->
+
+        
