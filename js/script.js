@@ -5376,5 +5376,972 @@ if (
     }
 
 }
+/* =========================================================
+   PART 6D-3 — STUDENT RECORDS JAVASCRIPT
+   ========================================================= */
 
+
+/* ================= STUDENT DATA ================= */
+
+function getRegistrarStudentRecords() {
+
+    const accounts =
+        getAccounts();
+
+    return accounts;
+}
+
+
+/* ================= STUDENT STATUS ================= */
+
+function getStudentRecordStatus(account) {
+
+    if (account.verified === true) {
+        return "Verified";
+    }
+
+    return "Pending Verification";
+}
+
+
+/* ================= LOAD STUDENT STATISTICS ================= */
+
+function loadRegistrarStudentStatistics() {
+
+    const students =
+        getRegistrarStudentRecords();
+
+
+    const requests =
+        getRequests();
+
+
+    const totalStudents =
+        students.length;
+
+
+    const verifiedStudents =
+        students.filter(
+            student =>
+                student.verified === true
+        ).length;
+
+
+    const studentsWithRequests =
+        new Set(
+            requests.map(
+                request =>
+                    request.studentId
+            )
+        ).size;
+
+
+    const pendingVerification =
+        students.filter(
+            student =>
+                student.verified !== true
+        ).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "registrarStudentTotal"
+        );
+
+
+    const verifiedElement =
+        document.getElementById(
+            "registrarVerifiedStudents"
+        );
+
+
+    const requestsElement =
+        document.getElementById(
+            "registrarStudentRequests"
+        );
+
+
+    const pendingElement =
+        document.getElementById(
+            "registrarPendingVerification"
+        );
+
+
+    if (totalElement) {
+        totalElement.textContent =
+            totalStudents;
+    }
+
+
+    if (verifiedElement) {
+        verifiedElement.textContent =
+            verifiedStudents;
+    }
+
+
+    if (requestsElement) {
+        requestsElement.textContent =
+            studentsWithRequests;
+    }
+
+
+    if (pendingElement) {
+        pendingElement.textContent =
+            pendingVerification;
+    }
+
+}
+
+
+/* ================= RENDER STUDENTS ================= */
+
+function renderRegistrarStudentRecords(
+    searchTerm = ""
+) {
+
+    const tableBody =
+        document.getElementById(
+            "studentRecordsTable"
+        );
+
+
+    if (!tableBody) {
+        return;
+    }
+
+
+    const students =
+        getRegistrarStudentRecords();
+
+
+    const search =
+        searchTerm
+            .trim()
+            .toLowerCase();
+
+
+    const filteredStudents =
+        students.filter(
+            student => {
+
+                if (!search) {
+                    return true;
+                }
+
+
+                return (
+
+                    String(
+                        student.studentId || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        student.fullName || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        student.email || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        student.program || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        student.role || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                );
+
+            }
+        );
+
+
+    if (!filteredStudents.length) {
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty-table"
+                >
+
+                    ${
+                        search
+                            ? "No student records match your search."
+                            : "No student records are available."
+                    }
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+    }
+
+
+    tableBody.innerHTML = "";
+
+
+    filteredStudents.forEach(
+        student => {
+
+            const status =
+                getStudentRecordStatus(
+                    student
+                );
+
+
+            let statusClass =
+                "student-status-pending";
+
+
+            if (status === "Verified") {
+
+                statusClass =
+                    "student-status-verified";
+
+            }
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>
+
+                    <span class="student-id-cell">
+
+                        ${
+                            student.studentId ||
+                            "—"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span class="student-name-cell">
+
+                        ${
+                            student.fullName ||
+                            "—"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span class="student-email-cell">
+
+                        ${
+                            student.email ||
+                            "—"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span class="student-program-cell">
+
+                        ${
+                            student.program ||
+                            "BS Information Technology"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    ${
+                        student.role ||
+                        "Student"
+                    }
+
+                </td>
+
+
+                <td>
+
+                    <span
+                        class="student-status ${statusClass}"
+                    >
+
+                        ${status}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <button
+                        type="button"
+                        class="student-view-button"
+                        onclick="openRegistrarStudentDetails('${student.userId}')"
+                    >
+
+                        View
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(row);
+
+        }
+    );
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function setupRegistrarStudentSearch() {
+
+    const searchInput =
+        document.getElementById(
+            "studentSearchInput"
+        );
+
+
+    const searchButton =
+        document.getElementById(
+            "studentSearchButton"
+        );
+
+
+    const clearButton =
+        document.getElementById(
+            "studentClearSearchButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "studentSearchMessage"
+        );
+
+
+    if (!searchInput) {
+        return;
+    }
+
+
+    function performSearch() {
+
+        const searchTerm =
+            searchInput.value;
+
+
+        renderRegistrarStudentRecords(
+            searchTerm
+        );
+
+
+        if (message) {
+
+            if (searchTerm.trim()) {
+
+                message.textContent =
+                    "Showing results for: " +
+                    searchTerm;
+
+            } else {
+
+                message.textContent = "";
+
+            }
+
+        }
+
+    }
+
+
+    if (searchButton) {
+
+        searchButton.addEventListener(
+            "click",
+            performSearch
+        );
+
+    }
+
+
+    searchInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                performSearch();
+
+            }
+
+        }
+    );
+
+
+    if (clearButton) {
+
+        clearButton.addEventListener(
+            "click",
+            function() {
+
+                searchInput.value = "";
+
+                if (message) {
+                    message.textContent = "";
+                }
+
+                renderRegistrarStudentRecords();
+
+            }
+        );
+
+    }
+
+}
+
+
+/* ================= INITIALIZE STUDENT RECORDS ================= */
+
+function initializeRegistrarStudentRecords() {
+
+    const isStudentPage =
+        document.body.classList.contains(
+            "registrar-students-page"
+        );
+
+
+    if (!isStudentPage) {
+        return;
+    }
+
+
+    if (!protectRegistrarPage()) {
+        return;
+    }
+
+
+    loadRegistrarInformation();
+
+    loadRegistrarStudentStatistics();
+
+    renderRegistrarStudentRecords();
+
+    setupRegistrarStudentSearch();
+
+    setupRegistrarLogout();
+
+    createRegistrarStudentModal();
+
+}
+/* =========================================================
+   PART 6D-4 — STUDENT DETAILS MODAL
+   ========================================================= */
+
+let currentRegistrarStudentId = null;
+
+
+/* ================= CREATE STUDENT MODAL ================= */
+
+function createRegistrarStudentModal() {
+
+    if (
+        document.getElementById(
+            "registrarStudentModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+
+    modal.id =
+        "registrarStudentModal";
+
+
+    modal.className =
+        "student-modal";
+
+
+    modal.innerHTML = `
+
+        <div class="student-modal-content">
+
+
+            <!-- HEADER -->
+
+            <div class="student-modal-header">
+
+                <div>
+
+                    <h3>
+                        Student Record
+                    </h3>
+
+                    <p id="studentModalId">
+                        Student ID
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="student-modal-close"
+                    onclick="closeRegistrarStudentDetails()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="student-modal-body">
+
+
+                <div
+                    id="studentModalDetails"
+                    class="student-details-grid"
+                >
+                </div>
+
+
+                <div class="student-verification-box">
+
+                    <strong>
+                        Verification
+                    </strong>
+
+                    <p id="studentVerificationMessage">
+                        Review the student information before
+                        confirming the record.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="student-modal-footer">
+
+                <button
+                    type="button"
+                    class="student-close-button"
+                    onclick="closeRegistrarStudentDetails()"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    type="button"
+                    class="student-verify-button"
+                    onclick="verifyRegistrarStudent()"
+                >
+                    Verify Student
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(modal);
+
+
+    modal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === modal) {
+
+                closeRegistrarStudentDetails();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= OPEN STUDENT DETAILS ================= */
+
+function openRegistrarStudentDetails(
+    userId
+) {
+
+    createRegistrarStudentModal();
+
+
+    const students =
+        getRegistrarStudentRecords();
+
+
+    const student =
+        students.find(
+            item =>
+                item.userId === userId
+        );
+
+
+    if (!student) {
+
+        alert(
+            "The selected student record could not be found."
+        );
+
+        return;
+    }
+
+
+    currentRegistrarStudentId =
+        userId;
+
+
+    const modal =
+        document.getElementById(
+            "registrarStudentModal"
+        );
+
+
+    const modalId =
+        document.getElementById(
+            "studentModalId"
+        );
+
+
+    const details =
+        document.getElementById(
+            "studentModalDetails"
+        );
+
+
+    const verificationMessage =
+        document.getElementById(
+            "studentVerificationMessage"
+        );
+
+
+    const status =
+        getStudentRecordStatus(
+            student
+        );
+
+
+    modalId.textContent =
+        student.studentId ||
+        "Student Record";
+
+
+    details.innerHTML = `
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Student ID
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.studentId ||
+                    "—"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Full Name
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.fullName ||
+                    "—"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Email
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.email ||
+                    "—"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Account Type
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.role ||
+                    "Student"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card full-width">
+
+            <span class="student-detail-label">
+                Program
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.program ||
+                    "BS Information Technology"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Academic Status
+            </span>
+
+            <div class="student-detail-value">
+                ${
+                    student.academicStatus ||
+                    "Active"
+                }
+            </div>
+
+        </div>
+
+
+        <div class="student-detail-card">
+
+            <span class="student-detail-label">
+                Verification Status
+            </span>
+
+            <div class="student-detail-value">
+                ${status}
+            </div>
+
+        </div>
+
+    `;
+
+
+    if (student.verified === true) {
+
+        verificationMessage.textContent =
+            "This student record has already been verified by the Registrar.";
+
+    } else {
+
+        verificationMessage.textContent =
+            "Review the information carefully before verifying this student record.";
+
+    }
+
+
+    modal.classList.add("active");
+
+}
+
+
+/* ================= VERIFY STUDENT ================= */
+
+function verifyRegistrarStudent() {
+
+    if (!currentRegistrarStudentId) {
+        return;
+    }
+
+
+    const students =
+        getRegistrarStudentRecords();
+
+
+    const index =
+        students.findIndex(
+            student =>
+                student.userId ===
+                currentRegistrarStudentId
+        );
+
+
+    if (index === -1) {
+
+        alert(
+            "Student record could not be found."
+        );
+
+        return;
+    }
+
+
+    students[index].verified =
+        true;
+
+
+    students[index].verifiedAt =
+        new Date().toISOString();
+
+
+    const registrarSession =
+        getRegistrarSession();
+
+
+    students[index].verifiedBy =
+        registrarSession
+            ? registrarSession.fullName
+            : "DLSJBC Registrar";
+
+
+    saveAccounts(students);
+
+
+    loadRegistrarStudentStatistics();
+
+    renderRegistrarStudentRecords(
+        document.getElementById(
+            "studentSearchInput"
+        )?.value || ""
+    );
+
+
+    const message =
+        document.getElementById(
+            "studentVerificationMessage"
+        );
+
+
+    if (message) {
+
+        message.textContent =
+            "Student record verified successfully.";
+
+    }
+
+
+    setTimeout(
+        function() {
+
+            closeRegistrarStudentDetails();
+
+        },
+        700
+    );
+
+}
+
+
+/* ================= CLOSE MODAL ================= */
+
+function closeRegistrarStudentDetails() {
+
+    const modal =
+        document.getElementById(
+            "registrarStudentModal"
+        );
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove("active");
+
+
+    currentRegistrarStudentId =
+        null;
+
+}
+
+
+/* =========================================================
+   PART 6D — INITIALIZATION
+   ========================================================= */
+
+if (
+    document.body.classList.contains(
+        "registrar-students-page"
+    )
+) {
+
+    initializeRegistrarStudentRecords();
+
+}
 });
