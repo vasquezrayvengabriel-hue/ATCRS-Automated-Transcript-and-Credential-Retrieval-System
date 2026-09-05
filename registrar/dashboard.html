@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Dashboard | ATCRS</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="dashboard-page registrar-dashboard">
+
+<!-- =========================================
+     REGISTRAR HEADER
+     ========================================= -->
+
+<header class="dashboard-header">
+
+    <div class="dashboard-brand">
+
+        <img src="../images/dlsjbc-logo.png"
+             alt="DLSJBC Logo">
+
+        <div>
+
+            <h1>ATCRS</h1>
+
+            <span>Registrar Administration</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-user">
+
+        <div class="dashboard-user-info">
+
+            <strong id="registrarName">
+                DLSJBC Registrar
+            </strong>
+
+            <span>
+                Registrar
+            </span>
+
+        </div>
+
+        <button
+            type="button"
+            id="registrarLogoutButton"
+            class="logout-button"
+        >
+
+            <i class="fas fa-sign-out-alt"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     DASHBOARD LAYOUT
+     ========================================= -->
+
+<div class="dashboard-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="dashboard-sidebar">
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html"
+               class="dashboard-nav-link active">
+
+                <i class="fas fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="requests.html"
+               class="dashboard-nav-link">
+
+                <i class="fas fa-file-alt"></i>
+
+                <span>Document Requests</span>
+
+            </a>
+
+
+            <a href="students.html"
+               class="dashboard-nav-link">
+
+                <i class="fas fa-user-graduate"></i>
+
+                <span>Student Records</span>
+
+            </a>
+
+
+            <a href="clearance.html"
+               class="dashboard-nav-link">
+
+                <i class="fas fa-clipboard-check"></i>
+
+                <span>Clearance</span>
+
+            </a>
+
+
+            <a href="credentials.html"
+               class="dashboard-nav-link">
+
+                <i class="fas fa-certificate"></i>
+
+                <span>Credentials</span>
+
+            </a>
+
+
+            <a href="archives.html"
+               class="dashboard-nav-link">
+
+                <i class="fas fa-archive"></i>
+
+                <span>Archives</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-security">
+
+            <i class="fas fa-shield-alt"></i>
+
+            <span>
+                Private Registrar Area
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="dashboard-main">
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="dashboard-page-title">
+
+            <div>
+
+                <span class="dashboard-label">
+                    ADMINISTRATION
+                </span>
+
+                <h2>
+                    Registrar Dashboard
+                </h2>
+
+                <p>
+                    Manage academic document requests,
+                    student records, and digital credentials.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             STATISTICS
+             ========================================= -->
+
+        <section class="dashboard-stats">
+
+
+            <!-- Total Requests -->
+
+            <div class="dashboard-stat-card">
+
+                <div class="stat-icon">
+
+                    <i class="fas fa-file-alt"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Requests
+                    </span>
+
+                    <strong id="registrarTotalRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pending -->
+
+            <div class="dashboard-stat-card">
+
+                <div class="stat-icon">
+
+                    <i class="fas fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending
+                    </span>
+
+                    <strong id="registrarPendingRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Processing -->
+
+            <div class="dashboard-stat-card">
+
+                <div class="stat-icon">
+
+                    <i class="fas fa-spinner"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Processing
+                    </span>
+
+                    <strong id="registrarProcessingRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ready -->
+
+            <div class="dashboard-stat-card">
+
+                <div class="stat-icon">
+
+                    <i class="fas fa-check-circle"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Ready for Release
+                    </span>
+
+                    <strong id="registrarReadyRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             QUICK ACTIONS
+             ========================================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        Quick Actions
+                    </h3>
+
+                    <p>
+                        Frequently used Registrar functions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a href="requests.html"
+                   class="quick-action-card">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    <div>
+
+                        <strong>
+                            Manage Requests
+                        </strong>
+
+                        <span>
+                            Review and process document requests.
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="students.html"
+                   class="quick-action-card">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    <div>
+
+                        <strong>
+                            Student Records
+                        </strong>
+
+                        <span>
+                            View and manage academic records.
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="clearance.html"
+                   class="quick-action-card">
+
+                    <i class="fas fa-clipboard-check"></i>
+
+                    <div>
+
+                        <strong>
+                            Clearance
+                        </strong>
+
+                        <span>
+                            Review clearance requirements.
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a href="credentials.html"
+                   class="quick-action-card">
+
+                    <i class="fas fa-certificate"></i>
+
+                    <div>
+
+                        <strong>
+                            Credentials
+                        </strong>
+
+                        <span>
+                            Generate and release credentials.
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RECENT REQUESTS
+             ========================================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h3>
+                        Recent Document Requests
+                    </h3>
+
+                    <p>
+                        Latest requests submitted by public users.
+                    </p>
+
+                </div>
+
+                <a href="requests.html"
+                   class="section-link">
+
+                    View All
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-table-container">
+
+                <table class="dashboard-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Request ID
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Document
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="registrarRecentRequests">
+
+                        <tr>
+
+                            <td colspan="5"
+                                class="empty-table">
+
+                                No document requests available.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             SYSTEM INFORMATION
+             ========================================= -->
+
+        <section class="dashboard-section">
+
+            <div class="info-card">
+
+                <div class="info-card-icon">
+
+                    <i class="fas fa-info-circle"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Registrar System
+                    </h3>
+
+                    <p>
+                        This administrative dashboard is connected
+                        to the ATCRS development data store. Requests
+                        submitted by Students, Applicants, and Alumni
+                        can be reviewed and processed from this area.
+                    </p>
+
+                    <p>
+                        Real production deployment will use a secure
+                        backend and database with proper authentication
+                        and authorization.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                &copy; 2026 De La Salle John Bosco College
+            </p>
+
+            <span>
+                Automated Transcript and Credential Retrieval System
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+
+                      </html>
