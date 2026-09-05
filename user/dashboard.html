@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="ATCRS Public User Dashboard - De La Salle John Bosco College">
+
+    <title>Dashboard | ATCRS - DLSJBC</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<!-- =========================================
+     DASHBOARD HEADER
+========================================= -->
+
+<header class="dashboard-header">
+
+    <div class="dashboard-header-container">
+
+        <!-- Logo -->
+
+        <a href="../index.html" class="dashboard-logo">
+
+            <img src="../images/dlsjbc-logo.png"
+                 alt="DLSJBC Logo">
+
+            <div class="dashboard-logo-text">
+
+                <strong>ATCRS</strong>
+
+                <span>
+                    De La Salle John Bosco College
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- User Area -->
+
+        <div class="dashboard-user">
+
+            <div class="dashboard-user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="dashboard-user-info">
+
+                <strong id="dashboardUserName">
+                    Public User
+                </strong>
+
+                <span id="dashboardUserRole">
+                    Student
+                </span>
+
+            </div>
+
+
+            <button type="button"
+                    class="dashboard-logout"
+                    id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     DASHBOARD LAYOUT
+========================================= -->
+
+<div class="dashboard-layout">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="dashboard-sidebar">
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html"
+               class="dashboard-nav-link active">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="request.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                <span>Request Document</span>
+
+            </a>
+
+
+            <a href="requests.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <span>My Requests</span>
+
+            </a>
+
+
+            <a href="documents.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <span>My Documents</span>
+
+            </a>
+
+
+            <a href="profile.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-user-gear"></i>
+
+                <span>My Profile</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- Security Notice -->
+
+        <div class="dashboard-security">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <strong>
+                Secure Account
+            </strong>
+
+            <p>
+                Keep your account information private.
+                Never share your password with others.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- Welcome -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="dashboard-label">
+                    ATCRS USER PORTAL
+                </span>
+
+                <h1>
+                    Welcome,
+                    <strong id="welcomeUserName">
+                        Public User
+                    </strong>
+                </h1>
+
+                <p>
+                    Manage your academic document requests,
+                    track processing status, and access your
+                    released digital credentials.
+                </p>
+
+            </div>
+
+
+            <a href="request.html"
+               class="btn btn-gold">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                Request Document
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================
+             ACCOUNT SUMMARY
+        ================================== -->
+
+        <section class="dashboard-cards">
+
+
+            <!-- Account Type -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Account Type
+                    </span>
+
+                    <strong id="accountType">
+                        Student
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Student ID -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Student ID
+                    </span>
+
+                    <strong id="dashboardStudentId">
+                        ------- 
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pending Requests -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending Requests
+                    </span>
+
+                    <strong id="pendingRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Released Documents -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Released Documents
+                    </span>
+
+                    <strong id="releasedDocuments">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             QUICK ACTIONS
+        ================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span>
+                        QUICK ACTIONS
+                    </span>
+
+                    <h2>
+                        What would you like to do?
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a href="request.html"
+                   class="quick-action-card">
+
+                    <div class="quick-action-icon">
+
+                        <i class="fa-solid fa-file-circle-plus"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Request a Document
+                        </h3>
+
+                        <p>
+                            Submit a new request for
+                            an academic document.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
+
+                </a>
+
+
+
+                <a href="requests.html"
+                   class="quick-action-card">
+
+                    <div class="quick-action-icon">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Track My Requests
+                        </h3>
+
+                        <p>
+                            Check the current status
+                            of your requests.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
+
+                </a>
+
+
+
+                <a href="documents.html"
+                   class="quick-action-card">
+
+                    <div class="quick-action-icon">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            My Documents
+                        </h3>
+
+                        <p>
+                            View available released
+                            academic credentials.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
+
+                </a>
+
+
+
+                <a href="profile.html"
+                   class="quick-action-card">
+
+                    <div class="quick-action-icon">
+
+                        <i class="fa-solid fa-user-gear"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            My Profile
+                        </h3>
+
+                        <p>
+                            View and manage your
+                            account information.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             RECENT REQUESTS
+        ================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span>
+                        REQUEST ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Requests
+                    </h2>
+
+                </div>
+
+
+                <a href="requests.html"
+                   class="view-all-link">
+
+                    View All
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="request-table-container">
+
+                <table class="request-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Request ID
+                            </th>
+
+                            <th>
+                                Document
+                            </th>
+
+                            <th>
+                                Date Requested
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentRequests">
+
+                        <tr>
+
+                            <td colspan="4"
+                                class="empty-request">
+
+                                <i class="fa-solid fa-folder-open"></i>
+
+                                <span>
+                                    No document requests yet.
+                                </span>
+
+                                <a href="request.html">
+                                    Create your first request
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================
+             IMPORTANT INFORMATION
+        ================================== -->
+
+        <section class="dashboard-information">
+
+            <div class="information-icon">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Important Information
+                </h3>
+
+                <p>
+                    Document requests are subject to
+                    academic record validation, clearance,
+                    payment requirements, and Registrar
+                    approval before release.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     DASHBOARD FOOTER
+========================================= -->
+
+<footer class="dashboard-footer">
+
+    <p>
+        © 2026 De La Salle John Bosco College.
+        Automated Transcript and Credential Retrieval System.
+    </p>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="../js/script.js"></script>
+
+
+</body>
+
+  </html>
