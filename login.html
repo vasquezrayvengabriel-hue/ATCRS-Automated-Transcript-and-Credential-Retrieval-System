@@ -3,477 +3,836 @@
 
 <head>
 
+    <!-- =========================================
+         ATCRS LOGIN PAGE
+         DE LA SALLE JOHN BOSCO COLLEGE
+         ========================================= -->
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Account Login | ATCRS</title>
+    <meta
+        name="description"
+        content="ATCRS - Automated Transcript and Credential Retrieval System of De La Salle John Bosco College"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <meta
+        name="author"
+        content="De La Salle John Bosco College"
+    >
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-</head>
-
-<body class="auth-page">
-
-<main class="auth-container">
-
-    <section class="auth-card">
-
-        <!-- LOGO -->
-
-        <div class="auth-logo">
-
-            <img src="images/dlsjbc-logo.png"
-                 alt="DLSJBC Logo">
-
-        </div>
-
-
-        <!-- TITLE -->
-
-        <div class="auth-heading">
-
-            <h1>ATCRS Login</h1>
-
-            <p>
-                Automated Transcript and Credential
-                Retrieval System
-            </p>
-
-        </div>
-
-
-        <!-- LOGIN FORM -->
-
-        <form id="loginForm">
-
-            <div class="form-group">
-
-                <label for="loginStudentId">
-
-                    <i class="fas fa-id-card"></i>
-
-                    Student ID
-
-                </label>
-
-                <input
-                    type="text"
-                    id="loginStudentId"
-                    placeholder="Enter 7-digit Student ID"
-                    maxlength="7"
-                    inputmode="numeric"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="loginPassword">
-
-                    <i class="fas fa-lock"></i>
-
-                    Password
-
-                </label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Enter password"
-                    required
-                >
-
-            </div>
-
-
-            <div
-                id="loginMessage"
-                class="form-message">
-            </div>
-
-
-            <button
-                type="submit"
-                class="btn-primary auth-submit">
-
-                <i class="fas fa-sign-in-alt"></i>
-
-                Sign In
-
-            </button>
-
-        </form>
-
-
-        <!-- CREATE ACCOUNT -->
-
-        <div class="auth-register">
-
-            <p>
-                Don't have an account?
-            </p>
-
-            <a href="#register"
-               id="showRegisterButton">
-
-                Create an Account
-
-            </a>
-
-        </div>
-
-    </section>
+    <title>
+        Login | ATCRS - DLSJBC
+    </title>
 
 
     <!-- =========================================
-         REGISTRATION CARD
+         GOOGLE FONT
          ========================================= -->
 
-    <section
-        class="auth-card"
-        id="registerCard"
-        style="display:none;">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-        <div class="auth-heading">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-            <h1>Create Account</h1>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-            <p>
-                Create your ATCRS public account
-            </p>
 
-        </div>
+    <!-- =========================================
+         FONT AWESOME
+         ========================================= -->
 
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-        <form id="registerForm">
 
+    <!-- =========================================
+         LOGIN PAGE CSS
+         ========================================= -->
 
-            <!-- ACCOUNT TYPE -->
+    <style>
 
-            <div class="form-group">
+        /* =========================================
+           ROOT COLORS
+           ========================================= */
 
-                <label for="accountType">
+        :root {
 
-                    <i class="fas fa-user-tag"></i>
+            --green: #0b5d3f;
 
-                    Account Type
+            --green-dark: #063927;
 
-                </label>
+            --green-light: #16845b;
 
-                <select
-                    id="accountType"
-                    required>
+            --gold: #d4af37;
 
-                    <option value="">
-                        Select Account Type
-                    </option>
+            --gold-light: #f0d878;
 
-                    <option value="Applicant">
-                        Applicant
-                    </option>
+            --white: #ffffff;
 
-                    <option value="Student">
-                        Student
-                    </option>
+            --light: #f5f7f6;
 
-                    <option value="Alumni">
-                        Alumni
-                    </option>
+            --gray: #dcdcdc;
 
-                </select>
+            --gray-dark: #666666;
 
-            </div>
+            --black: #151515;
 
+            --danger: #b42318;
 
-            <!-- STUDENT ID -->
+            --success: #18794e;
 
-            <div class="form-group">
+        }
 
-                <label for="registerStudentId">
 
-                    <i class="fas fa-id-card"></i>
+        /* =========================================
+           RESET
+           ========================================= */
 
-                    Student ID
+        * {
 
-                </label>
+            margin: 0;
 
-                <input
-                    type="text"
-                    id="registerStudentId"
-                    placeholder="Enter 7-digit Student ID"
-                    maxlength="7"
-                    inputmode="numeric"
-                    required
-                >
+            padding: 0;
 
-                <small>
-                    Student ID must contain exactly 7 digits.
-                </small>
+            box-sizing: border-box;
 
-            </div>
+        }
 
 
-            <!-- FULL NAME -->
+        html {
 
-            <div class="form-group">
+            scroll-behavior: smooth;
 
-                <label for="registerFullName">
+        }
 
-                    <i class="fas fa-user"></i>
 
-                    Full Name
+        body {
 
-                </label>
+            font-family: "Poppins", sans-serif;
 
-                <input
-                    type="text"
-                    id="registerFullName"
-                    placeholder="Enter your full name"
-                    maxlength="50"
-                    required
-                >
+            min-height: 100vh;
 
-                <small>
-                    Maximum 50 characters.
-                </small>
+            color: var(--black);
 
-            </div>
+        }
 
 
-            <!-- EMAIL -->
+        button,
+        input {
 
-            <div class="form-group">
+            font-family: inherit;
 
-                <label for="registerEmail">
+        }
 
-                    <i class="fas fa-envelope"></i>
 
-                    Email Address
+        a {
 
-                </label>
+            text-decoration: none;
 
-                <input
-                    type="email"
-                    id="registerEmail"
-                    placeholder="Enter email address"
-                    required
-                >
+        }
 
-            </div>
 
+        /* =========================================
+           AUTH PAGE
+           ========================================= */
 
-            <!-- PASSWORD -->
+        .auth-page {
 
-            <div class="form-group">
+            min-height: 100vh;
 
-                <label for="registerPassword">
+            background:
+                linear-gradient(
+                    rgba(6, 57, 39, 0.78),
+                    rgba(6, 57, 39, 0.88)
+                ),
+                url("images/background.jpg");
 
-                    <i class="fas fa-lock"></i>
+            background-size: cover;
 
-                    Password
+            background-position: center;
 
-                </label>
+            background-attachment: fixed;
 
-                <input
-                    type="password"
-                    id="registerPassword"
-                    placeholder="Create a password"
-                    minlength="6"
-                    required
-                >
+            display: flex;
 
-            </div>
+            justify-content: center;
 
+            align-items: center;
 
-            <!-- CONFIRM PASSWORD -->
+            padding: 40px 20px;
 
-            <div class="form-group">
+        }
 
-                <label for="registerConfirmPassword">
 
-                    <i class="fas fa-lock"></i>
+        /* =========================================
+           AUTH CONTAINER
+           ========================================= */
 
-                    Confirm Password
+        .auth-container {
 
-                </label>
+            width: 100%;
 
-                <input
-                    type="password"
-                    id="registerConfirmPassword"
-                    placeholder="Confirm password"
-                    minlength="6"
-                    required
-                >
+            max-width: 720px;
 
-            </div>
+        }
 
 
-            <div
-                id="registerMessage"
-                class="form-message">
-            </div>
+        /* =========================================
+           AUTH CARD
+           ========================================= */
 
+        .auth-card {
 
-            <button
-                type="submit"
-                class="btn-primary auth-submit">
+            background: rgba(255, 255, 255, 0.97);
 
-                <i class="fas fa-user-plus"></i>
-<!-- =========================================
-     TERMS OF USE
-     ========================================= -->
+            border-radius: 22px;
 
-<div class="terms-box">
+            padding: 42px;
 
-    <div class="terms-header">
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.30);
 
-        <i class="fas fa-file-contract"></i>
+            border-top: 6px solid var(--gold);
 
-        <strong>
-            Terms of Use and Privacy Agreement
-        </strong>
+        }
 
-    </div>
 
+        /* =========================================
+           LOGO
+           ========================================= */
 
-    <div class="terms-content">
+        .auth-logo {
 
-        <p>
-            By creating an ATCRS account, you acknowledge
-            and agree to the following terms:
-        </p>
+            width: 115px;
 
-        <ol>
+            height: 115px;
 
-            <li>
-                <strong>Account Information:</strong>
-                You agree to provide accurate and complete
-                information when creating your account.
-            </li>
+            margin: 0 auto 20px;
 
-            <li>
-                <strong>Academic Records:</strong>
-                ATCRS is intended for authorized academic
-                credential and document requests.
-            </li>
+            display: flex;
 
-            <li>
-                <strong>Privacy:</strong>
-                Information submitted through ATCRS may be
-                used for account management, verification,
-                document processing, and related academic
-                services.
-            </li>
+            justify-content: center;
 
-            <li>
-                <strong>Account Security:</strong>
-                You are responsible for keeping your account
-                credentials secure and must not share your
-                password with another person.
-            </li>
+            align-items: center;
 
-            <li>
-                <strong>Document Requests:</strong>
-                Requests must be submitted only for legitimate
-                academic, employment, educational, or other
-                authorized purposes.
-            </li>
+            background: var(--white);
 
-            <li>
-                <strong>Fees and Payments:</strong>
-                Applicable document processing fees may be
-                required before a requested document can be
-                released.
-            </li>
+            border-radius: 50%;
 
-            <li>
-                <strong>Digital Credentials:</strong>
-                Digital credentials and verification features
-                must not be altered, falsified, copied for
-                fraudulent purposes, or misrepresented.
-            </li>
+            padding: 10px;
 
-            <li>
-                <strong>Prohibited Use:</strong>
-                Unauthorized access, impersonation, falsification
-                of information, or attempts to access restricted
-                administrative areas are prohibited.
-            </li>
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.12);
 
-            <li>
-                <strong>User Responsibility:</strong>
-                You agree to use ATCRS responsibly and only for
-                lawful and authorized purposes.
-            </li>
+            border: 3px solid var(--gold);
 
-        </ol>
+        }
 
-        <p class="terms-note">
 
-            These terms are provided for the ATCRS development
-            prototype and should be reviewed and approved by
-            the appropriate DLSJBC office before production use.
+        .auth-logo img {
 
-        </p>
+            width: 100%;
 
-    </div>
+            height: 100%;
 
+            object-fit: contain;
 
-    <!-- AGREEMENT -->
+            border-radius: 50%;
 
-    <label class="terms-agreement">
+        }
 
-        <input
-            type="checkbox"
-            id="termsAgreement"
-            required
-        >
 
-        <span>
+        /* =========================================
+           MAIN TITLE
+           ========================================= */
 
-            I have read and agree to the
-            <strong>Terms of Use and Privacy Agreement.</strong>
+        .auth-card h1 {
 
-        </span>
+            text-align: center;
 
-    </label>
+            font-size: 42px;
 
-</div>
-                Create Account
+            font-weight: 800;
 
-            </button>
+            color: var(--green);
 
+            letter-spacing: 2px;
 
-        </form>
+        }
 
 
-        <div class="auth-register">
+        .auth-subtitle {
 
-            <a href="#"
-               id="showLoginButton">
+            text-align: center;
 
-                <i class="fas fa-arrow-left"></i>
+            font-size: 15px;
 
-                Back to Login
+            font-weight: 500;
 
-            </a>
+            color: var(--gray-dark);
 
-        </div>
+            margin-top: 4px;
 
-    </section>
+            line-height: 1.6;
 
-</main>
+        }
 
 
-<script src="js/script.js"></script>
+        .school-name {
 
-</body>
+            text-align: center;
 
-</html>
+            color: var(--green-dark);
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =========================================
+           DIVIDER
+           ========================================= */
+
+        .auth-divider {
+
+            width: 80px;
+
+            height: 4px;
+
+            background: var(--gold);
+
+            border-radius: 20px;
+
+            margin: 25px auto;
+
+        }
+
+
+        /* =========================================
+           LOGIN HEADING
+           ========================================= */
+
+        .auth-card h2 {
+
+            text-align: center;
+
+            color: var(--green-dark);
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .auth-description {
+
+            text-align: center;
+
+            color: var(--gray-dark);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 28px;
+
+        }
+                /* =========================================
+           FORM STYLING
+           ========================================= */
+
+        .form-group {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            color: var(--green-dark);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .form-group label i {
+
+            margin-right: 6px;
+
+            color: var(--green);
+
+        }
+
+
+        /* =========================================
+           TEXT INPUT
+           ========================================= */
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid #cfcfcf;
+
+            border-radius: 10px;
+
+            background: var(--white);
+
+            color: var(--black);
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: all 0.25s ease;
+
+        }
+
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus {
+
+            border-color: var(--green);
+
+            box-shadow:
+                0 0 0 3px rgba(11, 93, 63, 0.10);
+
+        }
+
+
+        .form-group input::placeholder {
+
+            color: #999;
+
+        }
+
+
+        /* =========================================
+           FORM HELP TEXT
+           ========================================= */
+
+        .form-help {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================================
+           PASSWORD CONTAINER
+           ========================================= */
+
+        .password-input {
+
+            position: relative;
+
+            width: 100%;
+
+        }
+
+
+        .password-input input {
+
+            padding-right: 75px !important;
+
+        }
+
+
+        /* =========================================
+           SHOW / HIDE PASSWORD BUTTON
+           ========================================= */
+
+        .password-toggle {
+
+            position: absolute;
+
+            top: 50%;
+
+            right: 8px;
+
+            transform: translateY(-50%);
+
+            padding: 8px;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--green);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .password-toggle:hover {
+
+            color: var(--gold);
+
+        }
+
+
+        /* =========================================
+           LOGIN OPTIONS
+           ========================================= */
+
+        .auth-options {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .remember-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #555;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+        }
+
+
+        .remember-option input {
+
+            width: 16px;
+
+            height: 16px;
+
+            accent-color: var(--green);
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================================
+           TERMS OF USE BOX
+           ========================================= */
+
+        .terms-box {
+
+            width: 100%;
+
+            margin: 25px 0;
+
+            border: 1px solid #d5d5d5;
+
+            border-radius: 15px;
+
+            background: #fafcfa;
+
+            overflow: hidden;
+
+        }
+
+
+        /* =========================================
+           TERMS HEADER
+           ========================================= */
+
+        .terms-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 18px 20px;
+
+            background: var(--green);
+
+            color: var(--white);
+
+        }
+
+
+        .terms-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-shrink: 0;
+
+            background:
+                rgba(255, 255, 255, 0.15);
+
+            border-radius: 50%;
+
+            font-size: 18px;
+
+        }
+
+
+        .terms-header h3 {
+
+            color: var(--white);
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            margin-bottom: 2px;
+
+        }
+
+
+        .terms-header p {
+
+            color: rgba(255, 255, 255, 0.85);
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================================
+           TERMS SCROLL AREA
+           ========================================= */
+
+        .terms-content {
+
+            max-height: 360px;
+
+            overflow-y: auto;
+
+            padding: 22px;
+
+            background: var(--white);
+
+        }
+
+
+        .terms-content::-webkit-scrollbar {
+
+            width: 7px;
+
+        }
+
+
+        .terms-content::-webkit-scrollbar-track {
+
+            background: #f1f1f1;
+
+        }
+
+
+        .terms-content::-webkit-scrollbar-thumb {
+
+            background: var(--green);
+
+            border-radius: 10px;
+
+        }
+
+
+        /* =========================================
+           TERMS HEADINGS
+           ========================================= */
+
+        .terms-content h4 {
+
+            color: var(--green-dark);
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-top: 18px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .terms-content h4:first-child {
+
+            margin-top: 0;
+
+        }
+
+
+        /* =========================================
+           TERMS PARAGRAPHS
+           ========================================= */
+
+        .terms-content p {
+
+            color: #555;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =========================================
+           TERMS IMPORTANT NOTICE
+           ========================================= */
+
+        .terms-note {
+
+            margin-top: 20px;
+
+            padding: 16px;
+
+            border-left: 4px solid var(--gold);
+
+            border-radius: 8px;
+
+            background: #fffaf0;
+
+        }
+
+
+        .terms-note strong {
+
+            display: block;
+
+            color: var(--green-dark);
+
+            font-size: 13px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .terms-note p {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =========================================
+           TERMS AGREEMENT
+           ========================================= */
+
+        .terms-agreement {
+
+            padding: 17px 20px;
+
+            border-top: 1px solid #dddddd;
+
+            background: #f4f8f5;
+
+        }
+
+
+        .terms-agreement label {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            cursor: pointer;
+
+        }
+
+
+        .terms-agreement input {
+
+            width: 18px;
+
+            height: 18px;
+
+            flex-shrink: 0;
+
+            margin-top: 2px;
+
+            accent-color: var(--green);
+
+            cursor: pointer;
+
+        }
+
+
+        .terms-agreement span {
+
+            color: #444;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .terms-agreement strong {
+
+            color: var(--green-dark);
+
+        }
