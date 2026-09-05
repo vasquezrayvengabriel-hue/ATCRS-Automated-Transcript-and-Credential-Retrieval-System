@@ -7229,5 +7229,118 @@ function initializeRegistrarClearance() {
 
 initializeRegistrarClearance();
 
+/* =========================================
+   REGISTRAR LOGIN
+   ========================================= */
+
+const registrarLoginForm =
+    document.getElementById("registrarLoginForm");
+
+if (registrarLoginForm) {
+
+    registrarLoginForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+            const registrarId =
+                document
+                    .getElementById("registrarId")
+                    .value
+                    .trim();
+
+            const registrarPassword =
+                document
+                    .getElementById("registrarPassword")
+                    .value;
+
+            const message =
+                document.getElementById(
+                    "registrarLoginMessage"
+                );
+
+
+            /* =========================================
+               DEVELOPMENT REGISTRAR ACCOUNT
+               ========================================= */
+
+            const correctRegistrarId =
+                "REG0001";
+
+            const correctRegistrarPassword =
+                "Registrar123";
+
+
+            /* =========================================
+               CHECK LOGIN
+               ========================================= */
+
+            if (
+                registrarId === correctRegistrarId &&
+                registrarPassword === correctRegistrarPassword
+            ) {
+
+                const registrarSession = {
+
+                    userId: "REG-0001",
+
+                    registrarId: registrarId,
+
+                    fullName: "DLSJBC Registrar",
+
+                    role: "Registrar",
+
+                    loginTime:
+                        new Date().toISOString()
+
+                };
+
+
+                /* Save Registrar Session */
+
+                localStorage.setItem(
+                    "atcrsRegistrarSession",
+                    JSON.stringify(
+                        registrarSession
+                    )
+                );
+
+
+                /* Success Message */
+
+                message.textContent =
+                    "Login successful. Opening Registrar Dashboard...";
+
+                message.className =
+                    "form-message success";
+
+
+                /* Open Registrar Dashboard */
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 700);
+
+
+            } else {
+
+                /* Incorrect Login */
+
+                message.textContent =
+                    "Invalid Registrar ID or password.";
+
+                message.className =
+                    "form-message error";
+
+            }
+
+        }
+    );
+
+}
 
 });
