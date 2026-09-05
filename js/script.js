@@ -3913,5 +3913,153 @@ if (openTerms && termsContent) {
     });
 
 }
-   
+/* =========================================
+   PART 6A
+   REGISTRAR LOGIN
+   DEVELOPMENT MODE
+   ========================================= */
+
+const registrarLoginForm =
+    document.getElementById("registrarLoginForm");
+
+if (registrarLoginForm) {
+
+    registrarLoginForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+            const registrarId =
+                document
+                    .getElementById("registrarId")
+                    .value
+                    .trim();
+
+            const registrarPassword =
+                document
+                    .getElementById("registrarPassword")
+                    .value;
+
+            const message =
+                document.getElementById(
+                    "registrarLoginMessage"
+                );
+
+
+            /* Clear previous message */
+
+            message.className = "form-message";
+            message.textContent = "";
+
+
+            /* Validate Registrar ID */
+
+            if (!registrarId) {
+
+                showMessage(
+                    message,
+                    "Please enter your Registrar ID.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* Validate Password */
+
+            if (!registrarPassword) {
+
+                showMessage(
+                    message,
+                    "Please enter your password.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /*
+             * DEVELOPMENT LOGIN
+             *
+             * Temporary credentials are used only
+             * for frontend development.
+             *
+             * Do NOT use real credentials here.
+             */
+
+            const developmentRegistrarId =
+                "REG0001";
+
+            const developmentRegistrarPassword =
+                "Registrar123";
+
+
+            if (
+                registrarId === developmentRegistrarId &&
+                registrarPassword ===
+                developmentRegistrarPassword
+            ) {
+
+                const registrarSession = {
+
+                    userId: "REG-0001",
+
+                    registrarId: registrarId,
+
+                    fullName:
+                        "DLSJBC Registrar",
+
+                    role: "Registrar",
+
+                    loginTime:
+                        new Date().toISOString()
+
+                };
+
+
+                /*
+                 * Save separate Registrar session
+                 */
+
+                localStorage.setItem(
+                    "atcrsRegistrarSession",
+                    JSON.stringify(
+                        registrarSession
+                    )
+                );
+
+
+                showMessage(
+                    message,
+                    "Login successful. Opening Registrar Dashboard...",
+                    "success"
+                );
+
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 700);
+
+
+            } else {
+
+                showMessage(
+                    message,
+                    "Invalid Registrar ID or password.",
+                    "error"
+                );
+
+            }
+
+        }
+    );
+
+}
+
 });
