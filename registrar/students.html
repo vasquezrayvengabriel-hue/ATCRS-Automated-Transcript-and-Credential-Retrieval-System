@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Records | ATCRS Registrar</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body class="registrar-students-page">
+
+<!-- =====================================================
+     REGISTRAR HEADER
+     ===================================================== -->
+
+<header class="dashboard-header">
+
+    <div class="dashboard-brand">
+
+        <img
+            src="../images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
+
+        <div>
+
+            <h1>
+                ATCRS
+            </h1>
+
+            <p>
+                Automated Transcript and Credential Retrieval System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-user">
+
+        <div class="dashboard-user-info">
+
+            <span
+                class="dashboard-user-name"
+                id="registrarHeaderName"
+            >
+                DLSJBC Registrar
+            </span>
+
+            <span class="dashboard-user-role">
+                Registrar
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="logout-button"
+            id="registrarLogoutButton"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     DASHBOARD LAYOUT
+     ===================================================== -->
+
+<div class="dashboard-layout">
+
+
+    <!-- =================================================
+         SIDEBAR
+         ================================================= -->
+
+    <aside class="dashboard-sidebar">
+
+        <p class="sidebar-title">
+            Registrar Menu
+        </p>
+
+
+        <nav class="dashboard-nav">
+
+            <a
+                href="dashboard.html"
+                class="dashboard-nav-link"
+            >
+                Dashboard
+            </a>
+
+
+            <a
+                href="requests.html"
+                class="dashboard-nav-link"
+            >
+                Document Requests
+            </a>
+
+
+            <a
+                href="students.html"
+                class="dashboard-nav-link active"
+            >
+                Student Records
+            </a>
+
+
+            <a
+                href="clearance.html"
+                class="dashboard-nav-link"
+            >
+                Clearance
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="dashboard-nav-link"
+            >
+                Payments
+            </a>
+
+
+            <a
+                href="credentials.html"
+                class="dashboard-nav-link"
+            >
+                Credentials
+            </a>
+
+
+            <a
+                href="archives.html"
+                class="dashboard-nav-link"
+            >
+                Archives
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-security">
+
+            <strong>
+                Private Administrative Area
+            </strong>
+
+            <p>
+                Student records are restricted to
+                authorized Registrar personnel.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+         ================================================= -->
+
+    <main class="dashboard-main">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-page-header">
+
+                <div>
+
+                    <div class="dashboard-label">
+                        Registrar Management
+                    </div>
+
+                    <h2>
+                        Student Records
+                    </h2>
+
+                    <p>
+                        Search and verify student information
+                        before processing academic document requests.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STUDENT STATISTICS
+             ================================================= -->
+
+        <section class="dashboard-stats-grid">
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    #
+                </div>
+
+                <div>
+
+                    <h3 id="registrarStudentTotal">
+                        0
+                    </h3>
+
+                    <p>
+                        Student Records
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h3 id="registrarVerifiedStudents">
+                        0
+                    </h3>
+
+                    <p>
+                        Verified Students
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <h3 id="registrarStudentRequests">
+                        0
+                    </h3>
+
+                    <p>
+                        With Requests
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ↻
+                </div>
+
+                <div>
+
+                    <h3 id="registrarPendingVerification">
+                        0
+                    </h3>
+
+                    <p>
+                        Pending Verification
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SEARCH
+             ================================================= -->
+
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <h3>
+                        Search Student Records
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="student-search-area">
+
+                <input
+                    type="search"
+                    id="studentSearchInput"
+                    class="student-search-input"
+                    placeholder="Search by Student ID, full name, email, or program..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    type="button"
+                    id="studentSearchButton"
+                    class="student-search-button"
+                >
+                    Search
+                </button>
+
+
+                <button
+                    type="button"
+                    id="studentClearSearchButton"
+                    class="student-clear-button"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+            <p
+                id="studentSearchMessage"
+                class="student-search-message"
+            >
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             STUDENT TABLE
+             ================================================= -->
+
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <h3>
+                    Student Records
+                </h3>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="dashboard-table student-records-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student ID
+                            </th>
+
+                            <th>
+                                Full Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Program
+                            </th>
+
+                            <th>
+                                Account Type
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentRecordsTable">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="empty-table"
+                            >
+                                Loading student records...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VERIFICATION INFORMATION
+             ================================================= -->
+
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <h3>
+                    Student Verification Procedure
+                </h3>
+
+            </div>
+
+
+            <div class="status-guide-grid">
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        1. Locate Student
+                    </strong>
+
+                    <p>
+                        Search using the student's 7-digit
+                        Student ID or registered information.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        2. Review Information
+                    </strong>
+
+                    <p>
+                        Compare the student's account details
+                        with the available school record.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        3. Verify Record
+                    </strong>
+
+                    <p>
+                        Confirm that the student information
+                        is valid before continuing.
+                    </p>
+
+                </div>
+
+
+                <div class="status-guide-card">
+
+                    <strong>
+                        4. Check Requests
+                    </strong>
+
+                    <p>
+                        Review document requests associated
+                        with the student.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECURITY NOTICE
+             ================================================= -->
+
+        <section class="info-card">
+
+            <h4>
+                Student Records Security
+            </h4>
+
+            <p>
+                Student information is restricted to authorized
+                Registrar personnel. This development version
+                uses browser storage only. Real academic records
+                must be stored in a secure backend database with
+                proper access control before production use.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        <strong>
+            De La Salle John Bosco College
+        </strong>
+
+        &nbsp; | &nbsp;
+
+        Automated Transcript and Credential Retrieval System
+
+    </p>
+
+</footer>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+
+  </html>
