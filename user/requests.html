@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Requests | ATCRS - DLSJBC</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="dashboard-page">
+
+
+<header class="dashboard-header">
+
+    <div class="dashboard-header-container">
+
+        <a href="dashboard.html"
+           class="dashboard-logo">
+
+            <img src="../images/dlsjbc-logo.png"
+                 alt="DLSJBC Logo">
+
+            <div class="dashboard-logo-text">
+
+                <strong>ATCRS</strong>
+
+                <span>
+                    De La Salle John Bosco College
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="dashboard-user">
+
+            <div class="dashboard-user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="dashboard-user-info">
+
+                <strong>
+                    Public User
+                </strong>
+
+                <span>
+                    Student
+                </span>
+
+            </div>
+
+            <button type="button"
+                    class="dashboard-logout"
+                    id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="dashboard-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="dashboard-sidebar">
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="request.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <span>Request Document</span>
+
+            </a>
+
+            <a href="requests.html"
+               class="dashboard-nav-link active">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>My Requests</span>
+
+            </a>
+
+            <a href="documents.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-folder-open"></i>
+                <span>My Documents</span>
+
+            </a>
+
+            <a href="profile.html"
+               class="dashboard-nav-link">
+
+                <i class="fa-solid fa-user-gear"></i>
+                <span>My Profile</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard-main">
+
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="dashboard-label">
+                    REQUEST MANAGEMENT
+                </span>
+
+                <h1>
+                    My
+                    <strong>Requests</strong>
+                </h1>
+
+                <p>
+                    Track the progress of your academic
+                    document requests.
+                </p>
+
+            </div>
+
+            <a href="request.html"
+               class="btn btn-gold">
+
+                <i class="fa-solid fa-plus"></i>
+
+                New Request
+
+            </a>
+
+        </section>
+
+
+        <!-- STATUS SUMMARY -->
+
+        <section class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending
+                    </span>
+
+                    <strong id="requestPendingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Processing
+                    </span>
+
+                    <strong id="requestProcessingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Ready
+                    </span>
+
+                    <strong id="requestReadyCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <strong id="requestCompletedCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REQUEST TABLE -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span>
+                        DOCUMENT REQUESTS
+                    </span>
+
+                    <h2>
+                        Request History
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="request-table-container">
+
+                <table class="request-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Request ID
+                            </th>
+
+                            <th>
+                                Document
+                            </th>
+
+                            <th>
+                                Purpose
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="requestHistory">
+
+                        <tr>
+
+                            <td colspan="5"
+                                class="empty-request">
+
+                                <i class="fa-solid fa-file-circle-xmark"></i>
+
+                                <span>
+                                    No requests found.
+                                </span>
+
+                                <a href="request.html">
+                                    Submit a document request
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS INFORMATION -->
+
+        <section class="dashboard-information">
+
+            <div class="information-icon">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Request Status Guide
+                </h3>
+
+                <p>
+                    Requests may move through several stages:
+                    Pending, Under Verification, Clearance Required,
+                    Payment Pending, Processing, Ready for Release,
+                    and Completed.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<footer class="dashboard-footer">
+
+    <p>
+        © 2026 De La Salle John Bosco College.
+        Automated Transcript and Credential Retrieval System.
+    </p>
+
+</footer>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+                              </html>
