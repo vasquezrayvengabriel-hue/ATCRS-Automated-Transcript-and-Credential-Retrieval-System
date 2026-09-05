@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Login | ATCRS - DLSJBC
+    </title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="login-page">
+
+
+<!-- =========================================
+     LOGIN HEADER
+========================================= -->
+
+<header class="login-header">
+
+    <a href="index.html" class="logo">
+
+        <img src="images/dlsjbc-logo.png"
+             alt="DLSJBC Logo">
+
+        <div class="logo-text">
+
+            <strong>ATCRS</strong>
+
+            <span>
+                DLSJBC
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <a href="index.html"
+       class="back-home">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Home
+
+    </a>
+
+</header>
+
+
+<!-- =========================================
+     LOGIN MAIN
+========================================= -->
+
+<main class="login-main">
+
+    <div class="login-container">
+
+      <!-- =========================================
+     ROLE SELECTION
+========================================= -->
+
+<div class="login-heading">
+
+    <span>
+        SECURE PORTAL
+    </span>
+
+    <h1>
+        Welcome to ATCRS
+    </h1>
+
+    <p>
+        Select your account type to continue.
+    </p>
+
+</div>
+
+
+<div class="role-selector">
+
+
+    <!-- ALUMNI -->
+
+    <button
+        type="button"
+        class="role-option active"
+        data-role="alumni">
+
+        <i class="fa-solid fa-user-graduate"></i>
+
+        <span>
+            Alumni
+        </span>
+
+    </button>
+
+
+    <!-- REGISTRAR -->
+
+    <button
+        type="button"
+        class="role-option"
+        data-role="registrar">
+
+        <i class="fa-solid fa-user-tie"></i>
+
+        <span>
+            Registrar
+        </span>
+
+    </button>
+
+
+    <!-- VERIFIER -->
+
+    <button
+        type="button"
+        class="role-option"
+        data-role="verifier">
+
+        <i class="fa-solid fa-building"></i>
+
+        <span>
+            Verifier
+        </span>
+
+    </button>
+
+
+</div>
+
+
+<!-- =========================================
+     LOGIN CARD
+========================================= -->
+
+<div class="login-card">
+
+  <!-- =========================================
+     ALUMNI LOGIN
+========================================= -->
+
+<div class="login-form active"
+     id="alumniLogin">
+
+    <div class="form-title">
+
+        <div class="form-icon">
+
+            <i class="fa-solid fa-user-graduate"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Alumni Login
+            </h2>
+
+            <p>
+                Access your academic credentials.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="alumniForm">
+
+
+        <!-- STUDENT ID -->
+
+        <div class="form-group">
+
+            <label for="studentId">
+
+                Student ID
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <input
+                    type="text"
+                    id="studentId"
+                    name="studentId"
+                    placeholder="Enter 7-digit Student ID"
+                    maxlength="7"
+                    inputmode="numeric"
+                    pattern="[0-9]{7}"
+                    required
+                >
+
+            </div>
+
+            <small>
+                Student ID must contain exactly 7 digits.
+            </small>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="alumniPassword">
+
+                Password
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="alumniPassword"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="alumniPassword">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-options">
+
+            <label>
+
+                <input type="checkbox">
+
+                Remember me
+
+            </label>
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-green login-submit">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In as Alumni
+
+        </button>
+
+
+    </form>
+
+
+    <div class="login-message"
+         id="alumniMessage">
+    </div>
+
+</div>
+
+  <!-- =========================================
+     REGISTRAR LOGIN
+========================================= -->
+
+<div class="login-form"
+     id="registrarLogin">
+
+    <div class="form-title">
+
+        <div class="form-icon">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Registrar Login
+            </h2>
+
+            <p>
+                Access the administrative portal.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="registrarForm">
+
+
+        <!-- USERNAME -->
+
+        <div class="form-group">
+
+            <label for="registrarUsername">
+
+                Staff Username
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                    type="text"
+                    id="registrarUsername"
+                    placeholder="Enter staff username"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="registrarPassword">
+
+                Password
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="registrarPassword"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="registrarPassword">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-options">
+
+            <label>
+
+                <input type="checkbox">
+
+                Remember me
+
+            </label>
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-green login-submit">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In as Registrar
+
+        </button>
+
+
+    </form>
+
+
+    <div class="login-message"
+         id="registrarMessage">
+    </div>
+
+</div>
+
+  <!-- =========================================
+     VERIFIER LOGIN
+========================================= -->
+
+<div class="login-form"
+     id="verifierLogin">
+
+    <div class="form-title">
+
+        <div class="form-icon">
+
+            <i class="fa-solid fa-building"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Verifier Login
+            </h2>
+
+            <p>
+                Verify credentials for authorized purposes.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form id="verifierForm">
+
+
+        <!-- ORGANIZATION EMAIL -->
+
+        <div class="form-group">
+
+            <label for="verifierEmail">
+
+                Organization Email
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <input
+                    type="email"
+                    id="verifierEmail"
+                    placeholder="organization@example.com"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="verifierPassword">
+
+                Password
+
+            </label>
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="verifierPassword"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="verifierPassword">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-options">
+
+            <label>
+
+                <input type="checkbox">
+
+                Remember me
+
+            </label>
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn btn-green login-submit">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Sign In as Verifier
+
+        </button>
+
+
+    </form>
+
+
+    <div class="login-message"
+         id="verifierMessage">
+    </div>
+
+</div>
+
+  <!-- =========================================
+     LOGIN CARD END
+========================================= -->
+
+</div>
+
+
+<!-- =========================================
+     SECURITY NOTICE
+========================================= -->
+
+<div class="security-notice">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    <div>
+
+        <strong>
+            Secure Access
+        </strong>
+
+        <p>
+            Your academic information should only be
+            accessed by authorized users.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     CREATE ACCOUNT
+========================================= -->
+
+<div class="register-link">
+
+    <p>
+
+        Don't have an Alumni account?
+
+        <a href="#">
+            Create an Account
+        </a>
+
+    </p>
+
+</div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="login-footer">
+
+    <p>
+        © 2026 De La Salle John Bosco College.
+        All Rights Reserved.
+    </p>
+
+    <span>
+        ATCRS — Automated Transcript and
+        Credential Retrieval System
+    </span>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="js/script.js"></script>
+
+
+</body>
+
+</html>
+
+
+<!-- =========================================
+     END OF PART 2
+========================================= -->
