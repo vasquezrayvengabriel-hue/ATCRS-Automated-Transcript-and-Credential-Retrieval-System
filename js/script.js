@@ -4659,5 +4659,722 @@ function loadRegistrarRequestManagement() {
     });
 
 }
+/* =========================================================
+   PART 6C-4 — REQUEST DETAILS MODAL
+   ========================================================= */
+
+let currentRegistrarRequestId = null;
+
+
+/* ================= CREATE MODAL ================= */
+
+function createRegistrarRequestModal() {
+
+    if (
+        document.getElementById(
+            "registrarRequestModal"
+        )
+    ) {
+        return;
+    }
+
+
+    const modal =
+        document.createElement("div");
+
+    modal.id =
+        "registrarRequestModal";
+
+    modal.className =
+        "request-modal";
+
+
+    modal.innerHTML = `
+
+        <div class="request-modal-content">
+
+
+            <!-- HEADER -->
+
+            <div class="request-modal-header">
+
+                <div>
+
+                    <h3>
+                        Document Request Details
+                    </h3>
+
+                    <p id="requestModalId">
+                        Request ID
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="request-modal-close"
+                    onclick="closeRegistrarRequestDetails()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="request-modal-body">
+
+
+                <div
+                    id="requestModalDetails"
+                    class="request-details-grid"
+                >
+                </div>
+
+
+                <!-- CONTROLS -->
+
+                <div class="request-control-grid">
+
+
+                    <!-- REQUEST STATUS -->
+
+                    <div class="request-control-group">
+
+                        <label for="registrarRequestStatus">
+                            Request Status
+                        </label>
+
+                        <select
+                            id="registrarRequestStatus"
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Under Verification">
+                                Under Verification
+                            </option>
+
+                            <option value="Clearance Required">
+                                Clearance Required
+                            </option>
+
+                            <option value="Payment Pending">
+                                Payment Pending
+                            </option>
+
+                            <option value="Processing">
+                                Processing
+                            </option>
+
+                            <option value="Ready for Release">
+                                Ready for Release
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Rejected">
+                                Rejected
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- CLEARANCE -->
+
+                    <div class="request-control-group">
+
+                        <label for="registrarClearanceStatus">
+                            Clearance Status
+                        </label>
+
+                        <select
+                            id="registrarClearanceStatus"
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="For Review">
+                                For Review
+                            </option>
+
+                            <option value="Cleared">
+                                Cleared
+                            </option>
+
+                            <option value="Not Cleared">
+                                Not Cleared
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PAYMENT -->
+
+                    <div class="request-control-group">
+
+                        <label for="registrarPaymentStatus">
+                            Payment Status
+                        </label>
+
+                        <select
+                            id="registrarPaymentStatus"
+                        >
+
+                            <option value="Pending Payment">
+                                Pending Payment
+                            </option>
+
+                            <option value="Payment Submitted">
+                                Payment Submitted
+                            </option>
+
+                            <option value="Payment Verified">
+                                Payment Verified
+                            </option>
+
+                            <option value="Payment Failed">
+                                Payment Failed
+                            </option>
+
+                            <option value="Payment Waived">
+                                Payment Waived
+                            </option>
+
+                            <option value="Paid">
+                                Paid
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="request-modal-footer">
+
+                <span
+                    id="requestModalMessage"
+                    class="request-modal-message"
+                >
+                </span>
+
+
+                <button
+                    type="button"
+                    class="request-cancel-button"
+                    onclick="closeRegistrarRequestDetails()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="request-save-button"
+                    onclick="saveRegistrarRequestChanges()"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(modal);
+
+
+    /* CLOSE WHEN CLICKING OUTSIDE */
+
+    modal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === modal) {
+
+                closeRegistrarRequestDetails();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= OPEN DETAILS ================= */
+
+function openRegistrarRequestDetails(requestId) {
+
+    createRegistrarRequestModal();
+
+
+    const requests =
+        getRequests();
+
+
+    const request =
+        requests.find(
+            item =>
+                item.requestId === requestId
+        );
+
+
+    if (!request) {
+
+        alert(
+            "The selected request could not be found."
+        );
+
+        return;
+    }
+
+
+    currentRegistrarRequestId =
+        requestId;
+
+
+    const modal =
+        document.getElementById(
+            "registrarRequestModal"
+        );
+
+
+    const modalId =
+        document.getElementById(
+            "requestModalId"
+        );
+
+
+    const details =
+        document.getElementById(
+            "requestModalDetails"
+        );
+
+
+    modalId.textContent =
+        request.requestId || "Request";
+
+
+    details.innerHTML = `
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Request ID
+            </span>
+
+            <div class="request-detail-value">
+                ${request.requestId || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Date Requested
+            </span>
+
+            <div class="request-detail-value">
+                ${registrarRequestDate(
+                    request.dateRequested
+                )}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Student Full Name
+            </span>
+
+            <div class="request-detail-value">
+                ${request.fullName || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Student ID
+            </span>
+
+            <div class="request-detail-value">
+                ${request.studentId || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Email
+            </span>
+
+            <div class="request-detail-value">
+                ${request.email || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Account Type
+            </span>
+
+            <div class="request-detail-value">
+                ${request.accountType || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card full-width">
+
+            <span class="request-detail-label">
+                Document Requested
+            </span>
+
+            <div class="request-detail-value">
+                ${request.documentType || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Purpose
+            </span>
+
+            <div class="request-detail-value">
+                ${request.purpose || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Number of Copies
+            </span>
+
+            <div class="request-detail-value">
+                ${request.copies || "1"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Delivery Method
+            </span>
+
+            <div class="request-detail-value">
+                ${request.deliveryMethod || "—"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Clearance Status
+            </span>
+
+            <div class="request-detail-value">
+                ${request.clearanceStatus || "Pending"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Payment Status
+            </span>
+
+            <div class="request-detail-value">
+                ${request.paymentStatus || "Pending"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card full-width">
+
+            <span class="request-detail-label">
+                Additional Details
+            </span>
+
+            <div class="request-detail-value">
+                ${request.additionalDetails || "None provided."}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Processed By
+            </span>
+
+            <div class="request-detail-value">
+                ${request.processedBy || "Not yet assigned"}
+            </div>
+
+        </div>
+
+
+        <div class="request-detail-card">
+
+            <span class="request-detail-label">
+                Last Updated
+            </span>
+
+            <div class="request-detail-value">
+                ${registrarRequestDate(
+                    request.updatedAt
+                )}
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* SET CONTROLS */
+
+    document.getElementById(
+        "registrarRequestStatus"
+    ).value =
+        request.status || "Pending";
+
+
+    document.getElementById(
+        "registrarClearanceStatus"
+    ).value =
+        request.clearanceStatus || "Pending";
+
+
+    document.getElementById(
+        "registrarPaymentStatus"
+    ).value =
+        request.paymentStatus ||
+        "Pending Payment";
+
+
+    document.getElementById(
+        "requestModalMessage"
+    ).textContent = "";
+
+
+    modal.classList.add("active");
+
+}
+
+
+/* ================= CLOSE DETAILS ================= */
+
+function closeRegistrarRequestDetails() {
+
+    const modal =
+        document.getElementById(
+            "registrarRequestModal"
+        );
+
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.remove("active");
+
+    currentRegistrarRequestId = null;
+
+       }
+/* =========================================================
+   PART 6C-5 — SAVE REGISTRAR REQUEST CHANGES
+   ========================================================= */
+
+function saveRegistrarRequestChanges() {
+
+    if (!currentRegistrarRequestId) {
+
+        return;
+    }
+
+
+    const status =
+        document.getElementById(
+            "registrarRequestStatus"
+        ).value;
+
+
+    const clearanceStatus =
+        document.getElementById(
+            "registrarClearanceStatus"
+        ).value;
+
+
+    const paymentStatus =
+        document.getElementById(
+            "registrarPaymentStatus"
+        ).value;
+
+
+    const registrarSession =
+        getRegistrarSession();
+
+
+    if (!registrarSession) {
+
+        alert(
+            "Your Registrar session has expired. Please log in again."
+        );
+
+        window.location.href =
+            "login.html";
+
+        return;
+    }
+
+
+    const updated =
+        updateRegistrarRequest(
+            currentRegistrarRequestId,
+            {
+
+                status:
+                    status,
+
+                clearanceStatus:
+                    clearanceStatus,
+
+                paymentStatus:
+                    paymentStatus,
+
+                processedBy:
+                    registrarSession.fullName,
+
+                updatedAt:
+                    new Date().toISOString()
+
+            }
+        );
+
+
+    if (!updated) {
+
+        alert(
+            "Unable to update this request."
+        );
+
+        return;
+    }
+
+
+    const message =
+        document.getElementById(
+            "requestModalMessage"
+        );
+
+
+    if (message) {
+
+        message.textContent =
+            "Request updated successfully.";
+
+    }
+
+
+    /* REFRESH TABLE */
+
+    loadRegistrarRequestManagement();
+
+
+    /* REFRESH DASHBOARD STATISTICS */
+
+    if (
+        typeof loadRegistrarStatistics ===
+        "function"
+    ) {
+
+        loadRegistrarStatistics();
+
+    }
+
+
+    /* CLOSE AFTER SHORT DELAY */
+
+    setTimeout(
+        function() {
+
+            closeRegistrarRequestDetails();
+
+        },
+        700
+    );
+
+}
+/* =========================================================
+   PART 6C — INITIALIZE REQUEST MANAGEMENT
+   ========================================================= */
+
+if (
+    document.body.classList.contains(
+        "registrar-request-page"
+    )
+) {
+
+    if (protectRegistrarPage()) {
+
+        loadRegistrarInformation();
+
+        loadRegistrarRequestManagement();
+
+        setupRegistrarLogout();
+
+        createRegistrarRequestModal();
+
+    }
+
+}
 
 });
