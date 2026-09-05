@@ -3408,6 +3408,494 @@ if (credentialInput) {
 
 }
 /* =========================================
+   PART 5G-9
+   PUBLIC USER SYSTEM INTEGRATION & CLEANUP
+   ========================================= */
+
+
+/* =========================================
+   ROLE SELECTOR
+   STUDENT / APPLICANT / ALUMNI
+   ========================================= */
+
+const roleOptionsFinal = document.querySelectorAll(".role-option");
+const loginFormsFinal = document.querySelectorAll(".login-form");
+
+roleOptionsFinal.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const selectedRole = this.getAttribute("data-role");
+
+        /* Remove active from ALL roles */
+        roleOptionsFinal.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        /* Highlight ONLY selected role */
+        this.classList.add("active");
+
+        /* Hide ALL login forms */
+        loginFormsFinal.forEach(function (form) {
+            form.style.display = "none";
+        });
+
+        /* Show selected login form */
+        const selectedForm = document.getElementById(
+            selectedRole + "LoginForm"
+        );
+
+        if (selectedForm) {
+            selectedForm.style.display = "block";
+        }
+
+    });
+
+});
+
+
+/* =========================================
+   FINAL PUBLIC USER SESSION CHECK
+   ========================================= */
+
+function finalProtectUserPage() {
+
+    if (!window.location.pathname.includes("/user/")) {
+        return;
+    }
+
+    const session = getCurrentUser();
+
+    if (!session) {
+        window.location.href = "../login.html";
+        return;
+    }
+
+    const allowedRoles = [
+        "Student",
+        "Applicant",
+        "Alumni"
+    ];
+
+    if (!allowedRoles.includes(session.role)) {
+
+        clearSession();
+
+        window.location.href = "../login.html";
+
+        return;
+    }
+
+}
+
+
+/* =========================================
+   LOAD CURRENT USER INFORMATION
+   ========================================= */
+
+function finalLoadUserInformation() {
+
+    const session = getCurrentUser();
+
+    if (!session) {
+        return;
+    }
+
+    const userNameElements = [
+        "dashboardUserName",
+        "profileHeaderName",
+        "profileName",
+        "profileFullName"
+    ];
+
+    userNameElements.forEach(function (id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = session.fullName;
+        }
+
+    });
+
+
+    const roleElements = [
+        "profileHeaderRole",
+        "profileRole",
+        "profileAccountType",
+        "accountType"
+    ];
+
+    roleElements.forEach(function (id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = session.role;
+        }
+
+    });
+
+
+    const studentIdElements = [
+        "dashboardStudentId",
+        "profileStudentId"
+    ];
+
+    studentIdElements.forEach(function (id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = session.studentId;
+        }
+
+    });
+
+
+    const emailElement = document.getElementById("profileEmail");
+
+    if (emailElement) {
+        emailElement.textContent = session.email;
+    }
+
+}
+
+
+/* =========================================
+   FINAL LOGOUT
+   ========================================= */
+
+const finalLogoutButton = document.getElementById("logoutButton");
+
+if (finalLogoutButton) {
+
+    finalLogoutButton.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        clearSession();
+
+        window.location.href = "../login.html";
+
+    });
+
+}
+
+
+/* =========================================
+   SECURITY CHECK FOR REQUESTS
+   ========================================= */
+
+function finalGetUserRequests() {
+
+    const session = getCurrentUser();
+
+    if (!session) {
+        return [];
+    }
+
+    const requests = getRequests();
+
+    return requests.filter(function (request) {
+
+        return (
+            request.userId === session.userId ||
+            request.studentId === session.studentId
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   SECURITY CHECK FOR CREDENTIALS
+   ========================================= */
+
+function finalGetUserCredentials() {
+
+    const session = getCurrentUser();
+
+    if (!session) {
+        return [];
+    }
+
+    const credentials = getCredentials();
+
+    return credentials.filter(function (credential) {
+
+        return (
+            credential.userId === session.userId ||
+            credential.studentId === session.studentId
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   VERIFY CREDENTIAL
+   ========================================= */
+
+const finalVerifyForm = document.getElementById("verifyForm");
+
+if (finalVerifyForm) {
+
+    finalVerifyForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const credentialInput =
+            document.getElementById("credentialId");
+
+        const result =
+            document.getElementById("verificationResult");
+
+        if (!credentialInput || !result) {
+            return;
+        }
+
+        const credentialId =
+            credentialInput.value.trim().toUpperCase();
+
+        if (!credentialId) {
+
+            result.innerHTML = `
+                <div class="verification-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Credential ID Required</h3>
+                    <p>
+                        Please enter a credential ID to continue.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        const credentials = getCredentials();
+
+        const credential = credentials.find(function (item) {
+
+            return (
+                String(item.credentialId).toUpperCase() ===
+                credentialId
+            );
+
+        });
+
+
+        if (!credential) {
+
+            result.innerHTML = `
+                <div class="verification-error">
+                    <div class="verification-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+
+                    <h3>Credential Not Found</h3>
+
+                    <p>
+                        No credential matching
+                        <strong>${credentialId}</strong>
+                        was found in the ATCRS verification database.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        const credentialStatus =
+            String(credential.status || "").toLowerCase();
+
+
+        if (
+            credentialStatus !== "valid" &&
+            credentialStatus !== "released"
+        ) {
+
+            result.innerHTML = `
+                <div class="verification-error">
+
+                    <div class="verification-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+
+                    <h3>Credential Not Valid</h3>
+
+                    <p>
+                        This credential is currently not
+                        available for verification.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        result.innerHTML = `
+            <div class="verification-success">
+
+                <div class="verification-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <h3>Credential Verified</h3>
+
+                <p>
+                    The credential was successfully found
+                    in the ATCRS verification database.
+                </p>
+
+
+                <div class="verification-details">
+
+                    <div class="verification-detail">
+                        <span>Credential ID</span>
+                        <strong>
+                            ${credential.credentialId}
+                        </strong>
+                    </div>
+
+
+                    <div class="verification-detail">
+                        <span>Student Name</span>
+                        <strong>
+                            ${credential.fullName || "Not Available"}
+                        </strong>
+                    </div>
+
+
+                    <div class="verification-detail">
+                        <span>Student ID</span>
+                        <strong>
+                            ${credential.studentId || "Not Available"}
+                        </strong>
+                    </div>
+
+
+                    <div class="verification-detail">
+                        <span>Document Type</span>
+                        <strong>
+                            ${credential.documentType || "Academic Credential"}
+                        </strong>
+                    </div>
+
+
+                    <div class="verification-detail">
+                        <span>Date Issued</span>
+                        <strong>
+                            ${
+                                credential.issueDate
+                                ? formatRequestDate(credential.issueDate)
+                                : "Not Available"
+                            }
+                        </strong>
+                    </div>
+
+
+                    <div class="verification-detail">
+                        <span>Verification Status</span>
+                        <strong class="verified-text">
+                            Verified
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="verification-notice">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                    <span>
+                        This credential record was found in
+                        the ATCRS development verification
+                        database.
+                    </span>
+
+                </div>
+
+            </div>
+        `;
+
+    });
+
+
+    /* Clear result when user changes credential ID */
+
+    const finalCredentialInput =
+        document.getElementById("credentialId");
+
+    if (finalCredentialInput) {
+
+        finalCredentialInput.addEventListener(
+            "input",
+            function () {
+
+                const result =
+                    document.getElementById(
+                        "verificationResult"
+                    );
+
+                if (result) {
+                    result.innerHTML = "";
+                }
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   FINAL PAGE INITIALIZATION
+   ========================================= */
+
+finalProtectUserPage();
+
+finalLoadUserInformation();
+
+
+/* =========================================
+   FINAL REQUEST / CREDENTIAL REFRESH
+   ========================================= */
+
+if (window.location.pathname.includes("/user/")) {
+
+    if (typeof loadDashboardStatistics === "function") {
+        loadDashboardStatistics();
+    }
+
+    if (typeof loadRequestSummary === "function") {
+        loadRequestSummary();
+    }
+
+    if (typeof loadRecentRequests === "function") {
+        loadRecentRequests();
+    }
+
+    if (typeof loadRequestHistory === "function") {
+        loadRequestHistory();
+    }
+
+    if (typeof loadUserDocuments === "function") {
+        loadUserDocuments();
+    }
+
+}
+   
+});
+/* =========================================
    TERMS OF USE
    ========================================= */
 
