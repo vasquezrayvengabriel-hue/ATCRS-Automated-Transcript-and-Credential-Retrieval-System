@@ -3602,3 +3602,122 @@ img {
 .terms-content p:last-child {
     margin-bottom: 0;
 }
+/* =========================================
+   PART 6A
+   REGISTRAR LOGIN
+   ========================================= */
+
+.registrar-auth-card {
+    max-width: 500px;
+    width: 100%;
+}
+
+.private-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 12px;
+    padding: 7px 12px;
+
+    background: #f5e9b8;
+    color: #0b5d3f;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.private-label i {
+    font-size: 12px;
+}
+
+
+/* Registrar Security Notice */
+
+.security-notice {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 20px;
+    padding: 15px;
+
+    background: #f5f7f6;
+
+    border-left: 4px solid #d4af37;
+    border-radius: 8px;
+
+    color: #555555;
+}
+
+.security-notice > i {
+    color: #0b5d3f;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.security-notice strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #111111;
+    font-size: 14px;
+}
+
+.security-notice p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* Back Link */
+
+.auth-back {
+    margin-top: 22px;
+
+    text-align: center;
+}
+
+.auth-back a {
+    color: #0b5d3f;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.auth-back a:hover {
+    color: #d4af37;
+}
+
+.auth-back i {
+    margin-right: 6px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .registrar-auth-card {
+        width: 100%;
+    }
+
+    .private-label {
+        font-size: 11px;
+    }
+
+    .security-notice {
+        padding: 12px;
+    }
+
+}
