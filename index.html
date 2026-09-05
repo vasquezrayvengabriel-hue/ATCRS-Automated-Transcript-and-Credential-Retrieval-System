@@ -13,36 +13,57 @@
 
     <title>ATCRS | De La Salle John Bosco College</title>
 
+    <!-- DLSJBC Logo -->
+    <link rel="icon" href="images/dlsjbc-logo.png">
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Main CSS -->
     <link rel="stylesheet"
           href="css/style.css">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
+
 
 <body>
 
 
-<!-- =========================================
+<!-- ==================================================
      HEADER
-========================================= -->
+================================================== -->
 
-<header class="main-header">
+<header class="site-header">
 
-    <div class="container nav-container">
+    <div class="container header-inner">
 
-        <a href="index.html" class="logo">
+
+        <!-- BRAND -->
+
+        <a href="index.html"
+           class="brand">
 
             <img src="images/dlsjbc-logo.png"
-                 alt="De La Salle John Bosco College Logo">
+                 alt="De La Salle John Bosco College Logo"
+                 class="brand-logo">
 
-            <div class="logo-text">
+            <div class="brand-text">
 
-                <strong>ATCRS</strong>
+                <strong>
+                    De La Salle John Bosco College
+                </strong>
 
                 <span>
-                    De La Salle John Bosco College
+                    Automated Transcript &amp;
+                    Credential Retrieval System
                 </span>
 
             </div>
@@ -50,140 +71,363 @@
         </a>
 
 
-        <nav class="navbar">
+        <!-- NAVIGATION -->
 
-            <a href="index.html" class="active">
-                <i class="fa-solid fa-house"></i>
+        <nav class="main-nav"
+             aria-label="Main Navigation">
+
+            <a href="#home">
                 Home
             </a>
 
+            <a href="#about">
+                About
+            </a>
+
             <a href="#services">
-                <i class="fa-solid fa-file-lines"></i>
                 Services
             </a>
 
-            <a href="#how-it-works">
-                <i class="fa-solid fa-list-check"></i>
-                How It Works
+            <a href="#process">
+                Process
             </a>
 
-            <a href="#documents">
-                <i class="fa-solid fa-folder-open"></i>
-                Documents
+            <a href="#access">
+                Access
             </a>
 
-            <a href="#verify">
-                <i class="fa-solid fa-qrcode"></i>
-                Verify
+            <a href="#contact">
+                Contact
+            </a>
+
+            <a href="login.html"
+               class="nav-login">
+
+                Login
+
             </a>
 
         </nav>
-
-
-        <div class="nav-buttons">
-
-            <a href="login.html"
-               class="btn btn-outline">
-                Sign In
-            </a>
-
-            <a href="login.html"
-               class="btn btn-gold">
-                Create Account
-            </a>
-
-        </div>
 
     </div>
 
 </header>
 
 
-<!-- =========================================
-     END OF PART 1A
+<!-- ==================================================
+     MAIN CONTENT
+================================================== -->
 
-     >>> PASTE PART 1B BELOW THIS LINE <<<
-========================================= -->
+<main>
 
-    <!-- =========================================
-     HOME / HERO SECTION
-========================================= -->
 
-<section class="hero" id="home">
+<!-- ==================================================
+     HERO SECTION
+================================================== -->
 
-    <div class="container hero-content">
+<section class="hero"
+         id="home">
+
+
+    <div class="hero-content">
+
+
+        <!-- HERO TEXT -->
 
         <div class="hero-text">
 
-            <span class="badge">
-                <i class="fa-solid fa-shield-halved"></i>
-                DLSJBC Digital Credential Services
-            </span>
+
+            <div class="hero-badge">
+
+                <span>●</span>
+
+                DLSJBC Academic Records System
+
+            </div>
+
 
             <h1>
-                Automated Transcript and
-                <span>Credential Retrieval System</span>
+
+                Automated Transcript &amp;
+
+                <span>
+                    Credential Retrieval
+                </span>
+
+                System
+
             </h1>
 
-            <p>
-                A secure and convenient digital platform for
-                applicants, students, and alumni of
-                De La Salle John Bosco College to request,
-                track, and retrieve academic credentials online.
+
+            <p class="hero-subtitle">
+
+                A digital platform designed to simplify
+                academic document requests, records
+                processing, credential release, and
+                credential verification.
+
             </p>
+
 
             <div class="hero-buttons">
 
-                <a href="login.html" class="btn btn-green">
-                    <i class="fa-solid fa-file-circle-plus"></i>
-                    Request a Document
+
+                <a href="login.html"
+                   class="button button-primary">
+
+                    Applicant / Student Login
+
                 </a>
 
-                <a href="#verify" class="btn btn-outline-dark">
-                    <i class="fa-solid fa-qrcode"></i>
-                    Verify Credential
+
+                <a href="#access"
+                   class="button button-outline">
+
+                    Administrative Access
+
                 </a>
+
 
             </div>
+
 
         </div>
 
 
+        <!-- HERO CARD -->
+
         <div class="hero-card">
 
-            <div class="hero-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
 
-            <h3>
-                Your Credentials,
-                Made Accessible
-            </h3>
+            <img src="images/dlsjbc-logo.png"
+                 alt="DLSJBC Logo"
+                 class="hero-card-logo">
+
+
+            <h2>
+                Digital Academic Services
+            </h2>
+
 
             <p>
-                Request and retrieve your academic
-                documents through a streamlined
-                digital process.
+
+                A connected system for academic
+                document requests and credential
+                verification.
+
             </p>
 
-            <div class="hero-stat">
 
-                <div>
-                    <strong>Secure</strong>
-                    <span>Credential Processing</span>
+            <div class="hero-card-line"></div>
+
+
+            <div class="hero-feature">
+
+                <div class="hero-feature-icon">
+                    ✓
                 </div>
 
-                <div>
-                    <strong>Online</strong>
-                    <span>Request Tracking</span>
-                </div>
-
-                <div>
-                    <strong>Digital</strong>
-                    <span>Credential Retrieval</span>
-                </div>
+                <span>
+                    Online document requests
+                </span>
 
             </div>
+
+
+            <div class="hero-feature">
+
+                <div class="hero-feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Registrar processing
+                </span>
+
+            </div>
+
+
+            <div class="hero-feature">
+
+                <div class="hero-feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Credential verification
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- ==================================================
+     ABOUT ATCRS
+================================================== -->
+
+<section class="section section-light"
+         id="about">
+
+    <div class="container">
+
+
+        <!-- SECTION HEADING -->
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                About ATCRS
+            </span>
+
+            <h2>
+                A More Organized Academic Records Process
+            </h2>
+
+            <p>
+
+                ATCRS is designed to provide a centralized
+                digital workflow for requesting, reviewing,
+                processing, releasing, and verifying
+                academic credentials.
+
+            </p>
+
+        </div>
+
+
+        <!-- ABOUT CONTENT -->
+
+        <div class="about-grid">
+
+
+            <!-- ABOUT INFORMATION -->
+
+            <div class="about-panel">
+
+
+                <h3>
+                    Purpose of the System
+                </h3>
+
+
+                <p>
+
+                    The Automated Transcript and Credential
+                    Retrieval System helps reduce manual
+                    processing by providing a structured
+                    online environment for academic
+                    document services.
+
+                </p>
+
+
+                <p>
+
+                    Applicants, students, and alumni can
+                    submit requests and monitor their
+                    status, while authorized Registrar
+                    personnel can process requests through
+                    a private administrative area.
+
+                </p>
+
+
+                <!-- ABOUT FEATURES -->
+
+                <div class="about-list">
+
+
+                    <div>
+
+                        <span class="check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Centralized academic document
+                            requests
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Request status and workflow
+                            tracking
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Registrar-managed clearance
+                            and processing
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="check">
+                            ✓
+                        </span>
+
+                        <span>
+                            Digital credential verification
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ABOUT VISUAL -->
+
+            <div class="about-visual">
+
+
+                <div class="about-visual-content">
+
+                    <strong>
+                        De La Salle John Bosco College
+                    </strong>
+
+                    <span>
+
+                        A digital academic service concept
+                        focused on accessibility, organization,
+                        and responsible credential management.
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
 
         </div>
 
@@ -191,113 +435,165 @@
 
 </section>
 
-
-<!-- =========================================
-     END OF PART 1B
-
-     >>> PASTE PART 1C BELOW THIS LINE <<<
-========================================= -->
-
-    <!-- =========================================
+<!-- ==================================================
      SERVICES SECTION
-========================================= -->
+================================================== -->
 
-<section class="section" id="services">
+<section class="section"
+         id="services">
 
     <div class="container">
 
+
+        <!-- SECTION HEADING -->
+
         <div class="section-heading">
 
-            <span>
-                <i class="fa-solid fa-gears"></i>
-                OUR SERVICES
+            <span class="section-label">
+                System Services
             </span>
 
             <h2>
-                Academic Credential Services
+                What ATCRS Can Provide
             </h2>
 
             <p>
-                ATCRS provides a convenient digital
-                process for requesting and managing
-                academic credentials.
+
+                The system is structured around the
+                complete academic credential request
+                lifecycle.
+
             </p>
 
         </div>
 
 
-        <div class="services-grid">
+        <!-- SERVICES GRID -->
+
+        <div class="service-grid">
 
 
             <!-- SERVICE 1 -->
 
-            <div class="service-card">
+            <article class="service-card">
 
                 <div class="service-icon">
-                    <i class="fa-solid fa-file-circle-plus"></i>
+                    01
                 </div>
 
                 <h3>
-                    Request Documents
+                    Online Requests
                 </h3>
 
                 <p>
-                    Submit requests for transcripts,
-                    diplomas, certificates, and other
-                    authorized academic credentials.
+
+                    Applicants, students, and alumni can
+                    request academic documents through
+                    their account.
+
                 </p>
 
-            </div>
+            </article>
 
 
             <!-- SERVICE 2 -->
 
-            <div class="service-card">
+            <article class="service-card">
 
                 <div class="service-icon">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    02
                 </div>
 
                 <h3>
-                    Track Requests
+                    Request Tracking
                 </h3>
 
                 <p>
-                    Monitor the progress and current
-                    status of your document requests
-                    through your account.
+
+                    Users can monitor whether a request
+                    is pending, under review, processing,
+                    ready, or completed.
+
                 </p>
 
-            </div>
+            </article>
 
 
             <!-- SERVICE 3 -->
 
-            <div class="service-card">
+            <article class="service-card">
 
                 <div class="service-icon">
-                    <i class="fa-solid fa-credit-card"></i>
+                    03
                 </div>
 
                 <h3>
-                    Online Payment
+                    Student Verification
                 </h3>
 
                 <p>
-                    View applicable document fees and
-                    payment status through the digital
-                    request process.
+
+                    Authorized Registrar personnel can
+                    review student information before
+                    processing a request.
+
                 </p>
 
-            </div>
+            </article>
 
 
             <!-- SERVICE 4 -->
 
-            <div class="service-card">
+            <article class="service-card">
 
                 <div class="service-icon">
-                    <i class="fa-solid fa-qrcode"></i>
+                    04
+                </div>
+
+                <h3>
+                    Clearance Management
+                </h3>
+
+                <p>
+
+                    Clearance information can be reviewed
+                    and updated as part of the document
+                    processing workflow.
+
+                </p>
+
+            </article>
+
+
+            <!-- SERVICE 5 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    05
+                </div>
+
+                <h3>
+                    Credential Release
+                </h3>
+
+                <p>
+
+                    Approved credentials can be prepared
+                    for secure digital release to
+                    authorized users.
+
+                </p>
+
+            </article>
+
+
+            <!-- SERVICE 6 -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    06
                 </div>
 
                 <h3>
@@ -305,12 +601,15 @@
                 </h3>
 
                 <p>
-                    Verify the authenticity of released
-                    academic credentials using the
-                    appropriate credential information.
+
+                    Authorized schools, employers, and
+                    organizations can check whether a
+                    digital credential is valid.
+
                 </p>
 
-            </div>
+            </article>
+
 
         </div>
 
@@ -318,377 +617,290 @@
 
 </section>
 
+<!-- ==================================================
+     ATCRS PROCESS / WORKFLOW
+================================================== -->
 
-<!-- =========================================
-     END OF PART 1C
+<section class="section section-light" id="process">
 
-     >>> PASTE PART 1D BELOW THIS LINE <<<
-========================================= -->
+    <div class="section-heading">
+        <span class="section-label">HOW ATCRS WORKS</span>
 
-    <!-- =========================================
-     HOW IT WORKS SECTION
-========================================= -->
+        <h2>
+            From Request to
+            <span>Credential Release</span>
+        </h2>
 
-<section class="section light-section" id="how-it-works">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>
-                <i class="fa-solid fa-route"></i>
-                HOW IT WORKS
-            </span>
-
-            <h2>
-                Simple and Organized Process
-            </h2>
-
-            <p>
-                From submitting a request to receiving
-                your credential, ATCRS keeps the process
-                organized and easy to follow.
-            </p>
-
-        </div>
+        <p>
+            ATCRS connects applicants, students, alumni, the Registrar,
+            and authorized verifiers through one organized credential
+            processing workflow.
+        </p>
+    </div>
 
 
-        <div class="steps-grid">
+    <!-- ================= PROCESS TIMELINE ================= -->
 
+    <div class="process-container">
 
-            <!-- STEP 1 -->
+        <!-- STEP 1 -->
 
-            <div class="step-card">
+        <div class="process-step">
 
-                <div class="step-number">
-                    01
-                </div>
+            <div class="process-number">
+                01
+            </div>
 
+            <div class="process-icon">
                 <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    APPLICANT / STUDENT / ALUMNI
+                </span>
 
                 <h3>
                     Create an Account
                 </h3>
 
                 <p>
-                    Applicants, students, and alumni
-                    create an authorized ATCRS account
-                    to access document services.
-                </p>
-
-            </div>
-
-
-            <!-- STEP 2 -->
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    02
-                </div>
-
-                <i class="fa-solid fa-file-pen"></i>
-
-                <h3>
-                    Submit Request
-                </h3>
-
-                <p>
-                    Select the academic document you
-                    need and provide the required
-                    information and purpose.
-                </p>
-
-            </div>
-
-
-            <!-- STEP 3 -->
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    03
-                </div>
-
-                <i class="fa-solid fa-user-shield"></i>
-
-                <h3>
-                    Verification & Processing
-                </h3>
-
-                <p>
-                    Authorized DLSJBC personnel review
-                    the request, records, clearance,
-                    and applicable requirements.
-                </p>
-
-            </div>
-
-
-            <!-- STEP 4 -->
-
-            <div class="step-card">
-
-                <div class="step-number">
-                    04
-                </div>
-
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-
-                <h3>
-                    Receive Credential
-                </h3>
-
-                <p>
-                    Once approved and released, the
-                    available credential can be retrieved
-                    through the user's account.
+                    The user creates an ATCRS account using their
+                    required school information and securely logs
+                    into the system.
                 </p>
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <!-- STEP 2 -->
 
+        <div class="process-step">
 
-<!-- =========================================
-     END OF PART 1D
-
-     >>> PASTE PART 1E BELOW THIS LINE <<<
-========================================= -->
-
-    <!-- =========================================
-     DOCUMENTS SECTION
-========================================= -->
-
-<section class="section" id="documents">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>
-                <i class="fa-solid fa-folder-open"></i>
-                DOCUMENTS
-            </span>
-
-            <h2>
-                Academic Credentials
-            </h2>
-
-            <p>
-                Request applicable academic documents
-                through your authenticated ATCRS account.
-            </p>
-
-        </div>
-
-
-        <div class="documents-grid">
-
-
-            <!-- DOCUMENT 1 -->
-
-            <div class="document-card">
-
-                <i class="fa-solid fa-file-lines"></i>
-
-                <h3>
-                    Transcript of Records
-                </h3>
-
-                <p>
-                    Official academic record containing
-                    the student's authorized academic
-                    information and coursework.
-                </p>
-
+            <div class="process-number">
+                02
             </div>
 
-
-            <!-- DOCUMENT 2 -->
-
-            <div class="document-card">
-
-                <i class="fa-solid fa-scroll"></i>
-
-                <h3>
-                    Diploma
-                </h3>
-
-                <p>
-                    Academic credential issued upon
-                    completion of the applicable
-                    educational program.
-                </p>
-
-            </div>
-
-
-            <!-- DOCUMENT 3 -->
-
-            <div class="document-card">
-
-                <i class="fa-solid fa-award"></i>
-
-                <h3>
-                    Certificate of Graduation
-                </h3>
-
-                <p>
-                    Official certification recognizing
-                    completion of the applicable
-                    academic requirements.
-                </p>
-
-            </div>
-
-
-            <!-- DOCUMENT 4 -->
-
-            <div class="document-card">
-
-                <i class="fa-solid fa-file-circle-check"></i>
-
-                <h3>
-                    Certificate of Enrollment
-                </h3>
-
-                <p>
-                    Official document confirming
-                    enrollment information when
-                    applicable.
-                </p>
-
-            </div>
-
-
-            <!-- DOCUMENT 5 -->
-
-            <div class="document-card">
-
-                <i class="fa-solid fa-user-check"></i>
-
-                <h3>
-                    Certificate of Good Moral
-                </h3>
-
-                <p>
-                    Certificate issued according to
-                    applicable institutional policies
-                    and requirements.
-                </p>
-
-            </div>
-
-
-            <!-- DOCUMENT 6 -->
-
-            <div class="document-card">
-
+            <div class="process-icon">
                 <i class="fa-solid fa-file-circle-plus"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    APPLICANT / STUDENT / ALUMNI
+                </span>
 
                 <h3>
-                    Other Credentials
+                    Submit Document Request
                 </h3>
 
                 <p>
-                    Other authorized academic documents
-                    that may be available through
-                    the DLSJBC credential service.
+                    The user selects the academic document needed,
+                    provides the purpose of the request, chooses
+                    the delivery method, and submits the request.
                 </p>
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <!-- STEP 3 -->
 
+        <div class="process-step">
 
-<!-- =========================================
-     END OF PART 1E
+            <div class="process-number">
+                03
+            </div>
 
-     >>> PASTE PART 1F BELOW THIS LINE <<<
-========================================= -->
+            <div class="process-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
 
-    <!-- =========================================
-     CREDENTIAL VERIFICATION SECTION
-========================================= -->
+            <div class="process-content">
 
-<section class="verify-section" id="verify">
+                <span class="process-role">
+                    REGISTRAR
+                </span>
 
-    <div class="container verify-container">
+                <h3>
+                    Verify Student Record
+                </h3>
 
+                <p>
+                    The Registrar reviews the request and checks
+                    the applicant's academic record and account
+                    information before processing the request.
+                </p>
 
-        <div class="verify-text">
-
-            <span>
-                <i class="fa-solid fa-shield-halved"></i>
-                CREDENTIAL VERIFICATION
-            </span>
-
-            <h2>
-                Verify an
-                <strong>Academic Credential</strong>
-            </h2>
-
-            <p>
-                Use the official credential information
-                provided by the document holder to
-                check the validity of an issued
-                academic credential.
-            </p>
-
-            <p>
-                Verification access is intended for
-                authorized verification purposes.
-            </p>
+            </div>
 
         </div>
 
 
-        <div class="verify-box">
+        <!-- STEP 4 -->
 
-            <form id="verifyForm">
+        <div class="process-step">
 
-                <label for="credentialId">
-                    Credential ID
-                </label>
+            <div class="process-number">
+                04
+            </div>
 
-                <div class="input-group">
+            <div class="process-icon">
+                <i class="fa-solid fa-clipboard-check"></i>
+            </div>
 
-                    <i class="fa-solid fa-qrcode"></i>
+            <div class="process-content">
 
-                    <input
-                        type="text"
-                        id="credentialId"
-                        name="credentialId"
-                        placeholder="Enter Credential ID"
-                        required
-                    >
+                <span class="process-role">
+                    REGISTRAR
+                </span>
 
-                </div>
+                <h3>
+                    Clearance Verification
+                </h3>
 
-                <button
-                    type="submit"
-                    class="btn btn-green">
+                <p>
+                    Required clearance information is reviewed
+                    by the Registrar. Requests with complete
+                    requirements may proceed to the next stage.
+                </p>
 
-                    <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+        </div>
+
+
+        <!-- STEP 5 -->
+
+        <div class="process-step">
+
+            <div class="process-number">
+                05
+            </div>
+
+            <div class="process-icon">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    APPLICANT + REGISTRAR
+                </span>
+
+                <h3>
+                    Payment Processing
+                </h3>
+
+                <p>
+                    Applicable document fees are recorded and
+                    processed. The Registrar verifies the payment
+                    status before the credential is prepared.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 6 -->
+
+        <div class="process-step">
+
+            <div class="process-number">
+                06
+            </div>
+
+            <div class="process-icon">
+                <i class="fa-solid fa-file-signature"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    REGISTRAR
+                </span>
+
+                <h3>
+                    Process Credential
+                </h3>
+
+                <p>
+                    The Registrar prepares the requested academic
+                    credential and updates the request status
+                    through the administrative dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 7 -->
+
+        <div class="process-step">
+
+            <div class="process-number">
+                07
+            </div>
+
+            <div class="process-icon">
+                <i class="fa-solid fa-certificate"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    ATCRS
+                </span>
+
+                <h3>
+                    Credential Ready for Release
+                </h3>
+
+                <p>
+                    Once processing is completed, the credential
+                    becomes available for authorized release or
+                    retrieval through the user's account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 8 -->
+
+        <div class="process-step">
+
+            <div class="process-number">
+                08
+            </div>
+
+            <div class="process-icon">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+
+            <div class="process-content">
+
+                <span class="process-role">
+                    AUTHORIZED VERIFIER
+                </span>
+
+                <h3>
                     Verify Credential
+                </h3>
 
-                </button>
-
-            </form>
-
-
-            <div
-                id="verificationResult"
-                class="login-message">
+                <p>
+                    Authorized organizations can verify a released
+                    credential using the appropriate credential
+                    verification process.
+                </p>
 
             </div>
 
@@ -696,120 +908,66 @@
 
     </div>
 
-</section>
 
+    <!-- ================= WORKFLOW SUMMARY ================= -->
 
-<!-- =========================================
-     END OF PART 1F
+    <div class="workflow-summary">
 
-     >>> PASTE PART 1G BELOW THIS LINE <<<
-========================================= -->
+        <div class="workflow-title">
 
-    <!-- =========================================
-     USER ACCESS SECTION
-========================================= -->
-
-<section class="section light-section" id="roles">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>
-                <i class="fa-solid fa-users"></i>
-                USER ACCESS
+            <span class="section-label">
+                COMPLETE WORKFLOW
             </span>
 
-            <h2>
-                Designed for DLSJBC Credential Services
-            </h2>
+            <h3>
+                Applicant → Registrar → Verifier
+            </h3>
 
             <p>
-                ATCRS provides appropriate services
-                according to the user's authorized access.
+                Every request follows a controlled process so that
+                the status of an academic document can be monitored
+                from submission until verification.
             </p>
 
         </div>
 
 
-        <div class="roles-grid">
+        <div class="workflow-flow">
 
-
-            <!-- APPLICANT -->
-
-            <div class="role-card">
-
-                <div class="role-icon">
-                    <i class="fa-solid fa-user-plus"></i>
-                </div>
-
-                <h3>
-                    Applicant
-                </h3>
-
-                <p>
-                    Access applicable credential and
-                    document services through an
-                    authorized ATCRS account.
-                </p>
-
-                <a href="login.html">
-                    Access Account
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
+            <div class="workflow-box">
+                <i class="fa-solid fa-user"></i>
+                <strong>Applicant</strong>
+                <span>Request</span>
             </div>
 
-
-            <!-- STUDENT -->
-
-            <div class="role-card">
-
-                <div class="role-icon">
-                    <i class="fa-solid fa-user-graduate"></i>
-                </div>
-
-                <h3>
-                    Student
-                </h3>
-
-                <p>
-                    Request applicable academic
-                    credentials and monitor requests
-                    through a personal account.
-                </p>
-
-                <a href="login.html">
-                    Access Account
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
+            <div class="workflow-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
             </div>
 
+            <div class="workflow-box">
+                <i class="fa-solid fa-building-columns"></i>
+                <strong>Registrar</strong>
+                <span>Process</span>
+            </div>
 
-            <!-- ALUMNI -->
+            <div class="workflow-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
 
-            <div class="role-card">
+            <div class="workflow-box">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <strong>Credential</strong>
+                <span>Release</span>
+            </div>
 
-                <div class="role-icon">
-                    <i class="fa-solid fa-user-tie"></i>
-                </div>
+            <div class="workflow-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
 
-                <h3>
-                    Alumni
-                </h3>
-
-                <p>
-                    Request and retrieve available
-                    academic credentials through an
-                    authorized alumni account.
-                </p>
-
-                <a href="login.html">
-                    Access Account
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
+            <div class="workflow-box">
+                <i class="fa-solid fa-qrcode"></i>
+                <strong>Verifier</strong>
+                <span>Verify</span>
             </div>
 
         </div>
@@ -818,182 +976,604 @@
 
 </section>
 
+<!-- ==================================================
+     ACCESS / USER ROLES
+================================================== -->
 
-<!-- =========================================
-     END OF PART 1G
+<section class="section" id="access">
 
-     >>> PASTE PART 1H BELOW THIS LINE <<<
-========================================= -->
+    <div class="section-heading">
 
-    <!-- =========================================
-     CALL TO ACTION
-========================================= -->
-
-<section class="cta-section">
-
-    <div class="container">
+        <span class="section-label">
+            SYSTEM ACCESS
+        </span>
 
         <h2>
-            Need an Academic Credential?
+            One System,
+            <span>Different Access Levels</span>
         </h2>
 
         <p>
-            Sign in to your ATCRS account to submit
-            and manage your document request.
+            ATCRS provides role-based access so that users only
+            see the features and information appropriate to their
+            responsibilities.
         </p>
 
-        <a href="login.html"
-           class="btn btn-gold">
+    </div>
 
-            <i class="fa-solid fa-right-to-bracket"></i>
-            Sign In to ATCRS
 
-        </a>
+    <!-- ================= ACCESS CARDS ================= -->
+
+    <div class="access-grid">
+
+
+        <!-- ================= APPLICANT ================= -->
+
+        <article class="access-card">
+
+            <div class="access-card-top">
+
+                <div class="access-icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+
+                <span class="access-badge">
+                    PUBLIC USER
+                </span>
+
+            </div>
+
+            <h3>
+                Applicant / Student / Alumni
+            </h3>
+
+            <p>
+                Access your personal ATCRS account to request,
+                monitor, and retrieve authorized academic
+                documents.
+            </p>
+
+            <ul class="access-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Create an account
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Submit document requests
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Track request status
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    View payment status
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Retrieve released credentials
+                </li>
+
+            </ul>
+
+            <a href="login.html" class="access-button">
+                User Login
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </article>
+
+
+        <!-- ================= REGISTRAR ================= -->
+
+        <article class="access-card access-card-featured">
+
+            <div class="access-card-top">
+
+                <div class="access-icon">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+
+                <span class="access-badge">
+                    PRIVATE ACCESS
+                </span>
+
+            </div>
+
+            <h3>
+                Registrar / Administrator
+            </h3>
+
+            <p>
+                Manage student records, document requests,
+                clearance, payments, credential processing,
+                and academic archives through the private
+                administrative dashboard.
+            </p>
+
+            <ul class="access-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Manage student records
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Review document requests
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Manage clearance
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Verify payment status
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Process and release credentials
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Manage academic archives
+                </li>
+
+            </ul>
+
+            <a href="registrar/login.html" class="access-button">
+                Registrar Login
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </article>
+
+
+        <!-- ================= VERIFIER ================= -->
+
+        <article class="access-card">
+
+            <div class="access-card-top">
+
+                <div class="access-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <span class="access-badge">
+                    AUTHORIZED ACCESS
+                </span>
+
+            </div>
+
+            <h3>
+                Credential Verifier
+            </h3>
+
+            <p>
+                Authorized organizations can verify the authenticity
+                and status of credentials issued through the ATCRS
+                verification system.
+            </p>
+
+            <ul class="access-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Verify credential information
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Check credential status
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Review verification results
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Submit authorized requests
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    View verification history
+                </li>
+
+            </ul>
+
+            <a href="verifier/login.html" class="access-button">
+                Verifier Login
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </article>
+
+    </div>
+
+
+    <!-- ================= SECURITY NOTICE ================= -->
+
+    <div class="access-security">
+
+        <div class="security-icon">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div class="security-content">
+
+            <span class="section-label">
+                ACCESS CONTROL
+            </span>
+
+            <h3>
+                Protected Administrative Areas
+            </h3>
+
+            <p>
+                Registrar and Verifier dashboards are separate
+                from the public user area. Public users cannot
+                directly access administrative pages through the
+                normal ATCRS interface.
+            </p>
+
+        </div>
+
+        <div class="security-status">
+
+            <div>
+                <i class="fa-solid fa-circle-check"></i>
+                Role-Based Access
+            </div>
+
+            <div>
+                <i class="fa-solid fa-circle-check"></i>
+                Private Dashboards
+            </div>
+
+            <div>
+                <i class="fa-solid fa-circle-check"></i>
+                Controlled Records
+            </div>
+
+        </div>
+
+    </div>
+
+        </section>
+
+<!-- ==================================================
+     CONTACT SECTION
+================================================== -->
+
+<section class="section section-light" id="contact">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            CONTACT & SUPPORT
+        </span>
+
+        <h2>
+            Need Assistance with
+            <span>ATCRS?</span>
+        </h2>
+
+        <p>
+            For questions regarding academic records, document
+            requests, credential processing, or verification,
+            please contact the appropriate DLSJBC office.
+        </p>
+
+    </div>
+
+
+    <!-- ================= CONTACT GRID ================= -->
+
+    <div class="contact-grid">
+
+
+        <!-- REGISTRAR -->
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+
+            <div class="contact-content">
+
+                <span class="contact-label">
+                    ACADEMIC RECORDS
+                </span>
+
+                <h3>
+                    Registrar's Office
+                </h3>
+
+                <p>
+                    For transcript requests, academic records,
+                    clearances, credentials, and other registrar-
+                    related concerns.
+                </p>
+
+                <a href="mailto:registrar@dlsjbc.edu.ph">
+                    <i class="fa-solid fa-envelope"></i>
+                    registrar@dlsjbc.edu.ph
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCHOOL -->
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                <i class="fa-solid fa-school"></i>
+            </div>
+
+            <div class="contact-content">
+
+                <span class="contact-label">
+                    SCHOOL
+                </span>
+
+                <h3>
+                    De La Salle John Bosco College
+                </h3>
+
+                <p>
+                    ATCRS is designed to support the academic
+                    credential and records processing needs of
+                    the DLSJBC community.
+                </p>
+
+                <a href="https://www.dlsjbc.edu.ph/" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-globe"></i>
+                    Visit DLSJBC Website
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- VERIFICATION -->
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div class="contact-content">
+
+                <span class="contact-label">
+                    CREDENTIAL VERIFICATION
+                </span>
+
+                <h3>
+                    Authorized Verifiers
+                </h3>
+
+                <p>
+                    Organizations requiring credential verification
+                    should use the authorized verification process
+                    provided by ATCRS.
+                </p>
+
+                <a href="verifier/login.html">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Verifier Access
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SCHOOL INFORMATION ================= -->
+
+    <div class="school-information">
+
+        <div class="school-info-logo">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="De La Salle John Bosco College Logo"
+            >
+
+        </div>
+
+        <div class="school-info-content">
+
+            <span class="section-label">
+                DLSJBC
+            </span>
+
+            <h3>
+                De La Salle John Bosco College
+            </h3>
+
+            <p>
+                Bislig City, Surigao del Sur, Philippines
+            </p>
+
+            <p class="school-info-note">
+                Automated Transcript and Credential Retrieval System
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
 
-
-<!-- =========================================
+<!-- ==================================================
      FOOTER
-========================================= -->
+================================================== -->
 
-<footer class="footer">
+<footer class="site-footer">
 
-    <div class="container footer-content">
+    <div class="footer-container">
 
+
+        <!-- FOOTER BRAND -->
 
         <div class="footer-brand">
 
-            <div class="footer-logo">
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+                class="footer-logo"
+            >
 
-                <img
-                    src="images/dlsjbc-logo.png"
-                    alt="DLSJBC Logo">
+            <div>
 
-                <div>
+                <h3>
+                    ATCRS
+                </h3>
 
-                    <strong>
-                        ATCRS
-                    </strong>
-
-                    <span>
-                        De La Salle John Bosco College
-                    </span>
-
-                </div>
+                <p>
+                    Automated Transcript and Credential
+                    Retrieval System
+                </p>
 
             </div>
-
-            <p>
-                Automated Transcript and Credential
-                Retrieval System designed to provide
-                convenient digital access to authorized
-                academic credential services.
-            </p>
 
         </div>
 
 
+        <!-- FOOTER LINKS -->
+
         <div class="footer-links">
 
-            <h3>
+            <h4>
                 Quick Links
-            </h3>
+            </h4>
 
-            <a href="index.html">
-                Home
+            <a href="#about">
+                About
             </a>
 
             <a href="#services">
                 Services
             </a>
 
-            <a href="#how-it-works">
-                How It Works
+            <a href="#process">
+                Process
             </a>
 
-            <a href="#documents">
-                Documents
+            <a href="#access">
+                Access
             </a>
 
-            <a href="#verify">
-                Verify Credential
-            </a>
-
-            <a href="login.html">
-                Sign In
+            <a href="#contact">
+                Contact
             </a>
 
         </div>
 
 
+        <!-- FOOTER ACCESS -->
+
         <div class="footer-links">
 
-    <h3>
-        Account Services
-    </h3>
+            <h4>
+                System Access
+            </h4>
 
-    <a href="login.html">
-        Applicant Account
-    </a>
+            <a href="login.html">
+                User Login
+            </a>
 
-    <a href="login.html">
-        Student Account
-    </a>
+            <a href="registrar/login.html">
+                Registrar Login
+            </a>
 
-    <a href="login.html">
-        Alumni Account
-    </a>
+            <a href="verifier/login.html">
+                Verifier Login
+            </a>
 
-    <!-- PRIVATE REGISTRAR LOGIN -->
-    <a href="registrar/login.html">
-        🔐 Registrar Login
-    </a>
+        </div>
+
+
+        <!-- FOOTER INFORMATION -->
+
+        <div class="footer-links">
+
+            <h4>
+                System
+            </h4>
+
+            <span>
+                Secure Records
+            </span>
+
+            <span>
+                Credential Processing
+            </span>
+
+            <span>
+                Document Tracking
+            </span>
+
+            <span>
+                Credential Verification
+            </span>
 
         </div>
 
     </div>
 
 
+    <!-- ================= FOOTER BOTTOM ================= -->
+
     <div class="footer-bottom">
 
-        <div class="container">
+        <p>
+            © <span id="currentYear"></span>
+            De La Salle John Bosco College.
+            All Rights Reserved.
+        </p>
 
-            <span>
-                © 2026 De La Salle John Bosco College.
-                All Rights Reserved.
-            </span>
-
-            <span>
-                ATCRS — Automated Transcript and
-                Credential Retrieval System
-            </span>
-
-        </div>
+        <p>
+            ATCRS — Academic Credential Management System
+        </p>
 
     </div>
 
 </footer>
 
 
+<!-- ==================================================
+     END OF INDEX.HTML
+================================================== -->
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<script>
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+</script>
 
 <script src="js/script.js"></script>
 
-
 </body>
-
 </html>
-
-
-<!-- =========================================
-     END OF PART 1
-========================================= -->
-
-    
