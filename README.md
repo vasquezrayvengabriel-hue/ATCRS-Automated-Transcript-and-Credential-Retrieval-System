@@ -1,1 +1,1 @@
-# ATCRS-Automated-Transcript--and-Credential-Retrieval-System
+# ATCRS-Automated-Transcript-and-Credential-Retrieval-System
