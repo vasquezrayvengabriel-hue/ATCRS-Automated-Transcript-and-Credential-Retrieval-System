@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clearance Management | ATCRS</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body class="registrar-clearance-page">
+
+<!-- ================= HEADER ================= -->
+
+<header class="dashboard-header">
+
+    <div class="dashboard-brand">
+
+        <img
+            src="../images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+            class="dashboard-logo"
+        >
+
+        <div>
+
+            <h1>ATCRS</h1>
+
+            <p>
+                Automated Transcript and Credential Retrieval System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-user">
+
+        <div>
+
+            <strong id="registrarName">
+                DLSJBC Registrar
+            </strong>
+
+            <span>
+                Registrar
+            </span>
+
+        </div>
+
+        <button
+            type="button"
+            id="registrarLogoutButton"
+            class="logout-button"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= LAYOUT ================= -->
+
+<div class="dashboard-layout">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="dashboard-sidebar">
+
+        <div class="sidebar-title">
+            Registrar Panel
+        </div>
+
+
+        <nav class="dashboard-nav">
+
+            <a
+                href="dashboard.html"
+                class="dashboard-nav-link"
+            >
+                📊
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="requests.html"
+                class="dashboard-nav-link"
+            >
+                📄
+                <span>Document Requests</span>
+            </a>
+
+
+            <a
+                href="students.html"
+                class="dashboard-nav-link"
+            >
+                👨‍🎓
+                <span>Student Records</span>
+            </a>
+
+
+            <a
+                href="clearance.html"
+                class="dashboard-nav-link active"
+            >
+                ✅
+                <span>Clearance</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="dashboard-nav-link"
+            >
+                💳
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="credentials.html"
+                class="dashboard-nav-link"
+            >
+                📜
+                <span>Credentials</span>
+            </a>
+
+
+            <a
+                href="archives.html"
+                class="dashboard-nav-link"
+            >
+                🗄️
+                <span>Archives</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-security">
+
+            <strong>🔒 Private Area</strong>
+
+            <p>
+                Registrar access only.
+                Student records and clearance
+                information are protected.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="dashboard-main">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="dashboard-page-header">
+
+            <div>
+
+                <span class="dashboard-label">
+                    REGISTRAR MANAGEMENT
+                </span>
+
+                <h2>
+                    Clearance Management
+                </h2>
+
+                <p>
+                    Review and update student clearance
+                    before processing academic document requests.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="dashboard-stats-grid">
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Requests
+                    </span>
+
+                    <strong id="clearanceTotalRequests">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending Clearance
+                    </span>
+
+                    <strong id="clearancePending">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Cleared
+                    </span>
+
+                    <strong id="clearanceCleared">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <span>
+                        Clearance Required
+                    </span>
+
+                    <strong id="clearanceRequired">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CLEARANCE TABLE ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <h3>
+                            Document Request Clearance
+                        </h3>
+
+                        <p>
+                            Review the clearance status of
+                            students with document requests.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="dashboard-table clearance-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Request ID
+                                </th>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Document
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Student Status
+                                </th>
+
+                                <th>
+                                    Clearance
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="clearanceRequestTable">
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="empty-table"
+                                >
+                                    Loading clearance records...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WORKFLOW ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <h3>
+                            Clearance Workflow
+                        </h3>
+
+                        <p>
+                            Clearance must be completed before
+                            document processing continues.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="clearance-workflow">
+
+
+                    <div class="clearance-workflow-step">
+
+                        <span class="clearance-step-number">
+                            1
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Student Verification
+                            </strong>
+
+                            <p>
+                                Confirm the student's record
+                                and identity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="clearance-workflow-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="clearance-workflow-step">
+
+                        <span class="clearance-step-number">
+                            2
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Clearance Review
+                            </strong>
+
+                            <p>
+                                Check whether the student has
+                                pending academic or administrative
+                                obligations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="clearance-workflow-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="clearance-workflow-step">
+
+                        <span class="clearance-step-number">
+                            3
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Payment
+                            </strong>
+
+                            <p>
+                                Once cleared, the request may
+                                proceed to the payment stage.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="clearance-workflow-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="clearance-workflow-step">
+
+                        <span class="clearance-step-number">
+                            4
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Processing
+                            </strong>
+
+                            <p>
+                                The Registrar may continue
+                                processing the document request.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATUS GUIDE ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <h3>
+                            Clearance Status Guide
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-guide-grid">
+
+
+                    <div class="status-guide-card">
+
+                        <span class="status-badge status-pending">
+                            Pending
+                        </span>
+
+                        <p>
+                            Clearance has not yet been reviewed.
+                        </p>
+
+                    </div>
+
+
+                    <div class="status-guide-card">
+
+                        <span class="status-badge status-processing">
+                            Under Review
+                        </span>
+
+                        <p>
+                            The Registrar is checking
+                            the student's clearance.
+                        </p>
+
+                    </div>
+
+
+                    <div class="status-guide-card">
+
+                        <span class="status-badge status-ready">
+                            Cleared
+                        </span>
+
+                        <p>
+                            The student is cleared and the
+                            request may continue.
+                        </p>
+
+                    </div>
+
+
+                    <div class="status-guide-card">
+
+                        <span class="status-badge status-rejected">
+                            Not Cleared
+                        </span>
+
+                        <p>
+                            The request cannot continue until
+                            the clearance issue is resolved.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SECURITY NOTICE ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="info-card clearance-security-card">
+
+                <div class="info-card-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Clearance Security
+                    </h3>
+
+                    <p>
+                        Clearance information is restricted to
+                        authorized Registrar personnel. Students
+                        and public users cannot directly modify
+                        their clearance status.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="dashboard-footer">
+
+    <p>
+        © 2026 De La Salle John Bosco College
+    </p>
+
+    <p>
+        ATCRS — Automated Transcript and Credential Retrieval System
+    </p>
+
+</footer>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+
+                          </html>
