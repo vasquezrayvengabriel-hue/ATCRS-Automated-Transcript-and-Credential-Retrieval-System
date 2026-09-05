@@ -8,758 +8,182 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="ATCRS Account Login - De La Salle John Bosco College">
+    <title>Account Login | ATCRS</title>
 
-    <title>Login | ATCRS - DLSJBC</title>
-
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 
+<body class="auth-page">
 
-<body class="login-page">
+<main class="auth-container">
 
+    <section class="auth-card">
 
-<!-- =========================================
-     LOGIN HEADER
-========================================= -->
+        <!-- LOGO -->
 
-<header class="login-header">
+        <div class="auth-logo">
 
-    <div class="container">
+            <img src="images/dlsjbc-logo.png"
+                 alt="DLSJBC Logo">
 
-        <a href="index.html" class="back-home">
-
-            <i class="fa-solid fa-arrow-left"></i>
-
-            Back to ATCRS
-
-        </a>
+        </div>
 
 
-        <a href="index.html" class="logo">
+        <!-- TITLE -->
 
-            <img
-                src="images/dlsjbc-logo.png"
-                alt="De La Salle John Bosco College Logo">
+        <div class="auth-heading">
 
-            <div class="logo-text">
-
-                <strong>ATCRS</strong>
-
-                <span>
-                    De La Salle John Bosco College
-                </span>
-
-            </div>
-
-        </a>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================
-     LOGIN MAIN
-========================================= -->
-
-<main class="login-main">
-
-    <div class="container login-container">
-
-
-        <div class="login-heading">
-
-            <span>
-                <i class="fa-solid fa-user-shield"></i>
-                SECURE ACCOUNT ACCESS
-            </span>
-
-            <h1>
-                Welcome to <strong>ATCRS</strong>
-            </h1>
+            <h1>ATCRS Login</h1>
 
             <p>
-                Sign in to access your academic
-                credential services.
+                Automated Transcript and Credential
+                Retrieval System
             </p>
 
         </div>
 
 
-<!-- =========================================
-     END OF PART 2A
+        <!-- LOGIN FORM -->
 
-     >>> PASTE PART 2B BELOW THIS LINE <<<
-========================================= -->
+        <form id="loginForm">
 
-        <!-- =========================================
-     ACCOUNT TYPE SELECTION
-========================================= -->
+            <div class="form-group">
 
-<div class="role-selector">
+                <label for="loginStudentId">
 
-    <button
-        type="button"
-        class="role-option active"
-        data-role="student">
+                    <i class="fas fa-id-card"></i>
 
-        <i class="fa-solid fa-user-graduate"></i>
+                    Student ID
 
-        <span>
-            Student
-        </span>
-
-    </button>
-
-
-    <button
-        type="button"
-        class="role-option"
-        data-role="applicant">
-
-        <i class="fa-solid fa-user-plus"></i>
-
-        <span>
-            Applicant
-        </span>
-
-    </button>
-
-
-    <button
-        type="button"
-        class="role-option"
-        data-role="alumni">
-
-        <i class="fa-solid fa-user-tie"></i>
-
-        <span>
-            Alumni
-        </span>
-
-    </button>
-
-</div>
-
-
-
-<!-- =========================================
-     END OF PART 2B
-
-     >>> PASTE PART 2C BELOW THIS LINE <<<
-========================================= -->
-
-        <!-- =========================================
-     STUDENT LOGIN
-========================================= -->
-
-<div
-    class="login-card login-form active"
-    id="student-form">
-
-
-    <div class="form-title">
-
-        <div class="form-icon">
-
-            <i class="fa-solid fa-user-graduate"></i>
-
-        </div>
-
-        <div>
-
-            <h2>
-                Student Login
-            </h2>
-
-            <p>
-                Access your ATCRS student account.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <form id="studentLoginForm">
-
-
-        <!-- STUDENT ID -->
-
-        <div class="form-group">
-
-            <label for="studentId">
-
-                Student ID
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-id-card"></i>
+                </label>
 
                 <input
                     type="text"
-                    id="studentId"
-                    name="studentId"
+                    id="loginStudentId"
                     placeholder="Enter 7-digit Student ID"
                     maxlength="7"
-                    minlength="7"
-                    pattern="[0-9]{7}"
                     inputmode="numeric"
-                    autocomplete="username"
-                    required>
+                    required
+                >
 
             </div>
 
 
-            <small>
-                Student ID must contain exactly 7 digits.
-            </small>
+            <div class="form-group">
 
-        </div>
+                <label for="loginPassword">
 
+                    <i class="fas fa-lock"></i>
 
+                    Password
 
-        <!-- PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="studentPassword">
-
-                Password
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
+                </label>
 
                 <input
                     type="password"
-                    id="studentPassword"
-                    name="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required>
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="studentPassword"
-                    aria-label="Show password">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
+                    id="loginPassword"
+                    placeholder="Enter password"
+                    required
+                >
 
             </div>
 
-        </div>
+
+            <div
+                id="loginMessage"
+                class="form-message">
+            </div>
 
 
+            <button
+                type="submit"
+                class="btn-primary auth-submit">
 
-        <!-- OPTIONS -->
+                <i class="fas fa-sign-in-alt"></i>
 
-        <div class="form-options">
+                Sign In
 
-            <label>
+            </button>
 
-                <input
-                    type="checkbox"
-                    name="remember">
-
-                Remember me
-
-            </label>
+        </form>
 
 
-            <a href="#">
-                Forgot Password?
+        <!-- CREATE ACCOUNT -->
+
+        <div class="auth-register">
+
+            <p>
+                Don't have an account?
+            </p>
+
+            <a href="#register"
+               id="showRegisterButton">
+
+                Create an Account
+
             </a>
 
         </div>
 
+    </section>
 
 
-        <!-- LOGIN BUTTON -->
+    <!-- =========================================
+         REGISTRATION CARD
+         ========================================= -->
 
-        <button
-            type="submit"
-            class="btn btn-green login-submit">
+    <section
+        class="auth-card"
+        id="registerCard"
+        style="display:none;">
 
-            <i class="fa-solid fa-right-to-bracket"></i>
+        <div class="auth-heading">
 
-            Sign In
-
-        </button>
-
-
-        <div
-            class="login-message"
-            id="studentLoginMessage">
-
-        </div>
-
-    </form>
-
-
-    <div class="register-link">
-
-        Don't have an account?
-
-        <a href="#register">
-            Create an Account
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================
-     END OF PART 2C
-
-     >>> PASTE PART 2D BELOW THIS LINE <<<
-========================================= -->
-
-        <!-- =========================================
-     APPLICANT LOGIN
-========================================= -->
-
-<div
-    class="login-card login-form"
-    id="applicant-form">
-
-
-    <div class="form-title">
-
-        <div class="form-icon">
-
-            <i class="fa-solid fa-user-plus"></i>
-
-        </div>
-
-        <div>
-
-            <h2>
-                Applicant Login
-            </h2>
+            <h1>Create Account</h1>
 
             <p>
-                Access your ATCRS applicant account.
+                Create your ATCRS public account
             </p>
 
         </div>
 
-    </div>
 
+        <form id="registerForm">
 
-    <form id="applicantLoginForm">
 
+            <!-- ACCOUNT TYPE -->
 
-        <!-- APPLICANT ID -->
+            <div class="form-group">
 
-        <div class="form-group">
+                <label for="accountType">
 
-            <label for="applicantId">
+                    <i class="fas fa-user-tag"></i>
 
-                Applicant / Student ID
+                    Account Type
 
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-id-card"></i>
-
-                <input
-                    type="text"
-                    id="applicantId"
-                    name="applicantId"
-                    placeholder="Enter 7-digit ID"
-                    maxlength="7"
-                    minlength="7"
-                    pattern="[0-9]{7}"
-                    inputmode="numeric"
-                    autocomplete="username"
-                    required>
-
-            </div>
-
-
-            <small>
-                Enter your assigned 7-digit identification number.
-            </small>
-
-        </div>
-
-
-
-        <!-- PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="applicantPassword">
-
-                Password
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
-
-                <input
-                    type="password"
-                    id="applicantPassword"
-                    name="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required>
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="applicantPassword"
-                    aria-label="Show password">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- OPTIONS -->
-
-        <div class="form-options">
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="remember">
-
-                Remember me
-
-            </label>
-
-
-            <a href="#">
-                Forgot Password?
-            </a>
-
-        </div>
-
-
-
-        <!-- LOGIN -->
-
-        <button
-            type="submit"
-            class="btn btn-green login-submit">
-
-            <i class="fa-solid fa-right-to-bracket"></i>
-
-            Sign In
-
-        </button>
-
-
-        <div
-            class="login-message"
-            id="applicantLoginMessage">
-
-        </div>
-
-    </form>
-
-
-    <div class="register-link">
-
-        Don't have an account?
-
-        <a href="#register">
-            Create an Account
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================
-     END OF PART 2D
-
-     >>> PASTE PART 2E BELOW THIS LINE <<<
-========================================= -->
-
-        <!-- =========================================
-     ALUMNI LOGIN
-========================================= -->
-
-<div
-    class="login-card login-form"
-    id="alumni-form">
-
-
-    <div class="form-title">
-
-        <div class="form-icon">
-
-            <i class="fa-solid fa-user-tie"></i>
-
-        </div>
-
-        <div>
-
-            <h2>
-                Alumni Login
-            </h2>
-
-            <p>
-                Access your ATCRS alumni account.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <form id="alumniLoginForm">
-
-
-        <!-- ALUMNI ID -->
-
-        <div class="form-group">
-
-            <label for="alumniId">
-
-                Student ID
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-id-card"></i>
-
-                <input
-                    type="text"
-                    id="alumniId"
-                    name="alumniId"
-                    placeholder="Enter 7-digit Student ID"
-                    maxlength="7"
-                    minlength="7"
-                    pattern="[0-9]{7}"
-                    inputmode="numeric"
-                    autocomplete="username"
-                    required>
-
-            </div>
-
-
-            <small>
-                Student ID must contain exactly 7 digits.
-            </small>
-
-        </div>
-
-
-
-        <!-- PASSWORD -->
-
-        <div class="form-group">
-
-            <label for="alumniPassword">
-
-                Password
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
-
-                <input
-                    type="password"
-                    id="alumniPassword"
-                    name="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required>
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="alumniPassword"
-                    aria-label="Show password">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- OPTIONS -->
-
-        <div class="form-options">
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="remember">
-
-                Remember me
-
-            </label>
-
-
-            <a href="#">
-                Forgot Password?
-            </a>
-
-        </div>
-
-
-
-        <!-- LOGIN -->
-
-        <button
-            type="submit"
-            class="btn btn-green login-submit">
-
-            <i class="fa-solid fa-right-to-bracket"></i>
-
-            Sign In
-
-        </button>
-
-
-        <div
-            class="login-message"
-            id="alumniLoginMessage">
-
-        </div>
-
-    </form>
-
-
-    <div class="register-link">
-
-        Don't have an account?
-
-        <a href="#register">
-            Create an Account
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================
-     END OF PART 2E
-
-     >>> PASTE PART 2F BELOW THIS LINE <<<
-========================================= -->
-
-        <!-- =========================================
-     CREATE ACCOUNT SECTION
-========================================= -->
-
-<div
-    class="login-card registration-card"
-    id="register">
-
-
-    <div class="form-title">
-
-        <div class="form-icon">
-
-            <i class="fa-solid fa-user-plus"></i>
-
-        </div>
-
-        <div>
-
-            <h2>
-                Create ATCRS Account
-            </h2>
-
-            <p>
-                Register for access to academic
-                credential services.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <form id="registerForm">
-
-
-        <!-- ACCOUNT TYPE -->
-
-        <div class="form-group">
-
-            <label for="registerRole">
-
-                Account Type
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-users"></i>
+                </label>
 
                 <select
-                    id="registerRole"
-                    name="role"
+                    id="accountType"
                     required>
 
                     <option value="">
                         Select Account Type
                     </option>
 
-                    <option value="applicant">
+                    <option value="Applicant">
                         Applicant
                     </option>
 
-                    <option value="student">
+                    <option value="Student">
                         Student
                     </option>
 
-                    <option value="alumni">
+                    <option value="Alumni">
                         Alumni
                     </option>
 
@@ -767,374 +191,289 @@
 
             </div>
 
-        </div>
 
+            <!-- STUDENT ID -->
 
+            <div class="form-group">
 
-        <!-- STUDENT ID -->
+                <label for="registerStudentId">
 
-        <div class="form-group">
+                    <i class="fas fa-id-card"></i>
 
-            <label for="registerStudentId">
+                    Student ID
 
-                Student ID
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-id-card"></i>
+                </label>
 
                 <input
                     type="text"
                     id="registerStudentId"
-                    name="studentId"
                     placeholder="Enter 7-digit Student ID"
                     maxlength="7"
-                    minlength="7"
-                    pattern="[0-9]{7}"
                     inputmode="numeric"
-                    required>
+                    required
+                >
+
+                <small>
+                    Student ID must contain exactly 7 digits.
+                </small>
 
             </div>
 
 
-            <small>
-                Student ID must contain exactly 7 digits.
-            </small>
+            <!-- FULL NAME -->
 
-        </div>
+            <div class="form-group">
 
+                <label for="registerFullName">
 
+                    <i class="fas fa-user"></i>
 
-        <!-- FULL NAME -->
+                    Full Name
 
-        <div class="form-group">
-
-            <label for="registerFullName">
-
-                Full Name
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-user"></i>
+                </label>
 
                 <input
                     type="text"
                     id="registerFullName"
-                    name="fullName"
                     placeholder="Enter your full name"
                     maxlength="50"
-                    autocomplete="name"
-                    required>
+                    required
+                >
+
+                <small>
+                    Maximum 50 characters.
+                </small>
 
             </div>
 
 
-            <small>
-                Maximum of 50 characters.
-            </small>
+            <!-- EMAIL -->
 
-        </div>
+            <div class="form-group">
 
+                <label for="registerEmail">
 
+                    <i class="fas fa-envelope"></i>
 
-        <!-- EMAIL -->
+                    Email Address
 
-        <div class="form-group">
-
-            <label for="registerEmail">
-
-                Email Address
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-envelope"></i>
+                </label>
 
                 <input
                     type="email"
                     id="registerEmail"
-                    name="email"
-                    placeholder="Enter your email address"
-                    autocomplete="email"
-                    required>
+                    placeholder="Enter email address"
+                    required
+                >
 
             </div>
 
-        </div>
 
+            <!-- PASSWORD -->
 
+            <div class="form-group">
 
-        <!-- PASSWORD -->
+                <label for="registerPassword">
 
-        <div class="form-group">
+                    <i class="fas fa-lock"></i>
 
-            <label for="registerPassword">
+                    Password
 
-                Password
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
+                </label>
 
                 <input
                     type="password"
                     id="registerPassword"
-                    name="password"
                     placeholder="Create a password"
-                    autocomplete="new-password"
-                    required>
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="registerPassword"
-                    aria-label="Show password">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
+                    minlength="6"
+                    required
+                >
 
             </div>
 
-        </div>
 
+            <!-- CONFIRM PASSWORD -->
 
+            <div class="form-group">
 
-        <!-- CONFIRM PASSWORD -->
+                <label for="registerConfirmPassword">
 
-        <div class="form-group">
+                    <i class="fas fa-lock"></i>
 
-            <label for="confirmPassword">
+                    Confirm Password
 
-                Confirm Password
-
-            </label>
-
-
-            <div class="input-wrapper">
-
-                <i class="fa-solid fa-lock"></i>
+                </label>
 
                 <input
                     type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    placeholder="Confirm your password"
-                    autocomplete="new-password"
-                    required>
-
-
-                <button
-                    type="button"
-                    class="password-toggle"
-                    data-target="confirmPassword"
-                    aria-label="Show password">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </button>
+                    id="registerConfirmPassword"
+                    placeholder="Confirm password"
+                    minlength="6"
+                    required
+                >
 
             </div>
 
-        </div>
+
+            <div
+                id="registerMessage"
+                class="form-message">
+            </div>
 
 
+            <button
+                type="submit"
+                class="btn-primary auth-submit">
 
-        <!-- TERMS -->
+                <i class="fas fa-user-plus"></i>
+<!-- =========================================
+     TERMS OF USE
+     ========================================= -->
 
-        <div class="form-options">
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="terms"
-                    required>
-
-                I agree to the ATCRS terms and
-                applicable policies.
-
-            </label>
-
-        </div>
-<!-- TERMS OF USE -->
 <div class="terms-box">
 
-    <label class="terms-label">
+    <div class="terms-header">
 
-        <input type="checkbox" id="registerTerms" required>
+        <i class="fas fa-file-contract"></i>
+
+        <strong>
+            Terms of Use and Privacy Agreement
+        </strong>
+
+    </div>
+
+
+    <div class="terms-content">
+
+        <p>
+            By creating an ATCRS account, you acknowledge
+            and agree to the following terms:
+        </p>
+
+        <ol>
+
+            <li>
+                <strong>Account Information:</strong>
+                You agree to provide accurate and complete
+                information when creating your account.
+            </li>
+
+            <li>
+                <strong>Academic Records:</strong>
+                ATCRS is intended for authorized academic
+                credential and document requests.
+            </li>
+
+            <li>
+                <strong>Privacy:</strong>
+                Information submitted through ATCRS may be
+                used for account management, verification,
+                document processing, and related academic
+                services.
+            </li>
+
+            <li>
+                <strong>Account Security:</strong>
+                You are responsible for keeping your account
+                credentials secure and must not share your
+                password with another person.
+            </li>
+
+            <li>
+                <strong>Document Requests:</strong>
+                Requests must be submitted only for legitimate
+                academic, employment, educational, or other
+                authorized purposes.
+            </li>
+
+            <li>
+                <strong>Fees and Payments:</strong>
+                Applicable document processing fees may be
+                required before a requested document can be
+                released.
+            </li>
+
+            <li>
+                <strong>Digital Credentials:</strong>
+                Digital credentials and verification features
+                must not be altered, falsified, copied for
+                fraudulent purposes, or misrepresented.
+            </li>
+
+            <li>
+                <strong>Prohibited Use:</strong>
+                Unauthorized access, impersonation, falsification
+                of information, or attempts to access restricted
+                administrative areas are prohibited.
+            </li>
+
+            <li>
+                <strong>User Responsibility:</strong>
+                You agree to use ATCRS responsibly and only for
+                lawful and authorized purposes.
+            </li>
+
+        </ol>
+
+        <p class="terms-note">
+
+            These terms are provided for the ATCRS development
+            prototype and should be reviewed and approved by
+            the appropriate DLSJBC office before production use.
+
+        </p>
+
+    </div>
+
+
+    <!-- AGREEMENT -->
+
+    <label class="terms-agreement">
+
+        <input
+            type="checkbox"
+            id="termsAgreement"
+            required
+        >
 
         <span>
-            I agree to the
-            <a href="#termsOfUse" id="openTerms">Terms of Use</a>
-            and acknowledge that the information I provide is accurate.
+
+            I have read and agree to the
+            <strong>Terms of Use and Privacy Agreement.</strong>
+
         </span>
 
     </label>
 
 </div>
+                Create Account
 
-<!-- TERMS OF USE CONTENT -->
-<div class="terms-content" id="termsOfUse">
-
-    <h3>Terms of Use</h3>
-
-    <p>
-        By creating an ATCRS account, you agree to use the
-        Automated Transcript and Credential Retrieval System
-        responsibly and only for legitimate academic and
-        credential-related purposes.
-    </p>
-
-    <p>
-        You are responsible for keeping your account information
-        and password secure. Do not share your password or allow
-        unauthorized individuals to access your account.
-    </p>
-
-    <p>
-        The information submitted through ATCRS must be truthful,
-        accurate, and complete. Providing false or misleading
-        information may result in the rejection or suspension
-        of your request.
-    </p>
-
-    <p>
-        Academic documents and credentials obtained through the
-        system must not be altered, falsified, or misused.
-    </p>
-
-    <p>
-        By continuing, you acknowledge that you have read and
-        agreed to these Terms of Use.
-    </p>
-
-</div>
-
-        <!-- REGISTER BUTTON -->
-
-        <button
-            type="submit"
-            class="btn btn-green login-submit">
-
-            <i class="fa-solid fa-user-plus"></i>
-
-            Create Account
-
-        </button>
+            </button>
 
 
-        <div
-            class="login-message"
-            id="registerMessage">
+        </form>
+
+
+        <div class="auth-register">
+
+            <a href="#"
+               id="showLoginButton">
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back to Login
+
+            </a>
 
         </div>
 
-    </form>
-
-
-    <div class="register-link">
-
-        Already have an account?
-
-        <a href="login.html">
-            Sign In
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================
-     END OF PART 2F
-
-     >>> PASTE PART 2G BELOW THIS LINE <<<
-========================================= -->
-
-        <!-- =========================================
-     SECURITY NOTICE
-========================================= -->
-
-<div class="security-notice">
-
-    <i class="fa-solid fa-shield-halved"></i>
-
-    <div>
-
-        <strong>
-            Secure Account Access
-        </strong>
-
-        <p>
-            Your ATCRS account is intended only
-            for authorized use. Do not share your
-            password or account information with
-            other individuals.
-        </p>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================
-     LOGIN FOOTER
-========================================= -->
-
-<footer class="login-footer">
-
-    <div class="container">
-
-        <span>
-            © 2026 De La Salle John Bosco College.
-            All Rights Reserved.
-        </span>
-
-        <span>
-            ATCRS — Automated Transcript and
-            Credential Retrieval System
-        </span>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
-
-<script src="js/script.js"></script>
-
-
-</div>
+    </section>
 
 </main>
 
 
+<script src="js/script.js"></script>
+
 </body>
 
 </html>
-
-
-<!-- =========================================
-     END OF PART 2
-========================================= -->
-
-        
