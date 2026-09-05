@@ -5161,3 +5161,538 @@ img {
     }
 
     }
+/* =========================================================
+   PART 6E — REGISTRAR CLEARANCE MANAGEMENT
+   ========================================================= */
+
+.registrar-clearance-page {
+    background: #f5f7f6;
+}
+
+
+/* ================= PAGE HEADER ================= */
+
+.registrar-clearance-page .dashboard-page-header {
+    margin-bottom: 25px;
+}
+
+
+/* ================= CLEARANCE TABLE ================= */
+
+.clearance-table {
+    min-width: 1050px;
+}
+
+
+.clearance-table th {
+    white-space: nowrap;
+}
+
+
+.clearance-table td {
+    vertical-align: middle;
+}
+
+
+.clearance-request-id {
+    font-weight: 700;
+    color: #0b5d3f;
+}
+
+
+.clearance-student-name {
+    font-weight: 700;
+    color: #222;
+}
+
+
+.clearance-student-id {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #777;
+}
+
+
+.clearance-document {
+    font-weight: 600;
+    color: #333;
+}
+
+
+.clearance-view-button {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 7px;
+
+    background: #0b5d3f;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.clearance-view-button:hover {
+    background: #063927;
+    transform: translateY(-1px);
+}
+
+
+/* ================= CLEARANCE STATUS ================= */
+
+.clearance-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.clearance-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+
+.clearance-status-review {
+    background: #e8f0ff;
+    color: #2454a6;
+}
+
+
+.clearance-status-cleared {
+    background: #d8f3df;
+    color: #146c2e;
+}
+
+
+.clearance-status-not-cleared {
+    background: #f8d7da;
+    color: #842029;
+}
+
+
+/* ================= WORKFLOW ================= */
+
+.clearance-workflow {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.clearance-workflow-step {
+    flex: 1;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    background: #f8faf9;
+
+    border: 1px solid #e1e7e3;
+
+    border-radius: 12px;
+}
+
+
+.clearance-step-number {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #0b5d3f;
+    color: #ffffff;
+
+    font-weight: 800;
+}
+
+
+.clearance-workflow-step strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #063927;
+}
+
+
+.clearance-workflow-step p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #666;
+}
+
+
+.clearance-workflow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #d4af37;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+/* ================= STATUS GUIDE ================= */
+
+.clearance-security-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+
+.clearance-security-card .info-card-icon {
+    flex-shrink: 0;
+}
+
+
+/* ================= CLEARANCE MODAL ================= */
+
+.clearance-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.55);
+}
+
+
+.clearance-modal.active {
+    display: flex;
+}
+
+
+.clearance-modal-content {
+    width: 100%;
+    max-width: 760px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+.clearance-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 24px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+.clearance-modal-header h3 {
+    margin: 0;
+
+    color: #063927;
+}
+
+
+.clearance-modal-close {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    color: #333;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+.clearance-modal-close:hover {
+    background: #e2e2e2;
+}
+
+
+.clearance-modal-body {
+    padding: 24px;
+}
+
+
+.clearance-details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.clearance-detail-card {
+    padding: 15px;
+
+    border: 1px solid #e4e8e6;
+
+    border-radius: 10px;
+
+    background: #fafcfb;
+}
+
+
+.clearance-detail-card.full-width {
+    grid-column: 1 / -1;
+}
+
+
+.clearance-detail-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    color: #777;
+}
+
+
+.clearance-detail-value {
+    color: #222;
+
+    font-weight: 700;
+}
+
+
+/* ================= CLEARANCE CONTROL ================= */
+
+.clearance-control-box {
+    margin-top: 22px;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #f3f8f5;
+
+    border: 1px solid #d9e7df;
+}
+
+
+.clearance-control-box h4 {
+    margin-bottom: 14px;
+
+    color: #063927;
+}
+
+
+.clearance-control-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.clearance-control-group label {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #333;
+}
+
+
+.clearance-control-group select {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #cfd8d3;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #222;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.clearance-control-group select:focus {
+    border-color: #0b5d3f;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(11, 93, 63, 0.10);
+}
+
+
+/* ================= MODAL FOOTER ================= */
+
+.clearance-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 24px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+
+.clearance-save-button,
+.clearance-cancel-button {
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.clearance-save-button {
+    background: #0b5d3f;
+
+    color: #ffffff;
+}
+
+
+.clearance-save-button:hover {
+    background: #063927;
+}
+
+
+.clearance-cancel-button {
+    background: #eeeeee;
+
+    color: #333;
+}
+
+
+.clearance-cancel-button:hover {
+    background: #dddddd;
+}
+
+
+.clearance-modal-message {
+    width: 100%;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+
+    .clearance-workflow {
+        flex-direction: column;
+    }
+
+
+    .clearance-workflow-arrow {
+        transform: rotate(0deg);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .clearance-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .clearance-detail-card.full-width {
+        grid-column: auto;
+    }
+
+
+    .clearance-modal-content {
+        max-height: 95vh;
+    }
+
+
+    .clearance-modal-header,
+    .clearance-modal-body,
+    .clearance-modal-footer {
+        padding: 16px;
+    }
+
+
+    .clearance-modal-footer {
+        flex-direction: column;
+    }
+
+
+    .clearance-save-button,
+    .clearance-cancel-button {
+        width: 100%;
+    }
+
+}
