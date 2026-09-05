@@ -4339,4 +4339,325 @@ function initializeRegistrarDashboard() {
 /* ================= START REGISTRAR DASHBOARD ================= */
 
 initializeRegistrarDashboard();
+/* =========================================================
+   PART 6C-3 — REGISTRAR REQUEST MANAGEMENT JAVASCRIPT
+   ========================================================= */
+
+
+/* ================= REQUEST DATE ================= */
+
+function registrarRequestDate(dateValue) {
+
+    if (!dateValue) {
+        return "—";
+    }
+
+    const date = new Date(dateValue);
+
+    if (isNaN(date.getTime())) {
+        return "—";
+    }
+
+    return date.toLocaleDateString();
+}
+
+
+/* ================= REQUEST STATUS BADGE ================= */
+
+function registrarRequestStatusBadge(status) {
+
+    let statusClass = "status-pending";
+
+    if (
+        status === "Under Verification" ||
+        status === "Clearance Required" ||
+        status === "Payment Pending" ||
+        status === "Processing"
+    ) {
+        statusClass = "status-processing";
+    }
+
+    if (status === "Ready for Release") {
+        statusClass = "status-ready";
+    }
+
+    if (status === "Completed") {
+        statusClass = "status-completed";
+    }
+
+    if (status === "Rejected") {
+        statusClass = "status-rejected";
+    }
+
+    return `
+        <span class="status-badge ${statusClass}">
+            ${status || "Pending"}
+        </span>
+    `;
+}
+
+
+/* ================= PAYMENT BADGE ================= */
+
+function registrarPaymentStatusBadge(paymentStatus) {
+
+    if (!paymentStatus) {
+        paymentStatus = "Pending";
+    }
+
+    let statusClass = "status-pending";
+
+    if (
+        paymentStatus === "Paid" ||
+        paymentStatus === "Payment Verified" ||
+        paymentStatus === "Payment Waived"
+    ) {
+        statusClass = "status-completed";
+    }
+
+    if (
+        paymentStatus === "Payment Submitted"
+    ) {
+        statusClass = "status-processing";
+    }
+
+    if (
+        paymentStatus === "Payment Failed"
+    ) {
+        statusClass = "status-rejected";
+    }
+
+    return `
+        <span class="status-badge ${statusClass}">
+            ${paymentStatus}
+        </span>
+    `;
+}
+
+
+/* ================= UPDATE REQUEST ================= */
+
+function updateRegistrarRequest(requestId, changes) {
+
+    const requests = getRequests();
+
+    const index = requests.findIndex(
+        request =>
+            request.requestId === requestId
+    );
+
+    if (index === -1) {
+        return false;
+    }
+
+    requests[index] = {
+        ...requests[index],
+        ...changes,
+        updatedAt: new Date().toISOString()
+    };
+
+    saveRequests(requests);
+
+    return true;
+}
+
+
+/* ================= LOAD REQUEST MANAGEMENT ================= */
+
+function loadRegistrarRequestManagement() {
+
+    const tableBody =
+        document.getElementById(
+            "registrarRequestTable"
+        );
+
+    if (!tableBody) {
+        return;
+    }
+
+
+    const requests = getRequests();
+
+
+    /* ================= SORT ================= */
+
+    const sortedRequests = [...requests].sort(
+        (a, b) =>
+            new Date(b.dateRequested || 0) -
+            new Date(a.dateRequested || 0)
+    );
+
+
+    /* ================= STATISTICS ================= */
+
+    const total =
+        sortedRequests.length;
+
+    const pending =
+        sortedRequests.filter(
+            request =>
+                request.status === "Pending"
+        ).length;
+
+    const paymentPending =
+        sortedRequests.filter(
+            request =>
+                request.paymentStatus === "Pending" ||
+                request.paymentStatus === "Pending Payment"
+        ).length;
+
+    const processing =
+        sortedRequests.filter(
+            request =>
+                request.status === "Processing" ||
+                request.status === "Under Verification" ||
+                request.status === "Clearance Required" ||
+                request.status === "Payment Pending"
+        ).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "registrarRequestTotal"
+        );
+
+    const pendingElement =
+        document.getElementById(
+            "registrarRequestPending"
+        );
+
+    const paymentElement =
+        document.getElementById(
+            "registrarRequestPayment"
+        );
+
+    const processingElement =
+        document.getElementById(
+            "registrarRequestProcessing"
+        );
+
+
+    if (totalElement) {
+        totalElement.textContent = total;
+    }
+
+    if (pendingElement) {
+        pendingElement.textContent = pending;
+    }
+
+    if (paymentElement) {
+        paymentElement.textContent =
+            paymentPending;
+    }
+
+    if (processingElement) {
+        processingElement.textContent =
+            processing;
+    }
+
+
+    /* ================= EMPTY ================= */
+
+    if (!sortedRequests.length) {
+
+        tableBody.innerHTML = `
+            <tr>
+                <td
+                    colspan="7"
+                    class="empty-table"
+                >
+                    No document requests have been submitted yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    /* ================= RENDER TABLE ================= */
+
+    tableBody.innerHTML = "";
+
+
+    sortedRequests.forEach(request => {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>
+                <span class="request-id">
+                    ${request.requestId || "—"}
+                </span>
+            </td>
+
+
+            <td>
+
+                <span class="request-student-name">
+                    ${request.fullName || "—"}
+                </span>
+
+                <span class="request-student-id">
+                    Student ID:
+                    ${request.studentId || "—"}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="request-document">
+                    ${request.documentType || "—"}
+                </div>
+
+            </td>
+
+
+            <td>
+                ${registrarRequestDate(
+                    request.dateRequested
+                )}
+            </td>
+
+
+            <td>
+                ${registrarRequestStatusBadge(
+                    request.status
+                )}
+            </td>
+
+
+            <td>
+                ${registrarPaymentStatusBadge(
+                    request.paymentStatus
+                )}
+            </td>
+
+
+            <td>
+
+                <button
+                    type="button"
+                    class="request-view-button"
+                    onclick="openRegistrarRequestDetails('${request.requestId}')"
+                >
+                    View
+                </button>
+
+            </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    });
+
+}
+
 });
