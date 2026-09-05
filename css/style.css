@@ -4669,3 +4669,495 @@ img {
     }
 
     }
+/* =========================================================
+   PART 6D-2 — STUDENT RECORDS CSS
+   ========================================================= */
+
+.registrar-students-page {
+    min-height: 100vh;
+    background: #f5f7f6;
+}
+
+
+/* ================= SEARCH AREA ================= */
+
+.student-search-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.student-search-input {
+    flex: 1;
+
+    min-width: 200px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ccd5d0;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.student-search-input:focus {
+    border-color: #0b5d3f;
+
+    box-shadow:
+        0 0 0 3px rgba(11, 93, 63, 0.10);
+}
+
+.student-search-button {
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0b5d3f;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.student-search-button:hover {
+    background: #063927;
+}
+
+.student-clear-button {
+    padding: 12px 16px;
+
+    border: 1px solid #cbd3cf;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #555555;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.student-clear-button:hover {
+    background: #f0f2f1;
+}
+
+.student-search-message {
+    min-height: 18px;
+
+    margin: 10px 0 0;
+
+    color: #0b5d3f;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* ================= STUDENT TABLE ================= */
+
+.student-records-table {
+    min-width: 1000px;
+}
+
+.student-records-table .student-id-cell {
+    color: #0b5d3f;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.student-name-cell {
+    color: #222222;
+
+    font-weight: 700;
+}
+
+.student-email-cell {
+    color: #666666;
+
+    font-size: 12px;
+}
+
+.student-program-cell {
+    color: #444444;
+
+    line-height: 1.4;
+}
+
+.student-view-button {
+    border: 1px solid #0b5d3f;
+
+    background: #0b5d3f;
+
+    color: #ffffff;
+
+    padding: 7px 12px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.student-view-button:hover {
+    background: #d4af37;
+
+    border-color: #d4af37;
+
+    color: #063927;
+}
+
+
+/* ================= STUDENT STATUS ================= */
+
+.student-status {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.student-status-verified {
+    background: #e3f7e9;
+
+    color: #146c2e;
+}
+
+.student-status-pending {
+    background: #fff4d6;
+
+    color: #856404;
+}
+
+.student-status-inactive {
+    background: #eeeeee;
+
+    color: #666666;
+}
+
+
+/* =========================================================
+   STUDENT DETAILS MODAL
+   ========================================================= */
+
+.student-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.60);
+}
+
+.student-modal.active {
+    display: flex;
+}
+
+.student-modal-content {
+    width: 100%;
+
+    max-width: 850px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ================= MODAL HEADER ================= */
+
+.student-modal-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 20px 24px;
+
+    background: #063927;
+
+    color: #ffffff;
+
+    border-radius: 14px 14px 0 0;
+}
+
+.student-modal-header h3 {
+    margin: 0;
+
+    color: #ffffff;
+}
+
+.student-modal-header p {
+    margin: 5px 0 0;
+
+    color: #d4af37;
+
+    font-size: 12px;
+}
+
+.student-modal-close {
+    width: 36px;
+
+    height: 36px;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.student-modal-close:hover {
+    background: #d4af37;
+
+    color: #063927;
+}
+
+
+/* ================= MODAL BODY ================= */
+
+.student-modal-body {
+    padding: 25px;
+}
+
+.student-details-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.student-detail-card {
+    background: #f7f9f8;
+
+    border: 1px solid #e1e6e3;
+
+    border-radius: 9px;
+
+    padding: 15px;
+}
+
+.student-detail-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.student-detail-label {
+    display: block;
+
+    color: #777777;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 6px;
+}
+
+.student-detail-value {
+    color: #222222;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* ================= VERIFICATION BOX ================= */
+
+.student-verification-box {
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-radius: 9px;
+
+    border: 1px solid #d4af37;
+
+    background: #fffdf4;
+}
+
+.student-verification-box strong {
+    display: block;
+
+    color: #063927;
+
+    margin-bottom: 6px;
+}
+
+.student-verification-box p {
+    margin: 0;
+
+    color: #666666;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ================= MODAL FOOTER ================= */
+
+.student-modal-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 25px;
+
+    border-top: 1px solid #e1e6e3;
+
+    background: #fafbfa;
+
+    border-radius: 0 0 14px 14px;
+}
+
+.student-verify-button {
+    border: none;
+
+    background: #0b5d3f;
+
+    color: #ffffff;
+
+    padding: 10px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+.student-verify-button:hover {
+    background: #063927;
+}
+
+.student-close-button {
+    border: 1px solid #c9d1cd;
+
+    background: #ffffff;
+
+    color: #555555;
+
+    padding: 10px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.student-close-button:hover {
+    background: #f0f2f1;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+
+    .student-search-area {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .student-search-input {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .student-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-detail-card.full-width {
+        grid-column: auto;
+    }
+
+    .student-modal {
+        padding: 10px;
+    }
+
+    .student-modal-body {
+        padding: 18px;
+    }
+
+    .student-modal-footer {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    }
