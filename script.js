@@ -7778,3 +7778,3441 @@ document.addEventListener(
     "DOMContentLoaded",
     initializeStudentRequestUtilities
 );
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9Q
+   STUDENT REQUEST TRACKING & DOCUMENT STATUS
+========================================================= */
+
+
+/* =========================================================
+   GET REQUEST STATUS
+========================================================= */
+
+function getRequestStatus(requestId) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+    const request =
+        requests.find(function (item) {
+
+            return String(item.id) === String(requestId);
+
+        });
+
+    if (!request) {
+
+        return null;
+
+    }
+
+    return request.status || "Pending";
+
+}
+
+
+/* =========================================================
+   UPDATE REQUEST STATUS
+========================================================= */
+
+function updateRequestStatus(requestId, newStatus) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+    const requestIndex =
+        requests.findIndex(function (item) {
+
+            return String(item.id) === String(requestId);
+
+        });
+
+    if (requestIndex === -1) {
+
+        return false;
+
+    }
+
+    requests[requestIndex].status = newStatus;
+
+    requests[requestIndex].updatedAt =
+        new Date().toISOString();
+
+    localStorage.setItem(
+        "atcrsRequests",
+        JSON.stringify(requests)
+    );
+
+    return true;
+
+}
+
+
+/* =========================================================
+   REQUEST STATUS BADGE
+========================================================= */
+
+function getRequestStatusBadge(status) {
+
+    if (!status) {
+
+        status = "Pending";
+
+    }
+
+    const normalizedStatus =
+        String(status)
+            .toLowerCase()
+            .trim();
+
+
+    let className = "status-pending";
+
+
+    if (
+        normalizedStatus === "approved" ||
+        normalizedStatus === "completed" ||
+        normalizedStatus === "released" ||
+        normalizedStatus === "verified"
+    ) {
+
+        className = "status-approved";
+
+    }
+
+
+    if (
+        normalizedStatus === "processing" ||
+        normalizedStatus === "in progress"
+    ) {
+
+        className = "status-processing";
+
+    }
+
+
+    if (
+        normalizedStatus === "rejected" ||
+        normalizedStatus === "cancelled" ||
+        normalizedStatus === "canceled"
+    ) {
+
+        className = "status-rejected";
+
+    }
+
+
+    return `
+        <span class="status-badge ${className}">
+            ${status}
+        </span>
+    `;
+
+}
+
+
+/* =========================================================
+   REQUEST PROGRESS
+========================================================= */
+
+function getRequestProgress(status) {
+
+    if (!status) {
+
+        return 0;
+
+    }
+
+    const normalizedStatus =
+        String(status)
+            .toLowerCase()
+            .trim();
+
+
+    const progressMap = {
+
+        "pending": 20,
+
+        "processing": 50,
+
+        "in progress": 50,
+
+        "approved": 75,
+
+        "completed": 100,
+
+        "released": 100,
+
+        "verified": 100,
+
+        "rejected": 0,
+
+        "cancelled": 0,
+
+        "canceled": 0
+
+    };
+
+
+    return progressMap[normalizedStatus] ?? 20;
+
+}
+
+
+/* =========================================================
+   UPDATE PROGRESS BAR
+========================================================= */
+
+function updateRequestProgress(element, status) {
+
+    if (!element) {
+
+        return;
+
+    }
+
+    const progress =
+        getRequestProgress(status);
+
+
+    element.style.width =
+        progress + "%";
+
+
+    element.setAttribute(
+        "aria-valuenow",
+        progress
+    );
+
+}
+
+
+/* =========================================================
+   REQUEST TRACKING FORM
+========================================================= */
+
+function initializeRequestTracking() {
+
+    const trackingForm =
+        document.getElementById("trackingForm");
+
+
+    if (!trackingForm) {
+
+        return;
+
+    }
+
+
+    trackingForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const input =
+                document.getElementById(
+                    "trackingNumber"
+                );
+
+
+            if (!input) {
+
+                return;
+
+            }
+
+
+            const trackingNumber =
+                input.value.trim();
+
+
+            if (!trackingNumber) {
+
+                showMessage(
+                    "Please enter your tracking number.",
+                    "warning"
+                );
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            displayRequestTracking(
+                trackingNumber
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DISPLAY REQUEST TRACKING
+========================================================= */
+
+function displayRequestTracking(trackingNumber) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+
+    const request =
+        requests.find(function (item) {
+
+            return String(
+                item.trackingNumber
+            ).toLowerCase() ===
+            trackingNumber.toLowerCase();
+
+        });
+
+
+    const result =
+        document.getElementById(
+            "trackingResult"
+        );
+
+
+    if (!result) {
+
+        return;
+
+    }
+
+
+    if (!request) {
+
+        result.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-circle-exclamation"></i>
+
+                <h3>
+                    Request Not Found
+                </h3>
+
+                <p>
+                    We could not find a request
+                    matching the tracking number
+                    you entered.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const status =
+        request.status || "Pending";
+
+
+    const progress =
+        getRequestProgress(status);
+
+
+    result.innerHTML = `
+
+        <div class="request-tracking-card">
+
+            <div class="request-tracking-header">
+
+                <div>
+
+                    <span class="small-label">
+                        TRACKING NUMBER
+                    </span>
+
+                    <h3>
+                        ${request.trackingNumber || trackingNumber}
+                    </h3>
+
+                </div>
+
+                ${getRequestStatusBadge(status)}
+
+            </div>
+
+
+            <div class="tracking-progress">
+
+                <div class="progress-header">
+
+                    <span>
+                        Request Progress
+                    </span>
+
+                    <strong>
+                        ${progress}%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="width:${progress}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="request-detail-grid">
+
+                <div>
+
+                    <span>
+                        Document Type
+                    </span>
+
+                    <strong>
+                        ${request.type || "Document Request"}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Date Requested
+                    </span>
+
+                    <strong>
+                        ${request.date || "N/A"}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Current Status
+                    </span>
+
+                    <strong>
+                        ${status}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Last Updated
+                    </span>
+
+                    <strong>
+                        ${
+                            request.updatedAt
+                                ? formatDate(
+                                    request.updatedAt
+                                  )
+                                : "N/A"
+                        }
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   DOCUMENT RELEASE CHECK
+========================================================= */
+
+function isDocumentReleased(request) {
+
+    if (!request) {
+
+        return false;
+
+    }
+
+
+    const status =
+        String(request.status || "")
+            .toLowerCase()
+            .trim();
+
+
+    return (
+        status === "released" ||
+        status === "completed"
+    );
+
+}
+
+
+/* =========================================================
+   DOCUMENT DOWNLOAD BUTTON
+========================================================= */
+
+function initializeDocumentDownloads() {
+
+    const downloadButtons =
+        document.querySelectorAll(
+            ".download-document"
+        );
+
+
+    downloadButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const documentName =
+                    this.dataset.document ||
+                    "document";
+
+
+                showMessage(
+                    documentName +
+                    " download initiated.",
+                    "success"
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   RELEASE DOCUMENT MESSAGE
+========================================================= */
+
+function showReleaseMessage(status) {
+
+    const normalizedStatus =
+        String(status || "")
+            .toLowerCase()
+            .trim();
+
+
+    if (
+        normalizedStatus === "released" ||
+        normalizedStatus === "completed"
+    ) {
+
+        return "Your document is ready for release.";
+
+    }
+
+
+    if (
+        normalizedStatus === "processing" ||
+        normalizedStatus === "in progress"
+    ) {
+
+        return "Your document is currently being processed.";
+
+    }
+
+
+    if (normalizedStatus === "approved") {
+
+        return "Your request has been approved.";
+
+    }
+
+
+    if (normalizedStatus === "rejected") {
+
+        return "Your request was not approved.";
+
+    }
+
+
+    return "Your request is currently pending.";
+
+}
+
+
+/* =========================================================
+   INITIALIZE REQUEST TRACKING
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeRequestTracking();
+
+        initializeDocumentDownloads();
+
+    }
+);
+
+
+/* =========================================================
+   END OF PART 9Q
+========================================================= */
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9Q
+   STUDENT REQUEST TRACKING & DOCUMENT STATUS
+========================================================= */
+
+
+/* =========================================================
+   GET REQUEST STATUS
+========================================================= */
+
+function getRequestStatus(requestId) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+    const request =
+        requests.find(function (item) {
+
+            return String(item.id) === String(requestId);
+
+        });
+
+    if (!request) {
+
+        return null;
+
+    }
+
+    return request.status || "Pending";
+
+}
+
+
+/* =========================================================
+   UPDATE REQUEST STATUS
+========================================================= */
+
+function updateRequestStatus(requestId, newStatus) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+    const requestIndex =
+        requests.findIndex(function (item) {
+
+            return String(item.id) === String(requestId);
+
+        });
+
+    if (requestIndex === -1) {
+
+        return false;
+
+    }
+
+    requests[requestIndex].status = newStatus;
+
+    requests[requestIndex].updatedAt =
+        new Date().toISOString();
+
+    localStorage.setItem(
+        "atcrsRequests",
+        JSON.stringify(requests)
+    );
+
+    return true;
+
+}
+
+
+/* =========================================================
+   REQUEST STATUS BADGE
+========================================================= */
+
+function getRequestStatusBadge(status) {
+
+    if (!status) {
+
+        status = "Pending";
+
+    }
+
+    const normalizedStatus =
+        String(status)
+            .toLowerCase()
+            .trim();
+
+
+    let className = "status-pending";
+
+
+    if (
+        normalizedStatus === "approved" ||
+        normalizedStatus === "completed" ||
+        normalizedStatus === "released" ||
+        normalizedStatus === "verified"
+    ) {
+
+        className = "status-approved";
+
+    }
+
+
+    if (
+        normalizedStatus === "processing" ||
+        normalizedStatus === "in progress"
+    ) {
+
+        className = "status-processing";
+
+    }
+
+
+    if (
+        normalizedStatus === "rejected" ||
+        normalizedStatus === "cancelled" ||
+        normalizedStatus === "canceled"
+    ) {
+
+        className = "status-rejected";
+
+    }
+
+
+    return `
+        <span class="status-badge ${className}">
+            ${status}
+        </span>
+    `;
+
+}
+
+
+/* =========================================================
+   REQUEST PROGRESS
+========================================================= */
+
+function getRequestProgress(status) {
+
+    if (!status) {
+
+        return 0;
+
+    }
+
+    const normalizedStatus =
+        String(status)
+            .toLowerCase()
+            .trim();
+
+
+    const progressMap = {
+
+        "pending": 20,
+
+        "processing": 50,
+
+        "in progress": 50,
+
+        "approved": 75,
+
+        "completed": 100,
+
+        "released": 100,
+
+        "verified": 100,
+
+        "rejected": 0,
+
+        "cancelled": 0,
+
+        "canceled": 0
+
+    };
+
+
+    return progressMap[normalizedStatus] ?? 20;
+
+}
+
+
+/* =========================================================
+   UPDATE PROGRESS BAR
+========================================================= */
+
+function updateRequestProgress(element, status) {
+
+    if (!element) {
+
+        return;
+
+    }
+
+    const progress =
+        getRequestProgress(status);
+
+
+    element.style.width =
+        progress + "%";
+
+
+    element.setAttribute(
+        "aria-valuenow",
+        progress
+    );
+
+}
+
+
+/* =========================================================
+   REQUEST TRACKING FORM
+========================================================= */
+
+function initializeRequestTracking() {
+
+    const trackingForm =
+        document.getElementById("trackingForm");
+
+
+    if (!trackingForm) {
+
+        return;
+
+    }
+
+
+    trackingForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const input =
+                document.getElementById(
+                    "trackingNumber"
+                );
+
+
+            if (!input) {
+
+                return;
+
+            }
+
+
+            const trackingNumber =
+                input.value.trim();
+
+
+            if (!trackingNumber) {
+
+                showMessage(
+                    "Please enter your tracking number.",
+                    "warning"
+                );
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            displayRequestTracking(
+                trackingNumber
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DISPLAY REQUEST TRACKING
+========================================================= */
+
+function displayRequestTracking(trackingNumber) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("atcrsRequests") || "[]"
+        );
+
+
+    const request =
+        requests.find(function (item) {
+
+            return String(
+                item.trackingNumber
+            ).toLowerCase() ===
+            trackingNumber.toLowerCase();
+
+        });
+
+
+    const result =
+        document.getElementById(
+            "trackingResult"
+        );
+
+
+    if (!result) {
+
+        return;
+
+    }
+
+
+    if (!request) {
+
+        result.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-circle-exclamation"></i>
+
+                <h3>
+                    Request Not Found
+                </h3>
+
+                <p>
+                    We could not find a request
+                    matching the tracking number
+                    you entered.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const status =
+        request.status || "Pending";
+
+
+    const progress =
+        getRequestProgress(status);
+
+
+    result.innerHTML = `
+
+        <div class="request-tracking-card">
+
+            <div class="request-tracking-header">
+
+                <div>
+
+                    <span class="small-label">
+                        TRACKING NUMBER
+                    </span>
+
+                    <h3>
+                        ${request.trackingNumber || trackingNumber}
+                    </h3>
+
+                </div>
+
+                ${getRequestStatusBadge(status)}
+
+            </div>
+
+
+            <div class="tracking-progress">
+
+                <div class="progress-header">
+
+                    <span>
+                        Request Progress
+                    </span>
+
+                    <strong>
+                        ${progress}%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="width:${progress}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="request-detail-grid">
+
+                <div>
+
+                    <span>
+                        Document Type
+                    </span>
+
+                    <strong>
+                        ${request.type || "Document Request"}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Date Requested
+                    </span>
+
+                    <strong>
+                        ${request.date || "N/A"}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Current Status
+                    </span>
+
+                    <strong>
+                        ${status}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Last Updated
+                    </span>
+
+                    <strong>
+                        ${
+                            request.updatedAt
+                                ? formatDate(
+                                    request.updatedAt
+                                  )
+                                : "N/A"
+                        }
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   DOCUMENT RELEASE CHECK
+========================================================= */
+
+function isDocumentReleased(request) {
+
+    if (!request) {
+
+        return false;
+
+    }
+
+
+    const status =
+        String(request.status || "")
+            .toLowerCase()
+            .trim();
+
+
+    return (
+        status === "released" ||
+        status === "completed"
+    );
+
+}
+
+
+/* =========================================================
+   DOCUMENT DOWNLOAD BUTTON
+========================================================= */
+
+function initializeDocumentDownloads() {
+
+    const downloadButtons =
+        document.querySelectorAll(
+            ".download-document"
+        );
+
+
+    downloadButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const documentName =
+                    this.dataset.document ||
+                    "document";
+
+
+                showMessage(
+                    documentName +
+                    " download initiated.",
+                    "success"
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   RELEASE DOCUMENT MESSAGE
+========================================================= */
+
+function showReleaseMessage(status) {
+
+    const normalizedStatus =
+        String(status || "")
+            .toLowerCase()
+            .trim();
+
+
+    if (
+        normalizedStatus === "released" ||
+        normalizedStatus === "completed"
+    ) {
+
+        return "Your document is ready for release.";
+
+    }
+
+
+    if (
+        normalizedStatus === "processing" ||
+        normalizedStatus === "in progress"
+    ) {
+
+        return "Your document is currently being processed.";
+
+    }
+
+
+    if (normalizedStatus === "approved") {
+
+        return "Your request has been approved.";
+
+    }
+
+
+    if (normalizedStatus === "rejected") {
+
+        return "Your request was not approved.";
+
+    }
+
+
+    return "Your request is currently pending.";
+
+}
+
+
+/* =========================================================
+   INITIALIZE REQUEST TRACKING
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeRequestTracking();
+
+        initializeDocumentDownloads();
+
+    }
+);
+
+
+/* =========================================================
+   END OF PART 9Q
+========================================================= */
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9R
+   STUDENT DOCUMENT REQUEST HISTORY
+========================================================= */
+
+
+/* =========================================================
+   GET STUDENT ID
+========================================================= */
+
+function getLoggedInStudentId() {
+
+    return sessionStorage.getItem(
+        "studentId"
+    ) || "";
+
+}
+
+
+/* =========================================================
+   GET STUDENT REQUESTS
+========================================================= */
+
+function getStudentRequests(studentId) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsRequests"
+            ) || "[]"
+        );
+
+
+    if (!studentId) {
+
+        return [];
+
+    }
+
+
+    return requests.filter(function (request) {
+
+        return String(
+            request.studentId || ""
+        ) === String(studentId);
+
+    });
+
+}
+
+
+/* =========================================================
+   DISPLAY STUDENT REQUEST HISTORY
+========================================================= */
+
+function displayStudentRequestHistory() {
+
+    const container =
+        document.getElementById(
+            "studentRequestHistory"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    const requests =
+        getStudentRequests(studentId);
+
+
+    if (requests.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-folder-open"></i>
+
+                <h3>
+                    No Document Requests
+                </h3>
+
+                <p>
+                    You do not have any document
+                    requests yet.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        requests.map(function (request) {
+
+            const status =
+                request.status || "Pending";
+
+
+            const progress =
+                getRequestProgress(status);
+
+
+            return `
+
+                <div class="request-history-card">
+
+                    <div class="request-history-header">
+
+                        <div>
+
+                            <span class="small-label">
+                                ${
+                                    request.trackingNumber ||
+                                    "ATCRS REQUEST"
+                                }
+                            </span>
+
+                            <h3>
+                                ${
+                                    request.type ||
+                                    "Document Request"
+                                }
+                            </h3>
+
+                        </div>
+
+                        ${getRequestStatusBadge(status)}
+
+                    </div>
+
+
+                    <div class="request-history-details">
+
+                        <div>
+
+                            <span>
+                                Date Requested
+                            </span>
+
+                            <strong>
+                                ${
+                                    request.date ||
+                                    "N/A"
+                                }
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Progress
+                            </span>
+
+                            <strong>
+                                ${progress}%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width:${progress}%">
+                        </div>
+
+                    </div>
+
+
+                    <div class="request-history-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary view-request"
+                            data-request-id="${request.id}">
+
+                            <i class="fas fa-eye"></i>
+
+                            VIEW DETAILS
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    initializeRequestHistoryButtons();
+
+}
+
+
+/* =========================================================
+   REQUEST HISTORY BUTTONS
+========================================================= */
+
+function initializeRequestHistoryButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".view-request"
+        );
+
+
+    buttons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const requestId =
+                    this.dataset.requestId;
+
+
+                showStudentRequestDetails(
+                    requestId
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SHOW STUDENT REQUEST DETAILS
+========================================================= */
+
+function showStudentRequestDetails(requestId) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsRequests"
+            ) || "[]"
+        );
+
+
+    const request =
+        requests.find(function (item) {
+
+            return String(item.id) ===
+                String(requestId);
+
+        });
+
+
+    if (!request) {
+
+        showMessage(
+            "Request details could not be found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        request.status || "Pending";
+
+
+    const progress =
+        getRequestProgress(status);
+
+
+    const details = `
+
+        <div class="request-detail-modal">
+
+            <div class="request-detail-header">
+
+                <span class="small-label">
+                    TRACKING NUMBER
+                </span>
+
+                <h2>
+                    ${
+                        request.trackingNumber ||
+                        "N/A"
+                    }
+                </h2>
+
+                ${getRequestStatusBadge(status)}
+
+            </div>
+
+
+            <div class="request-detail-grid">
+
+                <div>
+
+                    <span>
+                        Document Type
+                    </span>
+
+                    <strong>
+                        ${
+                            request.type ||
+                            "N/A"
+                        }
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Date Requested
+                    </span>
+
+                    <strong>
+                        ${
+                            request.date ||
+                            "N/A"
+                        }
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Student ID
+                    </span>
+
+                    <strong>
+                        ${
+                            request.studentId ||
+                            "N/A"
+                        }
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        ${status}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="tracking-progress">
+
+                <div class="progress-header">
+
+                    <span>
+                        Request Progress
+                    </span>
+
+                    <strong>
+                        ${progress}%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="width:${progress}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="request-status-message">
+
+                <i class="fas fa-circle-info"></i>
+
+                <p>
+                    ${showReleaseMessage(status)}
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    if (typeof openModal === "function") {
+
+        openModal(
+            "Document Request Details",
+            details
+        );
+
+    } else {
+
+        alert(
+            "Request Status: " +
+            status
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   STUDENT REQUEST SUMMARY
+========================================================= */
+
+function updateStudentRequestSummary() {
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    const requests =
+        getStudentRequests(studentId);
+
+
+    const total =
+        requests.length;
+
+
+    const pending =
+        requests.filter(function (request) {
+
+            return String(
+                request.status || ""
+            ).toLowerCase() === "pending";
+
+        }).length;
+
+
+    const processing =
+        requests.filter(function (request) {
+
+            const status =
+                String(
+                    request.status || ""
+                ).toLowerCase();
+
+            return (
+                status === "processing" ||
+                status === "in progress"
+            );
+
+        }).length;
+
+
+    const completed =
+        requests.filter(function (request) {
+
+            const status =
+                String(
+                    request.status || ""
+                ).toLowerCase();
+
+            return (
+                status === "completed" ||
+                status === "released"
+            );
+
+        }).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "studentTotalRequests"
+        );
+
+
+    const pendingElement =
+        document.getElementById(
+            "studentPendingRequests"
+        );
+
+
+    const processingElement =
+        document.getElementById(
+            "studentProcessingRequests"
+        );
+
+
+    const completedElement =
+        document.getElementById(
+            "studentCompletedRequests"
+        );
+
+
+    if (totalElement) {
+
+        totalElement.textContent = total;
+
+    }
+
+
+    if (pendingElement) {
+
+        pendingElement.textContent = pending;
+
+    }
+
+
+    if (processingElement) {
+
+        processingElement.textContent =
+            processing;
+
+    }
+
+
+    if (completedElement) {
+
+        completedElement.textContent =
+            completed;
+
+    }
+
+}
+
+
+/* =========================================================
+   INITIALIZE STUDENT REQUEST PAGE
+========================================================= */
+
+function initializeStudentRequestPage() {
+
+    displayStudentRequestHistory();
+
+    updateStudentRequestSummary();
+
+}
+
+
+/* =========================================================
+   AUTO INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeStudentRequestPage();
+
+    }
+);
+
+
+/* =========================================================
+   END OF PART 9R
+========================================================= */
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9S
+   STUDENT DOCUMENT RELEASE & DOWNLOAD HISTORY
+========================================================= */
+
+
+/* =========================================================
+   GET RELEASED DOCUMENTS
+========================================================= */
+
+function getReleasedDocuments(studentId) {
+
+    const requests =
+        getStudentRequests(studentId);
+
+
+    return requests.filter(function (request) {
+
+        const status =
+            String(request.status || "")
+                .toLowerCase()
+                .trim();
+
+
+        return (
+            status === "released" ||
+            status === "completed"
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   DISPLAY RELEASED DOCUMENTS
+========================================================= */
+
+function displayReleasedDocuments() {
+
+    const container =
+        document.getElementById(
+            "releasedDocuments"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    const documents =
+        getReleasedDocuments(studentId);
+
+
+    if (documents.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-file-circle-xmark"></i>
+
+                <h3>
+                    No Released Documents
+                </h3>
+
+                <p>
+                    Your released documents will
+                    appear here once your request
+                    has been completed.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        documents.map(function (document) {
+
+            return `
+
+                <div class="document-download-card">
+
+                    <div class="document-icon">
+
+                        <i class="fas fa-file-lines"></i>
+
+                    </div>
+
+
+                    <div class="document-download-info">
+
+                        <span class="small-label">
+                            RELEASED DOCUMENT
+                        </span>
+
+                        <h3>
+                            ${
+                                document.type ||
+                                "Academic Document"
+                            }
+                        </h3>
+
+                        <p>
+                            Tracking No:
+                            ${
+                                document.trackingNumber ||
+                                "N/A"
+                            }
+                        </p>
+
+                        <p>
+                            Released:
+                            ${
+                                document.updatedAt
+                                    ? formatDate(
+                                        document.updatedAt
+                                      )
+                                    : "N/A"
+                            }
+                        </p>
+
+                    </div>
+
+
+                    <div class="document-download-action">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary download-released-document"
+                            data-request-id="${document.id}">
+
+                            <i class="fas fa-download"></i>
+
+                            DOWNLOAD
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    initializeReleasedDocumentButtons();
+
+}
+
+
+/* =========================================================
+   RELEASED DOCUMENT BUTTONS
+========================================================= */
+
+function initializeReleasedDocumentButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".download-released-document"
+        );
+
+
+    buttons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const requestId =
+                    this.dataset.requestId;
+
+
+                downloadReleasedDocument(
+                    requestId
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   DOWNLOAD RELEASED DOCUMENT
+========================================================= */
+
+function downloadReleasedDocument(requestId) {
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsRequests"
+            ) || "[]"
+        );
+
+
+    const request =
+        requests.find(function (item) {
+
+            return String(item.id) ===
+                String(requestId);
+
+        });
+
+
+    if (!request) {
+
+        showMessage(
+            "Document request could not be found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (!isDocumentReleased(request)) {
+
+        showMessage(
+            "This document is not yet available for download.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Prototype behavior:
+       Since this is a front-end prototype,
+       no real PDF is generated here.
+    */
+
+    showMessage(
+        "Your " +
+        (request.type || "document") +
+        " is ready for download.",
+        "success"
+    );
+
+
+    saveDownloadHistory(request);
+
+}
+
+
+/* =========================================================
+   SAVE DOWNLOAD HISTORY
+========================================================= */
+
+function saveDownloadHistory(request) {
+
+    if (!request) {
+
+        return;
+
+    }
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsDownloadHistory"
+            ) || "[]"
+        );
+
+
+    const historyRecord = {
+
+        id:
+            Date.now(),
+
+        requestId:
+            request.id,
+
+        studentId:
+            request.studentId,
+
+        documentType:
+            request.type ||
+            "Academic Document",
+
+        trackingNumber:
+            request.trackingNumber ||
+            "N/A",
+
+        downloadedAt:
+            new Date().toISOString()
+
+    };
+
+
+    history.unshift(
+        historyRecord
+    );
+
+
+    localStorage.setItem(
+        "atcrsDownloadHistory",
+        JSON.stringify(history)
+    );
+
+
+    displayDownloadHistory();
+
+}
+
+
+/* =========================================================
+   GET DOWNLOAD HISTORY
+========================================================= */
+
+function getDownloadHistory(studentId) {
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsDownloadHistory"
+            ) || "[]"
+        );
+
+
+    if (!studentId) {
+
+        return [];
+
+    }
+
+
+    return history.filter(function (item) {
+
+        return String(
+            item.studentId || ""
+        ) === String(studentId);
+
+    });
+
+}
+
+
+/* =========================================================
+   DISPLAY DOWNLOAD HISTORY
+========================================================= */
+
+function displayDownloadHistory() {
+
+    const container =
+        document.getElementById(
+            "downloadHistory"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    const history =
+        getDownloadHistory(studentId);
+
+
+    if (history.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+                <h3>
+                    No Download History
+                </h3>
+
+                <p>
+                    Your document download history
+                    will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        history.map(function (item) {
+
+            return `
+
+                <div class="history-item">
+
+                    <div class="history-icon">
+
+                        <i class="fas fa-download"></i>
+
+                    </div>
+
+
+                    <div class="history-content">
+
+                        <h4>
+                            ${
+                                item.documentType ||
+                                "Academic Document"
+                            }
+                        </h4>
+
+                        <p>
+                            Tracking No:
+                            ${
+                                item.trackingNumber ||
+                                "N/A"
+                            }
+                        </p>
+
+                        <small>
+                            Downloaded:
+                            ${
+                                item.downloadedAt
+                                    ? formatDate(
+                                        item.downloadedAt
+                                      )
+                                    : "N/A"
+                            }
+                        </small>
+
+                    </div>
+
+
+                    <span class="status-badge status-approved">
+                        DOWNLOADED
+                    </span>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================================================
+   CLEAR DOWNLOAD HISTORY
+========================================================= */
+
+function clearDownloadHistory() {
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    if (!studentId) {
+
+        return;
+
+    }
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsDownloadHistory"
+            ) || "[]"
+        );
+
+
+    const remaining =
+        history.filter(function (item) {
+
+            return String(
+                item.studentId || ""
+            ) !== String(studentId);
+
+        });
+
+
+    localStorage.setItem(
+        "atcrsDownloadHistory",
+        JSON.stringify(remaining)
+    );
+
+
+    displayDownloadHistory();
+
+
+    showMessage(
+        "Download history cleared.",
+        "success"
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE DOCUMENT RELEASE PAGE
+========================================================= */
+
+function initializeDocumentReleasePage() {
+
+    displayReleasedDocuments();
+
+    displayDownloadHistory();
+
+}
+
+
+/* =========================================================
+   AUTO INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeDocumentReleasePage();
+
+    }
+);
+
+
+/* =========================================================
+   END OF PART 9S
+========================================================= */
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9T
+   STUDENT NOTIFICATIONS & SYSTEM MESSAGES
+========================================================= */
+
+
+/* =========================================================
+   GET NOTIFICATIONS
+========================================================= */
+
+function getNotifications(studentId) {
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    if (!studentId) {
+
+        return [];
+
+    }
+
+
+    return notifications.filter(function (item) {
+
+        return (
+            String(item.studentId || "") ===
+            String(studentId)
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   CREATE NOTIFICATION
+========================================================= */
+
+function createNotification(
+    studentId,
+    title,
+    message,
+    type = "info"
+) {
+
+    if (!studentId || !title || !message) {
+
+        return false;
+
+    }
+
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    const notification = {
+
+        id: Date.now(),
+
+        studentId: studentId,
+
+        title: title,
+
+        message: message,
+
+        type: type,
+
+        read: false,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    notifications.unshift(
+        notification
+    );
+
+
+    localStorage.setItem(
+        "atcrsNotifications",
+        JSON.stringify(notifications)
+    );
+
+
+    updateNotificationCounter();
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   DISPLAY NOTIFICATIONS
+========================================================= */
+
+function displayNotifications() {
+
+    const container =
+        document.getElementById(
+            "notificationList"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    const notifications =
+        getNotifications(studentId);
+
+
+    if (notifications.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <i class="fas fa-bell-slash"></i>
+
+                <h3>
+                    No Notifications
+                </h3>
+
+                <p>
+                    You currently have no system
+                    notifications.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        notifications.map(function (item) {
+
+            const notificationType =
+                item.type || "info";
+
+
+            let icon =
+                "fas fa-circle-info";
+
+
+            if (notificationType === "success") {
+
+                icon =
+                    "fas fa-circle-check";
+
+            }
+
+
+            if (notificationType === "warning") {
+
+                icon =
+                    "fas fa-triangle-exclamation";
+
+            }
+
+
+            if (notificationType === "error") {
+
+                icon =
+                    "fas fa-circle-xmark";
+
+            }
+
+
+            return `
+
+                <div
+                    class="notification-item
+                    ${item.read ? "read" : "unread"}"
+                    data-notification-id="${item.id}"
+                >
+
+                    <div class="notification-icon">
+
+                        <i class="${icon}"></i>
+
+                    </div>
+
+
+                    <div class="notification-content">
+
+                        <h4>
+                            ${
+                                item.title ||
+                                "ATCRS Notification"
+                            }
+                        </h4>
+
+                        <p>
+                            ${
+                                item.message ||
+                                ""
+                            }
+                        </p>
+
+                        <small>
+                            ${
+                                item.createdAt
+                                    ? formatDate(
+                                        item.createdAt
+                                      )
+                                    : "Just now"
+                            }
+                        </small>
+
+                    </div>
+
+
+                    ${
+                        !item.read
+                            ? `
+                                <button
+                                    type="button"
+                                    class="notification-read-button"
+                                    data-notification-id="${item.id}"
+                                    title="Mark as read"
+                                >
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            `
+                            : ""
+                    }
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    initializeNotificationButtons();
+
+}
+
+
+/* =========================================================
+   MARK NOTIFICATION AS READ
+========================================================= */
+
+function markNotificationAsRead(notificationId) {
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    const index =
+        notifications.findIndex(
+            function (item) {
+
+                return String(item.id) ===
+                    String(notificationId);
+
+            }
+        );
+
+
+    if (index === -1) {
+
+        return false;
+
+    }
+
+
+    notifications[index].read = true;
+
+
+    localStorage.setItem(
+        "atcrsNotifications",
+        JSON.stringify(notifications)
+    );
+
+
+    displayNotifications();
+
+    updateNotificationCounter();
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   MARK ALL NOTIFICATIONS AS READ
+========================================================= */
+
+function markAllNotificationsAsRead() {
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    if (!studentId) {
+
+        return;
+
+    }
+
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    notifications.forEach(function (item) {
+
+        if (
+            String(item.studentId || "") ===
+            String(studentId)
+        ) {
+
+            item.read = true;
+
+        }
+
+    });
+
+
+    localStorage.setItem(
+        "atcrsNotifications",
+        JSON.stringify(notifications)
+    );
+
+
+    displayNotifications();
+
+    updateNotificationCounter();
+
+
+    showMessage(
+        "All notifications marked as read.",
+        "success"
+    );
+
+}
+
+
+/* =========================================================
+   DELETE NOTIFICATION
+========================================================= */
+
+function deleteNotification(notificationId) {
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    const updated =
+        notifications.filter(
+            function (item) {
+
+                return String(item.id) !==
+                    String(notificationId);
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "atcrsNotifications",
+        JSON.stringify(updated)
+    );
+
+
+    displayNotifications();
+
+    updateNotificationCounter();
+
+}
+
+
+/* =========================================================
+   CLEAR STUDENT NOTIFICATIONS
+========================================================= */
+
+function clearStudentNotifications() {
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    if (!studentId) {
+
+        return;
+
+    }
+
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "atcrsNotifications"
+            ) || "[]"
+        );
+
+
+    const remaining =
+        notifications.filter(
+            function (item) {
+
+                return String(
+                    item.studentId || ""
+                ) !== String(studentId);
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "atcrsNotifications",
+        JSON.stringify(remaining)
+    );
+
+
+    displayNotifications();
+
+    updateNotificationCounter();
+
+
+    showMessage(
+        "Notifications cleared.",
+        "success"
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE NOTIFICATION COUNTER
+========================================================= */
+
+function updateNotificationCounter() {
+
+    const studentId =
+        getLoggedInStudentId();
+
+
+    if (!studentId) {
+
+        return;
+
+    }
+
+
+    const notifications =
+        getNotifications(studentId);
+
+
+    const unreadCount =
+        notifications.filter(
+            function (item) {
+
+                return item.read !== true;
+
+            }
+        ).length;
+
+
+    const counters =
+        document.querySelectorAll(
+            ".notification-count, #notificationCount"
+        );
+
+
+    counters.forEach(function (counter) {
+
+        counter.textContent =
+            unreadCount;
+
+
+        if (unreadCount > 0) {
+
+            counter.style.display =
+                "inline-flex";
+
+        } else {
+
+            counter.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   NOTIFICATION BUTTONS
+========================================================= */
+
+function initializeNotificationButtons() {
+
+    const readButtons =
+        document.querySelectorAll(
+            ".notification-read-button"
+        );
+
+
+    readButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                markNotificationAsRead(
+                    this.dataset.notificationId
+                );
+
+            }
+        );
+
+    });
+
+
+    const markAllButton =
+        document.getElementById(
+            "markAllNotifications"
+        );
+
+
+    if (markAllButton) {
+
+        markAllButton.onclick =
+            markAllNotificationsAsRead;
+
+    }
+
+
+    const clearButton =
+        document.getElementById(
+            "clearNotifications"
+        );
+
+
+    if (clearButton) {
+
+        clearButton.onclick =
+            clearStudentNotifications;
+
+    }
+
+}
+
+
+/* =========================================================
+   SAMPLE SYSTEM NOTIFICATION
+========================================================= */
+
+function createRequestStatusNotification(
+    request
+) {
+
+    if (!request || !request.studentId) {
+
+        return;
+
+    }
+
+
+    const status =
+        request.status || "Pending";
+
+
+    let title =
+        "Document Request Update";
+
+
+    let message =
+        "Your document request status has been updated.";
+
+
+    let type =
+        "info";
+
+
+    if (status === "Processing") {
+
+        title =
+            "Request Processing";
+
+        message =
+            "Your document request is currently being processed.";
+
+        type =
+            "info";
+
+    }
+
+
+    if (status === "Approved") {
+
+        title =
+            "Request Approved";
+
+        message =
+            "Your document request has been approved.";
+
+        type =
+            "success";
+
+    }
+
+
+    if (status === "Released") {
+
+        title =
+            "Document Released";
+
+        message =
+            "Your requested document is now available.";
+
+        type =
+            "success";
+
+    }
+
+
+    if (status === "Rejected") {
+
+        title =
+            "Request Rejected";
+
+        message =
+            "Your document request has been rejected.";
+
+        type =
+            "error";
+
+    }
+
+
+    createNotification(
+        request.studentId,
+        title,
+        message,
+        type
+    );
+
+}
+
+
+/* =========================================================
+   AUTO INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        displayNotifications();
+
+        updateNotificationCounter();
+
+    }
+);
+
+
+/* =========================================================
+   END OF PART 9T
+========================================================= */
+/* =========================================================
+   ATCRS SCRIPT.JS — PART 9U
+   TERMS, PRIVACY & FINAL SYSTEM UTILITIES
+========================================================= */
+
+
+/* =========================================================
+   DETECT LEGAL PAGE
+========================================================= */
+
+function isLegalPage() {
+
+    const page =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .toLowerCase();
+
+    return (
+        page === "terms.html" ||
+        page === "privacy.html"
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE LEGAL PAGE YEAR
+========================================================= */
+
+function updateLegalPageYear() {
+
+    const yearElement =
+        document.getElementById("currentYear");
+
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
+
+    }
+
+}
+
+
+/* =========================================================
+   LEGAL PAGE NAVIGATION
+========================================================= */
+
+function initializeLegalNavigation() {
+
+    if (!isLegalPage()) {
+
+        return;
+
+    }
+
+
+    const legalLinks =
+        document.querySelectorAll(
+            ".legal-actions a, .footer-links a"
+        );
+
+
+    legalLinks.forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function () {
+
+                const destination =
+                    this.getAttribute("href");
+
+
+                if (!destination) {
+
+                    return;
+
+                }
+
+
+                /*
+                   Normal browser navigation is retained.
+                   This section only provides a visual
+                   transition before leaving the page.
+                */
+
+                if (
+                    destination.includes(
+                        "terms.html"
+                    ) ||
+                    destination.includes(
+                        "privacy.html"
+                    )
+                ) {
+
+                    document.body.classList.add(
+                        "page-leaving"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   LEGAL PAGE SCROLL TO TOP
+========================================================= */
+
+function initializeLegalScrollTop() {
+
+    if (!isLegalPage()) {
+
+        return;
+
+    }
+
+
+    let scrollButton =
+        document.getElementById(
+            "legalScrollTop"
+        );
+
+
+    if (!scrollButton) {
+
+        return;
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            if (window.scrollY > 350) {
+
+                scrollButton.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                scrollButton.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+    scrollButton.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SYSTEM VERSION
+========================================================= */
+
+function getSystemVersion() {
+
+    return "ATCRS 1.0.0";
+
+}
+
+
+/* =========================================================
+   DISPLAY SYSTEM VERSION
+========================================================= */
+
+function displaySystemVersion() {
+
+    const elements =
+        document.querySelectorAll(
+            "[data-system-version]"
+        );
+
+
+    elements.forEach(function (element) {
+
+        element.textContent =
+            getSystemVersion();
+
+    });
+
+}
+
+
+/* =========================================================
+   DISABLE DOUBLE FORM SUBMISSION
+========================================================= */
+
+function preventDoubleSubmission() {
+
+    const forms =
+        document.querySelectorAll(
+            "form"
+        );
+
+
+    forms.forEach(function (form) {
+
+        form.addEventListener(
+            "submit",
+            function () {
+
+                const submitButtons =
+                    form.querySelectorAll(
+                        'button[type="submit"], input[type="submit"]'
+                    );
+
+
+                submitButtons.forEach(
+                    function (button) {
+
+                        if (
+                            button.dataset.allowMultiple ===
+                            "true"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        setTimeout(
+                            function () {
+
+                                button.disabled =
+                                    true;
+
+                            },
+                            0
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                button.disabled =
+                                    false;
+
+                            },
+                            3000
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   HANDLE ESCAPE KEY
+========================================================= */
+
+function initializeEscapeHandler() {
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+
+                return;
+
+            }
+
+
+            const modals =
+                document.querySelectorAll(
+                    ".modal.active, .modal.show"
+                );
+
+
+            modals.forEach(function (modal) {
+
+                modal.classList.remove(
+                    "active"
+                );
+
+                modal.classList.remove(
+                    "show"
+                );
+
+            });
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PAGE LOAD COMPLETION
+========================================================= */
+
+function initializeFinalSystemUtilities() {
+
+    updateLegalPageYear();
+
+    initializeLegalNavigation();
+
+    initializeLegalScrollTop();
+
+    displaySystemVersion();
+
+    preventDoubleSubmission();
+
+    initializeEscapeHandler();
+
+}
+
+
+/* =========================================================
+   FINAL INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeFinalSystemUtilities();
+
+    }
+);
+
+
+/* =========================================================
+   ATCRS SYSTEM READY
+========================================================= */
+
+window.ATCRS = {
+
+    version: getSystemVersion(),
+
+    isLegalPage: isLegalPage,
+
+    getStudentId: getLoggedInStudentId,
+
+    getStudentRequests: getStudentRequests,
+
+    getRequestStatus: getRequestStatus,
+
+    updateRequestStatus: updateRequestStatus,
+
+    getRequestProgress: getRequestProgress,
+
+    getNotifications: getNotifications,
+
+    createNotification: createNotification,
+
+    markNotificationAsRead:
+        markNotificationAsRead,
+
+    getDownloadHistory:
+        getDownloadHistory,
+
+    getReleasedDocuments:
+        getReleasedDocuments
+
+};
+
+
+/* =========================================================
+   END OF ATCRS SCRIPT.JS
+========================================================= */
