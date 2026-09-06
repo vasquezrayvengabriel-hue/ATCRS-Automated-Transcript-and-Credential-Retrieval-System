@@ -5,20 +5,17 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="ATCRS Public User Dashboard - De La Salle John Bosco College">
+    <title>My Profile | ATCRS</title>
 
-    <title>Dashboard | ATCRS - DLSJBC</title>
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
 </head>
 
@@ -26,599 +23,1475 @@
 <body class="dashboard-page">
 
 
-<!-- =========================================
-     DASHBOARD HEADER
-========================================= -->
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
 
-<header class="dashboard-header">
+<aside class="sidebar">
 
-    <div class="dashboard-header-container">
+    <div class="sidebar-brand">
 
-        <!-- Logo -->
+        <div class="brand-logo">
+            AT
+        </div>
 
-        <a href="../index.html" class="dashboard-logo">
+        <div class="brand-text">
 
-            <img src="../images/dlsjbc-logo.png"
-                 alt="DLSJBC Logo">
+            <h2>ATCRS</h2>
 
-            <div class="dashboard-logo-text">
-
-                <strong>ATCRS</strong>
-
-                <span>
-                    De La Salle John Bosco College
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <!-- User Area -->
-
-        <div class="dashboard-user">
-
-            <div class="dashboard-user-icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-
-            <div class="dashboard-user-info">
-
-                <strong id="dashboardUserName">
-                    Public User
-                </strong>
-
-                <span id="dashboardUserRole">
-                    Student
-                </span>
-
-            </div>
-
-
-            <button type="button"
-                    class="dashboard-logout"
-                    id="logoutButton">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                Logout
-
-            </button>
+            <span>
+                Academic Records
+            </span>
 
         </div>
 
     </div>
 
-</header>
 
+    <!-- USER -->
+    <div class="sidebar-user">
 
-<!-- =========================================
-     DASHBOARD LAYOUT
-========================================= -->
+        <div class="user-avatar">
+            🎓
+        </div>
 
-<div class="dashboard-layout">
+        <div>
 
-
-    <!-- =====================================
-         SIDEBAR
-    ====================================== -->
-
-    <aside class="dashboard-sidebar">
-
-        <nav class="dashboard-nav">
-
-            <a href="dashboard.html"
-               class="dashboard-nav-link active">
-
-                <i class="fa-solid fa-gauge-high"></i>
-
-                <span>Dashboard</span>
-
-            </a>
-
-
-            <a href="request.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-
-                <span>Request Document</span>
-
-            </a>
-
-
-            <a href="requests.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-clock-rotate-left"></i>
-
-                <span>My Requests</span>
-
-            </a>
-
-
-            <a href="documents.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-folder-open"></i>
-
-                <span>My Documents</span>
-
-            </a>
-
-
-            <a href="profile.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-user-gear"></i>
-
-                <span>My Profile</span>
-
-            </a>
-
-        </nav>
-
-
-        <!-- Security Notice -->
-
-        <div class="dashboard-security">
-
-            <i class="fa-solid fa-shield-halved"></i>
-
-            <strong>
-                Secure Account
+            <strong id="sidebarUserName">
+                Alumni Student
             </strong>
 
+            <small>
+                Alumni / Former Student
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <nav class="sidebar-nav">
+
+        <p class="nav-title">
+            MAIN MENU
+        </p>
+
+
+        <a
+            href="dashboard.html"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                🏠
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="sidebar-link active"
+        >
+
+            <span class="nav-icon">
+                👤
+            </span>
+
+            <span>
+                My Profile
+            </span>
+
+        </a>
+
+
+        <a
+            href="documents.html"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                📄
+            </span>
+
+            <span>
+                My Documents
+            </span>
+
+        </a>
+
+
+        <a
+            href="request.html"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                📝
+            </span>
+
+            <span>
+                Request Document
+            </span>
+
+        </a>
+
+
+        <a
+            href="requests.html"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                📋
+            </span>
+
+            <span>
+                My Requests
+            </span>
+
+            <span
+                class="notification-badge"
+                id="requestBadge"
+            >
+                0
+            </span>
+
+        </a>
+
+
+        <p class="nav-title nav-title-space">
+            ACCOUNT
+        </p>
+
+
+        <a
+            href="../index.html"
+            class="sidebar-link"
+        >
+
+            <span class="nav-icon">
+                🌐
+            </span>
+
+            <span>
+                ATCRS Home
+            </span>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="sidebar-link logout-link"
+            onclick="logoutUser()"
+        >
+
+            <span class="nav-icon">
+                🚪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </nav>
+
+
+    <!-- SIDEBAR FOOTER -->
+    <div class="sidebar-footer">
+
+        <p>
+            ATCRS
+        </p>
+
+        <small>
+            Secure Academic Records
+        </small>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="dashboard-main">
+
+
+    <!-- TOP HEADER -->
+    <header class="dashboard-header">
+
+        <div>
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+            <span class="dashboard-label">
+                ALUMNI PORTAL
+            </span>
+
+            <h1>
+                My Profile
+            </h1>
+
             <p>
-                Keep your account information private.
-                Never share your password with others.
+                View and manage your ATCRS account information.
             </p>
 
         </div>
 
-    </aside>
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="notification-btn"
+                onclick="showProfileMessage('You currently have no new notifications.')"
+            >
+                🔔
+            </button>
 
 
+            <div class="header-profile">
 
-    <!-- =====================================
-         MAIN CONTENT
-    ====================================== -->
+                <div class="header-avatar">
+                    🎓
+                </div>
 
-    <main class="dashboard-main">
+                <div>
+
+                    <strong id="headerUserName">
+                        Alumni Student
+                    </strong>
+
+                    <small id="headerUserEmail">
+                        student@atcrs.com
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+    <!-- =====================================================
+     PART 2B-2 — PROFILE INFORMATION
+     ===================================================== -->
+
+<section class="profile-layout">
 
 
-        <!-- Welcome -->
+    <!-- =============================================
+         PROFILE CARD
+         ============================================= -->
 
-        <section class="dashboard-welcome">
+    <div class="profile-card">
+
+        <div class="profile-cover">
+
+            <div class="profile-avatar-large">
+                🎓
+            </div>
+
+        </div>
+
+
+        <div class="profile-card-body">
+
+            <h2 id="profileDisplayName">
+                Alumni Student
+            </h2>
+
+            <p class="profile-role">
+                Alumni / Former Student
+            </p>
+
+            <div class="profile-status">
+                <span class="status-dot"></span>
+                Active Account
+            </div>
+
+        </div>
+
+
+        <div class="profile-card-footer">
 
             <div>
 
-                <span class="dashboard-label">
-                    ATCRS USER PORTAL
+                <span>
+                    Account Type
                 </span>
 
-                <h1>
-                    Welcome,
-                    <strong id="welcomeUserName">
-                        Public User
-                    </strong>
-                </h1>
-
-                <p>
-                    Manage your academic document requests,
-                    track processing status, and access your
-                    released digital credentials.
-                </p>
+                <strong>
+                    Alumni
+                </strong>
 
             </div>
 
-
-            <a href="request.html"
-               class="btn btn-gold">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-
-                Request Document
-
-            </a>
-
-        </section>
-
-
-
-        <!-- =================================
-             ACCOUNT SUMMARY
-        ================================== -->
-
-        <section class="dashboard-cards">
-
-
-            <!-- Account Type -->
-
-            <div class="dashboard-card">
-
-                <div class="dashboard-card-icon">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        Account Type
-                    </span>
-
-                    <strong id="accountType">
-                        Student
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- Student ID -->
-
-            <div class="dashboard-card">
-
-                <div class="dashboard-card-icon">
-                    <i class="fa-solid fa-id-card"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        Student ID
-                    </span>
-
-                    <strong id="dashboardStudentId">
-                        ------- 
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- Pending Requests -->
-
-            <div class="dashboard-card">
-
-                <div class="dashboard-card-icon">
-                    <i class="fa-solid fa-hourglass-half"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        Pending Requests
-                    </span>
-
-                    <strong id="pendingRequests">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- Released Documents -->
-
-            <div class="dashboard-card">
-
-                <div class="dashboard-card-icon">
-                    <i class="fa-solid fa-file-circle-check"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        Released Documents
-                    </span>
-
-                    <strong id="releasedDocuments">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================
-             QUICK ACTIONS
-        ================================== -->
-
-        <section class="dashboard-section">
-
-            <div class="dashboard-section-heading">
-
-                <div>
-
-                    <span>
-                        QUICK ACTIONS
-                    </span>
-
-                    <h2>
-                        What would you like to do?
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="quick-actions">
-
-
-                <a href="request.html"
-                   class="quick-action-card">
-
-                    <div class="quick-action-icon">
-
-                        <i class="fa-solid fa-file-circle-plus"></i>
-
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Request a Document
-                        </h3>
-
-                        <p>
-                            Submit a new request for
-                            an academic document.
-                        </p>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
-
-                </a>
-
-
-
-                <a href="requests.html"
-                   class="quick-action-card">
-
-                    <div class="quick-action-icon">
-
-                        <i class="fa-solid fa-list-check"></i>
-
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Track My Requests
-                        </h3>
-
-                        <p>
-                            Check the current status
-                            of your requests.
-                        </p>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
-
-                </a>
-
-
-
-                <a href="documents.html"
-                   class="quick-action-card">
-
-                    <div class="quick-action-icon">
-
-                        <i class="fa-solid fa-folder-open"></i>
-
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            My Documents
-                        </h3>
-
-                        <p>
-                            View available released
-                            academic credentials.
-                        </p>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
-
-                </a>
-
-
-
-                <a href="profile.html"
-                   class="quick-action-card">
-
-                    <div class="quick-action-icon">
-
-                        <i class="fa-solid fa-user-gear"></i>
-
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            My Profile
-                        </h3>
-
-                        <p>
-                            View and manage your
-                            account information.
-                        </p>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right quick-arrow"></i>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================
-             RECENT REQUESTS
-        ================================== -->
-
-        <section class="dashboard-section">
-
-            <div class="dashboard-section-heading">
-
-                <div>
-
-                    <span>
-                        REQUEST ACTIVITY
-                    </span>
-
-                    <h2>
-                        Recent Requests
-                    </h2>
-
-                </div>
-
-
-                <a href="requests.html"
-                   class="view-all-link">
-
-                    View All
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-
-            <div class="request-table-container">
-
-                <table class="request-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Request ID
-                            </th>
-
-                            <th>
-                                Document
-                            </th>
-
-                            <th>
-                                Date Requested
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="recentRequests">
-
-                        <tr>
-
-                            <td colspan="4"
-                                class="empty-request">
-
-                                <i class="fa-solid fa-folder-open"></i>
-
-                                <span>
-                                    No document requests yet.
-                                </span>
-
-                                <a href="request.html">
-                                    Create your first request
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================
-             IMPORTANT INFORMATION
-        ================================== -->
-
-        <section class="dashboard-information">
-
-            <div class="information-icon">
-
-                <i class="fa-solid fa-circle-info"></i>
-
-            </div>
 
             <div>
 
-                <h3>
-                    Important Information
-                </h3>
+                <span>
+                    Account Status
+                </span>
+
+                <strong>
+                    Active
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =============================================
+         PERSONAL INFORMATION
+         ============================================= -->
+
+    <div class="dashboard-card profile-information">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-label">
+                    ACCOUNT INFORMATION
+                </span>
+
+                <h2>
+                    Personal Information
+                </h2>
 
                 <p>
-                    Document requests are subject to
-                    academic record validation, clearance,
-                    payment requirements, and Registrar
-                    approval before release.
+                    Your registered personal information.
                 </p>
 
             </div>
 
-        </section>
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="editProfileBtn"
+                onclick="enableProfileEditing()"
+            >
+                ✏️ Edit Profile
+            </button>
+
+        </div>
 
 
-    </main>
-
-</div>
+        <form id="profileForm">
 
 
-<!-- =========================================
-     DASHBOARD FOOTER
-========================================= -->
+            <!-- STUDENT ID -->
+            <div class="profile-form-grid">
+
+                <div class="form-group">
+
+                    <label for="profileStudentId">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileStudentId"
+                        maxlength="7"
+                        inputmode="numeric"
+                        pattern="[0-9]{7}"
+                        readonly
+                    >
+
+                    <small class="input-help">
+                        Student ID must contain exactly 7 digits.
+                    </small>
+
+                </div>
+
+
+                <!-- FULL NAME -->
+                <div class="form-group">
+
+                    <label for="profileFullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileFullName"
+                        maxlength="50"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="form-group">
+
+                    <label for="profileEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="profileEmail"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- ACCOUNT TYPE -->
+                <div class="form-group">
+
+                    <label for="profileAccountType">
+                        Account Type
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileAccountType"
+                        value="Alumni / Former Student"
+                        readonly
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- EDIT BUTTONS -->
+            <div
+                class="profile-edit-actions"
+                id="profileEditActions"
+                style="display:none;"
+            >
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="cancelProfileEditing()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    💾 Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PART 2B-3 — ACADEMIC INFORMATION
+     ===================================================== -->
+
+<section class="dashboard-card academic-profile-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <span class="card-label">
+                ACADEMIC RECORD
+            </span>
+
+            <h2>
+                Academic Information
+            </h2>
+
+            <p>
+                Information associated with your academic record.
+            </p>
+
+        </div>
+
+        <div class="verified-badge">
+            ✓ Verified
+        </div>
+
+    </div>
+
+
+    <div class="academic-info-grid">
+
+
+        <!-- STUDENT ID -->
+        <div class="academic-info-item">
+
+            <span class="info-label">
+                Student ID
+            </span>
+
+            <strong id="academicStudentId">
+                Not available
+            </strong>
+
+        </div>
+
+
+        <!-- STUDENT NAME -->
+        <div class="academic-info-item">
+
+            <span class="info-label">
+                Student Name
+            </span>
+
+            <strong id="academicStudentName">
+                Alumni Student
+            </strong>
+
+        </div>
+
+
+        <!-- INSTITUTION -->
+        <div class="academic-info-item">
+
+            <span class="info-label">
+                Institution
+            </span>
+
+            <strong>
+                School Academic Records
+            </strong>
+
+        </div>
+
+
+        <!-- RECORD STATUS -->
+        <div class="academic-info-item">
+
+            <span class="info-label">
+                Record Status
+            </span>
+
+            <strong class="record-active">
+                Available
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="academic-notice">
+
+        <span>
+            🔒
+        </span>
+
+        <p>
+            Academic information is protected and should only be
+            accessed or shared by authorized users.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCOUNT SECURITY
+     ===================================================== -->
+
+<section class="dashboard-card security-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <span class="card-label">
+                SECURITY
+            </span>
+
+            <h2>
+                Account Security
+            </h2>
+
+            <p>
+                Manage your account security information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="security-options">
+
+
+        <!-- PASSWORD -->
+        <div class="security-option">
+
+            <div class="security-option-icon">
+                🔑
+            </div>
+
+            <div class="security-option-info">
+
+                <strong>
+                    Password
+                </strong>
+
+                <span>
+                    Your password is protected.
+                </span>
+
+            </div>
+
+            <button
+                type="button"
+                class="outline-btn"
+                onclick="showProfileMessage('Password changing is available in the full production version of ATCRS.')"
+            >
+                Change Password
+            </button>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="security-option">
+
+            <div class="security-option-icon">
+                📧
+            </div>
+
+            <div class="security-option-info">
+
+                <strong>
+                    Email Address
+                </strong>
+
+                <span id="securityEmail">
+                    student@atcrs.com
+                </span>
+
+            </div>
+
+            <span class="security-verified">
+                ✓ Verified
+            </span>
+
+        </div>
+
+
+        <!-- SESSION -->
+        <div class="security-option">
+
+            <div class="security-option-icon">
+                🛡️
+            </div>
+
+            <div class="security-option-info">
+
+                <strong>
+                    Account Session
+                </strong>
+
+                <span>
+                    Your current ATCRS session is active.
+                </span>
+
+            </div>
+
+            <span class="security-verified">
+                Active
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCOUNT INFORMATION NOTICE
+     ===================================================== -->
+
+<section class="dashboard-notice">
+
+    <div class="notice-icon">
+        ℹ️
+    </div>
+
+    <div>
+
+        <strong>
+            Keep your information accurate.
+        </strong>
+
+        <p>
+            Accurate account information helps ATCRS process your
+            academic record requests correctly. If you notice an
+            error in your academic information, contact the
+            Registrar's Office.
+        </p>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PART 2B-4 — FOOTER
+     ===================================================== -->
 
 <footer class="dashboard-footer">
 
-    <p>
-        © 2026 De La Salle John Bosco College.
-        Automated Transcript and Credential Retrieval System.
-    </p>
+    <div class="footer-brand">
+
+        <strong>
+            Automated Transcript and Credential
+            Retrieval System
+        </strong>
+
+        <p>
+            Secure • Digital • Accessible
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="documents.html">
+            Documents
+        </a>
+
+        <a href="request.html">
+            Requests
+        </a>
+
+    </div>
+
+
+    <div class="footer-copy">
+
+        © 2026 ATCRS
+
+    </div>
 
 </footer>
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+</main>
+<!-- =====================================================
+     PART 2B-5 — JAVASCRIPT
+     ===================================================== -->
 
 <script src="../js/script.js"></script>
 
 
+<script>
+
+/* =========================================
+   CHECK LOGIN
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const loggedIn =
+            localStorage.getItem("atcrsLoggedIn");
+
+        const role =
+            localStorage.getItem("atcrsRole");
+
+        const email =
+            localStorage.getItem("atcrsEmail");
+
+
+        /*
+         * Only Alumni accounts can access
+         * this profile page.
+         */
+
+        if (
+            loggedIn !== "true" ||
+            role !== "student"
+        ) {
+
+            window.location.href =
+                "../login.html";
+
+            return;
+
+        }
+
+
+        loadProfile();
+
+    }
+);
+
+
+
+/* =========================================
+   LOAD PROFILE
+   ========================================= */
+
+function loadProfile() {
+
+    const savedAccount =
+        localStorage.getItem(
+            "atcrsStudentAccount"
+        );
+
+
+    let account = {
+
+        studentId: "1234567",
+
+        fullName: "Demo Alumni",
+
+        email: "student@atcrs.com",
+
+        role: "student"
+
+    };
+
+
+    /*
+     * Load registered account if available.
+     */
+
+    if (savedAccount) {
+
+        try {
+
+            const storedAccount =
+                JSON.parse(savedAccount);
+
+
+            account = {
+
+                ...account,
+
+                ...storedAccount
+
+            };
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "Unable to read saved account."
+            );
+
+        }
+
+    }
+
+
+    /*
+     * Fill profile information.
+     */
+
+    setProfileValue(
+        "profileStudentId",
+        account.studentId
+    );
+
+
+    setProfileValue(
+        "profileFullName",
+        account.fullName
+    );
+
+
+    setProfileValue(
+        "profileEmail",
+        account.email
+    );
+
+
+    setProfileValue(
+        "securityEmail",
+        account.email
+    );
+
+
+    setProfileValue(
+        "academicStudentId",
+        account.studentId
+    );
+
+
+    setProfileValue(
+        "academicStudentName",
+        account.fullName
+    );
+
+
+    setProfileValue(
+        "profileDisplayName",
+        account.fullName
+    );
+
+
+    setProfileValue(
+        "sidebarUserName",
+        account.fullName
+    );
+
+
+    setProfileValue(
+        "headerUserName",
+        account.fullName
+    );
+
+
+    setProfileValue(
+        "headerUserEmail",
+        account.email
+    );
+
+}
+
+
+
+/* =========================================
+   SET ELEMENT VALUE
+   ========================================= */
+
+function setProfileValue(
+    elementId,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    /*
+     * Inputs use .value.
+     * Other elements use .textContent.
+     */
+
+    if (
+        element.tagName === "INPUT"
+    ) {
+
+        element.value =
+            value || "";
+
+    }
+
+    else {
+
+        element.textContent =
+            value || "";
+
+    }
+
+}
+
+
+
+/* =========================================
+   ENABLE PROFILE EDITING
+   ========================================= */
+
+function enableProfileEditing() {
+
+    const fullName =
+        document.getElementById(
+            "profileFullName"
+        );
+
+
+    const email =
+        document.getElementById(
+            "profileEmail"
+        );
+
+
+    const editActions =
+        document.getElementById(
+            "profileEditActions"
+        );
+
+
+    /*
+     * Student ID remains readonly.
+     */
+
+    if (fullName) {
+
+        fullName.removeAttribute(
+            "readonly"
+        );
+
+    }
+
+
+    if (email) {
+
+        email.removeAttribute(
+            "readonly"
+        );
+
+    }
+
+
+    if (editActions) {
+
+        editActions.style.display =
+            "flex";
+
+    }
+
+}
+
+
+
+/* =========================================
+   CANCEL EDITING
+   ========================================= */
+
+function cancelProfileEditing() {
+
+    loadProfile();
+
+
+    const fullName =
+        document.getElementById(
+            "profileFullName"
+        );
+
+
+    const email =
+        document.getElementById(
+            "profileEmail"
+        );
+
+
+    const editActions =
+        document.getElementById(
+            "profileEditActions"
+        );
+
+
+    if (fullName) {
+
+        fullName.setAttribute(
+            "readonly",
+            "readonly"
+        );
+
+    }
+
+
+    if (email) {
+
+        email.setAttribute(
+            "readonly",
+            "readonly"
+        );
+
+    }
+
+
+    if (editActions) {
+
+        editActions.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =========================================
+   SAVE PROFILE
+   ========================================= */
+
+const profileForm =
+    document.getElementById(
+        "profileForm"
+    );
+
+
+if (profileForm) {
+
+    profileForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const studentId =
+                document.getElementById(
+                    "profileStudentId"
+                ).value.trim();
+
+
+            const fullName =
+                document.getElementById(
+                    "profileFullName"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "profileEmail"
+                ).value.trim()
+                .toLowerCase();
+
+
+            /*
+             * Validate Student ID.
+             */
+
+            if (
+                !/^\d{7}$/.test(studentId)
+            ) {
+
+                alert(
+                    "Student ID must contain exactly 7 digits."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Validate name.
+             */
+
+            if (
+                fullName.length < 2 ||
+                fullName.length > 50
+            ) {
+
+                alert(
+                    "Please enter a valid full name."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Validate email.
+             */
+
+            if (!email) {
+
+                alert(
+                    "Please enter a valid email address."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Get existing account.
+             */
+
+            let account = {};
+
+
+            const savedAccount =
+                localStorage.getItem(
+                    "atcrsStudentAccount"
+                );
+
+
+            if (savedAccount) {
+
+                try {
+
+                    account =
+                        JSON.parse(
+                            savedAccount
+                        );
+
+                }
+
+                catch (error) {
+
+                    account = {};
+
+                }
+
+            }
+
+
+            /*
+             * Update account.
+             */
+
+            account.studentId =
+                studentId;
+
+            account.fullName =
+                fullName;
+
+            account.email =
+                email;
+
+            account.role =
+                "student";
+
+
+            /*
+             * Save account.
+             */
+
+            localStorage.setItem(
+                "atcrsStudentAccount",
+                JSON.stringify(account)
+            );
+
+
+            /*
+             * Update current email session.
+             */
+
+            localStorage.setItem(
+                "atcrsEmail",
+                email
+            );
+
+
+            /*
+             * Reload information.
+             */
+
+            loadProfile();
+
+
+            /*
+             * Disable editing.
+             */
+
+            document
+                .getElementById(
+                    "profileFullName"
+                )
+                .setAttribute(
+                    "readonly",
+                    "readonly"
+                );
+
+
+            document
+                .getElementById(
+                    "profileEmail"
+                )
+                .setAttribute(
+                    "readonly",
+                    "readonly"
+                );
+
+
+            document
+                .getElementById(
+                    "profileEditActions"
+                )
+                .style.display =
+                    "none";
+
+
+            alert(
+                "Your profile has been updated successfully."
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   STUDENT ID INPUT PROTECTION
+   ========================================= */
+
+const profileStudentId =
+    document.getElementById(
+        "profileStudentId"
+    );
+
+
+if (profileStudentId) {
+
+    profileStudentId.addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value
+                .replace(/\D/g, "")
+                .slice(0, 7);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   FULL NAME INPUT PROTECTION
+   ========================================= */
+
+const profileFullName =
+    document.getElementById(
+        "profileFullName"
+    );
+
+
+if (profileFullName) {
+
+    profileFullName.addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value
+                .slice(0, 50);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   SIDEBAR TOGGLE
+   ========================================= */
+
+function toggleSidebar() {
+
+    const sidebar =
+        document.querySelector(
+            ".sidebar"
+        );
+
+
+    if (sidebar) {
+
+        sidebar.classList.toggle(
+            "mobile-open"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+   ========================================= */
+
+function logoutUser() {
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmLogout) {
+        return;
+    }
+
+
+    localStorage.removeItem(
+        "atcrsLoggedIn"
+    );
+
+
+    localStorage.removeItem(
+        "atcrsRole"
+    );
+
+
+    localStorage.removeItem(
+        "atcrsEmail"
+    );
+
+
+    window.location.href =
+        "../login.html";
+
+}
+
+
+
+/* =========================================
+   PROFILE MESSAGE
+   ========================================= */
+
+function showProfileMessage(
+    message
+) {
+
+    alert(message);
+
+}
+
+</script>
+
+
 </body>
 
-  </html>
+</html>
