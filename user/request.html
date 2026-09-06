@@ -1301,7 +1301,6 @@
 </div>
 
 <!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
 // ================= SESSION CHECK =================
@@ -1321,15 +1320,19 @@ if (loggedIn !== "true" || userRole !== "student") {
 const defaultStudent = {
 
     studentId: "1234567",
+
     fullName: "Demo Alumni",
+
     email: "student@atcrs.com"
 
 };
+
 
 let studentAccount = defaultStudent;
 
 const savedAccount =
     localStorage.getItem("atcrsStudentAccount");
+
 
 if (savedAccount) {
 
@@ -1378,12 +1381,14 @@ if (requestStudentId) {
 
 }
 
+
 if (requestFullName) {
 
     requestFullName.value =
         studentAccount.fullName || "";
 
 }
+
 
 if (requestEmail) {
 
@@ -1401,6 +1406,7 @@ if (sidebarUserName) {
         studentAccount.fullName || "Student";
 
 }
+
 
 if (sidebarUserEmail) {
 
@@ -1427,9 +1433,1246 @@ if (userAvatar) {
         firstLetter;
 
 }
+    // ================= REQUEST FORM SUBMISSION =================
 
-</script>
+const requestForm =
+    document.getElementById("requestForm");
+
+const submitRequestBtn =
+    document.getElementById("submitRequestBtn");
+
+const requestSuccessMessage =
+    document.getElementById("requestSuccessMessage");
+
+const requestSuccessText =
+    document.getElementById("requestSuccessText");
+
+
+if (requestForm) {
+
+    requestForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        // ================= GET FORM VALUES =================
+
+        const studentId =
+            document.getElementById("requestStudentId").value.trim();
+
+        const fullName =
+            document.getElementById("requestFullName").value.trim();
+
+        const email =
+            document.getElementById("requestEmail").value.trim();
+
+        const documentType =
+            document.getElementById("documentType").value;
+
+        const purpose =
+            document.getElementById("requestPurpose").value.trim();
+
+        const deliveryMethod =
+            document.getElementById("deliveryMethod").value;
+
+        const notes =
+            document.getElementById("requestNotes").value.trim();
+
+
+        // ================= STUDENT ID VALIDATION =================
+
+        if (!/^[0-9]{7}$/.test(studentId)) {
+
+            alert("Student ID must contain exactly 7 digits.");
+
+            return;
+
+        }
+
+
+        // ================= FULL NAME VALIDATION =================
+
+        if (
+            fullName.length < 2 ||
+            fullName.length > 50
+        ) {
+
+            alert(
+                "Full Name must be between 2 and 50 characters."
+            );
+
+            return;
+
+        }
+
+
+        // ================= GENERATE REQUEST ID =================
+
+        const requestId =
+            "REQ-" +
+            Date.now().toString().slice(-8);
+
+
+        // ================= CREATE REQUEST =================
+
+        const newRequest = {
+
+            requestId: requestId,
+
+            studentId: studentId,
+
+            fullName: fullName,
+
+            email: email,
+
+            documentType: documentType,
+
+            purpose: purpose,
+
+            deliveryMethod: deliveryMethod,
+
+            notes: notes,
+
+            status: "Pending",
+
+            clearance: "Pending",
+
+            payment: "Pending",
+
+            dateRequested:
+                new Date().toLocaleString()
+
+        };
+
+
+        // ================= GET EXISTING REQUESTS =================
+
+        let requests = [];
+
+        const savedRequests =
+            localStorage.getItem("atcrsRequests");
+
+
+        if (savedRequests) {
+
+            try {
+
+                requests =
+                    JSON.parse(savedRequests);
+
+            } catch (error) {
+
+                requests = [];
+
+            }
+
+        }
+
+
+        // ================= SAVE NEW REQUEST =================
+
+        requests.push(newRequest);
+
+        localStorage.setItem(
+            "atcrsRequests",
+            JSON.stringify(requests)
+        );
+
+
+        // ================= SHOW SUCCESS =================
+
+        if (requestSuccessText) {
+
+            requestSuccessText.textContent =
+                "Your " +
+                documentType +
+                " request has been submitted successfully. " +
+                "Your Request ID is " +
+                requestId +
+                ".";
+
+        }
+
+
+        if (requestSuccessMessage) {
+
+            requestSuccessMessage.style.display =
+                "flex";
+
+        }
+
+
+        // ================= HIDE FORM =================
+
+        requestForm.style.display =
+            "none";
+
+
+        // ================= SCROLL TO SUCCESS =================
+
+        if (requestSuccessMessage) {
+
+            requestSuccessMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+    });
+
+    }
+    // ================= RESET FORM =================
+
+const resetRequestBtn =
+    document.getElementById("resetRequestBtn");
+
+
+if (resetRequestBtn) {
+
+    resetRequestBtn.addEventListener("click", function() {
+
+        // Keep student information
+        // but clear the request details.
+
+        setTimeout(function() {
+
+            if (requestStudentId) {
+
+                requestStudentId.value =
+                    studentAccount.studentId || "";
+
+            }
+
+            if (requestFullName) {
+
+                requestFullName.value =
+                    studentAccount.fullName || "";
+
+            }
+
+            if (requestEmail) {
+
+                requestEmail.value =
+                    studentAccount.email || "";
+
+            }
+
+        }, 0);
+
+    });
+
+}
+
+
+// ================= NEW REQUEST BUTTON =================
+
+const newRequestBtn =
+    document.getElementById("newRequestBtn");
+
+
+if (newRequestBtn) {
+
+    newRequestBtn.addEventListener("click", function() {
+
+        // Hide success message
+
+        if (requestSuccessMessage) {
+
+            requestSuccessMessage.style.display =
+                "none";
+
+        }
+
+
+        // Show request form
+
+        if (requestForm) {
+
+            requestForm.style.display =
+                "block";
+
+            requestForm.reset();
+
+        }
+
+
+        // Restore student information
+
+        if (requestStudentId) {
+
+            requestStudentId.value =
+                studentAccount.studentId || "";
+
+        }
+
+        if (requestFullName) {
+
+            requestFullName.value =
+                studentAccount.fullName || "";
+
+        }
+
+        if (requestEmail) {
+
+            requestEmail.value =
+                studentAccount.email || "";
+
+        }
+
+
+        // Scroll back to form
+
+        if (requestForm) {
+
+            requestForm.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    });
+
+            }
+    // ================= MOBILE SIDEBAR =================
+
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
+
+const sidebar =
+    document.getElementById("sidebar");
+
+const sidebarOverlay =
+    document.getElementById("sidebarOverlay");
+
+
+// ================= OPEN SIDEBAR =================
+
+if (mobileMenuBtn) {
+
+    mobileMenuBtn.addEventListener("click", function() {
+
+        if (sidebar) {
+
+            sidebar.classList.add("active");
+
+        }
+
+        if (sidebarOverlay) {
+
+            sidebarOverlay.classList.add("active");
+
+        }
+
+        document.body.classList.add("sidebar-open");
+
+    });
+
+}
+
+
+// ================= CLOSE SIDEBAR =================
+
+function closeMobileSidebar() {
+
+    if (sidebar) {
+
+        sidebar.classList.remove("active");
+
+    }
+
+    if (sidebarOverlay) {
+
+        sidebarOverlay.classList.remove("active");
+
+    }
+
+    document.body.classList.remove("sidebar-open");
+
+}
+
+
+// ================= OVERLAY CLICK =================
+
+if (sidebarOverlay) {
+
+    sidebarOverlay.addEventListener(
+        "click",
+        closeMobileSidebar
+    );
+
+}
+
+
+// ================= CLOSE AFTER NAVIGATION =================
+
+const sidebarLinks =
+    document.querySelectorAll(".sidebar a");
+
+sidebarLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        if (window.innerWidth <= 900) {
+
+            closeMobileSidebar();
+
+        }
+
+    });
+
+});
+// ================= LOGOUT =================
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const confirmLogout =
+            confirm("Are you sure you want to log out?");
+
+        if (!confirmLogout) {
+            return;
+        }
+
+        // Clear active session
+
+        localStorage.removeItem("atcrsLoggedIn");
+        localStorage.removeItem("atcrsRole");
+        localStorage.removeItem("atcrsEmail");
+        localStorage.removeItem("atcrsRemember");
+
+        // Keep the student account and requests saved.
+
+        window.location.href = "../login.html";
+
+    });
+
+}
+
+
+// ================= ESCAPE KEY =================
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeMobileSidebar();
+
+    }
+
+});
+    <style>
+
+/* =====================================================
+   REQUEST PAGE - MAIN STYLING
+   ===================================================== */
+
+.request-page {
+    min-height: 100vh;
+    background: #f4f8f5;
+}
+
+
+/* ================= MAIN CONTENT ================= */
+
+.request-page .main-content {
+    min-height: 100vh;
+    padding: 35px;
+    margin-left: 280px;
+}
+
+
+/* ================= REQUEST HEADER ================= */
+
+.request-header {
+    margin-bottom: 25px;
+}
+
+.request-header .header-label {
+    display: inline-block;
+    color: #0b5d3f;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.request-header h1 {
+    margin: 0 0 8px;
+    color: #063927;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.request-header p {
+    margin: 0;
+    max-width: 750px;
+    color: #68766f;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* ================= REQUEST HEADER ICON ================= */
+
+.request-header-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    background: #0b5d3f;
+    color: #ffffff;
+    font-size: 24px;
+    box-shadow: 0 8px 20px rgba(11, 93, 63, 0.15);
+}
+
+
+/* ================= INFORMATION CARD ================= */
+
+.request-info-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    margin-bottom: 25px;
+    border: 1px solid #dce8e1;
+    border-left: 5px solid #d4af37;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+}
+
+.request-info-card h2 {
+    margin: 0 0 14px;
+    color: #063927;
+    font-size: 19px;
+}
+
+.request-info-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.request-info-card li {
+    position: relative;
+    padding-left: 27px;
+    margin-bottom: 10px;
+    color: #5f6d65;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.request-info-card li:last-child {
+    margin-bottom: 0;
+}
+
+.request-info-card li i {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: #0b5d3f;
+}
+
+
+/* ================= FORM SECTION ================= */
+
+.request-form-section {
+    padding: 30px;
+    border: 1px solid #dce8e1;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+}
+
+.request-form-section > h2 {
+    margin: 0 0 6px;
+    color: #063927;
+    font-size: 23px;
+}
+
+.request-form-section > p {
+    margin: 0 0 25px;
+    color: #748078;
+    font-size: 14px;
+}
+
+<style>
+
+/* =====================================================
+   REQUEST FORM - INPUT STYLING
+   ===================================================== */
+
+.request-form {
+    width: 100%;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2ebe6;
+    color: #063927;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.form-section-title:first-child {
+    margin-top: 0;
+}
+
+.form-section-title i {
+    color: #0b5d3f;
+}
+
+
+/* ================= FORM GRID ================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* ================= LABELS ================= */
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #263b31;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label .optional {
+    margin-left: 5px;
+    color: #8a968f;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+/* ================= INPUT WRAPPER ================= */
+
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-icon > i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: #0b5d3f;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+
+/* ================= INPUTS ================= */
+
+.input-with-icon input,
+.input-with-icon select,
+.input-with-icon textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d4dfd9;
+    border-radius: 10px;
+    background: #fbfdfc;
+    color: #263b31;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+
+/* ================= TEXT INPUT ================= */
+
+.input-with-icon input,
+.input-with-icon select {
+    height: 48px;
+    padding: 0 15px 0 45px;
+}
+
+
+/* ================= TEXTAREA ================= */
+
+.input-with-icon textarea {
+    min-height: 110px;
+    padding: 14px 15px 14px 45px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+
+/* ================= SELECT ================= */
+
+.input-with-icon select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+
+/* ================= READONLY FIELDS ================= */
+
+.input-with-icon input[readonly] {
+    background: #f1f6f3;
+    color: #52645a;
+    cursor: not-allowed;
+}
+
+
+/* ================= FOCUS ================= */
+
+.input-with-icon input:focus,
+.input-with-icon select:focus,
+.input-with-icon textarea:focus {
+    border-color: #0b5d3f;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(11, 93, 63, 0.08);
+}
+
+
+/* ================= SMALL HELP TEXT ================= */
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: #87928c;
+    font-size: 12px;
+}
+
+
+/* ================= REQUIRED FIELDS ================= */
+
+.form-group label::after {
+    content: "";
+}
+
+.form-group label[for="requestStudentId"]::after,
+.form-group label[for="requestFullName"]::after,
+.form-group label[for="requestEmail"]::after,
+.form-group label[for="documentType"]::after,
+.form-group label[for="requestPurpose"]::after,
+.form-group label[for="deliveryMethod"]::after {
+    content: " *";
+    color: #b38b19;
+}
+
+
+/* ================= TEXTAREA ICON ================= */
+
+.textarea-icon > i {
+    top: 19px;
+    transform: none;
+}
+
+
+/* ================= CONFIRMATION PREVIEW ================= */
+
+.request-form input[type="checkbox"] {
+    accent-color: #0b5d3f;
+}
+
+<style>
+
+/* =====================================================
+   CONFIRMATION & FORM ACTIONS
+   ===================================================== */
+
+.request-confirmation {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid #dce8e1;
+    border-radius: 12px;
+    background: #f7faf8;
+}
+
+.confirmation-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e4f1e9;
+    color: #0b5d3f;
+    font-size: 18px;
+}
+
+.confirmation-content h3 {
+    margin: 0 0 7px;
+    color: #063927;
+    font-size: 16px;
+}
+
+.confirmation-content p {
+    margin: 0 0 14px;
+    color: #68766f;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ================= CHECKBOX ================= */
+
+.confirmation-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+    color: #43534a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.confirmation-check input {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+
+/* ================= PROCESSING NOTICE ================= */
+
+.processing-notice {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: #fffaf0;
+    border: 1px solid #eadfbf;
+}
+
+.processing-notice > i {
+    margin-top: 2px;
+    color: #b38b19;
+    font-size: 18px;
+}
+
+.processing-notice strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #6c5512;
+    font-size: 13px;
+}
+
+.processing-notice p {
+    margin: 0;
+    color: #776f59;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* ================= FORM ACTIONS ================= */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e2ebe6;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.form-actions .btn,
+.success-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.btn-primary {
+    background: #0b5d3f;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #063927;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #edf2ef;
+    color: #405148;
+}
+
+.btn-secondary:hover {
+    background: #dfe8e3;
+}
+
+
+/* ================= SUCCESS MESSAGE ================= */
+
+.request-success-message {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 25px;
+    padding: 28px;
+    border: 1px solid #cfe3d7;
+    border-radius: 15px;
+    background: #f4fbf6;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.success-icon {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dff1e5;
+    color: #0b5d3f;
+    font-size: 26px;
+}
+
+.success-content h3 {
+    margin: 0 0 8px;
+    color: #063927;
+    font-size: 20px;
+}
+
+.success-content p {
+    margin: 0;
+    color: #68766f;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ================= SUCCESS ACTIONS ================= */
+
+.success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+
+/* ================= HELP CARD ================= */
+
+.request-help-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 14px;
+    background: #063927;
+    color: #ffffff;
+}
+
+.help-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #d4af37;
+    color: #063927;
+    font-size: 18px;
+}
+
+.help-content h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+.help-content p {
+    margin: 0;
+    color: #dce9e1;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+<style>
+
+/* =====================================================
+   REQUEST PAGE - FOOTER
+   ===================================================== */
+
+.main-footer {
+    margin-top: 35px;
+    padding: 25px 0 0;
+    border-top: 1px solid #dce8e1;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-bottom: 20px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #0b5d3f;
+    color: #ffffff;
+}
+
+.footer-brand h3 {
+    margin: 0 0 3px;
+    color: #063927;
+    font-size: 16px;
+}
+
+.footer-brand p {
+    margin: 0;
+    color: #7a877f;
+    font-size: 11px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    text-align: right;
+}
+
+.footer-info p {
+    margin: 0;
+    color: #68766f;
+    font-size: 12px;
+}
+
+.footer-info i {
+    margin-right: 5px;
+    color: #0b5d3f;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+    border-top: 1px solid #e3ebe6;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #89938d;
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   MOBILE MENU BUTTON
+   ===================================================== */
+
+.mobile-menu-btn {
+    display: none;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .request-page .main-content {
+        margin-left: 0;
+        padding: 25px 20px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        z-index: 1100;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 10px;
+        background: #0b5d3f;
+        color: #ffffff;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .request-page .sidebar {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        z-index: 1200;
+        transition: left 0.3s ease;
+    }
+
+    .request-page .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1150;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    .request-header {
+        padding-top: 50px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-info {
+        text-align: left;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE SCREENS
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .request-page .main-content {
+        padding: 20px 15px;
+    }
+
+    .request-header h1 {
+        font-size: 26px;
+    }
+
+    .request-form-section {
+        padding: 20px 16px;
+    }
+
+    .request-info-card {
+        padding: 18px;
+    }
+
+    .request-confirmation {
+        padding: 16px;
+    }
+
+    .processing-notice {
+        padding: 14px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .request-success-message {
+        flex-direction: column;
+        padding: 22px;
+    }
+
+    .success-actions {
+        flex-direction: column;
+    }
+
+    .success-actions .btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+    
+    </script>
 
 </body>
 
 </html>
+    
