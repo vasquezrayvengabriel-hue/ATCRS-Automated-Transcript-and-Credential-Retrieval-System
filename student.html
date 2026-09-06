@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STUDENT DASHBOARD | ATCRS - DLSJBC</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ================= STUDENT HEADER ================= -->
+
+    <header class="student-header">
+
+        <div class="student-brand">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+            >
+
+            <div>
+
+                <h1>
+                    ATCRS
+                </h1>
+
+                <p>
+                    STUDENT PORTAL
+                </p>
+
+            </div>
+
+        </div>
+                <div class="student-account">
+
+            <div class="student-account-info">
+
+                <span>
+                    STUDENT ACCOUNT
+                </span>
+
+                <strong id="displayStudentId">
+                    STUDENT ID
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-btn"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                LOGOUT
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= STUDENT LAYOUT ================= -->
+
+    <div class="student-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="student-sidebar">
+
+            <div class="sidebar-title">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                STUDENT MENU
+
+            </div>
+
+
+            <nav class="student-nav">
+
+                <a
+                    href="#dashboard"
+                    class="student-nav-link active"
+                >
+
+                    <i class="fa-solid fa-house"></i>
+
+                    DASHBOARD
+
+                </a>
+
+
+                <a
+                    href="#profile"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-user"></i>
+
+                    MY PROFILE
+
+                </a>
+
+
+                <a
+                    href="#records"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                    ACADEMIC RECORDS
+
+                </a>
+
+
+                <a
+                    href="#requests"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    DOCUMENT REQUESTS
+
+                </a>
+
+
+                <a
+                    href="#credentials"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    CREDENTIALS
+
+                </a>
+
+            </nav>
+
+        </aside>
+                <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="student-main">
+
+            <!-- DASHBOARD SECTION -->
+
+            <section
+                id="dashboard"
+                class="student-section"
+            >
+
+                <div class="student-welcome">
+
+                    <div>
+
+                        <span class="section-label">
+                            STUDENT PORTAL
+                        </span>
+
+                        <h2>
+                            WELCOME TO YOUR DASHBOARD
+                        </h2>
+
+                        <p>
+                            Manage your academic records,
+                            document requests, and credentials
+                            through the ATCRS Student Portal.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-icon">
+
+                        <i class="fa-solid fa-user-graduate"></i>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD CARDS -->
+
+                <div class="student-dashboard-grid">
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-folder-open"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                ACADEMIC RECORDS
+                            </h3>
+
+                            <p>
+                                View your available academic
+                                information and records.
+                            </p>
+
+                            <a href="#records">
+                                VIEW RECORDS
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+                                        <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-file-circle-plus"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                DOCUMENT REQUESTS
+                            </h3>
+
+                            <p>
+                                Submit and monitor requests for
+                                official school documents.
+                            </p>
+
+                            <a href="#requests">
+                                REQUEST DOCUMENT
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-certificate"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                CREDENTIALS
+                            </h3>
+
+                            <p>
+                                View and manage your available
+                                academic credentials.
+                            </p>
+
+                            <a href="#credentials">
+                                VIEW CREDENTIALS
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= MY PROFILE ================= -->
+
+            <section
+                id="profile"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            STUDENT INFORMATION
+                        </span>
+
+                        <h2>
+                            MY PROFILE
+                        </h2>
+
+                        <p>
+                            View your registered student information.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <div class="profile-header">
+
+                        <div class="profile-avatar">
+
+                            <i class="fa-solid fa-user-graduate"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3 id="profileName">
+                                STUDENT NAME
+                            </h3>
+
+                            <p id="profileStudentId">
+                                STUDENT ID
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-information">
+
+                        <div class="information-item">
+
+                            <span>
+                                FULL NAME
+                            </span>
+
+                            <strong id="studentFullName">
+                                STUDENT NAME
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-item">
+
+                            <span>
+                                STUDENT ID
+                            </span>
+
+                            <strong id="studentIdDisplay">
+                                --------
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-item">
+
+                            <span>
+                                PROGRAM
+                            </span>
+
+                            <strong>
+                                BACHELOR OF SCIENCE IN
+                                INFORMATION TECHNOLOGY
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-item">
+
+                            <span>
+                                ACCOUNT STATUS
+                            </span>
+
+                            <strong class="status-active">
+                                ACTIVE
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= ACADEMIC RECORDS ================= -->
+
+            <section
+                id="records"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            ACADEMIC INFORMATION
+                        </span>
+
+                        <h2>
+                            ACADEMIC RECORDS
+                        </h2>
+
+                        <p>
+                            View your available academic records
+                            maintained by the institution.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-folder-open"></i>
+
+                </div>
+
+
+                <div class="records-card">
+
+                    <div class="records-notice">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <p>
+                            Your academic records are maintained
+                            by the Registrar's Office. Available
+                            information will appear here after
+                            your records have been processed.
+                        </p>
+
+                    </div>
+
+
+                    <div class="academic-table-wrapper">
+
+                        <table class="academic-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        RECORD
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        LAST UPDATED
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        TRANSCRIPT OF RECORDS
+                                    </td>
+
+                                    <td>
+                                        <span class="record-status">
+                                            AVAILABLE
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        --
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        CERTIFICATE OF ENROLLMENT
+                                    </td>
+
+                                    <td>
+                                        <span class="record-status">
+                                            AVAILABLE
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        --
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        CERTIFICATE OF GRADES
+                                    </td>
+
+                                    <td>
+                                        <span class="record-status">
+                                            AVAILABLE
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        --
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= DOCUMENT REQUESTS ================= -->
+
+            <section
+                id="requests"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            DOCUMENT SERVICES
+                        </span>
+
+                        <h2>
+                            DOCUMENT REQUESTS
+                        </h2>
+
+                        <p>
+                            Submit and monitor your official
+                            document requests.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                </div>
+
+
+                <div class="request-card">
+
+                    <div class="request-info">
+
+                        <i class="fa-solid fa-file-signature"></i>
+
+                        <div>
+
+                            <h3>
+                                REQUEST AN OFFICIAL DOCUMENT
+                            </h3>
+
+                            <p>
+                                Choose the document you need and
+                                submit your request to the
+                                Registrar's Office.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-action-btn"
+                        id="newRequestButton"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        NEW DOCUMENT REQUEST
+
+                    </button>
+
+                </div>
+
+
+                <div class="request-history">
+
+                    <h3>
+                        REQUEST HISTORY
+                    </h3>
+
+                    <div class="empty-request">
+
+                        <i class="fa-solid fa-inbox"></i>
+
+                        <p>
+                            NO DOCUMENT REQUESTS YET.
+                        </p>
+
+                        <span>
+                            Your submitted requests will appear here.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= CREDENTIALS ================= -->
+
+            <section
+                id="credentials"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            OFFICIAL DOCUMENTS
+                        </span>
+
+                        <h2>
+                            CREDENTIALS
+                        </h2>
+
+                        <p>
+                            View your available academic credentials
+                            and processed documents.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                </div>
+
+
+                <div class="credentials-grid">
+
+                    <div class="credential-card">
+
+                        <div class="credential-icon">
+
+                            <i class="fa-solid fa-file-lines"></i>
+
+                        </div>
+
+                        <div class="credential-content">
+
+                            <h3>
+                                TRANSCRIPT OF RECORDS
+                            </h3>
+
+                            <p>
+                                Official record of your academic
+                                performance and courses completed.
+                            </p>
+
+                            <span class="credential-status">
+                                AVAILABLE
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="credential-btn"
+                        >
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            VIEW
+
+                        </button>
+
+                    </div>
+                                        <div class="credential-card">
+
+                        <div class="credential-icon">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                        </div>
+
+                        <div class="credential-content">
+
+                            <h3>
+                                CERTIFICATE OF ENROLLMENT
+                            </h3>
+
+                            <p>
+                                Official certification of your
+                                enrollment status.
+                            </p>
+
+                            <span class="credential-status">
+                                AVAILABLE
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="credential-btn"
+                        >
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            VIEW
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="credential-card">
+
+                        <div class="credential-icon">
+
+                            <i class="fa-solid fa-award"></i>
+
+                        </div>
+
+                        <div class="credential-content">
+
+                            <h3>
+                                CERTIFICATE OF GRADES
+                            </h3>
+
+                            <p>
+                                Official certification containing
+                                your recorded grades.
+                            </p>
+
+                            <span class="credential-status">
+                                AVAILABLE
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="credential-btn"
+                        >
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            VIEW
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= PORTAL INFORMATION ================= -->
+
+            <section class="portal-information">
+
+                <div class="portal-info-card">
+
+                    <div class="portal-info-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            YOUR INFORMATION IS PROTECTED
+                        </h3>
+
+                        <p>
+                            ATCRS uses role-based access to help
+                            protect student records and credentials.
+                            Only authorized users can access
+                            protected academic information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portal-info-card">
+
+                    <div class="portal-info-icon">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            NEED ASSISTANCE?
+                        </h3>
+
+                        <p>
+                            Contact the Registrar's Office if you
+                            have concerns regarding your records,
+                            requests, or credentials.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+        <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <img
+                    src="images/dlsjbc-logo.png"
+                    alt="DLSJBC Logo"
+                >
+
+                <div>
+
+                    <h3>
+                        DE LA SALLE JOHN BOSCO COLLEGE
+                    </h3>
+
+                    <p>
+                        AUTOMATED TRANSCRIPT AND CREDENTIAL
+                        RETRIEVAL SYSTEM
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="terms.html">
+                    TERMS OF USE
+                </a>
+
+                <a href="privacy.html">
+                    PRIVACY POLICY
+                </a>
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 De La Salle John Bosco College.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    ATCRS STUDENT PORTAL
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+        <!-- ================= STUDENT JAVASCRIPT ================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const loggedIn =
+                sessionStorage.getItem("studentLoggedIn");
+
+            const savedStudentId =
+                sessionStorage.getItem("studentId");
+
+
+            /* ================= ACCESS PROTECTION ================= */
+
+            if (loggedIn !== "true") {
+
+                window.location.href = "login.html";
+
+                return;
+
+            }
+
+
+            /* ================= DISPLAY STUDENT ID ================= */
+
+            if (savedStudentId) {
+
+                const displayStudentId =
+                    document.getElementById("displayStudentId");
+
+                const profileStudentId =
+                    document.getElementById("profileStudentId");
+
+                const studentIdDisplay =
+                    document.getElementById("studentIdDisplay");
+
+
+                if (displayStudentId) {
+                    displayStudentId.textContent =
+                        savedStudentId;
+                }
+
+                if (profileStudentId) {
+                    profileStudentId.textContent =
+                        "STUDENT ID: " + savedStudentId;
+                }
+
+                if (studentIdDisplay) {
+                    studentIdDisplay.textContent =
+                        savedStudentId;
+                }
+
+            }
+
+
+            /* ================= LOGOUT ================= */
+
+            const logoutButton =
+                document.getElementById("logoutButton");
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    function () {
+
+                        sessionStorage.removeItem(
+                            "studentLoggedIn"
+                        );
+
+                        sessionStorage.removeItem(
+                            "studentId"
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                    }
+                );
+
+            }
+
+
+            /* ================= NEW REQUEST ================= */
+
+            const newRequestButton =
+                document.getElementById("newRequestButton");
+
+
+            if (newRequestButton) {
+
+                newRequestButton.addEventListener(
+                    "click",
+                    function () {
+
+                        alert(
+                            "DOCUMENT REQUEST FEATURE\n\n" +
+                            "This feature will allow students " +
+                            "to submit official document requests."
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* ================= NAVIGATION ================= */
+
+            const navLinks =
+                document.querySelectorAll(
+                    ".student-nav-link"
+                );
+
+
+            navLinks.forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                        this.classList.add("active");
+
+                    }
+                );
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
