@@ -5,256 +5,726 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="ATCRS User Login and Registration - De La Salle John Bosco College"
-    >
+    <title>
+        Login | ATCRS
+    </title>
 
-    <title>Login | ATCRS</title>
-
-    <link
-        rel="icon"
-        href="images/dlsjbc-logo.png"
-    >
-
-    <!-- ================= GOOGLE FONTS ================= -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- ================= FONT AWESOME ================= -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-
-    <!-- ================= MAIN CSS ================= -->
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet"
+          href="css/style.css">
 
 </head>
 
 
-<body class="auth-page">
+<body class="login-page">
 
 
-<!-- ==================================================
-     AUTH HEADER
-================================================== -->
+<!-- =====================================================
+     LOGIN WRAPPER
+===================================================== -->
 
-<header class="auth-header">
+<div class="login-wrapper">
 
-    <a
-        href="index.html"
-        class="auth-brand"
-    >
 
-        <img
-            src="images/dlsjbc-logo.png"
-            alt="De La Salle John Bosco College Logo"
+    <!-- =================================================
+         LEFT SIDE
+    ================================================== -->
+
+    <div class="login-intro">
+
+
+        <a href="index.html"
+           class="back-home">
+
+            ← Back to Home
+
+        </a>
+
+
+        <div class="login-intro-content">
+
+
+            <div class="large-brand-logo">
+
+                AT
+
+            </div>
+
+
+            <span class="login-label">
+
+                SECURE DIGITAL RECORDS
+
+            </span>
+
+
+            <h1>
+
+                Welcome to
+                <span>ATCRS</span>
+
+            </h1>
+
+
+            <p>
+
+                Access your academic records,
+                submit credential requests,
+                manage documents, and verify
+                credentials through one secure
+                digital platform.
+
+            </p>
+
+
+            <!-- SECURITY FEATURES -->
+
+            <div class="login-security-list">
+
+
+                <div class="login-security-item">
+
+                    <div class="security-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Secure Access
+                        </strong>
+
+                        <small>
+                            Protected account authentication
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-security-item">
+
+                    <div class="security-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Digital Records
+                        </strong>
+
+                        <small>
+                            Access certified academic documents
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-security-item">
+
+                    <div class="security-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Credential Verification
+                        </strong>
+
+                        <small>
+                            Verify released credentials securely
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="login-intro-footer">
+
+            <span>
+                ATCRS
+            </span>
+
+            <span>
+                Secure Academic Records Portal
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT SIDE
+    ================================================== -->
+
+    <div class="login-panel">
+
+
+        <div class="login-box">
+
+
+            <!-- AUTHENTICATION TABS -->
+
+            <div class="auth-tabs">
+
+
+                <button
+                    type="button"
+                    class="auth-tab active"
+                    id="loginTab">
+
+                    Login
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="auth-tab"
+                    id="registerTab">
+
+                    Create Account
+
+                </button>
+
+
+            </div>
+
+
+            <!-- LOGIN SECTION START -->
+
+            <div id="loginSection"
+                 class="auth-section">
+
+
+                <div class="auth-heading">
+
+                    <span class="form-icon">
+                        🔐
+                    </span>
+
+
+                    <div>
+
+                        <h2>
+                            Sign In
+                        </h2>
+
+                        <p>
+                            Enter your ATCRS account details.
+                        </p>
+
+                    </div>
+
+                </div>
+                <!-- =====================================================
+     PART 1B-2 — LOGIN FORM
+     ===================================================== -->
+
+<section class="auth-section" id="loginSection">
+
+    <div class="auth-heading">
+
+        <span class="form-icon">
+            🔐
+        </span>
+
+        <div>
+            <h2>Sign In</h2>
+
+            <p>
+                Enter your ATCRS account details.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm">
+
+        <!-- ACCOUNT TYPE -->
+        <div class="form-group">
+
+            <label for="loginRole">
+                Account Type
+            </label>
+
+            <select id="loginRole" required>
+
+                <option value="">
+                    Select account type
+                </option>
+
+                <option value="student">
+                    Alumni / Former Student
+                </option>
+
+                <option value="registrar">
+                    Registrar / School Admin
+                </option>
+
+                <option value="verifier">
+                    Third-Party Verifier
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+
+            <label for="loginEmail">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+
+            <label for="loginPassword">
+                Password
+            </label>
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword('loginPassword', this)"
+                    aria-label="Show password"
+                >
+                    👁
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- REMEMBER + FORGOT -->
+        <div class="form-options">
+
+            <label class="checkbox-label">
+
+                <input
+                    type="checkbox"
+                    id="rememberMe"
+                >
+
+                <span>
+                    Remember me
+                </span>
+
+            </label>
+
+
+            <button
+                type="button"
+                class="forgot-btn"
+                onclick="showDemoMessage('For this prototype, please use one of the demo accounts shown below.')"
+            >
+                Forgot Password?
+            </button>
+
+        </div>
+
+
+        <!-- TERMS -->
+        <div class="terms-check">
+
+            <label class="checkbox-label">
+
+                <input
+                    type="checkbox"
+                    id="loginTerms"
+                    required
+                >
+
+                <span>
+                    I agree to the
+                    <button
+                        type="button"
+                        class="inline-link"
+                        onclick="openTerms()"
+                    >
+                        Terms of Use
+                    </button>
+
+                    and acknowledge the
+                    <button
+                        type="button"
+                        class="inline-link"
+                        onclick="openPrivacy()"
+                    >
+                        Privacy Notice
+                    </button>.
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+        <button
+            type="submit"
+            class="auth-submit"
         >
+            <span>🔓</span>
+            Sign In
+        </button>
+
+
+    </form>
+
+
+    <!-- DEMO ACCOUNTS -->
+    <div class="demo-login-box">
+
+        <div class="demo-title">
+            🧪 Demo Accounts
+        </div>
+
+        <p class="demo-description">
+            Use the following accounts to test the ATCRS prototype.
+        </p>
+
+
+        <div class="demo-account">
+
+            <strong>
+                🎓 Alumni
+            </strong>
+
+            <span>
+                student@atcrs.com
+            </span>
+
+            <small>
+                Password: student123
+            </small>
+
+        </div>
+
+
+        <div class="demo-account">
+
+            <strong>
+                🏛️ Registrar
+            </strong>
+
+            <span>
+                registrar@atcrs.com
+            </span>
+
+            <small>
+                Password: admin123
+            </small>
+
+        </div>
+
+
+        <div class="demo-account">
+
+            <strong>
+                🔎 Verifier
+            </strong>
+
+            <span>
+                verifier@company.com
+            </span>
+
+            <small>
+                Password: verify123
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     PART 1B-3 — CREATE ALUMNI ACCOUNT
+     ===================================================== -->
+
+<section
+    class="auth-section"
+    id="registerSection"
+    style="display: none;"
+>
+
+    <div class="auth-heading">
+
+        <span class="form-icon">
+            📝
+        </span>
+
+        <div>
+
+            <h2>
+                Create Account
+            </h2>
+
+            <p>
+                Register your alumni account with ATCRS.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- REGISTER FORM -->
+    <form id="registerForm">
+
+
+        <!-- STUDENT ID -->
+        <div class="form-group">
+
+            <label for="studentId">
+                Student ID
+            </label>
+
+            <input
+                type="text"
+                id="studentId"
+                name="studentId"
+                placeholder="Enter your 7-digit Student ID"
+                inputmode="numeric"
+                pattern="[0-9]{7}"
+                minlength="7"
+                maxlength="7"
+                required
+            >
+
+            <small class="input-help">
+                Student ID must contain exactly 7 digits.
+            </small>
+
+        </div>
+
+
+        <!-- FULL NAME -->
+        <div class="form-group">
+
+            <label for="fullName">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your complete name"
+                maxlength="50"
+                autocomplete="name"
+                required
+            >
+
+            <small class="input-help">
+                Enter your complete name, up to 50 characters.
+            </small>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+
+            <label for="registerEmail">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                name="email"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+
+            <label for="registerPassword">
+                Password
+            </label>
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    name="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword('registerPassword', this)"
+                    aria-label="Show password"
+                >
+                    👁
+                </button>
+
+            </div>
+
+            <small class="input-help">
+                Password must contain at least 6 characters.
+            </small>
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword('confirmPassword', this)"
+                    aria-label="Show password"
+                >
+                    👁
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TERMS -->
+        <div class="terms-check">
+
+            <label class="checkbox-label">
+
+                <input
+                    type="checkbox"
+                    id="registerTerms"
+                    required
+                >
+
+                <span>
+
+                    I agree to the
+                    <button
+                        type="button"
+                        class="inline-link"
+                        onclick="openTerms()"
+                    >
+                        Terms of Use
+                    </button>
+
+                    and acknowledge the
+                    <button
+                        type="button"
+                        class="inline-link"
+                        onclick="openPrivacy()"
+                    >
+                        Privacy Notice
+                    </button>.
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- CREATE ACCOUNT BUTTON -->
+        <button
+            type="submit"
+            class="auth-submit"
+        >
+
+            <span>✨</span>
+
+            Create Alumni Account
+
+        </button>
+
+
+    </form>
+
+
+    <!-- ACCOUNT NOTE -->
+    <div class="account-note">
+
+        <span class="note-icon">
+            ℹ️
+        </span>
 
         <div>
 
             <strong>
-                ATCRS
+                Important
             </strong>
 
-            <span>
-                De La Salle John Bosco College
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <a
-        href="index.html"
-        class="back-home"
-    >
-
-        <i class="fa-solid fa-arrow-left"></i>
-
-        Back to Home
-
-    </a>
-
-</header>
-
-
-
-<!-- ==================================================
-     MAIN AUTH AREA
-================================================== -->
-
-<main class="auth-main">
-
-
-<!-- ==================================================
-     LEFT SIDE INFORMATION
-================================================== -->
-
-<section class="auth-information">
-
-    <div class="auth-overlay"></div>
-
-
-    <div class="auth-information-content">
-
-        <span class="section-label">
-            ATCRS USER PORTAL
-        </span>
-
-
-        <h1>
-
-            Academic Records,
-
-            <span>
-                Made Easier.
-            </span>
-
-        </h1>
-
-
-        <p>
-
-            Access the Automated Transcript and Credential
-            Retrieval System to request, monitor, and retrieve
-            authorized academic documents.
-
-        </p>
-
-
-
-        <!-- ================= FEATURES ================= -->
-
-        <div class="auth-features">
-
-
-            <div class="auth-feature">
-
-                <div class="auth-feature-icon">
-
-                    <i class="fa-solid fa-user-plus"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Create an Account
-                    </h3>
-
-                    <p>
-                        Register your ATCRS account using your
-                        required information.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="auth-feature">
-
-                <div class="auth-feature-icon">
-
-                    <i class="fa-solid fa-file-circle-plus"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Request Documents
-                    </h3>
-
-                    <p>
-                        Submit academic document requests
-                        through your account.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="auth-feature">
-
-                <div class="auth-feature-icon">
-
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Track Your Request
-                    </h3>
-
-                    <p>
-                        Monitor the status of your academic
-                        document request.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="auth-feature">
-
-                <div class="auth-feature-icon">
-
-                    <i class="fa-solid fa-certificate"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Retrieve Credentials
-                    </h3>
-
-                    <p>
-                        Access credentials released through
-                        the ATCRS system.
-                    </p>
-
-                </div>
-
-            </div>
-
+            <p>
+                This prototype uses browser storage for demonstration
+                purposes. In a production system, account information
+                must be securely stored on a protected server.
+            </p>
 
         </div>
 
@@ -263,824 +733,993 @@
 </section>
 
 
+<!-- =====================================================
+     AUTH FOOTER
+     ===================================================== -->
 
-<!-- ==================================================
-     AUTH PANEL
-================================================== -->
-
-<section class="auth-panel">
-
-
-<div class="auth-card">
-
-
-<!-- ==================================================
-     LOGIN HEADER
-================================================== -->
-
-<div class="auth-card-header">
-
-    <div class="auth-mobile-logo">
-
-        <img
-            src="images/dlsjbc-logo.png"
-            alt="DLSJBC Logo"
-        >
-
-    </div>
-
-
-    <span class="section-label">
-        SECURE USER ACCESS
-    </span>
-
-
-    <h2>
-        Welcome Back
-    </h2>
-
+<div class="auth-footer">
 
     <p>
-        Sign in to access your ATCRS account.
+        Automated Transcript and Credential Retrieval System
+    </p>
+
+    <p>
+        Secure • Digital • Accessible
     </p>
 
 </div>
 
+</div>
 
-
-<!-- ==================================================
-     LOGIN FORM
-================================================== -->
-
-<form
-    id="loginForm"
-    class="auth-form"
-    novalidate
->
-
-
-<!-- STUDENT ID -->
-
-<div class="form-group">
-
-    <label for="loginStudentId">
-        Student ID
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-id-card"></i>
-
-        <input
-            type="text"
-            id="loginStudentId"
-            name="studentId"
-            placeholder="Enter your 7-digit Student ID"
-            maxlength="7"
-            minlength="7"
-            inputmode="numeric"
-            pattern="[0-9]{7}"
-            autocomplete="username"
-            required
-        >
+</div>
 
     </div>
-
-
-    <small>
-        Student ID must contain exactly 7 digits.
-    </small>
-
-</div>
-
-
-
-<!-- PASSWORD -->
-
-<div class="form-group">
-
-    <label for="loginPassword">
-        Password
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-lock"></i>
-
-
-        <input
-            type="password"
-            id="loginPassword"
-            name="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
-            required
-        >
-
-
-        <button
-            type="button"
-            class="password-toggle"
-            data-target="loginPassword"
-            aria-label="Show password"
-        >
-
-            <i class="fa-solid fa-eye"></i>
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- LOGIN OPTIONS -->
-
-<div class="form-options">
-
-    <label class="remember-option">
-
-        <input
-            type="checkbox"
-            id="rememberMe"
-        >
-
-        <span>
-            Remember me
-        </span>
-
-    </label>
-
-
-    <button
-        type="button"
-        class="forgot-password"
-        id="forgotPassword"
-    >
-        Forgot Password?
-    </button>
-
-</div>
-
-
-
-<!-- LOGIN BUTTON -->
-
-<button
-    type="submit"
-    class="auth-button"
->
-
-    <i class="fa-solid fa-right-to-bracket"></i>
-
-    Sign In
-
-</button>
-
-
-
-<!-- LOGIN MESSAGE -->
+    <!-- =====================================================
+     PART 1B-4 — TERMS OF USE MODAL
+     ===================================================== -->
 
 <div
-    id="loginMessage"
-    class="auth-message"
-    aria-live="polite"
-></div>
-
-
-</form>
-
-
-
-<!-- ==================================================
-     REGISTER DIVIDER
-================================================== -->
-
-<div class="auth-divider">
-
-    <span>
-        OR
-    </span>
-
-</div>
-
-
-
-<!-- CREATE ACCOUNT -->
-
-<div class="auth-switch">
-
-    <p>
-        Don't have an ATCRS account?
-    </p>
-
-
-    <button
-        type="button"
-        id="showRegister"
-        class="secondary-auth-button"
-    >
-
-        <i class="fa-solid fa-user-plus"></i>
-
-        Create an Account
-
-    </button>
-
-</div>
-
-
-
-<!-- ==================================================
-     ADMIN ACCESS
-================================================== -->
-
-<div class="admin-access">
-
-    <div class="admin-access-icon">
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-    </div>
-
-
-    <div>
-
-        <strong>
-            Administrative Access
-        </strong>
-
-
-        <p>
-            Registrar and authorized Verifier accounts use
-            separate private login portals.
-        </p>
-
-
-        <div class="admin-links">
-
-            <a href="registrar/login.html">
-                Registrar Login
-            </a>
-
-
-            <a href="verifier/login.html">
-                Verifier Login
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-</div>
-
-</section>
-
-</main>
-
-
-
-<!-- ==================================================
-     REGISTRATION MODAL
-================================================== -->
-
-<div
-    id="registerModal"
-    class="auth-modal"
-    aria-hidden="true"
->
-
-
-<div class="auth-modal-overlay"></div>
-
-
-
-<div class="register-card">
-
-
-<!-- REGISTRATION HEADER -->
-
-<div class="register-header">
-
-    <button
-        type="button"
-        class="modal-close"
-        id="closeRegister"
-        aria-label="Close registration"
-    >
-
-        <i class="fa-solid fa-xmark"></i>
-
-    </button>
-
-
-    <span class="section-label">
-        NEW ATCRS ACCOUNT
-    </span>
-
-
-    <h2>
-        Create Your Account
-    </h2>
-
-
-    <p>
-        Register to request and manage your academic credentials.
-    </p>
-
-</div>
-
-
-
-<!-- ==================================================
-     REGISTRATION FORM
-================================================== -->
-
-<form
-    id="registerForm"
-    class="auth-form"
-    novalidate
->
-
-
-<!-- FULL NAME -->
-
-<div class="form-group">
-
-    <label for="registerFullName">
-        Full Name
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-user"></i>
-
-
-        <input
-            type="text"
-            id="registerFullName"
-            name="fullName"
-            placeholder="Enter your full name"
-            maxlength="50"
-            autocomplete="name"
-            required
-        >
-
-    </div>
-
-
-    <small>
-        Maximum of 50 characters.
-    </small>
-
-</div>
-
-
-
-<!-- STUDENT ID -->
-
-<div class="form-group">
-
-    <label for="registerStudentId">
-        Student ID
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-id-card"></i>
-
-
-        <input
-            type="text"
-            id="registerStudentId"
-            name="studentId"
-            placeholder="Enter your 7-digit Student ID"
-            maxlength="7"
-            minlength="7"
-            inputmode="numeric"
-            pattern="[0-9]{7}"
-            required
-        >
-
-    </div>
-
-
-    <small>
-        Enter exactly 7 numbers. Example: 1234567
-    </small>
-
-</div>
-
-
-
-<!-- ACCOUNT TYPE -->
-
-<div class="form-group">
-
-    <label for="accountType">
-        Account Type
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-user-tag"></i>
-
-
-        <select
-            id="accountType"
-            name="accountType"
-            required
-        >
-
-            <option
-                value=""
-                selected
-                disabled
-            >
-                Select account type
-            </option>
-
-
-            <option value="Applicant">
-                Applicant
-            </option>
-
-
-            <option value="Student">
-                Student
-            </option>
-
-
-            <option value="Alumni">
-                Alumni
-            </option>
-
-        </select>
-
-    </div>
-
-</div>
-
-
-
-<!-- EMAIL -->
-
-<div class="form-group">
-
-    <label for="registerEmail">
-        Email Address
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-envelope"></i>
-
-
-        <input
-            type="email"
-            id="registerEmail"
-            name="email"
-            placeholder="Enter your email address"
-            autocomplete="email"
-            required
-        >
-
-    </div>
-
-</div>
-
-
-
-<!-- PASSWORD -->
-
-<div class="form-group">
-
-    <label for="registerPassword">
-        Password
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-lock"></i>
-
-
-        <input
-            type="password"
-            id="registerPassword"
-            name="password"
-            placeholder="Create a password"
-            minlength="6"
-            autocomplete="new-password"
-            required
-        >
-
-
-        <button
-            type="button"
-            class="password-toggle"
-            data-target="registerPassword"
-            aria-label="Show password"
-        >
-
-            <i class="fa-solid fa-eye"></i>
-
-        </button>
-
-    </div>
-
-
-    <small>
-        Password must contain at least 6 characters.
-    </small>
-
-</div>
-
-
-
-<!-- CONFIRM PASSWORD -->
-
-<div class="form-group">
-
-    <label for="confirmPassword">
-        Confirm Password
-    </label>
-
-
-    <div class="input-wrapper">
-
-        <i class="fa-solid fa-lock"></i>
-
-
-        <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            minlength="6"
-            autocomplete="new-password"
-            required
-        >
-
-
-        <button
-            type="button"
-            class="password-toggle"
-            data-target="confirmPassword"
-            aria-label="Show password"
-        >
-
-            <i class="fa-solid fa-eye"></i>
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- TERMS -->
-
-<label class="terms-option">
-
-    <input
-        type="checkbox"
-        id="acceptTerms"
-        required
-    >
-
-
-    <span>
-
-        I agree to the ATCRS
-        <a
-            href="#"
-            id="termsLink"
-        >
-            Terms of Use
-        </a>
-
-        and understand that my account information
-        will be used for academic credential processing.
-
-    </span>
-
-</label>
-
-
-
-<!-- REGISTER BUTTON -->
-
-<button
-    type="submit"
-    class="auth-button"
->
-
-    <i class="fa-solid fa-user-plus"></i>
-
-    Create Account
-
-</button>
-
-
-
-<!-- REGISTER MESSAGE -->
-
-<div
-    id="registerMessage"
-    class="auth-message"
-    aria-live="polite"
-></div>
-
-
-</form>
-
-
-
-<!-- BACK TO LOGIN -->
-
-<div class="back-login">
-
-    <button
-        type="button"
-        id="backToLogin"
-    >
-
-        <i class="fa-solid fa-arrow-left"></i>
-
-        Back to Login
-
-    </button>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- ==================================================
-     TERMS MODAL
-================================================== -->
-
-<div
+    class="modal"
     id="termsModal"
-    class="terms-modal"
     aria-hidden="true"
 >
 
-
-<div class="terms-overlay"></div>
-
-
-<div class="terms-card">
-
-
-<button
-    type="button"
-    id="closeTerms"
-    class="modal-close"
-    aria-label="Close terms"
->
-
-    <i class="fa-solid fa-xmark"></i>
-
-</button>
+    <div
+        class="modal-overlay"
+        onclick="closeTerms()"
+    ></div>
 
 
-<span class="section-label">
-    ATCRS
-</span>
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="termsTitle"
+    >
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closeTerms()"
+            aria-label="Close Terms of Use"
+        >
+            &times;
+        </button>
 
 
-<h2>
-    Terms of Use
-</h2>
+        <div class="modal-header">
+
+            <span class="modal-icon">
+                📜
+            </span>
+
+            <div>
+
+                <h2 id="termsTitle">
+                    Terms of Use
+                </h2>
+
+                <p>
+                    Automated Transcript and Credential Retrieval System
+                </p>
+
+            </div>
+
+        </div>
 
 
-<p>
-    ATCRS is intended for authorized academic credential
-    and records processing. Users should provide accurate
-    information and use the system only for legitimate
-    academic purposes.
-</p>
+        <div class="modal-body">
+
+            <h3>
+                1. Acceptance of Terms
+            </h3>
+
+            <p>
+                By using ATCRS, you agree to follow the rules and
+                conditions governing the use of the system and its
+                academic record services.
+            </p>
 
 
-<p>
-    This development version is a frontend prototype.
-    Do not enter real confidential student records,
-    passwords, payment information, or private academic
-    documents while testing the GitHub version.
-</p>
+            <h3>
+                2. Authorized Use
+            </h3>
+
+            <p>
+                Users must only access information and services for
+                legitimate academic, employment, verification, or
+                administrative purposes.
+            </p>
 
 
-<button
-    type="button"
-    class="auth-button"
-    id="closeTermsButton"
->
+            <h3>
+                3. Account Responsibility
+            </h3>
 
-    Continue
+            <p>
+                Users are responsible for keeping their login credentials
+                confidential and must not share their account with
+                unauthorized individuals.
+            </p>
 
-</button>
 
+            <h3>
+                4. Academic Records
+            </h3>
+
+            <p>
+                Academic records and credentials provided through ATCRS
+                are official documents and must not be altered,
+                falsified, reproduced for fraudulent purposes, or
+                misrepresented.
+            </p>
+
+
+            <h3>
+                5. Verification
+            </h3>
+
+            <p>
+                Third-party verification services must only be used for
+                legitimate credential verification purposes and in
+                accordance with applicable institutional policies.
+            </p>
+
+
+            <h3>
+                6. System Security
+            </h3>
+
+            <p>
+                Attempts to gain unauthorized access, manipulate records,
+                bypass security controls, or interfere with system
+                operations are prohibited.
+            </p>
+
+
+            <h3>
+                7. Prototype Notice
+            </h3>
+
+            <p>
+                This ATCRS website is a prototype intended for academic
+                and demonstration purposes. Production deployment would
+                require additional authentication, encryption, database
+                security, audit logging, and institutional approval.
+            </p>
+
+
+            <h3>
+                8. Agreement
+            </h3>
+
+            <p>
+                By continuing to use ATCRS, you acknowledge that you have
+                read and understood these Terms of Use.
+            </p>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="modal-button"
+                onclick="closeTerms()"
+            >
+                I Understand
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
-</div>
 
 
-
-<!-- ==================================================
-     FORGOT PASSWORD MODAL
-================================================== -->
+<!-- =====================================================
+     PART 1B-4 — PRIVACY NOTICE MODAL
+     ===================================================== -->
 
 <div
-    id="forgotModal"
-    class="terms-modal"
+    class="modal"
+    id="privacyModal"
     aria-hidden="true"
 >
 
-
-<div class="terms-overlay"></div>
-
-
-<div class="terms-card">
-
-
-<button
-    type="button"
-    id="closeForgot"
-    class="modal-close"
-    aria-label="Close forgot password"
->
-
-    <i class="fa-solid fa-xmark"></i>
-
-</button>
+    <div
+        class="modal-overlay"
+        onclick="closePrivacy()"
+    ></div>
 
 
-<span class="section-label">
-    ACCOUNT RECOVERY
-</span>
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="privacyTitle"
+    >
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closePrivacy()"
+            aria-label="Close Privacy Notice"
+        >
+            &times;
+        </button>
 
 
-<h2>
-    Forgot Password?
-</h2>
+        <div class="modal-header">
+
+            <span class="modal-icon">
+                🔒
+            </span>
+
+            <div>
+
+                <h2 id="privacyTitle">
+                    Privacy Notice
+                </h2>
+
+                <p>
+                    Protection of personal and academic information
+                </p>
+
+            </div>
+
+        </div>
 
 
-<p>
-    For this development version, password recovery is
-    handled through the account information stored locally
-    in your browser.
-</p>
+        <div class="modal-body">
+
+            <h3>
+                Information We Collect
+            </h3>
+
+            <p>
+                The ATCRS prototype may collect information such as
+                Student ID, full name, email address, account type,
+                and information associated with academic record requests.
+            </p>
 
 
-<p>
-    A real production version should use secure server-side
-    authentication and email-based password recovery.
-</p>
+            <h3>
+                Purpose of Collection
+            </h3>
+
+            <p>
+                Information is used to demonstrate account management,
+                academic record requests, document processing, and
+                credential verification workflows.
+            </p>
 
 
-<button
-    type="button"
-    class="auth-button"
-    id="closeForgotButton"
->
+            <h3>
+                Data Protection
+            </h3>
 
-    Close
+            <p>
+                Personal and academic information should only be accessed
+                by authorized users and should be protected against
+                unauthorized access, disclosure, alteration, or loss.
+            </p>
 
-</button>
 
+            <h3>
+                Third-Party Verification
+            </h3>
+
+            <p>
+                Verification requests should only provide information
+                necessary for legitimate credential verification and
+                should follow applicable privacy requirements.
+            </p>
+
+
+            <h3>
+                Prototype Limitation
+            </h3>
+
+            <p>
+                This demonstration stores selected prototype information
+                locally in the browser. It should not be used to store
+                real sensitive academic records or confidential
+                credentials.
+            </p>
+
+
+            <h3>
+                User Responsibility
+            </h3>
+
+            <p>
+                Users should provide accurate information and must not
+                attempt to access another person's academic records
+                without proper authorization.
+            </p>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="modal-button"
+                onclick="closePrivacy()"
+            >
+                I Understand
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
+<!-- =====================================================
+     PART 1B-5 — LOGIN PAGE JAVASCRIPT
+     ===================================================== -->
 
-</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================
+       AUTH TABS
+       ========================================= */
+
+    const loginTab =
+        document.getElementById("loginTab");
+
+    const registerTab =
+        document.getElementById("registerTab");
+
+    const loginSection =
+        document.getElementById("loginSection");
+
+    const registerSection =
+        document.getElementById("registerSection");
+
+
+    if (loginTab && registerTab) {
+
+        loginTab.addEventListener("click", function () {
+
+            loginTab.classList.add("active");
+            registerTab.classList.remove("active");
+
+            loginSection.style.display = "block";
+            registerSection.style.display = "none";
+
+        });
+
+
+        registerTab.addEventListener("click", function () {
+
+            registerTab.classList.add("active");
+            loginTab.classList.remove("active");
+
+            loginSection.style.display = "none";
+            registerSection.style.display = "block";
+
+        });
+
+    }
 
 
 
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
+    /* =========================================
+       STUDENT ID — ONLY 7 DIGITS
+       ========================================= */
 
-<script src="js/script.js"></script>
+    const studentId =
+        document.getElementById("studentId");
 
+
+    if (studentId) {
+
+        studentId.addEventListener("input", function () {
+
+            this.value =
+                this.value.replace(/\D/g, "").slice(0, 7);
+
+        });
+
+    }
+
+
+
+    /* =========================================
+       FULL NAME — MAXIMUM 50 CHARACTERS
+       ========================================= */
+
+    const fullName =
+        document.getElementById("fullName");
+
+
+    if (fullName) {
+
+        fullName.addEventListener("input", function () {
+
+            if (this.value.length > 50) {
+
+                this.value =
+                    this.value.substring(0, 50);
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =========================================
+       LOGIN FORM
+       ========================================= */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            const role =
+                document.getElementById("loginRole").value;
+
+            const email =
+                document.getElementById("loginEmail").value
+                .trim()
+                .toLowerCase();
+
+            const password =
+                document.getElementById("loginPassword").value;
+
+
+            if (!role) {
+
+                alert("Please select your account type.");
+
+                return;
+
+            }
+
+
+            /*
+             * DEMO ACCOUNTS
+             */
+
+            const demoAccounts = {
+
+                student: {
+
+                    email: "student@atcrs.com",
+
+                    password: "student123",
+
+                    redirect: "user/dashboard.html"
+
+                },
+
+                registrar: {
+
+                    email: "registrar@atcrs.com",
+
+                    password: "admin123",
+
+                    redirect: "registrar/dashboard.html"
+
+                },
+
+                verifier: {
+
+                    email: "verifier@company.com",
+
+                    password: "verify123",
+
+                    redirect: "user/dashboard.html"
+
+                }
+
+            };
+
+
+            const account =
+                demoAccounts[role];
+
+
+            if (
+                account &&
+                email === account.email &&
+                password === account.password
+            ) {
+
+                /*
+                 * SAVE LOGIN SESSION
+                 */
+
+                localStorage.setItem(
+                    "atcrsLoggedIn",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "atcrsRole",
+                    role
+                );
+
+
+                localStorage.setItem(
+                    "atcrsEmail",
+                    email
+                );
+
+
+                /*
+                 * SAVE REMEMBER ME
+                 */
+
+                const remember =
+                    document.getElementById("rememberMe");
+
+
+                if (
+                    remember &&
+                    remember.checked
+                ) {
+
+                    localStorage.setItem(
+                        "atcrsRemember",
+                        "true"
+                    );
+
+                }
+
+
+                /*
+                 * REDIRECT
+                 */
+
+                window.location.href =
+                    account.redirect;
+
+            }
+
+            else {
+
+                alert(
+                    "Invalid account details.\n\n" +
+                    "Please check your account type, " +
+                    "email, and password.\n\n" +
+                    "You may also use one of the demo accounts."
+                );
+
+            }
+
+        });
+
+    }
+
+
+
+    /* =========================================
+       REGISTER FORM
+       ========================================= */
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+
+    if (registerForm) {
+
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const studentIdValue =
+                    document.getElementById("studentId")
+                    .value.trim();
+
+
+                const fullNameValue =
+                    document.getElementById("fullName")
+                    .value.trim();
+
+
+                const emailValue =
+                    document.getElementById("registerEmail")
+                    .value.trim()
+                    .toLowerCase();
+
+
+                const passwordValue =
+                    document.getElementById("registerPassword")
+                    .value;
+
+
+                const confirmPasswordValue =
+                    document.getElementById("confirmPassword")
+                    .value;
+
+
+                const terms =
+                    document.getElementById("registerTerms");
+
+
+                /* =================================
+                   VALIDATE STUDENT ID
+                   ================================= */
+
+                if (!/^\d{7}$/.test(studentIdValue)) {
+
+                    alert(
+                        "Student ID must contain exactly 7 digits."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =================================
+                   VALIDATE FULL NAME
+                   ================================= */
+
+                if (
+                    fullNameValue.length < 2 ||
+                    fullNameValue.length > 50
+                ) {
+
+                    alert(
+                        "Please enter a valid full name."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =================================
+                   VALIDATE PASSWORD
+                   ================================= */
+
+                if (passwordValue.length < 6) {
+
+                    alert(
+                        "Password must contain at least 6 characters."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =================================
+                   CONFIRM PASSWORD
+                   ================================= */
+
+                if (
+                    passwordValue !==
+                    confirmPasswordValue
+                ) {
+
+                    alert(
+                        "Passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                /* =================================
+                   TERMS
+                   ================================= */
+
+                if (
+                    !terms ||
+                    !terms.checked
+                ) {
+
+                    alert(
+                        "Please agree to the Terms of Use."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * CREATE ALUMNI ACCOUNT
+                 */
+
+                const newAccount = {
+
+                    studentId:
+                        studentIdValue,
+
+                    fullName:
+                        fullNameValue,
+
+                    email:
+                        emailValue,
+
+                    password:
+                        passwordValue,
+
+                    role:
+                        "student"
+
+                };
+
+
+                /*
+                 * STORE DEMO ACCOUNT
+                 */
+
+                localStorage.setItem(
+                    "atcrsStudentAccount",
+                    JSON.stringify(newAccount)
+                );
+
+
+                alert(
+                    "Alumni account created successfully!\n\n" +
+                    "You can now sign in using your registered email and password."
+                );
+
+
+                /*
+                 * SWITCH TO LOGIN TAB
+                 */
+
+                if (loginTab) {
+
+                    loginTab.click();
+
+                }
+
+
+                /*
+                 * PRE-FILL EMAIL
+                 */
+
+                const loginEmail =
+                    document.getElementById("loginEmail");
+
+
+                if (loginEmail) {
+
+                    loginEmail.value =
+                        emailValue;
+
+                }
+
+
+                /*
+                 * CLEAR REGISTER FORM
+                 */
+
+                registerForm.reset();
+
+            }
+        );
+
+    }
+
+});
+
+
+
+/* =========================================
+   SHOW / HIDE PASSWORD
+   ========================================= */
+
+function togglePassword(
+    inputId,
+    button
+) {
+
+    const input =
+        document.getElementById(inputId);
+
+
+    if (!input) {
+        return;
+    }
+
+
+    if (
+        input.type === "password"
+    ) {
+
+        input.type = "text";
+
+        button.textContent = "🙈";
+
+        button.setAttribute(
+            "aria-label",
+            "Hide password"
+        );
+
+    }
+
+    else {
+
+        input.type = "password";
+
+        button.textContent = "👁";
+
+        button.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   TERMS MODAL
+   ========================================= */
+
+function openTerms() {
+
+    const modal =
+        document.getElementById("termsModal");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+function closeTerms() {
+
+    const modal =
+        document.getElementById("termsModal");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+
+/* =========================================
+   PRIVACY MODAL
+   ========================================= */
+
+function openPrivacy() {
+
+    const modal =
+        document.getElementById("privacyModal");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+function closePrivacy() {
+
+    const modal =
+        document.getElementById("privacyModal");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+
+/* =========================================
+   DEMO MESSAGE
+   ========================================= */
+
+function showDemoMessage(message) {
+
+    alert(message);
+
+}
+
+
+
+/* =========================================
+   CLOSE MODALS WITH ESC KEY
+   ========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeTerms();
+
+            closePrivacy();
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
-
-    </html>
-    
+</html>
