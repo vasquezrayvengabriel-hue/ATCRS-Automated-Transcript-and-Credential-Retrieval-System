@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VERIFIER LOGIN | ATCRS</title>
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- MAIN CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="auth-page">
+
+
+<!-- =========================================================
+     VERIFIER LOGIN HEADER
+     ========================================================= -->
+
+<header class="auth-header">
+
+    <div class="auth-brand">
+
+        <img
+            src="images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
+
+        <div>
+
+            <span>
+                DE LA SALLE JOHN BOSCO COLLEGE
+            </span>
+
+            <h1>
+                ATCRS
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back-home"
+    >
+
+        <i class="fas fa-arrow-left"></i>
+
+        BACK TO HOME
+
+    </a>
+
+</header>
+
+
+
+<!-- =========================================================
+     VERIFIER LOGIN MAIN
+     ========================================================= -->
+
+<main class="auth-main">
+
+    <div class="auth-wrapper">
+
+
+        <!-- ================= INTRO ================= -->
+
+        <div class="auth-intro">
+
+            <div class="auth-role-icon">
+
+                <i class="fas fa-shield-halved"></i>
+
+            </div>
+
+
+            <span class="section-label">
+                AUTHORIZED ACCESS
+            </span>
+
+
+            <h2>
+                VERIFIER LOGIN
+            </h2>
+
+
+            <p>
+                Access the ATCRS credential verification
+                portal to authenticate and verify official
+                academic documents.
+            </p>
+
+
+            <div class="role-badge">
+
+                <i class="fas fa-user-shield"></i>
+
+                VERIFICATION ROLE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LOGIN CARD ================= -->
+
+        <div class="auth-card">
+
+            <div class="auth-card-header">
+
+                <div>
+
+                    <span>
+                        SECURE PORTAL
+                    </span>
+
+                    <h3>
+                        SIGN IN
+                    </h3>
+
+                </div>
+
+                <i class="fas fa-lock"></i>
+
+            </div>
+
+
+            <form
+                id="verifierLoginForm"
+                autocomplete="off"
+            >
+
+
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label for="verifierUsername">
+
+                        <i class="fas fa-user"></i>
+
+                        USERNAME
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-user input-icon"></i>
+
+                        <input
+                            type="text"
+                            id="verifierUsername"
+                            name="username"
+                            placeholder="ENTER VERIFIER USERNAME"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="verifierPassword">
+
+                        <i class="fas fa-key"></i>
+
+                        PASSWORD
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-lock input-icon"></i>
+
+                        <input
+                            type="password"
+                            id="verifierPassword"
+                            name="password"
+                            placeholder="ENTER PASSWORD"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="toggleVerifierPassword()"
+                            aria-label="Show password"
+                        >
+
+                            <i
+                                id="verifierPasswordIcon"
+                                class="fas fa-eye"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- REMEMBER -->
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                            id="rememberVerifier"
+                        >
+
+                        <span>
+                            REMEMBER THIS DEVICE
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        class="forgot-password"
+                        onclick="forgotVerifierPassword()"
+                    >
+
+                        FORGOT PASSWORD?
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+
+                    <i class="fas fa-right-to-bracket"></i>
+
+                    LOGIN
+
+                </button>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="verifierLoginMessage"
+                    class="login-message"
+                ></div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     SECURITY INFORMATION
+     ========================================================= -->
+
+<section class="auth-security">
+
+    <div class="security-container">
+
+
+        <div class="security-title">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span class="section-label">
+                    SECURITY
+                </span>
+
+                <h2>
+                    PROTECTED VERIFICATION ACCESS
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="security-grid">
+
+
+            <div class="security-card">
+
+                <i class="fas fa-user-lock"></i>
+
+                <h3>
+                    AUTHORIZED USERS
+                </h3>
+
+                <p>
+                    Only authorized verifier accounts
+                    should access this portal.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <i class="fas fa-file-circle-check"></i>
+
+                <h3>
+                    CREDENTIAL VERIFICATION
+                </h3>
+
+                <p>
+                    Verify the authenticity and validity
+                    of official credentials.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <i class="fas fa-eye"></i>
+
+                <h3>
+                    LIMITED ACCESS
+                </h3>
+
+                <p>
+                    Verifiers have access to verification
+                    functions without full Registrar
+                    administrative privileges.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+                <h3>
+                    VERIFICATION HISTORY
+                </h3>
+
+                <p>
+                    Verification activities can be recorded
+                    for accountability and auditing.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+                  </section>
+                  <!-- =========================================================
+     PART 6B — VERIFIER LOGIN FOOTER
+     ========================================================= -->
+
+<footer class="auth-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+            >
+
+            <div>
+
+                <h3>
+                    AUTOMATED TRANSCRIPT AND
+                    CREDENTIAL RETRIEVAL SYSTEM
+                </h3>
+
+                <p>
+                    DE LA SALLE JOHN BOSCO COLLEGE
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-security">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <span>
+                SECURE VERIFIER PORTAL
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 DE LA SALLE JOHN BOSCO COLLEGE.
+            ALL RIGHTS RESERVED.
+        </p>
+
+        <p>
+            ATCRS • VERIFIER PORTAL
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     PART 6B — VERIFIER LOGIN JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+/* =========================================================
+   PASSWORD VISIBILITY
+   ========================================================= */
+
+function toggleVerifierPassword() {
+
+    const password =
+        document.getElementById("verifierPassword");
+
+    const icon =
+        document.getElementById("verifierPasswordIcon");
+
+    if (!password || !icon) return;
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        icon.classList.remove("fa-eye");
+
+        icon.classList.add("fa-eye-slash");
+
+    } else {
+
+        password.type = "password";
+
+        icon.classList.remove("fa-eye-slash");
+
+        icon.classList.add("fa-eye");
+
+    }
+
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
+
+function forgotVerifierPassword() {
+
+    alert(
+        "PASSWORD RECOVERY\n\n" +
+        "PLEASE CONTACT THE ATCRS ADMINISTRATOR " +
+        "OR REGISTRAR OFFICE TO RESET YOUR VERIFIER ACCOUNT."
+    );
+
+}
+
+
+/* =========================================================
+   VERIFIER LOGIN
+   ========================================================= */
+
+const verifierLoginForm =
+    document.getElementById("verifierLoginForm");
+
+
+if (verifierLoginForm) {
+
+    verifierLoginForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const username =
+                document
+                .getElementById("verifierUsername")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("verifierPassword")
+                .value;
+
+
+            const message =
+                document.getElementById(
+                    "verifierLoginMessage"
+                );
+
+
+            /*
+             * DEMO VERIFIER CREDENTIALS
+             *
+             * Username:
+             * verifier
+             *
+             * Password:
+             * Verifier@123
+             */
+
+            const demoUsername =
+                "verifier";
+
+            const demoPassword =
+                "Verifier@123";
+
+
+            if (
+                username === demoUsername &&
+                password === demoPassword
+            ) {
+
+                sessionStorage.setItem(
+                    "verifierLoggedIn",
+                    "true"
+                );
+
+
+                sessionStorage.setItem(
+                    "verifierUsername",
+                    username
+                );
+
+
+                if (message) {
+
+                    message.className =
+                        "login-message success";
+
+                    message.innerHTML =
+                        '<i class="fas fa-circle-check"></i>' +
+                        ' LOGIN SUCCESSFUL. REDIRECTING...';
+
+                }
+
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "verifier.html";
+
+                }, 800);
+
+
+            } else {
+
+                if (message) {
+
+                    message.className =
+                        "login-message error";
+
+                    message.innerHTML =
+                        '<i class="fas fa-circle-xmark"></i>' +
+                        ' INVALID USERNAME OR PASSWORD.';
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ENTER KEY SUPPORT
+   ========================================================= */
+
+const verifierPassword =
+    document.getElementById("verifierPassword");
+
+
+if (verifierPassword) {
+
+    verifierPassword.addEventListener(
+        "keypress",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                verifierLoginForm.requestSubmit();
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
