@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STUDENT LOGIN | ATCRS - DLSJBC</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body>
+      <!-- ================= LOGIN HEADER ================= -->
+
+    <header class="login-header">
+
+        <div class="login-brand">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+            >
+
+            <div class="login-brand-text">
+
+                <h1>
+                    DE LA SALLE JOHN BOSCO COLLEGE
+                </h1>
+
+                <p>
+                    AUTOMATED TRANSCRIPT AND CREDENTIAL
+                    RETRIEVAL SYSTEM
+                </p>
+
+            </div>
+
+        </div>
+              <a href="index.html" class="back-home-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            BACK TO HOME
+
+        </a>
+
+    </header>
+
+
+    <!-- ================= LOGIN MAIN ================= -->
+
+    <main class="login-page">
+
+        <section class="login-container">
+          
+            <!-- LOGIN INTRODUCTION -->
+
+            <div class="login-intro">
+
+                <span class="login-icon">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                </span>
+
+                <h2>
+                    STUDENT LOGIN
+                </h2>
+
+                <p>
+                    Access your academic records, document requests,
+                    credentials, and other student services through
+                    the ATCRS Student Portal.
+                </p>
+
+            </div>
+                        <!-- ================= LOGIN CARD ================= -->
+
+            <div class="login-card">
+
+                <div class="login-card-header">
+
+                    <h3>
+                        WELCOME BACK
+                    </h3>
+
+                    <p>
+                        Enter your student account credentials
+                    </p>
+
+                </div>
+
+
+                <!-- ================= LOGIN FORM ================= -->
+
+                <form id="studentLoginForm">
+
+                                      <!-- STUDENT ID -->
+
+                    <div class="form-group">
+
+                        <label for="studentId">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                            STUDENT ID
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentId"
+                            name="studentId"
+                            placeholder="ENTER YOUR 7-DIGIT STUDENT ID"
+                            maxlength="7"
+                            minlength="7"
+                            inputmode="numeric"
+                            pattern="[0-9]{7}"
+                            autocomplete="username"
+                            required
+                        >
+
+                        <small>
+                            ENTER EXACTLY 7 DIGITS
+                        </small>
+
+                    </div>
+                                        <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            PASSWORD
+
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="ENTER YOUR PASSWORD"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+                                        <!-- LOGIN OPTIONS -->
+
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                name="rememberMe"
+                            >
+
+                            <span>
+                                REMEMBER ME
+                            </span>
+
+                        </label>
+
+                        <a
+                            href="#"
+                            id="forgotPassword"
+                            class="forgot-password"
+                        >
+                            FORGOT PASSWORD?
+                        </a>
+
+                    </div>
+                                        <!-- TERMS AGREEMENT -->
+
+                    <div class="terms-agreement">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="agreeTerms"
+                                name="agreeTerms"
+                                required
+                            >
+
+                            <span>
+                                I AGREE TO THE
+                                <a href="terms.html" target="_blank">
+                                    TERMS OF USE
+                                </a>
+                                AND
+                                <a href="privacy.html" target="_blank">
+                                    PRIVACY POLICY
+                                </a>.
+                            </span>
+
+                        </label>
+
+                    </div>
+                                        <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-submit-btn"
+                    >
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        LOGIN
+
+                    </button>
+                                        <!-- LOGIN MESSAGE -->
+
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                    ></div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+                <!-- ================= SECURITY INFORMATION ================= -->
+
+            <section class="login-security">
+
+                <div class="security-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div class="security-text">
+
+                    <h4>
+                        SECURE STUDENT ACCESS
+                    </h4>
+
+                    <p>
+                        Your student account is protected through
+                        role-based access and secure authentication.
+                        Never share your Student ID or password with
+                        other individuals.
+                    </p>
+
+                </div>
+
+            </section>
+                        <!-- ================= STUDENT SERVICES ================= -->
+
+            <section class="login-features">
+
+                <div class="section-heading">
+
+                    <span>
+                        ATCRS STUDENT SERVICES
+                    </span>
+
+                    <h3>
+                        ACCESS YOUR STUDENT RECORDS
+                    </h3>
+
+                    <p>
+                        After LOGIN, you can access the services
+                        available through your student account.
+                    </p>
+
+                </div>
+
+
+                <div class="login-feature-grid">
+
+                    <div class="login-feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="fa-solid fa-file-lines"></i>
+
+                        </div>
+
+                        <h4>
+                            REQUEST DOCUMENTS
+                        </h4>
+
+                        <p>
+                            Submit requests for transcripts,
+                            certifications, and other academic
+                            documents.
+                        </p>
+
+                    </div>
+                                        <div class="login-feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        </div>
+
+                        <h4>
+                            TRACK REQUESTS
+                        </h4>
+
+                        <p>
+                            Monitor the status and progress of
+                            your submitted document requests.
+                        </p>
+
+                    </div>
+
+
+                    <div class="login-feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="fa-solid fa-folder-open"></i>
+
+                        </div>
+
+                        <h4>
+                            VIEW RECORDS
+                        </h4>
+
+                        <p>
+                            Access available academic records and
+                            previously processed credentials.
+                        </p>
+
+                    </div>
+                                        <div class="login-feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                        </div>
+
+                        <h4>
+                            VERIFY CREDENTIALS
+                        </h4>
+
+                        <p>
+                            Use the available verification features
+                            to confirm your academic credentials.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+                        <!-- ================= LOGIN HELP ================= -->
+
+            <section class="login-help">
+
+                <div class="help-card">
+
+                    <div class="help-icon">
+
+                        <i class="fa-solid fa-circle-question"></i>
+
+                    </div>
+
+                    <div class="help-content">
+
+                        <h4>
+                            NEED HELP?
+                        </h4>
+
+                        <p>
+                            If you are having difficulty accessing
+                            your account, please contact the
+                            Registrar's Office for assistance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="help-card">
+
+                    <div class="help-icon">
+
+                        <i class="fa-solid fa-building-columns"></i>
+
+                    </div>
+
+                    <div class="help-content">
+
+                        <h4>
+                            REGISTRAR'S OFFICE
+                        </h4>
+
+                        <p>
+                            For account concerns, student records,
+                            document requests, and credential-related
+                            assistance, contact the Registrar's Office.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+                    </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <img
+                    src="images/dlsjbc-logo.png"
+                    alt="DLSJBC Logo"
+                >
+
+                <div>
+
+                    <h3>
+                        DE LA SALLE JOHN BOSCO COLLEGE
+                    </h3>
+
+                    <p>
+                        AUTOMATED TRANSCRIPT AND CREDENTIAL
+                        RETRIEVAL SYSTEM
+                    </p>
+
+                </div>
+
+            </div>
+                        <div class="footer-links">
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+                <a href="terms.html">
+                    TERMS OF USE
+                </a>
+
+                <a href="privacy.html">
+                    PRIVACY POLICY
+                </a>
+
+                <a href="login.html">
+                    STUDENT LOGIN
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 De La Salle John Bosco College.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    ATCRS STUDENT PORTAL
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+        <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>
