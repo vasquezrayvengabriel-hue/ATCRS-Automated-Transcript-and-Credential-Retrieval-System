@@ -1,0 +1,3732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        REGISTRAR DASHBOARD | ATCRS - DLSJBC
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ================= REGISTRAR HEADER ================= -->
+
+    <header class="student-header">
+
+        <div class="student-brand">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+            >
+
+            <div>
+
+                <h1>
+                    ATCRS
+                </h1>
+
+                <p>
+                    REGISTRAR / ADMIN PORTAL
+                </p>
+
+            </div>
+
+        </div>
+                <div class="student-account">
+
+            <div class="student-account-info">
+
+                <span>
+                    AUTHORIZED USER
+                </span>
+
+                <strong>
+                    REGISTRAR / ADMIN
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="registrarLogoutButton"
+                class="logout-btn"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                LOGOUT
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= REGISTRAR LAYOUT ================= -->
+
+    <div class="student-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="student-sidebar">
+
+            <div class="sidebar-title">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                REGISTRAR MENU
+
+            </div>
+
+
+            <nav class="student-nav">
+
+                <a
+                    href="#dashboard"
+                    class="student-nav-link active"
+                >
+
+                    <i class="fa-solid fa-house"></i>
+
+                    DASHBOARD
+
+                </a>
+
+
+                <a
+                    href="#students"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-users"></i>
+
+                    STUDENTS
+
+                </a>
+
+
+                <a
+                    href="#requests"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                    DOCUMENT REQUESTS
+
+                </a>
+
+
+                <a
+                    href="#clearance"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-clipboard-check"></i>
+
+                    CLEARANCE
+
+                </a>
+
+
+                <a
+                    href="#payments"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-peso-sign"></i>
+
+                    PAYMENTS
+
+                </a>
+                                <a
+                    href="#archives"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-box-archive"></i>
+
+                    ARCHIVES
+
+                </a>
+
+
+                <a
+                    href="#releases"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-file-export"></i>
+
+                    DOCUMENT RELEASES
+
+                </a>
+
+
+                <a
+                    href="#verifiers"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                    VERIFIER ACCOUNTS
+
+                </a>
+
+
+                <a
+                    href="#reports"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    REPORTS
+
+                </a>
+
+
+                <a
+                    href="#audit"
+                    class="student-nav-link"
+                >
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    AUDIT LOGS
+
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="student-main">
+
+            <!-- DASHBOARD -->
+
+            <section
+                id="dashboard"
+                class="student-section"
+            >
+
+                <div class="student-welcome">
+
+                    <div>
+
+                        <span class="section-label">
+                            REGISTRAR / ADMINISTRATION
+                        </span>
+
+                        <h2>
+                            REGISTRAR DASHBOARD
+                        </h2>
+
+                        <p>
+                            Manage student records, document requests,
+                            clearance, payments, archives, releases,
+                            verifier accounts, reports, and system
+                            activities.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-icon">
+
+                        <i class="fa-solid fa-user-tie"></i>
+
+                    </div>
+
+                </div>
+                              <!-- ================= SUMMARY CARDS ================= -->
+
+                <div class="student-dashboard-grid">
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                STUDENTS
+                            </h3>
+
+                            <p>
+                                Registered students in the ATCRS
+                                database.
+                            </p>
+
+                            <strong class="dashboard-number">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-file-circle-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                DOCUMENT REQUESTS
+                            </h3>
+
+                            <p>
+                                Requests waiting for processing.
+                            </p>
+
+                            <strong class="dashboard-number">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-clipboard-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                PENDING CLEARANCE
+                            </h3>
+
+                            <p>
+                                Students with pending clearance.
+                            </p>
+
+                            <strong class="dashboard-number">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-file-export"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                DOCUMENT RELEASES
+                            </h3>
+
+                            <p>
+                                Documents ready for release.
+                            </p>
+
+                            <strong class="dashboard-number">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+                      <!-- ================= STUDENT MANAGEMENT ================= -->
+
+            <section
+                id="students"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            RECORDS MANAGEMENT
+                        </span>
+
+                        <h2>
+                            STUDENT MANAGEMENT
+                        </h2>
+
+                        <p>
+                            Search, view, add, and manage registered
+                            student information.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+
+                <div class="management-toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="studentSearch"
+                            placeholder="SEARCH STUDENT ID OR NAME"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-action-btn"
+                        id="addStudentButton"
+                    >
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        ADD STUDENT
+
+                    </button>
+
+                </div>
+
+
+                <div class="management-card">
+
+                    <div class="table-responsive">
+
+                        <table class="management-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        STUDENT ID
+                                    </th>
+
+                                    <th>
+                                        FULL NAME
+                                    </th>
+
+                                    <th>
+                                        PROGRAM
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        ACTION
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="studentTableBody">
+
+                                <tr>
+
+                                    <td colspan="5">
+
+                                        <div class="empty-management">
+
+                                            <i class="fa-solid fa-users-slash"></i>
+
+                                            <strong>
+                                                NO STUDENT RECORDS
+                                            </strong>
+
+                                            <span>
+                                                Registered students will
+                                                appear here.
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+                      <!-- ================= DOCUMENT REQUESTS ================= -->
+
+            <section
+                id="requests"
+                class="student-section"
+            >
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            REQUEST PROCESSING
+                        </span>
+
+                        <h2>
+                            DOCUMENT REQUESTS
+                        </h2>
+
+                        <p>
+                            Review and process student requests
+                            for official academic documents.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                </div>
+
+
+                <div class="management-toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="requestSearch"
+                            placeholder="SEARCH REQUEST"
+                        >
+
+                    </div>
+
+
+                    <select
+                        id="requestStatusFilter"
+                        class="management-select"
+                    >
+
+                        <option value="all">
+                            ALL REQUESTS
+                        </option>
+
+                        <option value="pending">
+                            PENDING
+                        </option>
+
+                        <option value="processing">
+                            PROCESSING
+                        </option>
+
+                        <option value="approved">
+                            APPROVED
+                        </option>
+
+                        <option value="released">
+                            RELEASED
+                        </option>
+
+                        <option value="rejected">
+                            REJECTED
+                        </option>
+
+                    </select>
+
+                </div>
+                              <div class="management-card">
+
+                    <div class="table-responsive">
+
+                        <table class="management-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        REQUEST ID
+                                    </th>
+
+                                    <th>
+                                        STUDENT ID
+                                    </th>
+
+                                    <th>
+                                        DOCUMENT
+                                    </th>
+
+                                    <th>
+                                        DATE REQUESTED
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        ACTION
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="requestTableBody">
+
+                                <tr>
+
+                                    <td colspan="6">
+
+                                        <div class="empty-management">
+
+                                            <i class="fa-solid fa-inbox"></i>
+
+                                            <strong>
+                                                NO DOCUMENT REQUESTS
+                                            </strong>
+
+                                            <span>
+                                                Student requests will
+                                                appear here.
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+                      <!-- ================= QUICK PROCESSING ================= -->
+
+            <section class="student-section">
+
+                <div class="student-section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            QUICK ACTIONS
+                        </span>
+
+                        <h2>
+                            DOCUMENT PROCESSING
+                        </h2>
+
+                        <p>
+                            Common actions for handling student
+                            document requests.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-gears"></i>
+
+                </div>
+
+
+                <div class="student-dashboard-grid">
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-hourglass-half"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                PENDING REQUESTS
+                            </h3>
+
+                            <p>
+                                Review requests that are waiting
+                                for Registrar action.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="card-action-btn"
+                            >
+                                REVIEW REQUESTS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                APPROVE DOCUMENTS
+                            </h3>
+
+                            <p>
+                                Approve completed requests after
+                                checking the required information.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="card-action-btn"
+                            >
+                                VIEW APPROVALS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-dashboard-card">
+
+                        <div class="dashboard-card-icon">
+
+                            <i class="fa-solid fa-print"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                PREPARE DOCUMENTS
+                            </h3>
+
+                            <p>
+                                Prepare approved academic documents
+                                for release.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="card-action-btn"
+                            >
+                                PREPARE RELEASE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+          <!-- =========================================================
+     PART 5C — CLEARANCE, PAYMENTS & ARCHIVES
+     ========================================================= -->
+
+
+<!-- ================= CLEARANCE ================= -->
+
+<section id="clearance" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">CLEARANCE MANAGEMENT</span>
+            <h2>Student Clearance</h2>
+
+            <p>
+                Monitor and manage student clearance requirements
+                before document release.
+            </p>
+        </div>
+
+        <button class="primary-btn" onclick="processClearance()">
+            <i class="fas fa-check-circle"></i>
+            PROCESS CLEARANCE
+        </button>
+
+    </div>
+
+
+    <div class="section-toolbar">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="clearanceSearch"
+                placeholder="Search Student ID or Name..."
+                onkeyup="searchClearance()"
+            >
+
+        </div>
+
+
+        <select id="clearanceStatus" onchange="filterClearance()">
+
+            <option value="ALL">ALL STATUS</option>
+            <option value="CLEARED">CLEARED</option>
+            <option value="PENDING">PENDING</option>
+            <option value="ON HOLD">ON HOLD</option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table id="clearanceTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>STUDENT ID</th>
+                    <th>FULL NAME</th>
+                    <th>ACADEMIC</th>
+                    <th>LIBRARY</th>
+                    <th>FINANCE</th>
+                    <th>OVERALL STATUS</th>
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>2024001</td>
+
+                    <td>
+                        STUDENT NAME
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewClearance('2024001')"
+                        >
+                            <i class="fas fa-eye"></i>
+                            VIEW
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>2024002</td>
+
+                    <td>
+                        SAMPLE STUDENT
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge warning">
+                            PENDING
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge success">
+                            CLEARED
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-badge warning">
+                            PENDING
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewClearance('2024002')"
+                        >
+                            <i class="fas fa-eye"></i>
+                            VIEW
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="empty-state">
+
+        <i class="fas fa-clipboard-check"></i>
+
+        <h3>CLEARANCE MONITORING</h3>
+
+        <p>
+            The Registrar can verify academic, library,
+            financial, and other clearance requirements
+            before approving document release.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PAYMENTS ================= -->
+
+<section id="payments" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                PAYMENT MANAGEMENT
+            </span>
+
+            <h2>Student Payments</h2>
+
+            <p>
+                Monitor payment status related to transcript
+                and credential requests.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="recordPayment()"
+        >
+
+            <i class="fas fa-plus-circle"></i>
+            RECORD PAYMENT
+
+        </button>
+
+    </div>
+
+
+    <div class="section-toolbar">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="paymentSearch"
+                placeholder="Search Student ID or Name..."
+                onkeyup="searchPayments()"
+            >
+
+        </div>
+
+
+        <select
+            id="paymentStatus"
+            onchange="filterPayments()"
+        >
+
+            <option value="ALL">
+                ALL PAYMENT STATUS
+            </option>
+
+            <option value="PAID">
+                PAID
+            </option>
+
+            <option value="PENDING">
+                PENDING
+            </option>
+
+            <option value="PARTIAL">
+                PARTIAL
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table id="paymentTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>REFERENCE NO.</th>
+                    <th>STUDENT ID</th>
+                    <th>FULL NAME</th>
+                    <th>DOCUMENT</th>
+                    <th>AMOUNT</th>
+                    <th>PAYMENT DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        PAY-2026-001
+                    </td>
+
+                    <td>
+                        2024001
+                    </td>
+
+                    <td>
+                        STUDENT NAME
+                    </td>
+
+                    <td>
+                        TRANSCRIPT OF RECORDS
+                    </td>
+
+                    <td>
+                        ₱500.00
+                    </td>
+
+                    <td>
+                        SEPTEMBER 06, 2026
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            PAID
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewPayment('PAY-2026-001')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+                            VIEW
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        PAY-2026-002
+                    </td>
+
+                    <td>
+                        2024002
+                    </td>
+
+                    <td>
+                        SAMPLE STUDENT
+                    </td>
+
+                    <td>
+                        CERTIFICATE OF ENROLLMENT
+                    </td>
+
+                    <td>
+                        ₱300.00
+                    </td>
+
+                    <td>
+                        SEPTEMBER 05, 2026
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge warning">
+                            PENDING
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewPayment('PAY-2026-002')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+                            VIEW
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="empty-state">
+
+        <i class="fas fa-credit-card"></i>
+
+        <h3>PAYMENT RECORDS</h3>
+
+        <p>
+            Payment information can be reviewed before
+            processing and releasing requested documents.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ARCHIVES ================= -->
+
+<section id="archives" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                DIGITAL ARCHIVES
+            </span>
+
+            <h2>Student Records Archive</h2>
+
+            <p>
+                Securely manage archived student records,
+                historical requests, and credential documents.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="openArchive()"
+        >
+
+            <i class="fas fa-folder-plus"></i>
+            ADD ARCHIVE
+
+        </button>
+
+    </div>
+
+
+    <div class="archive-grid">
+
+
+        <!-- ARCHIVE CARD 1 -->
+
+        <div class="archive-card">
+
+            <div class="archive-icon">
+
+                <i class="fas fa-folder-open"></i>
+
+            </div>
+
+            <div>
+
+                <h3>STUDENT RECORDS</h3>
+
+                <p>
+                    Academic records and student information
+                    stored in the system.
+                </p>
+
+            </div>
+
+            <strong>
+                0 RECORDS
+            </strong>
+
+            <button onclick="openArchiveCategory('STUDENT RECORDS')">
+
+                VIEW ARCHIVE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ARCHIVE CARD 2 -->
+
+        <div class="archive-card">
+
+            <div class="archive-icon">
+
+                <i class="fas fa-file-signature"></i>
+
+            </div>
+
+            <div>
+
+                <h3>DOCUMENT REQUESTS</h3>
+
+                <p>
+                    Historical transcript and credential
+                    requests.
+                </p>
+
+            </div>
+
+            <strong>
+                0 RECORDS
+            </strong>
+
+            <button onclick="openArchiveCategory('DOCUMENT REQUESTS')">
+
+                VIEW ARCHIVE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ARCHIVE CARD 3 -->
+
+        <div class="archive-card">
+
+            <div class="archive-icon">
+
+                <i class="fas fa-certificate"></i>
+
+            </div>
+
+            <div>
+
+                <h3>RELEASED DOCUMENTS</h3>
+
+                <p>
+                    Previously released credentials and
+                    official documents.
+                </p>
+
+            </div>
+
+            <strong>
+                0 RECORDS
+            </strong>
+
+            <button onclick="openArchiveCategory('RELEASED DOCUMENTS')">
+
+                VIEW ARCHIVE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ARCHIVE CARD 4 -->
+
+        <div class="archive-card">
+
+            <div class="archive-icon">
+
+                <i class="fas fa-history"></i>
+
+            </div>
+
+            <div>
+
+                <h3>HISTORICAL LOGS</h3>
+
+                <p>
+                    Previous transactions and system
+                    activities.
+                </p>
+
+            </div>
+
+            <strong>
+                0 RECORDS
+            </strong>
+
+            <button onclick="openArchiveCategory('HISTORICAL LOGS')">
+
+                VIEW ARCHIVE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="archive-security">
+
+        <div class="security-icon">
+
+            <i class="fas fa-shield-alt"></i>
+
+        </div>
+
+        <div>
+
+            <h3>ARCHIVE SECURITY</h3>
+
+            <p>
+                Archived records should only be accessible
+                to authorized Registrar personnel. Every
+                archive action should be recorded in the
+                system audit logs.
+            </p>
+
+        </div>
+
+    </div>
+
+
+  </section>
+          <!-- =========================================================
+     PART 5D — DOCUMENT RELEASES & VERIFIER ACCOUNTS
+     ========================================================= -->
+
+
+<!-- ================= DOCUMENT RELEASES ================= -->
+
+<section id="document-releases" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                DOCUMENT RELEASE MANAGEMENT
+            </span>
+
+            <h2>DOCUMENT RELEASES</h2>
+
+            <p>
+                Manage approved student documents and monitor
+                the release of official credentials.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="prepareDocument()"
+        >
+
+            <i class="fas fa-file-export"></i>
+            PREPARE DOCUMENT
+
+        </button>
+
+    </div>
+
+
+    <div class="section-toolbar">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="releaseSearch"
+                placeholder="Search Student ID, Name, or Reference..."
+                onkeyup="searchReleases()"
+            >
+
+        </div>
+
+
+        <select
+            id="releaseStatus"
+            onchange="filterReleases()"
+        >
+
+            <option value="ALL">
+                ALL RELEASE STATUS
+            </option>
+
+            <option value="READY">
+                READY FOR RELEASE
+            </option>
+
+            <option value="RELEASED">
+                RELEASED
+            </option>
+
+            <option value="PROCESSING">
+                PROCESSING
+            </option>
+
+            <option value="ON HOLD">
+                ON HOLD
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table id="releaseTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>REFERENCE NO.</th>
+                    <th>STUDENT ID</th>
+                    <th>FULL NAME</th>
+                    <th>DOCUMENT</th>
+                    <th>REQUEST DATE</th>
+                    <th>RELEASE STATUS</th>
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        ATR-2026-001
+                    </td>
+
+                    <td>
+                        2024001
+                    </td>
+
+                    <td>
+                        STUDENT NAME
+                    </td>
+
+                    <td>
+                        TRANSCRIPT OF RECORDS
+                    </td>
+
+                    <td>
+                        SEPTEMBER 04, 2026
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            READY FOR RELEASE
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewRelease('ATR-2026-001')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+                            VIEW
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        ATR-2026-002
+                    </td>
+
+                    <td>
+                        2024002
+                    </td>
+
+                    <td>
+                        SAMPLE STUDENT
+                    </td>
+
+                    <td>
+                        CERTIFICATE OF ENROLLMENT
+                    </td>
+
+                    <td>
+                        SEPTEMBER 05, 2026
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge warning">
+                            PROCESSING
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewRelease('ATR-2026-002')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+                            VIEW
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- RELEASE PROCESS -->
+
+    <div class="process-card">
+
+        <div class="process-title">
+
+            <div>
+
+                <span class="section-label">
+                    RELEASE WORKFLOW
+                </span>
+
+                <h3>DOCUMENT PROCESSING STATUS</h3>
+
+            </div>
+
+            <i class="fas fa-file-circle-check"></i>
+
+        </div>
+
+
+        <div class="process-steps">
+
+
+            <div class="process-step active">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <div>
+
+                    <strong>
+                        REQUEST RECEIVED
+                    </strong>
+
+                    <p>
+                        Student submits a document request.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-line"></div>
+
+
+            <div class="process-step active">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <div>
+
+                    <strong>
+                        CLEARANCE VERIFIED
+                    </strong>
+
+                    <p>
+                        Registrar checks required clearance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-line"></div>
+
+
+            <div class="process-step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <div>
+
+                    <strong>
+                        DOCUMENT PREPARED
+                    </strong>
+
+                    <p>
+                        Official document is prepared.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-line"></div>
+
+
+            <div class="process-step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <div>
+
+                    <strong>
+                        RELEASED
+                    </strong>
+
+                    <p>
+                        Credential is released to the student.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= VERIFIER ACCOUNTS ================= -->
+
+<section id="verifier-accounts" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                ACCOUNT MANAGEMENT
+            </span>
+
+            <h2>VERIFIER ACCOUNTS</h2>
+
+            <p>
+                Create and manage authorized verifier accounts
+                for credential verification.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="addVerifier()"
+        >
+
+            <i class="fas fa-user-plus"></i>
+            ADD VERIFIER
+
+        </button>
+
+    </div>
+
+
+    <div class="account-info-banner">
+
+        <div class="banner-icon">
+
+            <i class="fas fa-shield-halved"></i>
+
+        </div>
+
+        <div>
+
+            <h3>ROLE-BASED ACCESS CONTROL</h3>
+
+            <p>
+                Verifier accounts have separate access from
+                Registrar accounts. Verifiers are intended to
+                verify credentials and document authenticity
+                without managing complete student records.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-toolbar">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="verifierSearch"
+                placeholder="Search verifier account..."
+                onkeyup="searchVerifiers()"
+            >
+
+        </div>
+
+
+        <select
+            id="verifierStatus"
+            onchange="filterVerifiers()"
+        >
+
+            <option value="ALL">
+                ALL ACCOUNT STATUS
+            </option>
+
+            <option value="ACTIVE">
+                ACTIVE
+            </option>
+
+            <option value="INACTIVE">
+                INACTIVE
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table id="verifierTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ACCOUNT ID</th>
+                    <th>USERNAME</th>
+                    <th>FULL NAME</th>
+                    <th>ORGANIZATION</th>
+                    <th>LAST LOGIN</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        VER-001
+                    </td>
+
+                    <td>
+                        verifier
+                    </td>
+
+                    <td>
+                        VERIFIER ACCOUNT
+                    </td>
+
+                    <td>
+                        DLSJBC
+                    </td>
+
+                    <td>
+                        SEPTEMBER 06, 2026
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            ACTIVE
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="table-btn"
+                            onclick="viewVerifier('VER-001')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+                            VIEW
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- VERIFIER PERMISSIONS -->
+
+    <div class="permission-grid">
+
+
+        <div class="permission-card">
+
+            <div class="permission-icon">
+
+                <i class="fas fa-search"></i>
+
+            </div>
+
+            <h3>VERIFY CREDENTIALS</h3>
+
+            <p>
+                Verify official credentials using the
+                assigned verification tools.
+            </p>
+
+            <span class="permission-status">
+                ALLOWED
+            </span>
+
+        </div>
+
+
+        <div class="permission-card">
+
+            <div class="permission-icon">
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+            </div>
+
+            <h3>VIEW VERIFICATION HISTORY</h3>
+
+            <p>
+                Review previous credential verification
+                activities.
+            </p>
+
+            <span class="permission-status">
+                ALLOWED
+            </span>
+
+        </div>
+
+
+        <div class="permission-card restricted">
+
+            <div class="permission-icon">
+
+                <i class="fas fa-user-lock"></i>
+
+            </div>
+
+            <h3>MANAGE STUDENT RECORDS</h3>
+
+            <p>
+                Verifiers cannot modify complete student
+                academic records.
+            </p>
+
+            <span class="permission-status">
+                RESTRICTED
+            </span>
+
+        </div>
+
+
+        <div class="permission-card restricted">
+
+            <div class="permission-icon">
+
+                <i class="fas fa-file-pen"></i>
+
+            </div>
+
+            <h3>EDIT OFFICIAL RECORDS</h3>
+
+            <p>
+                Official academic records remain under
+                Registrar control.
+            </p>
+
+            <span class="permission-status">
+                RESTRICTED
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+  </section>
+          
+                <!-- =========================================================
+     PART 5E — REPORTS & AUDIT LOGS
+     ========================================================= -->
+
+
+<!-- ================= REPORTS ================= -->
+
+<section id="reports" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                SYSTEM REPORTING
+            </span>
+
+            <h2>REPORTS</h2>
+
+            <p>
+                Generate and review reports for student records,
+                document requests, payments, clearance, and releases.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="generateReport()"
+        >
+
+            <i class="fas fa-file-pdf"></i>
+            GENERATE REPORT
+
+        </button>
+
+    </div>
+
+
+    <!-- REPORT SUMMARY -->
+
+    <div class="report-summary-grid">
+
+        <div class="report-card">
+
+            <div class="report-card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+
+            <div>
+                <span>TOTAL STUDENTS</span>
+                <strong>0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <div class="report-card-icon">
+                <i class="fas fa-file-lines"></i>
+            </div>
+
+            <div>
+                <span>DOCUMENT REQUESTS</span>
+                <strong>0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <div class="report-card-icon">
+                <i class="fas fa-peso-sign"></i>
+            </div>
+
+            <div>
+                <span>PAYMENT RECORDS</span>
+                <strong>0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <div class="report-card-icon">
+                <i class="fas fa-file-circle-check"></i>
+            </div>
+
+            <div>
+                <span>DOCUMENT RELEASES</span>
+                <strong>0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- REPORT TYPES -->
+
+    <div class="report-type-grid">
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-user-graduate"></i>
+
+            </div>
+
+            <h3>STUDENT REPORT</h3>
+
+            <p>
+                Generate a summary of registered students,
+                programs, and account statuses.
+            </p>
+
+            <button
+                onclick="selectReport('STUDENT REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-file-invoice"></i>
+
+            </div>
+
+            <h3>DOCUMENT REQUEST REPORT</h3>
+
+            <p>
+                Review document requests according to
+                request type and processing status.
+            </p>
+
+            <button
+                onclick="selectReport('DOCUMENT REQUEST REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-money-check-dollar"></i>
+
+            </div>
+
+            <h3>PAYMENT REPORT</h3>
+
+            <p>
+                Review payment transactions associated with
+                document requests.
+            </p>
+
+            <button
+                onclick="selectReport('PAYMENT REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-clipboard-check"></i>
+
+            </div>
+
+            <h3>CLEARANCE REPORT</h3>
+
+            <p>
+                Review student clearance completion and
+                pending requirements.
+            </p>
+
+            <button
+                onclick="selectReport('CLEARANCE REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-certificate"></i>
+
+            </div>
+
+            <h3>RELEASE REPORT</h3>
+
+            <p>
+                Monitor completed and pending document
+                releases.
+            </p>
+
+            <button
+                onclick="selectReport('RELEASE REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="report-type-card">
+
+            <div class="report-type-icon">
+
+                <i class="fas fa-shield-halved"></i>
+
+            </div>
+
+            <h3>SECURITY REPORT</h3>
+
+            <p>
+                Review account activities, verification
+                activities, and system security events.
+            </p>
+
+            <button
+                onclick="selectReport('SECURITY REPORT')"
+            >
+
+                GENERATE
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- REPORT FILTER -->
+
+    <div class="report-filter-card">
+
+        <div class="report-filter-header">
+
+            <div>
+
+                <span class="section-label">
+                    REPORT FILTER
+                </span>
+
+                <h3>GENERATE CUSTOM REPORT</h3>
+
+            </div>
+
+            <i class="fas fa-filter"></i>
+
+        </div>
+
+
+        <div class="filter-form">
+
+
+            <div class="form-group">
+
+                <label for="reportType">
+                    REPORT TYPE
+                </label>
+
+                <select id="reportType">
+
+                    <option value="">
+                        SELECT REPORT
+                    </option>
+
+                    <option value="STUDENTS">
+                        STUDENT REPORT
+                    </option>
+
+                    <option value="REQUESTS">
+                        DOCUMENT REQUEST REPORT
+                    </option>
+
+                    <option value="PAYMENTS">
+                        PAYMENT REPORT
+                    </option>
+
+                    <option value="CLEARANCE">
+                        CLEARANCE REPORT
+                    </option>
+
+                    <option value="RELEASES">
+                        DOCUMENT RELEASE REPORT
+                    </option>
+
+                    <option value="SECURITY">
+                        SECURITY REPORT
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="reportPeriod">
+                    REPORT PERIOD
+                </label>
+
+                <select id="reportPeriod">
+
+                    <option value="TODAY">
+                        TODAY
+                    </option>
+
+                    <option value="WEEK">
+                        THIS WEEK
+                    </option>
+
+                    <option value="MONTH">
+                        THIS MONTH
+                    </option>
+
+                    <option value="YEAR">
+                        THIS YEAR
+                    </option>
+
+                    <option value="ALL">
+                        ALL RECORDS
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="reportFormat">
+                    FORMAT
+                </label>
+
+                <select id="reportFormat">
+
+                    <option value="PDF">
+                        PDF
+                    </option>
+
+                    <option value="CSV">
+                        CSV
+                    </option>
+
+                    <option value="PRINT">
+                        PRINT
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="generateCustomReport()"
+            >
+
+                <i class="fas fa-file-export"></i>
+
+                GENERATE REPORT
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= AUDIT LOGS ================= -->
+
+<section id="audit-logs" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                SYSTEM SECURITY
+            </span>
+
+            <h2>AUDIT LOGS</h2>
+
+            <p>
+                Monitor important activities performed within
+                the ATCRS system.
+            </p>
+
+        </div>
+
+
+        <button
+            class="secondary-btn"
+            onclick="refreshAuditLogs()"
+        >
+
+            <i class="fas fa-rotate"></i>
+            REFRESH LOGS
+
+        </button>
+
+    </div>
+
+
+    <!-- AUDIT SECURITY NOTICE -->
+
+    <div class="audit-notice">
+
+        <div class="audit-notice-icon">
+
+            <i class="fas fa-shield-halved"></i>
+
+        </div>
+
+        <div>
+
+            <h3>AUDIT TRAIL PROTECTION</h3>
+
+            <p>
+                Audit logs provide a record of important system
+                activities. In a production environment, these
+                records should be protected from unauthorized
+                modification or deletion.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- AUDIT FILTERS -->
+
+    <div class="section-toolbar">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="auditSearch"
+                placeholder="Search audit activity..."
+                onkeyup="searchAuditLogs()"
+            >
+
+        </div>
+
+
+        <select
+            id="auditRole"
+            onchange="filterAuditLogs()"
+        >
+
+            <option value="ALL">
+                ALL ROLES
+            </option>
+
+            <option value="REGISTRAR">
+                REGISTRAR
+            </option>
+
+            <option value="VERIFIER">
+                VERIFIER
+            </option>
+
+            <option value="STUDENT">
+                STUDENT
+            </option>
+
+            <option value="SYSTEM">
+                SYSTEM
+            </option>
+
+        </select>
+
+
+        <select
+            id="auditAction"
+            onchange="filterAuditLogs()"
+        >
+
+            <option value="ALL">
+                ALL ACTIVITIES
+            </option>
+
+            <option value="LOGIN">
+                LOGIN
+            </option>
+
+            <option value="RECORD">
+                RECORD MANAGEMENT
+            </option>
+
+            <option value="DOCUMENT">
+                DOCUMENT PROCESSING
+            </option>
+
+            <option value="VERIFICATION">
+                VERIFICATION
+            </option>
+
+            <option value="LOGOUT">
+                LOGOUT
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- AUDIT TABLE -->
+
+    <div class="table-container">
+
+        <table id="auditTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>DATE & TIME</th>
+                    <th>USER / ROLE</th>
+                    <th>ACTIVITY</th>
+                    <th>REFERENCE</th>
+                    <th>IP / SESSION</th>
+                    <th>RESULT</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        SEPTEMBER 06, 2026<br>
+                        <small>08:30 PM</small>
+                    </td>
+
+                    <td>
+
+                        <strong>
+                            REGISTRAR
+                        </strong>
+
+                        <small>
+                            ADMIN
+                        </small>
+
+                    </td>
+
+                    <td>
+
+                        <i class="fas fa-right-to-bracket"></i>
+
+                        SYSTEM LOGIN
+
+                    </td>
+
+                    <td>
+                        SESSION-001
+                    </td>
+
+                    <td>
+                        LOCAL SESSION
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            SUCCESS
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        SEPTEMBER 06, 2026<br>
+                        <small>08:35 PM</small>
+                    </td>
+
+                    <td>
+
+                        <strong>
+                            REGISTRAR
+                        </strong>
+
+                        <small>
+                            ADMIN
+                        </small>
+
+                    </td>
+
+                    <td>
+
+                        <i class="fas fa-users"></i>
+
+                        VIEWED STUDENT RECORDS
+
+                    </td>
+
+                    <td>
+                        STUDENT-MODULE
+                    </td>
+
+                    <td>
+                        LOCAL SESSION
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            SUCCESS
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        SEPTEMBER 06, 2026<br>
+                        <small>08:42 PM</small>
+                    </td>
+
+                    <td>
+
+                        <strong>
+                            VERIFIER
+                        </strong>
+
+                        <small>
+                            VERIFICATION ROLE
+                        </small>
+
+                    </td>
+
+                    <td>
+
+                        <i class="fas fa-shield-halved"></i>
+
+                        CREDENTIAL VERIFICATION
+
+                    </td>
+
+                    <td>
+                        VERIFY-001
+                    </td>
+
+                    <td>
+                        LOCAL SESSION
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            SUCCESS
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        SEPTEMBER 06, 2026<br>
+                        <small>08:50 PM</small>
+                    </td>
+
+                    <td>
+
+                        <strong>
+                            STUDENT
+                        </strong>
+
+                        <small>
+                            STUDENT ROLE
+                        </small>
+
+                    </td>
+
+                    <td>
+
+                        <i class="fas fa-file-circle-plus"></i>
+
+                        DOCUMENT REQUEST
+
+                    </td>
+
+                    <td>
+                        ATR-2026-001
+                    </td>
+
+                    <td>
+                        LOCAL SESSION
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge success">
+                            SUCCESS
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- AUDIT STATISTICS -->
+
+    <div class="audit-stats">
+
+        <div>
+
+            <span>
+                TODAY'S ACTIVITIES
+            </span>
+
+            <strong>
+                0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                SUCCESSFUL ACTIONS
+            </span>
+
+            <strong>
+                0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                FAILED ACTIONS
+            </span>
+
+            <strong>
+                0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                SECURITY EVENTS
+            </span>
+
+            <strong>
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+                      </section>
+                      <!-- =========================================================
+     PART 5F — FOOTER
+     ========================================================= -->
+
+<footer class="registrar-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <img
+                src="images/dlsjbc-logo.png"
+                alt="DLSJBC Logo"
+            >
+
+            <div>
+
+                <h3>
+                    AUTOMATED TRANSCRIPT AND
+                    CREDENTIAL RETRIEVAL SYSTEM
+                </h3>
+
+                <p>
+                    DE LA SALLE JOHN BOSCO COLLEGE
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-security">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <span>
+                REGISTRAR ADMINISTRATIVE PORTAL
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 DE LA SALLE JOHN BOSCO COLLEGE.
+            ALL RIGHTS RESERVED.
+        </p>
+
+        <p>
+            ATCRS • REGISTRAR / ADMIN
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     PART 5F — REGISTRAR DASHBOARD JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+/* =========================================================
+   REGISTRAR ACCESS PROTECTION
+   ========================================================= */
+
+if (
+    sessionStorage.getItem("registrarLoggedIn") !== "true"
+) {
+
+    window.location.href = "registrar-login.html";
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+function logoutRegistrar() {
+
+    const confirmLogout = confirm(
+        "ARE YOU SURE YOU WANT TO LOG OUT OF THE REGISTRAR PORTAL?"
+    );
+
+    if (confirmLogout) {
+
+        sessionStorage.removeItem("registrarLoggedIn");
+
+        window.location.href = "registrar-login.html";
+
+    }
+
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
+
+const sidebarLinks =
+    document.querySelectorAll(".sidebar-link");
+
+const dashboardSections =
+    document.querySelectorAll(".student-section");
+
+
+sidebarLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        sidebarLinks.forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   STUDENT SEARCH
+   ========================================================= */
+
+function searchStudents() {
+
+    const input =
+        document.getElementById("studentSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("studentTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   DOCUMENT REQUEST SEARCH
+   ========================================================= */
+
+function searchRequests() {
+
+    const input =
+        document.getElementById("requestSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("requestTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   REQUEST STATUS FILTER
+   ========================================================= */
+
+function filterRequests() {
+
+    const status =
+        document.getElementById("requestStatus");
+
+    const selectedStatus =
+        status.value.toUpperCase();
+
+    const table =
+        document.getElementById("requestTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        if (selectedStatus === "ALL") {
+
+            rows[i].style.display = "";
+
+        } else {
+
+            rows[i].style.display =
+                text.includes(selectedStatus)
+                ? ""
+                : "none";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEARANCE SEARCH
+   ========================================================= */
+
+function searchClearance() {
+
+    const input =
+        document.getElementById("clearanceSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("clearanceTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEARANCE FILTER
+   ========================================================= */
+
+function filterClearance() {
+
+    const selected =
+        document
+        .getElementById("clearanceStatus")
+        .value
+        .toUpperCase();
+
+    const table =
+        document.getElementById("clearanceTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            selected === "ALL" ||
+            text.includes(selected)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   PAYMENT SEARCH
+   ========================================================= */
+
+function searchPayments() {
+
+    const input =
+        document.getElementById("paymentSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("paymentTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   PAYMENT FILTER
+   ========================================================= */
+
+function filterPayments() {
+
+    const selected =
+        document
+        .getElementById("paymentStatus")
+        .value
+        .toUpperCase();
+
+    const table =
+        document.getElementById("paymentTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            selected === "ALL" ||
+            text.includes(selected)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   DOCUMENT RELEASE SEARCH
+   ========================================================= */
+
+function searchReleases() {
+
+    const input =
+        document.getElementById("releaseSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("releaseTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   RELEASE STATUS FILTER
+   ========================================================= */
+
+function filterReleases() {
+
+    const selected =
+        document
+        .getElementById("releaseStatus")
+        .value
+        .toUpperCase();
+
+    const table =
+        document.getElementById("releaseTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            selected === "ALL" ||
+            text.includes(selected)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   VERIFIER SEARCH
+   ========================================================= */
+
+function searchVerifiers() {
+
+    const input =
+        document.getElementById("verifierSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("verifierTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   VERIFIER STATUS FILTER
+   ========================================================= */
+
+function filterVerifiers() {
+
+    const selected =
+        document
+        .getElementById("verifierStatus")
+        .value
+        .toUpperCase();
+
+    const table =
+        document.getElementById("verifierTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            selected === "ALL" ||
+            text.includes(selected)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   AUDIT LOG SEARCH
+   ========================================================= */
+
+function searchAuditLogs() {
+
+    const input =
+        document.getElementById("auditSearch");
+
+    const filter =
+        input.value.toUpperCase();
+
+    const table =
+        document.getElementById("auditTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        rows[i].style.display =
+            text.includes(filter)
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   AUDIT LOG FILTER
+   ========================================================= */
+
+function filterAuditLogs() {
+
+    const role =
+        document
+        .getElementById("auditRole")
+        .value
+        .toUpperCase();
+
+    const action =
+        document
+        .getElementById("auditAction")
+        .value
+        .toUpperCase();
+
+    const table =
+        document.getElementById("auditTable");
+
+    if (!table) return;
+
+    const rows =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const text =
+            rows[i].textContent.toUpperCase();
+
+        const roleMatch =
+            role === "ALL" ||
+            text.includes(role);
+
+        const actionMatch =
+            action === "ALL" ||
+            text.includes(action);
+
+        rows[i].style.display =
+            roleMatch && actionMatch
+            ? ""
+            : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   BUTTON ACTIONS
+   ========================================================= */
+
+function addStudent() {
+
+    alert(
+        "ADD STUDENT MODULE\n\n" +
+        "THIS PROTOTYPE WILL ALLOW THE REGISTRAR " +
+        "TO CREATE A NEW STUDENT RECORD."
+    );
+
+}
+
+
+function processClearance() {
+
+    alert(
+        "CLEARANCE PROCESSING\n\n" +
+        "THE REGISTRAR CAN REVIEW AND UPDATE " +
+        "STUDENT CLEARANCE REQUIREMENTS HERE."
+    );
+
+}
+
+
+function recordPayment() {
+
+    alert(
+        "RECORD PAYMENT\n\n" +
+        "PAYMENT RECORDING MODULE IS READY " +
+        "FOR DATABASE INTEGRATION."
+    );
+
+}
+
+
+function openArchive() {
+
+    alert(
+        "ADD ARCHIVE\n\n" +
+        "ARCHIVE MANAGEMENT MODULE."
+    );
+
+}
+
+
+function prepareDocument() {
+
+    alert(
+        "DOCUMENT PREPARATION\n\n" +
+        "THE REGISTRAR CAN PREPARE AN APPROVED " +
+        "DOCUMENT FOR RELEASE."
+    );
+
+}
+
+
+function addVerifier() {
+
+    alert(
+        "ADD VERIFIER\n\n" +
+        "A NEW VERIFIER ACCOUNT CAN BE CREATED " +
+        "FROM THIS MODULE."
+    );
+
+}
+
+
+/* =========================================================
+   VIEW FUNCTIONS
+   ========================================================= */
+
+function viewClearance(studentId) {
+
+    alert(
+        "CLEARANCE RECORD\n\n" +
+        "STUDENT ID: " + studentId
+    );
+
+}
+
+
+function viewPayment(reference) {
+
+    alert(
+        "PAYMENT RECORD\n\n" +
+        "REFERENCE: " + reference
+    );
+
+}
+
+
+function viewRelease(reference) {
+
+    alert(
+        "DOCUMENT RELEASE\n\n" +
+        "REFERENCE: " + reference
+    );
+
+}
+
+
+function viewVerifier(accountId) {
+
+    alert(
+        "VERIFIER ACCOUNT\n\n" +
+        "ACCOUNT ID: " + accountId
+    );
+
+}
+
+
+function openArchiveCategory(category) {
+
+    alert(
+        "ARCHIVE CATEGORY\n\n" +
+        category
+    );
+
+}
+
+
+/* =========================================================
+   REPORT FUNCTIONS
+   ========================================================= */
+
+function generateReport() {
+
+    alert(
+        "REPORT GENERATOR\n\n" +
+        "SELECT A REPORT TYPE AND PERIOD " +
+        "TO GENERATE A SYSTEM REPORT."
+    );
+
+}
+
+
+function selectReport(reportName) {
+
+    const reportType =
+        document.getElementById("reportType");
+
+    if (reportType) {
+
+        reportType.value = reportName
+            .replace(" REPORT", "")
+            .replace(" ", "_");
+
+    }
+
+    alert(
+        reportName +
+        "\n\nREPORT GENERATION MODULE."
+    );
+
+}
+
+
+function generateCustomReport() {
+
+    const type =
+        document.getElementById("reportType");
+
+    const period =
+        document.getElementById("reportPeriod");
+
+    const format =
+        document.getElementById("reportFormat");
+
+
+    if (
+        !type ||
+        !type.value
+    ) {
+
+        alert(
+            "PLEASE SELECT A REPORT TYPE."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "REPORT GENERATED\n\n" +
+        "TYPE: " + type.value + "\n" +
+        "PERIOD: " + period.value + "\n" +
+        "FORMAT: " + format.value
+    );
+
+}
+
+
+/* =========================================================
+   AUDIT LOG REFRESH
+   ========================================================= */
+
+function refreshAuditLogs() {
+
+    alert(
+        "AUDIT LOGS REFRESHED."
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+   ========================================================= */
+
+function toggleSidebar() {
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+    if (sidebar) {
+
+        sidebar.classList.toggle("open");
+
+    }
+
+}
+
+
+/* =========================================================
+   CURRENT DATE
+   ========================================================= */
+
+const currentDate =
+    new Date();
+
+const dateElements =
+    document.querySelectorAll(".current-date");
+
+dateElements.forEach(function(element) {
+
+    element.textContent =
+        currentDate.toLocaleDateString(
+            "en-US",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        ).toUpperCase();
+
+});
+
+</script>
+
+
+</body>
+
+  </html>
+          
