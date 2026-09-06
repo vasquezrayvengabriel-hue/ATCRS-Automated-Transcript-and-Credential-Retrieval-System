@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VERIFIER DASHBOARD | ATCRS</title>
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- MAIN CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<!-- =========================================================
+     VERIFIER HEADER
+     ========================================================= -->
+
+<header class="dashboard-header">
+
+    <div class="dashboard-brand">
+
+        <img
+            src="images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
+
+        <div>
+
+            <span>
+                DE LA SALLE JOHN BOSCO COLLEGE
+            </span>
+
+            <h1>
+                ATCRS
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-account">
+
+        <div class="account-info">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <strong>
+                    VERIFIER ACCOUNT
+                </strong>
+
+                <small>
+                    VERIFICATION ROLE
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="logoutVerifier()"
+        >
+
+            <i class="fas fa-right-from-bracket"></i>
+
+            LOGOUT
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-header">
+
+        <div class="sidebar-role-icon">
+
+            <i class="fas fa-user-shield"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                SECURE PORTAL
+            </span>
+
+            <strong>
+                VERIFIER
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+
+        <a
+            href="#dashboard"
+            class="sidebar-link active"
+        >
+
+            <i class="fas fa-gauge-high"></i>
+
+            <span>
+                DASHBOARD
+            </span>
+
+        </a>
+
+
+        <a
+            href="#verify"
+            class="sidebar-link"
+        >
+
+            <i class="fas fa-shield-halved"></i>
+
+            <span>
+                VERIFY CREDENTIAL
+            </span>
+
+        </a>
+
+
+        <a
+            href="#verification-history"
+            class="sidebar-link"
+        >
+
+            <i class="fas fa-clock-rotate-left"></i>
+
+            <span>
+                VERIFICATION HISTORY
+            </span>
+
+        </a>
+
+
+        <a
+            href="#verification-status"
+            class="sidebar-link"
+        >
+
+            <i class="fas fa-chart-simple"></i>
+
+            <span>
+                VERIFICATION STATUS
+            </span>
+
+        </a>
+
+
+        <a
+            href="#account"
+            class="sidebar-link"
+        >
+
+            <i class="fas fa-user-circle"></i>
+
+            <span>
+                MY ACCOUNT
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="sidebar-security">
+
+        <i class="fas fa-lock"></i>
+
+        <div>
+
+            <strong>
+                LIMITED ACCESS
+            </strong>
+
+            <p>
+                VERIFICATION FUNCTIONS ONLY
+            </p>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+     ========================================================= -->
+
+<main class="dashboard-main">
+
+
+<!-- =========================================================
+     DASHBOARD
+     ========================================================= -->
+
+<section
+    id="dashboard"
+    class="student-section"
+>
+
+    <div class="dashboard-welcome">
+
+        <div>
+
+            <span class="section-label">
+                VERIFIER PORTAL
+            </span>
+
+            <h2>
+                WELCOME, VERIFIER
+            </h2>
+
+            <p>
+                Use this portal to verify the authenticity
+                of official DLSJBC academic credentials and
+                review your verification activities.
+            </p>
+
+        </div>
+
+
+        <div class="welcome-icon">
+
+            <i class="fas fa-shield-halved"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-file-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    TOTAL VERIFICATIONS
+                </span>
+
+                <strong>
+                    0
+                </strong>
+
+                <small>
+                    ALL TIME
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    VERIFIED
+                </span>
+
+                <strong>
+                    0
+                </strong>
+
+                <small>
+                    VALID CREDENTIALS
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-circle-xmark"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    FAILED
+                </span>
+
+                <strong>
+                    0
+                </strong>
+
+                <small>
+                    INVALID / UNVERIFIED
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-calendar-day"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    TODAY
+                </span>
+
+                <strong>
+                    0
+                </strong>
+
+                <small>
+                    VERIFICATIONS
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="quick-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    QUICK ACTIONS
+                </span>
+
+                <h2>
+                    VERIFICATION SERVICES
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <div class="quick-card">
+
+                <div class="quick-icon">
+
+                    <i class="fas fa-qrcode"></i>
+
+                </div>
+
+                <h3>
+                    VERIFY CREDENTIAL
+                </h3>
+
+                <p>
+                    Enter a credential reference number
+                    or verification code.
+                </p>
+
+                <button
+                    onclick="scrollToSection('verify')"
+                >
+
+                    START VERIFICATION
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="quick-card">
+
+                <div class="quick-icon">
+
+                    <i class="fas fa-clock-rotate-left"></i>
+
+                </div>
+
+                <h3>
+                    VERIFICATION HISTORY
+                </h3>
+
+                <p>
+                    Review previously processed
+                    credential verification activities.
+                </p>
+
+                <button
+                    onclick="scrollToSection('verification-history')"
+                >
+
+                    VIEW HISTORY
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="quick-card">
+
+                <div class="quick-icon">
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+                <h3>
+                    MY ACCOUNT
+                </h3>
+
+                <p>
+                    View your verifier account and
+                    assigned access privileges.
+                </p>
+
+                <button
+                    onclick="scrollToSection('account')"
+                >
+
+                    VIEW ACCOUNT
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+                  </section>
+
+<!-- =========================================================
+     PART 7B — VERIFY CREDENTIAL
+     ========================================================= -->
+
+<section id="verify" class="student-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                CREDENTIAL VERIFICATION
+            </span>
+
+            <h2>
+                VERIFY CREDENTIAL
+            </h2>
+
+            <p>
+                Enter the credential information provided by
+                the document holder to verify its authenticity.
+            </p>
+
+        </div>
+
+        <div class="verification-status-icon">
+
+            <i class="fas fa-shield-halved"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= VERIFICATION CARD ================= -->
+
+    <div class="verification-card">
+
+        <div class="verification-card-header">
+
+            <div>
+
+                <span class="section-label">
+                    SECURE VERIFICATION
+                </span>
+
+                <h3>
+                    CREDENTIAL VERIFICATION FORM
+                </h3>
+
+            </div>
+
+            <i class="fas fa-file-circle-check"></i>
+
+        </div>
+
+
+        <form
+            id="verificationForm"
+            onsubmit="verifyCredential(event)"
+        >
+
+
+            <!-- REFERENCE NUMBER -->
+
+            <div class="form-group">
+
+                <label for="credentialReference">
+
+                    <i class="fas fa-hashtag"></i>
+
+                    CREDENTIAL REFERENCE NUMBER
+
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fas fa-file-lines input-icon"></i>
+
+                    <input
+                        type="text"
+                        id="credentialReference"
+                        placeholder="ENTER CREDENTIAL REFERENCE NUMBER"
+                        required
+                    >
+
+                </div>
+
+                <small class="form-help">
+
+                    Example:
+                    ATCRS-2026-0001
+
+                </small>
+
+            </div>
+
+
+            <!-- VERIFICATION CODE -->
+
+            <div class="form-group">
+
+                <label for="verificationCode">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    VERIFICATION CODE
+
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fas fa-key input-icon"></i>
+
+                    <input
+                        type="text"
+                        id="verificationCode"
+                        placeholder="ENTER VERIFICATION CODE"
+                        required
+                    >
+
+                </div>
+
+                <small class="form-help">
+
+                    Enter the verification code shown
+                    on the official credential.
+
+                </small>
+
+            </div>
+
+
+            <!-- DOCUMENT TYPE -->
+
+            <div class="form-group">
+
+                <label for="credentialType">
+
+                    <i class="fas fa-file-certificate"></i>
+
+                    DOCUMENT TYPE
+
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fas fa-file input-icon"></i>
+
+                    <select
+                        id="credentialType"
+                        required
+                    >
+
+                        <option value="">
+                            SELECT DOCUMENT TYPE
+                        </option>
+
+                        <option value="TRANSCRIPT">
+                            TRANSCRIPT OF RECORDS
+                        </option>
+
+                        <option value="DIPLOMA">
+                            DIPLOMA
+                        </option>
+
+                        <option value="CERTIFICATE">
+                            CERTIFICATE
+                        </option>
+
+                        <option value="CERTIFICATE_OF_ENROLLMENT">
+                            CERTIFICATE OF ENROLLMENT
+                        </option>
+
+                        <option value="OTHER">
+                            OTHER OFFICIAL CREDENTIAL
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- VERIFY BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn verification-btn"
+            >
+
+                <i class="fas fa-shield-halved"></i>
+
+                VERIFY CREDENTIAL
+
+            </button>
+
+
+        </form>
+
+
+        <!-- ================= RESULT ================= -->
+
+        <div
+            id="verificationResult"
+            class="verification-result"
+        >
+
+            <div class="result-icon">
+
+                <i class="fas fa-circle-info"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    READY FOR VERIFICATION
+                </h3>
+
+                <p>
+                    Enter the required credential information
+                    and select VERIFY CREDENTIAL.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= VERIFICATION INFORMATION ================= -->
+
+    <div class="verification-info-grid">
+
+
+        <div class="verification-info-card">
+
+            <div class="info-icon">
+
+                <i class="fas fa-database"></i>
+
+            </div>
+
+            <h3>
+                RECORD MATCHING
+            </h3>
+
+            <p>
+                The system checks the submitted credential
+                reference against authorized ATCRS records.
+            </p>
+
+        </div>
+
+
+        <div class="verification-info-card">
+
+            <div class="info-icon">
+
+                <i class="fas fa-fingerprint"></i>
+
+            </div>
+
+            <h3>
+                AUTHENTICITY CHECK
+            </h3>
+
+            <p>
+                Verification information is compared with
+                the official credential record.
+            </p>
+
+        </div>
+
+
+        <div class="verification-info-card">
+
+            <div class="info-icon">
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+            </div>
+
+            <h3>
+                AUDIT RECORD
+            </h3>
+
+            <p>
+                Each verification activity can be recorded
+                for security and accountability.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+<!-- =========================================================
+     VERIFICATION HISTORY
+========================================================= -->
+
+<section id="verification-history" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                VERIFICATION RECORDS
+            </span>
+
+            <h2>
+                VERIFICATION HISTORY
+            </h2>
+
+            <p>
+                Review previously processed credential verification
+                transactions and their results.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY FILTERS -->
+
+    <div class="filter-panel">
+
+        <div class="filter-group">
+
+            <label for="historySearch">
+                SEARCH
+            </label>
+
+            <div class="search-box">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    id="historySearch"
+                    placeholder="Search reference number..."
+                    onkeyup="filterVerificationHistory()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="historyStatus">
+                STATUS
+            </label>
+
+            <select
+                id="historyStatus"
+                onchange="filterVerificationHistory()"
+            >
+
+                <option value="all">
+                    ALL STATUS
+                </option>
+
+                <option value="verified">
+                    VERIFIED
+                </option>
+
+                <option value="failed">
+                    FAILED
+                </option>
+
+                <option value="pending">
+                    PENDING
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="historyDocument">
+                DOCUMENT TYPE
+            </label>
+
+            <select
+                id="historyDocument"
+                onchange="filterVerificationHistory()"
+            >
+
+                <option value="all">
+                    ALL DOCUMENTS
+                </option>
+
+                <option value="transcript">
+                    TRANSCRIPT OF RECORDS
+                </option>
+
+                <option value="diploma">
+                    DIPLOMA
+                </option>
+
+                <option value="certificate">
+                    CERTIFICATE
+                </option>
+
+                <option value="credential">
+                    OTHER CREDENTIAL
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY TABLE -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <div>
+
+                <h3>
+                    VERIFICATION TRANSACTIONS
+                </h3>
+
+                <span>
+                    Recent credential verification activity
+                </span>
+
+            </div>
+
+            <button
+                class="outline-btn"
+                onclick="refreshVerificationHistory()"
+            >
+
+                <i class="fas fa-sync-alt"></i>
+
+                REFRESH
+
+            </button>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table id="verificationHistoryTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            REFERENCE NO.
+                        </th>
+
+                        <th>
+                            DOCUMENT
+                        </th>
+
+                        <th>
+                            DATE & TIME
+                        </th>
+
+                        <th>
+                            VERIFIER
+                        </th>
+
+                        <th>
+                            RESULT
+                        </th>
+
+                        <th>
+                            ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr
+                        data-status="verified"
+                        data-document="transcript"
+                    >
+
+                        <td>
+                            <strong>
+                                ATCRS-2026-0001
+                            </strong>
+                        </td>
+
+                        <td>
+                            TRANSCRIPT OF RECORDS
+                        </td>
+
+                        <td>
+                            SEPTEMBER 06, 2026
+                            <br>
+                            <small>
+                                09:15 AM
+                            </small>
+                        </td>
+
+                        <td>
+                            VERIFIER
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge verified">
+                                <i class="fas fa-check-circle"></i>
+                                VERIFIED
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action-btn"
+                                onclick="viewVerification('ATCRS-2026-0001')"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                VIEW
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-status="verified"
+                        data-document="diploma"
+                    >
+
+                        <td>
+                            <strong>
+                                ATCRS-2026-0002
+                            </strong>
+                        </td>
+
+                        <td>
+                            DIPLOMA
+                        </td>
+
+                        <td>
+                            SEPTEMBER 05, 2026
+                            <br>
+                            <small>
+                                03:42 PM
+                            </small>
+                        </td>
+
+                        <td>
+                            VERIFIER
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge verified">
+                                <i class="fas fa-check-circle"></i>
+                                VERIFIED
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action-btn"
+                                onclick="viewVerification('ATCRS-2026-0002')"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                VIEW
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-status="failed"
+                        data-document="certificate"
+                    >
+
+                        <td>
+                            <strong>
+                                ATCRS-2026-0003
+                            </strong>
+                        </td>
+
+                        <td>
+                            CERTIFICATE
+                        </td>
+
+                        <td>
+                            SEPTEMBER 05, 2026
+                            <br>
+                            <small>
+                                11:28 AM
+                            </small>
+                        </td>
+
+                        <td>
+                            VERIFIER
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge failed">
+                                <i class="fas fa-times-circle"></i>
+                                FAILED
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action-btn"
+                                onclick="viewVerification('ATCRS-2026-0003')"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                VIEW
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-status="verified"
+                        data-document="credential"
+                    >
+
+                        <td>
+                            <strong>
+                                ATCRS-2026-0004
+                            </strong>
+                        </td>
+
+                        <td>
+                            OTHER CREDENTIAL
+                        </td>
+
+                        <td>
+                            SEPTEMBER 04, 2026
+                            <br>
+                            <small>
+                                02:10 PM
+                            </small>
+                        </td>
+
+                        <td>
+                            VERIFIER
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge verified">
+                                <i class="fas fa-check-circle"></i>
+                                VERIFIED
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action-btn"
+                                onclick="viewVerification('ATCRS-2026-0004')"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                VIEW
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr
+                        data-status="pending"
+                        data-document="transcript"
+                    >
+
+                        <td>
+                            <strong>
+                                ATCRS-2026-0005
+                            </strong>
+                        </td>
+
+                        <td>
+                            TRANSCRIPT OF RECORDS
+                        </td>
+
+                        <td>
+                            SEPTEMBER 04, 2026
+                            <br>
+                            <small>
+                                10:35 AM
+                            </small>
+                        </td>
+
+                        <td>
+                            VERIFIER
+                        </td>
+
+                        <td>
+
+                            <span class="status-badge pending">
+                                <i class="fas fa-clock"></i>
+                                PENDING
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="table-action-btn"
+                                onclick="viewVerification('ATCRS-2026-0005')"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                VIEW
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     VERIFICATION STATUS
+========================================================= -->
+
+<section id="verification-status" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                SYSTEM MONITORING
+            </span>
+
+            <h2>
+                VERIFICATION STATUS
+            </h2>
+
+            <p>
+                Monitor the overall status of credential verification
+                activities handled by the verification office.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATUS SUMMARY -->
+
+    <div class="status-summary-grid">
+
+        <div class="status-summary-card">
+
+            <div class="status-icon verified-icon">
+
+                <i class="fas fa-check-circle"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    VERIFIED RECORDS
+                </span>
+
+                <strong>
+                    124
+                </strong>
+
+                <small>
+                    Successfully verified
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-summary-card">
+
+            <div class="status-icon failed-icon">
+
+                <i class="fas fa-times-circle"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    FAILED RECORDS
+                </span>
+
+                <strong>
+                    8
+                </strong>
+
+                <small>
+                    Verification failed
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-summary-card">
+
+            <div class="status-icon pending-icon">
+
+                <i class="fas fa-hourglass-half"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    PENDING
+                </span>
+
+                <strong>
+                    6
+                </strong>
+
+                <small>
+                    Awaiting verification
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-summary-card">
+
+            <div class="status-icon total-icon">
+
+                <i class="fas fa-file-signature"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    TOTAL
+                </span>
+
+                <strong>
+                    138
+                </strong>
+
+                <small>
+                    Verification transactions
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- VERIFICATION PROCESS -->
+
+    <div class="verification-process-card">
+
+        <div class="process-header">
+
+            <div>
+
+                <span class="section-label">
+                    VERIFICATION WORKFLOW
+                </span>
+
+                <h3>
+                    CREDENTIAL VERIFICATION PROCESS
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="verification-steps">
+
+            <div class="verification-step active">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-content">
+
+                    <h4>
+                        RECORD SEARCH
+                    </h4>
+
+                    <p>
+                        The credential reference number is searched
+                        against the ATCRS record.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="verification-step active">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-content">
+
+                    <h4>
+                        RECORD MATCHING
+                    </h4>
+
+                    <p>
+                        Credential information is compared with the
+                        authorized academic record.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="verification-step active">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-content">
+
+                    <h4>
+                        AUTHENTICITY CHECK
+                    </h4>
+
+                    <p>
+                        The system checks the verification code and
+                        document status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="verification-step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <div class="step-content">
+
+                    <h4>
+                        VERIFICATION RESULT
+                    </h4>
+
+                    <p>
+                        The final verification result is recorded in
+                        the ATCRS audit history.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RECENT STATUS -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <div>
+
+                <h3>
+                    RECENT VERIFICATION STATUS
+                </h3>
+
+                <span>
+                    Latest credential verification activity
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-list">
+
+            <div class="status-list-item">
+
+                <div class="status-list-icon verified">
+
+                    <i class="fas fa-check"></i>
+
+                </div>
+
+                <div class="status-list-content">
+
+                    <strong>
+                        ATCRS-2026-0001
+                    </strong>
+
+                    <span>
+                        Transcript of Records
+                    </span>
+
+                </div>
+
+                <span class="status-badge verified">
+                    VERIFIED
+                </span>
+
+            </div>
+
+
+            <div class="status-list-item">
+
+                <div class="status-list-icon verified">
+
+                    <i class="fas fa-check"></i>
+
+                </div>
+
+                <div class="status-list-content">
+
+                    <strong>
+                        ATCRS-2026-0002
+                    </strong>
+
+                    <span>
+                        Diploma
+                    </span>
+
+                </div>
+
+                <span class="status-badge verified">
+                    VERIFIED
+                </span>
+
+            </div>
+
+
+            <div class="status-list-item">
+
+                <div class="status-list-icon failed">
+
+                    <i class="fas fa-times"></i>
+
+                </div>
+
+                <div class="status-list-content">
+
+                    <strong>
+                        ATCRS-2026-0003
+                    </strong>
+
+                    <span>
+                        Certificate
+                    </span>
+
+                </div>
+
+                <span class="status-badge failed">
+                    FAILED
+                </span>
+
+            </div>
+
+
+            <div class="status-list-item">
+
+                <div class="status-list-icon pending">
+
+                    <i class="fas fa-clock"></i>
+
+                </div>
+
+                <div class="status-list-content">
+
+                    <strong>
+                        ATCRS-2026-0005
+                    </strong>
+
+                    <span>
+                        Transcript of Records
+                    </span>
+
+                </div>
+
+                <span class="status-badge pending">
+                    PENDING
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+                          </section>
+                          <!-- =========================================================
+     MY ACCOUNT
+========================================================= -->
+
+<section id="my-account" class="dashboard-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                ACCOUNT MANAGEMENT
+            </span>
+
+            <h2>
+                MY ACCOUNT
+            </h2>
+
+            <p>
+                View your verifier account information and security
+                settings.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ACCOUNT INFORMATION -->
+
+    <div class="account-grid">
+
+        <div class="account-card">
+
+            <div class="account-card-header">
+
+                <div class="account-profile-icon">
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        VERIFIER ACCOUNT
+                    </span>
+
+                    <h3>
+                        VERIFIER
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="account-details">
+
+                <div class="account-detail">
+
+                    <span>
+                        USERNAME
+                    </span>
+
+                    <strong id="verifierUsername">
+                        verifier
+                    </strong>
+
+                </div>
+
+
+                <div class="account-detail">
+
+                    <span>
+                        ROLE
+                    </span>
+
+                    <strong>
+                        CREDENTIAL VERIFIER
+                    </strong>
+
+                </div>
+
+
+                <div class="account-detail">
+
+                    <span>
+                        ACCOUNT STATUS
+                    </span>
+
+                    <strong class="account-active">
+                        <i class="fas fa-circle"></i>
+                        ACTIVE
+                    </strong>
+
+                </div>
+
+
+                <div class="account-detail">
+
+                    <span>
+                        ACCESS LEVEL
+                    </span>
+
+                    <strong>
+                        VERIFICATION ONLY
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SECURITY CARD -->
+
+        <div class="account-card">
+
+            <div class="account-card-header">
+
+                <div class="account-profile-icon">
+
+                    <i class="fas fa-lock"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        SECURITY
+                    </span>
+
+                    <h3>
+                        ACCOUNT SECURITY
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="security-list">
+
+                <div class="security-item">
+
+                    <div class="security-item-icon">
+
+                        <i class="fas fa-key"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            PASSWORD
+                        </strong>
+
+                        <span>
+                            Your account password is protected.
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="small-action-btn"
+                        onclick="changeVerifierPassword()"
+                    >
+                        CHANGE
+                    </button>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div class="security-item-icon">
+
+                        <i class="fas fa-desktop"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ACTIVE SESSION
+                        </strong>
+
+                        <span>
+                            Current browser session is active.
+                        </span>
+
+                    </div>
+
+                    <span class="security-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-item">
+
+                    <div class="security-item-icon">
+
+                        <i class="fas fa-history"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            AUDIT MONITORING
+                        </strong>
+
+                        <span>
+                            Verification actions are recorded.
+                        </span>
+
+                    </div>
+
+                    <span class="security-status">
+                        ENABLED
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ROLE PERMISSIONS -->
+
+    <div class="permissions-card">
+
+        <div class="permissions-header">
+
+            <div>
+
+                <span class="section-label">
+                    ROLE ACCESS
+                </span>
+
+                <h3>
+                    VERIFIER PERMISSIONS
+                </h3>
+
+                <p>
+                    Your account is intentionally limited to credential
+                    verification functions.
+                </p>
+
+            </div>
+
+            <div class="permission-icon">
+
+                <i class="fas fa-user-lock"></i>
+
+            </div>
+
+        </div>
+
+
+        <div class="permissions-grid">
+
+            <div class="permission-item allowed">
+
+                <i class="fas fa-check-circle"></i>
+
+                <div>
+
+                    <strong>
+                        VERIFY CREDENTIALS
+                    </strong>
+
+                    <span>
+                        Allowed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item allowed">
+
+                <i class="fas fa-check-circle"></i>
+
+                <div>
+
+                    <strong>
+                        VIEW VERIFICATION HISTORY
+                    </strong>
+
+                    <span>
+                        Allowed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item allowed">
+
+                <i class="fas fa-check-circle"></i>
+
+                <div>
+
+                    <strong>
+                        VIEW VERIFICATION STATUS
+                    </strong>
+
+                    <span>
+                        Allowed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item allowed">
+
+                <i class="fas fa-check-circle"></i>
+
+                <div>
+
+                    <strong>
+                        VIEW OWN ACCOUNT
+                    </strong>
+
+                    <span>
+                        Allowed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item restricted">
+
+                <i class="fas fa-ban"></i>
+
+                <div>
+
+                    <strong>
+                        EDIT STUDENT RECORDS
+                    </strong>
+
+                    <span>
+                        Restricted
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item restricted">
+
+                <i class="fas fa-ban"></i>
+
+                <div>
+
+                    <strong>
+                        MANAGE DOCUMENT REQUESTS
+                    </strong>
+
+                    <span>
+                        Restricted
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item restricted">
+
+                <i class="fas fa-ban"></i>
+
+                <div>
+
+                    <strong>
+                        MANAGE PAYMENTS
+                    </strong>
+
+                    <span>
+                        Restricted
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="permission-item restricted">
+
+                <i class="fas fa-ban"></i>
+
+                <div>
+
+                    <strong>
+                        MANAGE VERIFIER ACCOUNTS
+                    </strong>
+
+                    <span>
+                        Restricted
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SECURITY NOTICE -->
+
+    <div class="security-notice">
+
+        <div class="security-notice-icon">
+
+            <i class="fas fa-shield-alt"></i>
+
+        </div>
+
+        <div>
+
+            <h3>
+                SECURITY NOTICE
+            </h3>
+
+            <p>
+                All credential verification activities performed using
+                this account may be recorded in the ATCRS audit log.
+                Do not share your account credentials with other users.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     VERIFIER FOOTER
+========================================================= -->
+
+<footer class="dashboard-footer">
+
+    <div class="footer-brand">
+
+        <img
+            src="images/dlsjbc-logo.png"
+            alt="DLSJBC Logo"
+        >
+
+        <div>
+
+            <h3>
+                DE LA SALLE JOHN BOSCO COLLEGE
+            </h3>
+
+            <p>
+                Automated Transcript and Credential Retrieval System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-role">
+
+        <span>
+            CURRENT ROLE
+        </span>
+
+        <strong>
+            CREDENTIAL VERIFIER
+        </strong>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 De La Salle John Bosco College. All Rights Reserved.
+        </p>
+
+        <p>
+            ATCRS VERIFIER PORTAL
+        </p>
+
+    </div>
+
+</footer>
+<!-- =========================================================
+     VERIFIER JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   ACCESS PROTECTION
+========================================================= */
+
+if (sessionStorage.getItem("verifierLoggedIn") !== "true") {
+
+    window.location.href = "verifier-login.html";
+
+}
+
+
+/* =========================================================
+   DISPLAY VERIFIER USERNAME
+========================================================= */
+
+const storedVerifier =
+    sessionStorage.getItem("verifierUsername");
+
+if (storedVerifier) {
+
+    const usernameElement =
+        document.getElementById("verifierUsername");
+
+    if (usernameElement) {
+
+        usernameElement.textContent =
+            storedVerifier.toUpperCase();
+
+    }
+
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
+const sidebarLinks =
+    document.querySelectorAll(".sidebar a");
+
+const dashboardSections =
+    document.querySelectorAll(".dashboard-section");
+
+
+sidebarLinks.forEach(link => {
+
+    link.addEventListener("click", function () {
+
+        sidebarLinks.forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   VERIFICATION FORM
+========================================================= */
+
+function verifyCredential() {
+
+    const referenceInput =
+        document.getElementById("credentialReference");
+
+    const codeInput =
+        document.getElementById("verificationCode");
+
+    const documentInput =
+        document.getElementById("documentType");
+
+    const resultBox =
+        document.getElementById("verificationResult");
+
+
+    if (!referenceInput ||
+        !codeInput ||
+        !documentInput ||
+        !resultBox) {
+
+        return;
+
+    }
+
+
+    const reference =
+        referenceInput.value.trim();
+
+    const verificationCode =
+        codeInput.value.trim();
+
+    const documentType =
+        documentInput.value;
+
+
+    if (reference === "" ||
+        verificationCode === "" ||
+        documentType === "") {
+
+        resultBox.innerHTML = `
+
+            <div class="verification-result error">
+
+                <i class="fas fa-exclamation-circle"></i>
+
+                <div>
+
+                    <h3>
+                        VERIFICATION INFORMATION REQUIRED
+                    </h3>
+
+                    <p>
+                        Please provide the credential reference
+                        number, verification code, and document type.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       DEMO VERIFICATION
+
+       This prototype accepts the sample verification code:
+
+       ATCRS2026
+
+       Any other code will produce a failed result.
+    */
+
+    if (verificationCode.toUpperCase() === "ATCRS2026") {
+
+        resultBox.innerHTML = `
+
+            <div class="verification-result success">
+
+                <i class="fas fa-check-circle"></i>
+
+                <div>
+
+                    <h3>
+                        CREDENTIAL VERIFIED
+                    </h3>
+
+                    <p>
+                        The submitted credential has been successfully
+                        matched with an authorized ATCRS record.
+                    </p>
+
+                    <div class="verification-result-details">
+
+                        <span>
+                            <strong>REFERENCE:</strong>
+                            ${reference}
+                        </span>
+
+                        <span>
+                            <strong>DOCUMENT:</strong>
+                            ${documentType}
+                        </span>
+
+                        <span>
+                            <strong>STATUS:</strong>
+                            VERIFIED
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    } else {
+
+        resultBox.innerHTML = `
+
+            <div class="verification-result error">
+
+                <i class="fas fa-times-circle"></i>
+
+                <div>
+
+                    <h3>
+                        VERIFICATION FAILED
+                    </h3>
+
+                    <p>
+                        The submitted verification information could
+                        not be matched with an authorized ATCRS record.
+                    </p>
+
+                    <div class="verification-result-details">
+
+                        <span>
+                            <strong>REFERENCE:</strong>
+                            ${reference}
+                        </span>
+
+                        <span>
+                            <strong>STATUS:</strong>
+                            FAILED
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERIFICATION HISTORY SEARCH
+========================================================= */
+
+function filterVerificationHistory() {
+
+    const searchInput =
+        document.getElementById("historySearch");
+
+    const statusFilter =
+        document.getElementById("historyStatus");
+
+    const documentFilter =
+        document.getElementById("historyDocument");
+
+    const table =
+        document.getElementById("verificationHistoryTable");
+
+
+    if (!searchInput ||
+        !statusFilter ||
+        !documentFilter ||
+        !table) {
+
+        return;
+
+    }
+
+
+    const searchValue =
+        searchInput.value.toLowerCase();
+
+    const statusValue =
+        statusFilter.value.toLowerCase();
+
+    const documentValue =
+        documentFilter.value.toLowerCase();
+
+
+    const rows =
+        table.querySelectorAll("tbody tr");
+
+
+    rows.forEach(row => {
+
+        const rowText =
+            row.textContent.toLowerCase();
+
+        const rowStatus =
+            row.dataset.status;
+
+        const rowDocument =
+            row.dataset.document;
+
+
+        const matchesSearch =
+            rowText.includes(searchValue);
+
+        const matchesStatus =
+            statusValue === "all" ||
+            rowStatus === statusValue;
+
+        const matchesDocument =
+            documentValue === "all" ||
+            rowDocument === documentValue;
+
+
+        if (
+            matchesSearch &&
+            matchesStatus &&
+            matchesDocument
+        ) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   REFRESH VERIFICATION HISTORY
+========================================================= */
+
+function refreshVerificationHistory() {
+
+    const searchInput =
+        document.getElementById("historySearch");
+
+    const statusFilter =
+        document.getElementById("historyStatus");
+
+    const documentFilter =
+        document.getElementById("historyDocument");
+
+
+    if (searchInput) {
+
+        searchInput.value = "";
+
+    }
+
+
+    if (statusFilter) {
+
+        statusFilter.value = "all";
+
+    }
+
+
+    if (documentFilter) {
+
+        documentFilter.value = "all";
+
+    }
+
+
+    filterVerificationHistory();
+
+
+    alert(
+        "VERIFICATION HISTORY HAS BEEN REFRESHED."
+    );
+
+}
+
+
+/* =========================================================
+   VIEW VERIFICATION
+========================================================= */
+
+function viewVerification(reference) {
+
+    alert(
+        "VERIFICATION RECORD\n\n" +
+        "REFERENCE NO.: " + reference +
+        "\n\n" +
+        "This prototype would display the complete verification " +
+        "record in the production ATCRS system."
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+========================================================= */
+
+function changeVerifierPassword() {
+
+    alert(
+        "PASSWORD MANAGEMENT\n\n" +
+        "The password change feature will be connected to the " +
+        "secure account management system in the production version."
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function verifierLogout() {
+
+    const confirmLogout =
+        confirm(
+            "ARE YOU SURE YOU WANT TO LOG OUT?"
+        );
+
+
+    if (!confirmLogout) {
+
+        return;
+
+    }
+
+
+    sessionStorage.removeItem(
+        "verifierLoggedIn"
+    );
+
+    sessionStorage.removeItem(
+        "verifierUsername"
+    );
+
+
+    window.location.href =
+        "verifier-login.html";
+
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+function toggleVerifierSidebar() {
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+    if (sidebar) {
+
+        sidebar.classList.toggle("mobile-active");
+
+    }
+
+}
+
+
+/* =========================================================
+   CURRENT DATE
+========================================================= */
+
+function displayCurrentDate() {
+
+    const dateElements =
+        document.querySelectorAll(".current-date");
+
+
+    const today =
+        new Date();
+
+
+    const options = {
+
+        year: "numeric",
+
+        month: "long",
+
+        day: "numeric"
+
+    };
+
+
+    const formattedDate =
+        today.toLocaleDateString(
+            "en-US",
+            options
+        );
+
+
+    dateElements.forEach(element => {
+
+        element.textContent =
+            formattedDate.toUpperCase();
+
+    });
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        displayCurrentDate();
+
+        filterVerificationHistory();
+
+    }
+);
+
+</script>
+
+
+<!-- =========================================================
+     CLOSE VERIFIER PAGE
+========================================================= -->
+
+</body>
+
+</html>
