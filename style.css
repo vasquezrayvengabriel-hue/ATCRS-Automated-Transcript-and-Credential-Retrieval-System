@@ -24303,3 +24303,3235 @@ a {
     }
 
 }
+/* =========================================================
+   STUDENT REQUEST FORM CHARACTER COUNTER
+========================================================= */
+
+.student-request-character-count {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-character-count strong {
+    color:
+        var(--green);
+
+    font-weight:
+        800;
+}
+
+.student-request-character-count.limit {
+    color:
+        var(--warning);
+}
+
+.student-request-character-count.limit strong {
+    color:
+        var(--warning);
+}
+
+.student-request-character-count.exceeded {
+    color:
+        var(--danger);
+}
+
+.student-request-character-count.exceeded strong {
+    color:
+        var(--danger);
+}
+
+
+/* =========================================================
+   STUDENT REQUEST FORM FIELD VALIDATION
+========================================================= */
+
+.student-request-form-group.valid input,
+.student-request-form-group.valid select,
+.student-request-form-group.valid textarea {
+    border-color:
+        var(--success);
+}
+
+.student-request-form-group.invalid input,
+.student-request-form-group.invalid select,
+.student-request-form-group.invalid textarea {
+    border-color:
+        var(--danger);
+
+    background:
+        rgba(192, 57, 43, 0.025);
+}
+
+.student-request-field-message {
+    display:
+        none;
+
+    margin-top:
+        4px;
+
+    font-size:
+        0.48rem;
+
+    line-height:
+        1.4;
+}
+
+.student-request-form-group.invalid
+.student-request-field-message {
+    display:
+        block;
+
+    color:
+        var(--danger);
+}
+
+.student-request-form-group.valid
+.student-request-field-message {
+    display:
+        block;
+
+    color:
+        var(--success);
+}
+
+
+/* =========================================================
+   REQUIRED FIELD INDICATOR
+========================================================= */
+
+.student-request-form-group label .required {
+    margin-left:
+        2px;
+
+    color:
+        var(--danger);
+
+    font-weight:
+        900;
+}
+
+
+/* =========================================================
+   MOBILE CHARACTER COUNTER
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-character-count {
+        font-size:
+            0.46rem;
+    }
+
+    .student-request-field-message {
+        font-size:
+            0.46rem;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST FORM DATE / TIME FIELDS
+========================================================= */
+
+.student-request-date-group {
+    position:
+        relative;
+}
+
+.student-request-date-group i {
+    position:
+        absolute;
+
+    right:
+        10px;
+
+    bottom:
+        9px;
+
+    color:
+        var(--green);
+
+    font-size:
+        0.58rem;
+
+    pointer-events:
+        none;
+}
+
+.student-request-date-group input[type="date"],
+.student-request-date-group input[type="time"] {
+    width:
+        100%;
+
+    padding:
+        8px 30px 8px 10px;
+
+    border:
+        1px solid var(--gray);
+
+    border-radius:
+        7px;
+
+    outline:
+        none;
+
+    background:
+        var(--white);
+
+    color:
+        var(--dark);
+
+    font-size:
+        0.58rem;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-date-group input[type="date"]:focus,
+.student-request-date-group input[type="time"]:focus {
+    border-color:
+        var(--green);
+
+    box-shadow:
+        0 0 0 3px rgba(11, 93, 63, 0.08);
+}
+
+
+/* =========================================================
+   REQUEST FORM DATE NOTICE
+========================================================= */
+
+.student-request-date-note {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        6px;
+
+    margin-top:
+        5px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+
+    line-height:
+        1.5;
+}
+
+.student-request-date-note i {
+    margin-top:
+        2px;
+
+    color:
+        var(--info);
+
+    font-size:
+        0.5rem;
+}
+
+
+/* =========================================================
+   REQUEST FORM DATE STATUS
+========================================================= */
+
+.student-request-date-status {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    margin-top:
+        4px;
+
+    font-size:
+        0.48rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-date-status.available {
+    color:
+        var(--success);
+}
+
+.student-request-date-status.unavailable {
+    color:
+        var(--danger);
+}
+
+.student-request-date-status.pending {
+    color:
+        var(--warning);
+}
+
+.student-request-date-status i {
+    font-size:
+        0.45rem;
+}
+
+
+/* =========================================================
+   MOBILE DATE / TIME FIELDS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-date-group input[type="date"],
+    .student-request-date-group input[type="time"] {
+        padding:
+            9px 30px 9px 10px;
+    }
+
+    .student-request-date-note,
+    .student-request-date-status {
+        font-size:
+            0.46rem;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST FORM PAYMENT OPTION
+========================================================= */
+
+.student-request-payment-options {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        8px;
+
+    margin-top:
+        5px;
+}
+
+.student-request-payment-option {
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        9px 10px;
+
+    border:
+        1px solid var(--gray);
+
+    border-radius:
+        7px;
+
+    background:
+        var(--white);
+
+    cursor:
+        pointer;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-payment-option:hover {
+    border-color:
+        var(--green);
+
+    background:
+        rgba(11, 93, 63, 0.025);
+}
+
+.student-request-payment-option input {
+    position:
+        absolute;
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+}
+
+.student-request-payment-radio {
+    width:
+        14px;
+
+    height:
+        14px;
+
+    flex-shrink:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid var(--gray);
+
+    border-radius:
+        50%;
+}
+
+.student-request-payment-radio::after {
+    content:
+        "";
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--white);
+
+    transform:
+        scale(0);
+
+    transition:
+        var(--transition);
+}
+
+.student-request-payment-option
+input:checked
++ .student-request-payment-radio {
+    border-color:
+        var(--green);
+
+    background:
+        var(--green);
+}
+
+.student-request-payment-option
+input:checked
++ .student-request-payment-radio::after {
+    transform:
+        scale(1);
+}
+
+.student-request-payment-option
+input:checked
+~ .student-request-payment-content strong {
+    color:
+        var(--green);
+}
+
+.student-request-payment-content {
+    min-width:
+        0;
+}
+
+.student-request-payment-content strong {
+    display:
+        block;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.56rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-payment-content span {
+    display:
+        block;
+
+    margin-top:
+        2px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.47rem;
+}
+
+.student-request-payment-option.selected {
+    border-color:
+        var(--green);
+
+    background:
+        rgba(11, 93, 63, 0.045);
+}
+
+
+/* =========================================================
+   PAYMENT INFORMATION NOTE
+========================================================= */
+
+.student-request-payment-note {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        6px;
+
+    margin-top:
+        7px;
+
+    padding:
+        7px 9px;
+
+    border-radius:
+        7px;
+
+    background:
+        rgba(212, 175, 55, 0.07);
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+
+    line-height:
+        1.5;
+}
+
+.student-request-payment-note i {
+    margin-top:
+        2px;
+
+    color:
+        var(--gold);
+
+    font-size:
+        0.52rem;
+}
+
+
+/* =========================================================
+   MOBILE PAYMENT OPTIONS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .student-request-payment-options {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .student-request-payment-options {
+        grid-template-columns:
+            1fr;
+    }
+
+    .student-request-payment-option {
+        padding:
+            9px;
+    }
+
+             }
+/* =========================================================
+   STUDENT REQUEST FORM AGREEMENT
+========================================================= */
+
+.student-request-agreement {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        8px;
+
+    margin-top:
+        9px;
+
+    padding:
+        9px 10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(11, 93, 63, 0.02);
+}
+
+.student-request-agreement input[type="checkbox"] {
+    width:
+        14px;
+
+    height:
+        14px;
+
+    flex-shrink:
+        0;
+
+    margin-top:
+        2px;
+
+    accent-color:
+        var(--green);
+
+    cursor:
+        pointer;
+}
+
+.student-request-agreement label {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.49rem;
+
+    line-height:
+        1.55;
+
+    cursor:
+        pointer;
+}
+
+.student-request-agreement label strong {
+    color:
+        var(--green-dark);
+
+    font-weight:
+        800;
+}
+
+.student-request-agreement a {
+    color:
+        var(--green);
+
+    font-weight:
+        800;
+
+    text-decoration:
+        underline;
+}
+
+.student-request-agreement a:hover {
+    color:
+        var(--gold);
+}
+
+
+/* =========================================================
+   AGREEMENT ERROR
+========================================================= */
+
+.student-request-agreement.error {
+    border-color:
+        rgba(192, 57, 43, 0.35);
+
+    background:
+        rgba(192, 57, 43, 0.04);
+}
+
+.student-request-agreement.error label {
+    color:
+        var(--danger);
+}
+
+.student-request-agreement-message {
+    display:
+        none;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--danger);
+
+    font-size:
+        0.47rem;
+
+    font-weight:
+        700;
+}
+
+.student-request-agreement.error
+.student-request-agreement-message {
+    display:
+        block;
+}
+
+
+/* =========================================================
+   REQUEST FORM SUBMISSION SUMMARY
+========================================================= */
+
+.student-request-submit-summary {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        8px;
+
+    margin-top:
+        10px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        #fafcfb;
+}
+
+.student-request-submit-summary-item {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        2px;
+}
+
+.student-request-submit-summary-item span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.47rem;
+}
+
+.student-request-submit-summary-item strong {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.55rem;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   MOBILE AGREEMENT / SUMMARY
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-agreement {
+        padding:
+            8px;
+    }
+
+    .student-request-agreement label {
+        font-size:
+            0.47rem;
+    }
+
+    .student-request-submit-summary {
+        grid-template-columns:
+            1fr;
+    }
+
+               }
+/* =========================================================
+   STUDENT REQUEST FORM ACTION BAR
+========================================================= */
+
+.student-request-action-bar {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin-top:
+        14px;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid #eeeeee;
+}
+
+.student-request-action-info {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.49rem;
+}
+
+.student-request-action-info i {
+    color:
+        var(--green);
+
+    font-size:
+        0.55rem;
+}
+
+.student-request-action-buttons {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+}
+
+
+/* =========================================================
+   REQUEST CANCEL BUTTON
+========================================================= */
+
+.student-request-cancel {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        8px 12px;
+
+    border:
+        1px solid var(--gray);
+
+    border-radius:
+        7px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.53rem;
+
+    font-weight:
+        800;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-cancel:hover {
+    border-color:
+        var(--danger);
+
+    background:
+        rgba(192, 57, 43, 0.05);
+
+    color:
+        var(--danger);
+}
+
+
+/* =========================================================
+   REQUEST SUBMIT BUTTON
+========================================================= */
+
+.student-request-submit {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid var(--green);
+
+    border-radius:
+        7px;
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+
+    font-size:
+        0.53rem;
+
+    font-weight:
+        800;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-submit:hover {
+    background:
+        var(--green-dark);
+
+    border-color:
+        var(--green-dark);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(11, 93, 63, 0.16);
+}
+
+.student-request-submit:active {
+    transform:
+        translateY(0);
+}
+
+.student-request-submit:disabled {
+    opacity:
+        0.55;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   MOBILE REQUEST ACTION BAR
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-action-bar {
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+    }
+
+    .student-request-action-info {
+        justify-content:
+            center;
+
+        text-align:
+            center;
+    }
+
+    .student-request-action-buttons {
+        width:
+            100%;
+    }
+
+    .student-request-cancel,
+    .student-request-submit {
+        flex:
+            1;
+
+        min-height:
+            36px;
+    }
+
+   }
+/* =========================================================
+   STUDENT REQUEST FORM FOOTER NOTE
+========================================================= */
+
+.student-request-form-footer {
+    margin-top:
+        10px;
+
+    padding-top:
+        9px;
+
+    border-top:
+        1px solid #eeeeee;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+
+    line-height:
+        1.55;
+
+    text-align:
+        center;
+}
+
+.student-request-form-footer i {
+    margin-right:
+        4px;
+
+    color:
+        var(--green);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-form-footer strong {
+    color:
+        var(--green-dark);
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   STUDENT REQUEST REFERENCE DISPLAY
+========================================================= */
+
+.student-request-reference-display {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin-top:
+        10px;
+
+    padding:
+        9px 11px;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.28);
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(212, 175, 55, 0.06);
+}
+
+.student-request-reference-display span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.49rem;
+}
+
+.student-request-reference-display strong {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.6rem;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.4px;
+}
+
+
+/* =========================================================
+   COPY REQUEST REFERENCE BUTTON
+========================================================= */
+
+.student-request-copy-reference {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        5px 8px;
+
+    border:
+        1px solid rgba(11, 93, 63, 0.2);
+
+    border-radius:
+        6px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.47rem;
+
+    font-weight:
+        800;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-copy-reference:hover {
+    border-color:
+        var(--green);
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+}
+
+
+/* =========================================================
+   MOBILE REQUEST REFERENCE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-reference-display {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .student-request-copy-reference {
+        width:
+            100%;
+    }
+
+    .student-request-form-footer {
+        font-size:
+            0.46rem;
+    }
+
+       }
+/* =========================================================
+   STUDENT REQUEST TRACKING HEADER
+========================================================= */
+
+.student-request-tracking-header {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        12px;
+
+    padding-bottom:
+        9px;
+
+    border-bottom:
+        1px solid #eeeeee;
+}
+
+.student-request-tracking-title {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+}
+
+.student-request-tracking-title i {
+    width:
+        29px;
+
+    height:
+        29px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        7px;
+
+    background:
+        rgba(11, 93, 63, 0.08);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.62rem;
+}
+
+.student-request-tracking-title h3 {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-tracking-title span {
+    display:
+        block;
+
+    margin-top:
+        1px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-tracking-status {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        5px 8px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(197, 138, 22, 0.09);
+
+    color:
+        var(--warning);
+
+    font-size:
+        0.48rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-tracking-status i {
+    font-size:
+        0.43rem;
+}
+
+
+/* =========================================================
+   REQUEST TRACKING REFERENCE
+========================================================= */
+
+.student-request-tracking-reference {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        12px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        7px;
+
+    background:
+        #fafcfb;
+}
+
+.student-request-tracking-reference span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-tracking-reference strong {
+    color:
+        var(--green);
+
+    font-size:
+        0.55rem;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.3px;
+}
+
+
+/* =========================================================
+   MOBILE TRACKING HEADER
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-tracking-header {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .student-request-tracking-status {
+        align-self:
+            flex-start;
+    }
+
+    .student-request-tracking-reference {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+       }
+/* =========================================================
+   STUDENT REQUEST TRACKING ACTIONS
+========================================================= */
+
+.student-request-tracking-actions {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        7px;
+
+    margin-top:
+        12px;
+
+    padding-top:
+        10px;
+
+    border-top:
+        1px solid #eeeeee;
+}
+
+.student-request-tracking-btn {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        7px 10px;
+
+    border:
+        1px solid var(--gray);
+
+    border-radius:
+        7px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.5rem;
+
+    font-weight:
+        800;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-tracking-btn:hover {
+    border-color:
+        var(--green);
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+}
+
+.student-request-tracking-btn.primary {
+    border-color:
+        var(--green);
+
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+}
+
+.student-request-tracking-btn.primary:hover {
+    border-color:
+        var(--green-dark);
+
+    background:
+        var(--green-dark);
+}
+
+.student-request-tracking-btn.gold {
+    border-color:
+        rgba(212, 175, 55, 0.35);
+
+    color:
+        var(--gold);
+}
+
+.student-request-tracking-btn.gold:hover {
+    border-color:
+        var(--gold);
+
+    background:
+        var(--gold);
+
+    color:
+        var(--white);
+}
+
+.student-request-tracking-btn i {
+    font-size:
+        0.5rem;
+}
+
+
+/* =========================================================
+   TRACKING ACTION DISABLED
+========================================================= */
+
+.student-request-tracking-btn:disabled,
+.student-request-tracking-btn.disabled {
+    opacity:
+        0.5;
+
+    pointer-events:
+        none;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   MOBILE TRACKING ACTIONS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-tracking-actions {
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+    }
+
+    .student-request-tracking-btn {
+        width:
+            100%;
+
+        min-height:
+            34px;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST TRACKING PRINT / RECEIPT
+========================================================= */
+
+.student-request-receipt {
+    display:
+        none;
+
+    padding:
+        20px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius:
+        8px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--dark);
+}
+
+.student-request-receipt-header {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        15px;
+
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        2px solid var(--green);
+}
+
+.student-request-receipt-logo {
+    width:
+        42px;
+
+    height:
+        42px;
+
+    object-fit:
+        contain;
+}
+
+.student-request-receipt-title h2 {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        900;
+}
+
+.student-request-receipt-title span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.5rem;
+}
+
+.student-request-receipt-details {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        8px 15px;
+}
+
+.student-request-receipt-item {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        2px;
+}
+
+.student-request-receipt-item span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-receipt-item strong {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.55rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-footer {
+    margin-top:
+        15px;
+
+    padding-top:
+        9px;
+
+    border-top:
+        1px solid #eeeeee;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.47rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   PRINT REQUEST RECEIPT
+========================================================= */
+
+@media print {
+
+    body * {
+        visibility:
+            hidden;
+    }
+
+    .student-request-receipt,
+    .student-request-receipt * {
+        visibility:
+            visible;
+    }
+
+    .student-request-receipt {
+        position:
+            absolute;
+
+        top:
+            0;
+
+        left:
+            0;
+
+        width:
+            100%;
+
+        display:
+            block;
+
+        border:
+            none;
+
+        box-shadow:
+            none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE RECEIPT
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt {
+        padding:
+            14px;
+    }
+
+    .student-request-receipt-details {
+        grid-template-columns:
+            1fr;
+    }
+
+   }
+/* =========================================================
+   STUDENT REQUEST RECEIPT STATUS
+========================================================= */
+
+.student-request-receipt-status {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    margin-top:
+        3px;
+
+    padding:
+        4px 8px;
+
+    border-radius:
+        20px;
+
+    font-size:
+        0.46rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-status.pending {
+    background:
+        rgba(197, 138, 22, 0.10);
+
+    color:
+        var(--warning);
+}
+
+.student-request-receipt-status.processing {
+    background:
+        rgba(40, 120, 168, 0.10);
+
+    color:
+        var(--info);
+}
+
+.student-request-receipt-status.ready {
+    background:
+        rgba(22, 131, 75, 0.10);
+
+    color:
+        var(--success);
+}
+
+.student-request-receipt-status.released {
+    background:
+        rgba(11, 93, 63, 0.10);
+
+    color:
+        var(--green);
+}
+
+.student-request-receipt-status.cancelled {
+    background:
+        rgba(192, 57, 43, 0.09);
+
+    color:
+        var(--danger);
+}
+
+.student-request-receipt-status i {
+    font-size:
+        0.42rem;
+}
+
+
+/* =========================================================
+   STUDENT REQUEST RECEIPT QR AREA
+========================================================= */
+
+.student-request-receipt-qr {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    margin-top:
+        15px;
+
+    padding:
+        12px;
+
+    border:
+        1px dashed #dddddd;
+
+    border-radius:
+        8px;
+
+    text-align:
+        center;
+}
+
+.student-request-receipt-qr-box {
+    width:
+        72px;
+
+    height:
+        72px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        6px;
+
+    border:
+        4px solid var(--green);
+
+    border-radius:
+        6px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.55rem;
+
+    font-weight:
+        900;
+}
+
+.student-request-receipt-qr p {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.45rem;
+}
+
+
+/* =========================================================
+   RECEIPT VERIFICATION NOTICE
+========================================================= */
+
+.student-request-receipt-verification {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        7px;
+
+    margin-top:
+        10px;
+
+    padding:
+        8px 10px;
+
+    border-radius:
+        7px;
+
+    background:
+        rgba(11, 93, 63, 0.045);
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.47rem;
+
+    line-height:
+        1.5;
+}
+
+.student-request-receipt-verification i {
+    margin-top:
+        2px;
+
+    color:
+        var(--green);
+
+    font-size:
+        0.5rem;
+}
+
+
+/* =========================================================
+   MOBILE RECEIPT QR
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-qr {
+        margin-top:
+            12px;
+    }
+
+    .student-request-receipt-qr-box {
+        width:
+            64px;
+
+        height:
+            64px;
+    }
+
+   }
+/* =========================================================
+   STUDENT REQUEST RECEIPT SIGNATURE AREA
+========================================================= */
+
+.student-request-receipt-signature {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        25px;
+
+    margin-top:
+        22px;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid #eeeeee;
+}
+
+.student-request-signature-box {
+    text-align:
+        center;
+}
+
+.student-request-signature-line {
+    width:
+        100%;
+
+    height:
+        28px;
+
+    margin-bottom:
+        3px;
+
+    border-bottom:
+        1px solid var(--dark);
+}
+
+.student-request-signature-box strong {
+    display:
+        block;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.52rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-signature-box span {
+    display:
+        block;
+
+    margin-top:
+        2px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.45rem;
+}
+
+
+/* =========================================================
+   STUDENT REQUEST RECEIPT FOOTER
+========================================================= */
+
+.student-request-receipt-system-footer {
+    margin-top:
+        18px;
+
+    padding-top:
+        9px;
+
+    border-top:
+        1px solid #eeeeee;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.44rem;
+
+    line-height:
+        1.5;
+
+    text-align:
+        center;
+}
+
+.student-request-receipt-system-footer strong {
+    color:
+        var(--green);
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   RECEIPT PRINT BUTTON
+========================================================= */
+
+.student-request-print-receipt {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid var(--green);
+
+    border-radius:
+        7px;
+
+    background:
+        var(--white);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.5rem;
+
+    font-weight:
+        800;
+
+    transition:
+        var(--transition);
+}
+
+.student-request-print-receipt:hover {
+    background:
+        var(--green);
+
+    color:
+        var(--white);
+}
+
+
+/* =========================================================
+   MOBILE SIGNATURE AREA
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-signature {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+
+        margin-top:
+            18px;
+    }
+
+    .student-request-signature-line {
+        height:
+            22px;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST RECEIPT SECURITY
+========================================================= */
+
+.student-request-receipt-security {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        7px;
+
+    margin-top:
+        10px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid rgba(11, 93, 63, 0.15);
+
+    border-radius:
+        7px;
+
+    background:
+        rgba(11, 93, 63, 0.035);
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.46rem;
+
+    line-height:
+        1.5;
+}
+
+.student-request-receipt-security i {
+    margin-top:
+        2px;
+
+    color:
+        var(--green);
+
+    font-size:
+        0.5rem;
+}
+
+.student-request-receipt-security strong {
+    color:
+        var(--green-dark);
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   REQUEST RECEIPT DOCUMENT LIST
+========================================================= */
+
+.student-request-receipt-documents {
+    margin-top:
+        13px;
+}
+
+.student-request-receipt-documents h4 {
+    margin-bottom:
+        7px;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-document {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        8px;
+
+    padding:
+        7px 9px;
+
+    border-bottom:
+        1px solid #eeeeee;
+}
+
+.student-request-receipt-document:last-child {
+    border-bottom:
+        none;
+}
+
+.student-request-receipt-document-info {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    min-width:
+        0;
+}
+
+.student-request-receipt-document-info i {
+    color:
+        var(--green);
+
+    font-size:
+        0.52rem;
+}
+
+.student-request-receipt-document-info span {
+    color:
+        var(--dark);
+
+    font-size:
+        0.5rem;
+}
+
+.student-request-receipt-document-status {
+    flex-shrink:
+        0;
+
+    color:
+        var(--success);
+
+    font-size:
+        0.46rem;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   MOBILE RECEIPT DOCUMENTS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-document {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            4px;
+    }
+
+    .student-request-receipt-document-status {
+        padding-left:
+            18px;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST RECEIPT PAYMENT SUMMARY
+========================================================= */
+
+.student-request-receipt-payment {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        8px;
+
+    margin-top:
+        12px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        #fafcfb;
+}
+
+.student-request-receipt-payment-item {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        8px;
+
+    padding:
+        5px 0;
+}
+
+.student-request-receipt-payment-item span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-receipt-payment-item strong {
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.54rem;
+
+    font-weight:
+        800;
+
+    text-align:
+        right;
+}
+
+.student-request-receipt-payment-item.total {
+    grid-column:
+        1 / -1;
+
+    margin-top:
+        3px;
+
+    padding-top:
+        8px;
+
+    border-top:
+        1px solid #dddddd;
+}
+
+.student-request-receipt-payment-item.total span {
+    color:
+        var(--green-dark);
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-payment-item.total strong {
+    color:
+        var(--gold);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        900;
+}
+
+
+/* =========================================================
+   RECEIPT PAYMENT STATUS
+========================================================= */
+
+.student-request-receipt-payment-status {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        4px 7px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(22, 131, 75, 0.09);
+
+    color:
+        var(--success);
+
+    font-size:
+        0.45rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-payment-status.pending {
+    background:
+        rgba(197, 138, 22, 0.09);
+
+    color:
+        var(--warning);
+}
+
+.student-request-receipt-payment-status.unpaid {
+    background:
+        rgba(192, 57, 43, 0.08);
+
+    color:
+        var(--danger);
+}
+
+.student-request-receipt-payment-status i {
+    font-size:
+        0.4rem;
+}
+
+
+/* =========================================================
+   MOBILE PAYMENT SUMMARY
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-payment {
+        grid-template-columns:
+            1fr;
+    }
+
+    .student-request-receipt-payment-item.total {
+        grid-column:
+            auto;
+    }
+
+   }
+/* =========================================================
+   STUDENT REQUEST RECEIPT PROCESSING DETAILS
+========================================================= */
+
+.student-request-receipt-processing {
+    margin-top:
+        13px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        var(--white);
+}
+
+.student-request-receipt-processing h4 {
+    margin-bottom:
+        8px;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-processing-list {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        7px;
+}
+
+.student-request-receipt-processing-item {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        7px 8px;
+
+    border-radius:
+        6px;
+
+    background:
+        #fafcfb;
+}
+
+.student-request-receipt-processing-item i {
+    color:
+        var(--green);
+
+    font-size:
+        0.5rem;
+}
+
+.student-request-receipt-processing-item span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.47rem;
+}
+
+.student-request-receipt-processing-item strong {
+    margin-left:
+        auto;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.48rem;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   RECEIPT PROCESSING STATUS
+========================================================= */
+
+.student-request-receipt-processing-item.complete i {
+    color:
+        var(--success);
+}
+
+.student-request-receipt-processing-item.pending i {
+    color:
+        var(--warning);
+}
+
+.student-request-receipt-processing-item.processing i {
+    color:
+        var(--info);
+}
+
+
+/* =========================================================
+   MOBILE PROCESSING DETAILS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-processing-list {
+        grid-template-columns:
+            1fr;
+    }
+
+    .student-request-receipt-processing-item {
+        padding:
+            8px;
+    }
+
+}
+/* =========================================================
+   STUDENT REQUEST RECEIPT PROCESSING BAR
+========================================================= */
+
+.student-request-receipt-progress {
+    margin-top:
+        12px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        #fafcfb;
+}
+
+.student-request-receipt-progress-header {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        7px;
+}
+
+.student-request-receipt-progress-header span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-receipt-progress-header strong {
+    color:
+        var(--green);
+
+    font-size:
+        0.52rem;
+
+    font-weight:
+        900;
+}
+
+.student-request-receipt-progress-track {
+    width:
+        100%;
+
+    height:
+        6px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        10px;
+
+    background:
+        #e8ecea;
+}
+
+.student-request-receipt-progress-bar {
+    width:
+        70%;
+
+    height:
+        100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        var(--green);
+
+    transition:
+        width 0.4s ease;
+}
+
+.student-request-receipt-progress-bar.pending {
+    width:
+        25%;
+
+    background:
+        var(--warning);
+}
+
+.student-request-receipt-progress-bar.processing {
+    width:
+        60%;
+
+    background:
+        var(--info);
+}
+
+.student-request-receipt-progress-bar.ready {
+    width:
+        85%;
+
+    background:
+        var(--success);
+}
+
+.student-request-receipt-progress-bar.released {
+    width:
+        100%;
+
+    background:
+        var(--green);
+}
+
+
+/* =========================================================
+   RECEIPT PROGRESS LABELS
+========================================================= */
+
+.student-request-receipt-progress-labels {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-top:
+        5px;
+}
+
+.student-request-receipt-progress-labels span {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.42rem;
+}
+
+.student-request-receipt-progress-labels span.active {
+    color:
+        var(--green);
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   MOBILE RECEIPT PROGRESS
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-progress {
+        padding:
+            9px;
+    }
+
+    .student-request-receipt-progress-labels span {
+        font-size:
+            0.4rem;
+    }
+
+   }
+/* =========================================================
+   STUDENT REQUEST RECEIPT STATUS MESSAGE
+========================================================= */
+
+.student-request-receipt-status-message {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        9px;
+
+    margin-top:
+        12px;
+
+    padding:
+        10px 11px;
+
+    border:
+        1px solid rgba(11, 93, 63, 0.15);
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(11, 93, 63, 0.04);
+}
+
+.student-request-receipt-status-message i {
+    flex-shrink:
+        0;
+
+    width:
+        25px;
+
+    height:
+        25px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(11, 93, 63, 0.1);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.52rem;
+}
+
+.student-request-receipt-status-message-content {
+    flex:
+        1;
+}
+
+.student-request-receipt-status-message-content strong {
+    display:
+        block;
+
+    margin-bottom:
+        2px;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.54rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-status-message-content p {
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.48rem;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================================
+   RECEIPT STATUS MESSAGE VARIANTS
+========================================================= */
+
+.student-request-receipt-status-message.pending {
+    border-color:
+        rgba(197, 138, 22, 0.18);
+
+    background:
+        rgba(197, 138, 22, 0.045);
+}
+
+.student-request-receipt-status-message.pending i {
+    background:
+        rgba(197, 138, 22, 0.1);
+
+    color:
+        var(--warning);
+}
+
+.student-request-receipt-status-message.processing {
+    border-color:
+        rgba(40, 120, 168, 0.18);
+
+    background:
+        rgba(40, 120, 168, 0.045);
+}
+
+.student-request-receipt-status-message.processing i {
+    background:
+        rgba(40, 120, 168, 0.1);
+
+    color:
+        var(--info);
+}
+
+.student-request-receipt-status-message.success {
+    border-color:
+        rgba(22, 131, 75, 0.18);
+
+    background:
+        rgba(22, 131, 75, 0.045);
+}
+
+.student-request-receipt-status-message.success i {
+    background:
+        rgba(22, 131, 75, 0.1);
+
+    color:
+        var(--success);
+}
+
+.student-request-receipt-status-message.error {
+    border-color:
+        rgba(192, 57, 43, 0.18);
+
+    background:
+        rgba(192, 57, 43, 0.04);
+}
+
+.student-request-receipt-status-message.error i {
+    background:
+        rgba(192, 57, 43, 0.09);
+
+    color:
+        var(--danger);
+}
+
+
+/* =========================================================
+   MOBILE STATUS MESSAGE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-status-message {
+        gap:
+            8px;
+
+        padding:
+            9px;
+    }
+
+    .student-request-receipt-status-message i {
+        width:
+            23px;
+
+        height:
+            23px;
+
+        font-size:
+            0.48rem;
+    }
+
+    .student-request-receipt-status-message-content strong {
+        font-size:
+            0.52rem;
+    }
+
+    .student-request-receipt-status-message-content p {
+        font-size:
+            0.46rem;
+    }
+
+       }
+/* =========================================================
+   STUDENT REQUEST RECEIPT CONTACT INFORMATION
+========================================================= */
+
+.student-request-receipt-contact {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        8px;
+
+    margin-top:
+        12px;
+
+    padding:
+        10px;
+
+    border:
+        1px solid #eeeeee;
+
+    border-radius:
+        8px;
+
+    background:
+        var(--white);
+}
+
+.student-request-receipt-contact-title {
+    grid-column:
+        1 / -1;
+
+    margin-bottom:
+        2px;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        800;
+}
+
+.student-request-receipt-contact-item {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    min-width:
+        0;
+}
+
+.student-request-receipt-contact-item i {
+    flex-shrink:
+        0;
+
+    width:
+        25px;
+
+    height:
+        25px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        6px;
+
+    background:
+        rgba(11, 93, 63, 0.08);
+
+    color:
+        var(--green);
+
+    font-size:
+        0.48rem;
+}
+
+.student-request-receipt-contact-item div {
+    min-width:
+        0;
+}
+
+.student-request-receipt-contact-item span {
+    display:
+        block;
+
+    margin-bottom:
+        1px;
+
+    color:
+        var(--gray-dark);
+
+    font-size:
+        0.43rem;
+}
+
+.student-request-receipt-contact-item strong {
+    display:
+        block;
+
+    overflow:
+        hidden;
+
+    color:
+        var(--green-dark);
+
+    font-size:
+        0.48rem;
+
+    font-weight:
+        800;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   RECEIPT CONTACT LINKS
+========================================================= */
+
+.student-request-receipt-contact-item a {
+    color:
+        var(--green);
+
+    transition:
+        var(--transition);
+}
+
+.student-request-receipt-contact-item a:hover {
+    color:
+        var(--gold);
+}
+
+
+/* =========================================================
+   MOBILE RECEIPT CONTACT
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .student-request-receipt-contact {
+        grid-template-columns:
+            1fr;
+    }
+
+    .student-request-receipt-contact-title {
+        grid-column:
+            auto;
+    }
+
+   }
+/* =========================================================
+   ATCRS STYLE.CSS — FINAL
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   END OF ATCRS STYLE.CSS
+========================================================= */
