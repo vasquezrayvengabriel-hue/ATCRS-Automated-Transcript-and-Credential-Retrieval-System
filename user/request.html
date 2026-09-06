@@ -2,72 +2,609 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Request Document | ATCRS - DLSJBC</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Request Document | ATCRS</title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =========================================
+           REQUEST PAGE BASE
+           ========================================= */
+
+        .request-page {
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           SIDEBAR
+           ========================================= */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 260px;
+            height: 100vh;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #063927,
+                    #0b5d3f
+                );
+
+            color: #ffffff;
+
+            z-index: 1000;
+
+            overflow-y: auto;
+        }
+
+
+        .sidebar-brand {
+            padding: 25px 20px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+        }
+
+
+        .sidebar-brand-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 12px;
+
+            background: #d4af37;
+
+            color: #063927;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+
+        .sidebar-brand-text h2 {
+            margin: 0;
+
+            font-size: 18px;
+
+            color: #ffffff;
+        }
+
+
+        .sidebar-brand-text p {
+            margin: 3px 0 0;
+
+            color: #d4af37;
+
+            font-size: 10px;
+
+            letter-spacing: 0.8px;
+        }
+
+
+        /* =========================================
+           USER INFORMATION
+           ========================================= */
+
+        .sidebar-user {
+            padding: 20px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+        }
+
+
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 50%;
+
+            background: #d4af37;
+
+            color: #063927;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 800;
+
+            flex-shrink: 0;
+        }
+
+
+        .sidebar-user-info {
+            min-width: 0;
+        }
+
+
+        .sidebar-user-info strong {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .sidebar-user-info span {
+            display: block;
+
+            color: rgba(255,255,255,0.65);
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        /* =========================================
+           SIDEBAR NAVIGATION
+           ========================================= */
+
+        .sidebar-nav {
+            padding: 18px 12px;
+        }
+
+
+        .sidebar-nav-title {
+            padding:
+                0 10px 10px;
+
+            color:
+                rgba(255,255,255,0.45);
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .sidebar-nav a {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 13px;
+
+            margin-bottom: 5px;
+
+            border-radius: 9px;
+
+            color:
+                rgba(255,255,255,0.78);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.2s ease;
+        }
+
+
+        .sidebar-nav a i {
+            width: 20px;
+
+            text-align: center;
+        }
+
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background:
+                rgba(255,255,255,0.12);
+
+            color: #ffffff;
+        }
+
+
+        .sidebar-nav a.active {
+            border-left:
+                3px solid #d4af37;
+        }
+
+
+        .sidebar-divider {
+            height: 1px;
+
+            background:
+                rgba(255,255,255,0.10);
+
+            margin: 15px 10px;
+        }
+
+
+        /* =========================================
+           MAIN CONTENT
+           ========================================= */
+
+        .main-content {
+            margin-left: 260px;
+
+            min-height: 100vh;
+
+            padding: 0 35px;
+
+            background: #f7f8f7;
+        }
+
+
+        /* =========================================
+           MOBILE MENU
+           ========================================= */
+
+        .mobile-menu-btn {
+            display: none;
+
+            position: fixed;
+
+            top: 15px;
+            left: 15px;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #0b5d3f;
+
+            color: #ffffff;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            z-index: 2000;
+        }
+
+
+        .sidebar-overlay {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.45);
+
+            z-index: 900;
+        }
+
+
+        /* =========================================
+           RESPONSIVE SIDEBAR
+           ========================================= */
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                transform:
+                    translateX(-100%);
+
+                transition:
+                    transform 0.3s ease;
+            }
+
+
+            .sidebar.active {
+                transform:
+                    translateX(0);
+            }
+
+
+            .main-content {
+                margin-left: 0;
+
+                padding:
+                    70px 18px 30px;
+            }
+
+
+            .mobile-menu-btn {
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body class="dashboard-page">
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<body>
 
-<header class="dashboard-header">
+<div class="request-page">
 
-    <div class="dashboard-header-container">
+    <!-- =========================================
+         MOBILE MENU BUTTON
+         ========================================= -->
 
-        <a href="dashboard.html" class="dashboard-logo">
+    <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu"
+    >
 
-            <img src="../images/dlsjbc-logo.png"
-                 alt="DLSJBC Logo">
+        <i class="fa-solid fa-bars"></i>
 
-            <div class="dashboard-logo-text">
+    </button>
 
-                <strong>ATCRS</strong>
 
-                <span>
-                    De La Salle John Bosco College
-                </span>
+    <!-- =========================================
+         SIDEBAR OVERLAY
+         ========================================= -->
 
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-file-shield"></i>
             </div>
 
-        </a>
+            <div class="sidebar-brand-text">
 
-        <div class="dashboard-user">
+                <h2>ATCRS</h2>
 
-            <div class="dashboard-user-icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-
-            <div class="dashboard-user-info">
-
-                <strong>
-                    Public User
-                </strong>
-
-                <span>
-                    Student
-                </span>
+                <p>
+                    SECURE RECORD SYSTEM
+                </p>
 
             </div>
-
-            <button type="button"
-                    class="dashboard-logout"
-                    id="logoutButton">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-
-            </button>
 
         </div>
+
+
+        <!-- USER -->
+
+        <div class="sidebar-user">
+
+            <div
+                class="user-avatar"
+                id="userAvatar"
+            >
+                A
+            </div>
+
+            <div class="sidebar-user-info">
+
+                <strong id="sidebarUserName">
+                    Demo Alumni
+                </strong>
+
+                <span id="sidebarUserEmail">
+                    student@atcrs.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <div class="sidebar-nav-title">
+                Student Portal
+            </div>
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <a href="documents.html">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <span>
+                    My Documents
+                </span>
+
+            </a>
+
+
+            <a
+                href="request.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                <span>
+                    Request Document
+                </span>
+
+            </a>
+
+
+            <a href="requests.html">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <span>
+                    My Requests
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="sidebar-nav-title">
+                System
+            </div>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    ATCRS Home
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                id="logoutBtn"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main-content">
+
+        <!-- Part 2D-2 goes here -->
+
+    </main>
+
+</div>
+<!-- =========================================
+     REQUEST PAGE HEADER
+     ========================================= -->
+
+<header class="request-header">
+
+    <div class="request-header-text">
+
+        <span class="request-label">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            DOCUMENT SERVICES
+        </span>
+
+        <h1>
+            Request a Document
+        </h1>
+
+        <p>
+            Submit a secure request for your academic
+            records and credentials through the ATCRS portal.
+        </p>
+
+    </div>
+
+
+    <div class="request-header-icon">
+
+        <i class="fa-solid fa-file-signature"></i>
 
     </div>
 
@@ -75,505 +612,824 @@
 
 
 <!-- =========================================
-     LAYOUT
-========================================= -->
+     REQUEST INFORMATION CARD
+     ========================================= -->
 
-<div class="dashboard-layout">
+<section class="request-info-card">
 
+    <div class="request-info-icon">
 
-    <!-- SIDEBAR -->
+        <i class="fa-solid fa-circle-info"></i>
 
-    <aside class="dashboard-sidebar">
-
-        <nav class="dashboard-nav">
-
-            <a href="dashboard.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-gauge-high"></i>
-                <span>Dashboard</span>
-
-            </a>
-
-            <a href="request.html"
-               class="dashboard-nav-link active">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-                <span>Request Document</span>
-
-            </a>
-
-            <a href="requests.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>My Requests</span>
-
-            </a>
-
-            <a href="documents.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-folder-open"></i>
-                <span>My Documents</span>
-
-            </a>
-
-            <a href="profile.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-user-gear"></i>
-                <span>My Profile</span>
-
-            </a>
-
-        </nav>
+    </div>
 
 
-        <div class="dashboard-security">
+    <div class="request-info-content">
 
-            <i class="fa-solid fa-shield-halved"></i>
+        <h3>
+            Before You Submit Your Request
+        </h3>
 
-            <strong>
-                Secure Request
-            </strong>
+        <p>
+            Please make sure that all information is correct
+            before submitting your request. The Registrar's
+            Office will review your request and verify your
+            academic records before processing the document.
+        </p>
 
-            <p>
-                Make sure that the information you
-                provide is accurate before submitting
-                your request.
-            </p>
+
+        <div class="request-info-points">
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Use your registered student information
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Select the correct document type
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Provide a valid purpose
+            </span>
+
+            <span>
+                <i class="fa-solid fa-check"></i>
+                Review your request before submitting
+            </span>
 
         </div>
 
-    </aside>
+    </div>
+
+</section>
 
 
-    <!-- =====================================
-         MAIN CONTENT
-    ====================================== -->
+<!-- =========================================
+     REQUEST FORM SECTION
+     ========================================= -->
 
-    <main class="dashboard-main">
+<section class="request-form-section">
+
+    <div class="section-heading">
+
+        <h2>
+            Document Request Form
+        </h2>
+
+        <p>
+            Complete the information below to submit your request.
+        </p>
+
+    </div>
 
 
-        <!-- PAGE HEADER -->
+    <form
+        id="requestForm"
+        class="request-form"
+    >
 
-        <section class="dashboard-welcome">
+        <!-- Part 2D-3 goes here -->
+
+    </form>
+
+</section>
+        <!-- =========================================
+             STUDENT INFORMATION
+             ========================================= -->
+
+        <div class="form-section-title">
+
+            <div class="form-title-icon">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <div>
+                <h3>Student Information</h3>
+
+                <p>
+                    Your registered information is used
+                    to identify your academic records.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <!-- STUDENT ID -->
+
+            <div class="form-group">
+
+                <label for="requestStudentId">
+
+                    Student ID
+
+                    <span>*</span>
+
+                </label>
+
+                <div class="input-with-icon">
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                    <input
+                        type="text"
+                        id="requestStudentId"
+                        name="studentId"
+                        maxlength="7"
+                        pattern="[0-9]{7}"
+                        inputmode="numeric"
+                        placeholder="7-digit Student ID"
+                        required
+                        readonly
+                    >
+
+                </div>
+
+                <small>
+                    Your Student ID must contain exactly 7 digits.
+                </small>
+
+            </div>
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label for="requestFullName">
+
+                    Full Name
+
+                    <span>*</span>
+
+                </label>
+
+                <div class="input-with-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="requestFullName"
+                        name="fullName"
+                        maxlength="50"
+                        placeholder="Enter your full name"
+                        required
+                        readonly
+                    >
+
+                </div>
+
+                <small>
+                    Maximum of 50 characters.
+                </small>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group full-width">
+
+                <label for="requestEmail">
+
+                    Email Address
+
+                    <span>*</span>
+
+                </label>
+
+                <div class="input-with-icon">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="requestEmail"
+                        name="email"
+                        placeholder="student@example.com"
+                        required
+                    >
+
+                </div>
+
+                <small>
+                    This email will be used for request notifications.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             DOCUMENT REQUEST
+             ========================================= -->
+
+        <div class="form-section-title">
+
+            <div class="form-title-icon">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+            </div>
 
             <div>
 
-                <span class="dashboard-label">
-                    ACADEMIC DOCUMENT SERVICES
-                </span>
-
-                <h1>
-                    Request a
-                    <strong>Document</strong>
-                </h1>
+                <h3>Document Request</h3>
 
                 <p>
-                    Submit a request for an official
-                    academic document from De La Salle
-                    John Bosco College.
+                    Select the document or credential
+                    you would like to request.
                 </p>
 
             </div>
 
-        </section>
+        </div>
+                <!-- =========================================
+             DOCUMENT TYPE
+             ========================================= -->
 
+        <div class="form-grid">
 
-        <!-- =================================
-             REQUEST FORM
-        ================================== -->
+            <div class="form-group full-width">
 
-        <section class="dashboard-form-section">
+                <label for="documentType">
 
-            <div class="dashboard-form-card">
+                    Document Type
 
-                <div class="dashboard-form-heading">
+                    <span>*</span>
 
-                    <div class="form-icon">
+                </label>
 
-                        <i class="fa-solid fa-file-circle-plus"></i>
+                <div class="input-with-icon">
 
-                    </div>
+                    <i class="fa-solid fa-file-circle-check"></i>
 
-                    <div>
+                    <select
+                        id="documentType"
+                        name="documentType"
+                        required
+                    >
 
-                        <h2>
-                            Document Request Form
-                        </h2>
+                        <option value="">
+                            Select a document
+                        </option>
 
-                        <p>
-                            Please provide the required
-                            information below.
-                        </p>
+                        <option value="Transcript of Records">
+                            Transcript of Records (TOR)
+                        </option>
 
-                    </div>
+                        <option value="Diploma">
+                            Diploma
+                        </option>
+
+                        <option value="Certificate">
+                            Certificate
+                        </option>
+
+                        <option value="Credential Verification">
+                            Credential Verification
+                        </option>
+
+                    </select>
 
                 </div>
 
-
-                <form id="documentRequestForm">
-
-
-                    <!-- DOCUMENT TYPE -->
-
-                    <div class="form-group">
-
-                        <label for="documentType">
-                            Document Type
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-file-lines"></i>
-
-                            <select id="documentType"
-                                    name="documentType"
-                                    required>
-
-                                <option value="">
-                                    Select a document
-                                </option>
-
-                                <option value="Official Transcript of Records">
-                                    Official Transcript of Records
-                                </option>
-
-                                <option value="Certificate of Enrollment">
-                                    Certificate of Enrollment
-                                </option>
-
-                                <option value="Certificate of Graduation">
-                                    Certificate of Graduation
-                                </option>
-
-                                <option value="Certificate of Good Moral Character">
-                                    Certificate of Good Moral Character
-                                </option>
-
-                                <option value="Certificate of Grades">
-                                    Certificate of Grades
-                                </option>
-
-                                <option value="Diploma">
-                                    Diploma
-                                </option>
-
-                                <option value="Honorable Dismissal">
-                                    Honorable Dismissal
-                                </option>
-
-                                <option value="Other Academic Document">
-                                    Other Academic Document
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- PURPOSE -->
-
-                    <div class="form-group">
-
-                        <label for="requestPurpose">
-                            Purpose of Request
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-clipboard-question"></i>
-
-                            <select id="requestPurpose"
-                                    name="purpose"
-                                    required>
-
-                                <option value="">
-                                    Select purpose
-                                </option>
-
-                                <option value="Employment">
-                                    Employment
-                                </option>
-
-                                <option value="Further Studies">
-                                    Further Studies
-                                </option>
-
-                                <option value="Scholarship">
-                                    Scholarship
-                                </option>
-
-                                <option value="Transfer">
-                                    Transfer
-                                </option>
-
-                                <option value="Personal">
-                                    Personal
-                                </option>
-
-                                <option value="Government Requirement">
-                                    Government Requirement
-                                </option>
-
-                                <option value="Other">
-                                    Other
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- NUMBER OF COPIES -->
-
-                    <div class="form-group">
-
-                        <label for="copies">
-                            Number of Copies
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-copy"></i>
-
-                            <input type="number"
-                                   id="copies"
-                                   name="copies"
-                                   min="1"
-                                   max="10"
-                                   value="1"
-                                   required>
-
-                        </div>
-
-                        <small>
-                            You may request up to 10 copies.
-                        </small>
-
-                    </div>
-
-
-                    <!-- DELIVERY -->
-
-                    <div class="form-group">
-
-                        <label for="deliveryMethod">
-                            Release Method
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-truck"></i>
-
-                            <select id="deliveryMethod"
-                                    name="deliveryMethod"
-                                    required>
-
-                                <option value="">
-                                    Select release method
-                                </option>
-
-                                <option value="Digital">
-                                    Digital Copy
-                                </option>
-
-                                <option value="Office Pickup">
-                                    Office Pickup
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ADDITIONAL DETAILS -->
-
-                    <div class="form-group">
-
-                        <label for="additionalDetails">
-                            Additional Details
-                            <span>(Optional)</span>
-                        </label>
-
-                        <textarea id="additionalDetails"
-                                  name="additionalDetails"
-                                  rows="5"
-                                  maxlength="500"
-                                  placeholder="Enter any additional information related to your request..."></textarea>
-
-                        <small>
-                            Maximum 500 characters.
-                        </small>
-
-                    </div>
-
-
-                    <!-- AGREEMENT -->
-
-                    <div class="request-agreement">
-
-                        <label>
-
-                            <input type="checkbox"
-                                   id="requestAgreement"
-                                   required>
-
-                            <span>
-                                I confirm that the information
-                                provided in this request is accurate
-                                and that I understand the request
-                                will be subject to validation and
-                                Registrar approval.
-                            </span>
-
-                        </label>
-
-                    </div>
-
-
-                    <!-- MESSAGE -->
-
-                    <div id="requestMessage"
-                         class="login-message">
-
-                    </div>
-
-
-                    <!-- BUTTONS -->
-
-                    <div class="request-form-actions">
-
-                        <a href="dashboard.html"
-                           class="btn btn-outline">
-
-                            <i class="fa-solid fa-arrow-left"></i>
-
-                            Cancel
-
-                        </a>
-
-                        <button type="submit"
-                                class="btn btn-green">
-
-                            <i class="fa-solid fa-paper-plane"></i>
-
-                            Submit Request
-
-                        </button>
-
-                    </div>
-
-                </form>
+                <small>
+                    Select the academic document or credential
+                    you need.
+                </small>
 
             </div>
 
 
-            <!-- =================================
-                 PROCESS INFORMATION
-            ================================== -->
+            <!-- =====================================
+                 PURPOSE
+                 ===================================== -->
 
-            <div class="request-info-card">
+            <div class="form-group full-width">
 
-                <div class="request-info-icon">
+                <label for="requestPurpose">
 
-                    <i class="fa-solid fa-circle-info"></i>
+                    Purpose of Request
 
-                </div>
+                    <span>*</span>
 
-                <h3>
-                    What happens after submission?
-                </h3>
+                </label>
 
-                <div class="request-process">
+                <div class="input-with-icon textarea-icon">
 
-                    <div>
+                    <i class="fa-solid fa-bullseye"></i>
 
-                        <span>1</span>
-
-                        <p>
-                            Your request is submitted
-                            to the system.
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <span>2</span>
-
-                        <p>
-                            The Registrar validates
-                            your academic record.
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <span>3</span>
-
-                        <p>
-                            Clearance and payment
-                            requirements are checked.
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <span>4</span>
-
-                        <p>
-                            The document is processed
-                            and prepared for release.
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <span>5</span>
-
-                        <p>
-                            You receive a notification
-                            when your document is ready.
-                        </p>
-
-                    </div>
+                    <textarea
+                        id="requestPurpose"
+                        name="purpose"
+                        rows="4"
+                        maxlength="300"
+                        placeholder="Example: Employment, further studies, scholarship, or personal record."
+                        required
+                    ></textarea>
 
                 </div>
+
+                <small>
+                    Briefly explain why you need this document.
+                </small>
 
             </div>
 
-        </section>
 
-    </main>
+            <!-- =====================================
+                 DELIVERY METHOD
+                 ===================================== -->
+
+            <div class="form-group full-width">
+
+                <label for="deliveryMethod">
+
+                    Delivery Method
+
+                    <span>*</span>
+
+                </label>
+
+                <div class="input-with-icon">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    <select
+                        id="deliveryMethod"
+                        name="deliveryMethod"
+                        required
+                    >
+
+                        <option value="">
+                            Select delivery method
+                        </option>
+
+                        <option value="Digital Email">
+                            Digital Copy via Email
+                        </option>
+
+                        <option value="Registrar Office">
+                            Claim at Registrar's Office
+                        </option>
+
+                        <option value="Server-to-Server">
+                            Secure Server-to-Server Delivery
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <small>
+                    Choose how you would like your document
+                    to be delivered.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             ADDITIONAL NOTES
+             ========================================= -->
+
+        <div class="form-section-title">
+
+            <div class="form-title-icon">
+
+                <i class="fa-solid fa-note-sticky"></i>
+
+            </div>
+
+            <div>
+
+                <h3>Additional Information</h3>
+
+                <p>
+                    Add any special instructions related
+                    to your request.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="form-group full-width">
+
+                <label for="requestNotes">
+
+                    Additional Notes
+
+                    <span class="optional">
+                        Optional
+                    </span>
+
+                </label>
+
+                <div class="input-with-icon textarea-icon">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    <textarea
+                        id="requestNotes"
+                        name="notes"
+                        rows="4"
+                        maxlength="500"
+                        placeholder="Enter any additional instructions or information..."
+                    ></textarea>
+
+                </div>
+
+                <small>
+                    Maximum of 500 characters.
+                </small>
+
+            </div>
+
+        </div>
+        <!-- ================= REQUEST CONFIRMATION ================= -->
+
+<div class="request-confirmation">
+
+    <div class="confirmation-icon">
+        <i class="fa-solid fa-shield-check"></i>
+    </div>
+
+    <div class="confirmation-content">
+
+        <h3>
+            Request Confirmation
+        </h3>
+
+        <p>
+            Please review all the information you entered before submitting
+            your document request. Make sure that the details are accurate
+            and complete.
+        </p>
+
+        <label class="confirmation-check">
+
+            <input
+                type="checkbox"
+                id="requestConfirmation"
+                name="confirmation"
+                required
+            >
+
+            <span>
+                I confirm that the information provided is correct and
+                I authorize ATCRS to process this document request.
+            </span>
+
+        </label>
+
+    </div>
 
 </div>
 
 
-<!-- FOOTER -->
+<!-- ================= PROCESSING NOTICE ================= -->
 
-<footer class="dashboard-footer">
+<div class="processing-notice">
 
-    <p>
-        © 2026 De La Salle John Bosco College.
-        Automated Transcript and Credential Retrieval System.
-    </p>
+    <i class="fa-solid fa-circle-info"></i>
+
+    <div>
+
+        <strong>
+            Processing Notice
+        </strong>
+
+        <p>
+            Your request will be reviewed by the Registrar's Office.
+            Clearance and payment requirements may need to be completed
+            before your document can be released.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FORM ACTIONS ================= -->
+
+<div class="form-actions">
+
+    <button
+        type="reset"
+        class="btn btn-secondary"
+        id="resetRequestBtn"
+    >
+
+        <i class="fa-solid fa-rotate-left"></i>
+
+        Reset Form
+
+    </button>
+
+
+    <button
+        type="submit"
+        class="btn btn-primary"
+        id="submitRequestBtn"
+    >
+
+        <i class="fa-solid fa-paper-plane"></i>
+
+        Submit Request
+
+    </button>
+
+</div>
+
+</form>
+
+
+<!-- ================= SUCCESS MESSAGE ================= -->
+
+<div
+    class="request-success-message"
+    id="requestSuccessMessage"
+    style="display:none;"
+>
+
+    <div class="success-icon">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <div class="success-content">
+
+        <h3>
+            Request Submitted Successfully
+        </h3>
+
+        <p id="requestSuccessText">
+            Your document request has been submitted and is now
+            waiting for review by the Registrar's Office.
+        </p>
+
+        <div class="success-actions">
+
+            <a
+                href="requests.html"
+                class="btn btn-primary"
+            >
+
+                <i class="fa-solid fa-list-check"></i>
+
+                View My Requests
+
+            </a>
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                id="newRequestBtn"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                New Request
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= HELP CARD ================= -->
+
+<div class="request-help-card">
+
+    <div class="help-icon">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+    </div>
+
+    <div class="help-content">
+
+        <h3>
+            Need Help?
+        </h3>
+
+        <p>
+            If you have questions about document requests, clearance,
+            payment, or document delivery, please contact the
+            Registrar's Office for assistance.
+        </p>
+
+    </div>
+
+</div>
+<!-- ================= FOOTER ================= -->
+
+<footer class="main-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h3>ATCRS</h3>
+
+                <p>
+                    Automated Transcript and Credential Retrieval System
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="footer-info">
+
+            <p>
+                <i class="fa-solid fa-shield-halved"></i>
+                Secure Academic Records Management
+            </p>
+
+            <p>
+                <i class="fa-solid fa-building-columns"></i>
+                Registrar's Office
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            &copy; 2026 ATCRS. All Rights Reserved.
+        </p>
+
+        <p>
+            Academic Records &bull; Secure &bull; Reliable
+        </p>
+
+    </div>
 
 </footer>
 
 
-<script src="../js/script.js"></script>
+</main>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+// ================= SESSION CHECK =================
+
+const loggedIn = localStorage.getItem("atcrsLoggedIn");
+const userRole = localStorage.getItem("atcrsRole");
+
+if (loggedIn !== "true" || userRole !== "student") {
+
+    window.location.href = "../login.html";
+
+}
+
+
+// ================= LOAD STUDENT ACCOUNT =================
+
+const defaultStudent = {
+
+    studentId: "1234567",
+    fullName: "Demo Alumni",
+    email: "student@atcrs.com"
+
+};
+
+let studentAccount = defaultStudent;
+
+const savedAccount =
+    localStorage.getItem("atcrsStudentAccount");
+
+if (savedAccount) {
+
+    try {
+
+        studentAccount = JSON.parse(savedAccount);
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load student account:",
+            error
+        );
+
+        studentAccount = defaultStudent;
+
+    }
+
+}
+
+
+// ================= GET PAGE ELEMENTS =================
+
+const requestStudentId =
+    document.getElementById("requestStudentId");
+
+const requestFullName =
+    document.getElementById("requestFullName");
+
+const requestEmail =
+    document.getElementById("requestEmail");
+
+const sidebarUserName =
+    document.getElementById("sidebarUserName");
+
+const sidebarUserEmail =
+    document.getElementById("sidebarUserEmail");
+
+
+// ================= POPULATE STUDENT INFORMATION =================
+
+if (requestStudentId) {
+
+    requestStudentId.value =
+        studentAccount.studentId || "";
+
+}
+
+if (requestFullName) {
+
+    requestFullName.value =
+        studentAccount.fullName || "";
+
+}
+
+if (requestEmail) {
+
+    requestEmail.value =
+        studentAccount.email || "";
+
+}
+
+
+// ================= POPULATE SIDEBAR =================
+
+if (sidebarUserName) {
+
+    sidebarUserName.textContent =
+        studentAccount.fullName || "Student";
+
+}
+
+if (sidebarUserEmail) {
+
+    sidebarUserEmail.textContent =
+        studentAccount.email || "";
+
+}
+
+
+// ================= USER AVATAR =================
+
+const userAvatar =
+    document.getElementById("userAvatar");
+
+if (userAvatar) {
+
+    const name =
+        studentAccount.fullName || "Student";
+
+    const firstLetter =
+        name.charAt(0).toUpperCase();
+
+    userAvatar.textContent =
+        firstLetter;
+
+}
+
+</script>
 
 </body>
-                      </html>
+
+</html>
