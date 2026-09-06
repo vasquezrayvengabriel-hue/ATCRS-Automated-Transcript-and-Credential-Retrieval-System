@@ -4,242 +4,2795 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>My Documents | ATCRS - DLSJBC</title>
+    <title>My Documents | ATCRS</title>
 
     <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+
+        /* =========================================
+           MY DOCUMENTS PAGE
+           ========================================= */
+
+        .documents-page {
+            padding-bottom: 40px;
+        }
+
+        .documents-header {
+            margin-bottom: 25px;
+        }
+
+        .documents-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .documents-header p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* =========================================
+           SIDEBAR
+           ========================================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-overlay {
+            display: none;
+        }
+
+        /* =========================================
+           MOBILE MENU BUTTON
+           ========================================= */
+
+        .mobile-menu-btn {
+            display: none;
+            border: none;
+            background: #0b5d3f;
+            color: #ffffff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* =========================================
+           DOCUMENT SEARCH
+           ========================================= */
+
+        .document-tools {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .document-search {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .document-search input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            background: #ffffff;
+            box-sizing: border-box;
+        }
+
+        .document-search input:focus {
+            border-color: #0b5d3f;
+            box-shadow: 0 0 0 3px rgba(11, 93, 63, 0.08);
+        }
+
+        .document-filter {
+            min-width: 180px;
+        }
+
+        .document-filter select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            background: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* =========================================
+           DOCUMENT SUMMARY
+           ========================================= */
+
+        .document-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .document-summary-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .document-summary-card .summary-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .document-summary-card h3 {
+            font-size: 25px;
+            color: #0b5d3f;
+            margin: 0 0 4px;
+        }
+
+        .document-summary-card p {
+            color: #777;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (max-width: 1100px) {
+
+            .document-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s ease;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.45);
+                z-index: 999;
+            }
+
+            .mobile-menu-btn {
+                display: inline-block;
+            }
+
+            .document-summary {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
-<body class="dashboard-page">
+<body>
 
 
-<header class="dashboard-header">
+<!-- =========================================
+     SIDEBAR
+     ========================================= -->
 
-    <div class="dashboard-header-container">
+<aside class="sidebar" id="sidebar">
 
-        <a href="dashboard.html"
-           class="dashboard-logo">
+    <div class="sidebar-brand">
 
-            <img src="../images/dlsjbc-logo.png"
-                 alt="DLSJBC Logo">
+        <div class="brand-logo">
+            AT
+        </div>
 
-            <div class="dashboard-logo-text">
+        <div>
+            <h2>ATCRS</h2>
+            <span>Alumni Portal</span>
+        </div>
 
-                <strong>ATCRS</strong>
-
-                <span>
-                    De La Salle John Bosco College
-                </span>
-
-            </div>
-
-        </a>
+    </div>
 
 
-        <div class="dashboard-user">
+    <!-- USER INFORMATION -->
 
-            <div class="dashboard-user-icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
+    <div class="sidebar-user">
 
-            <div class="dashboard-user-info">
+        <div class="user-avatar" id="sidebarAvatar">
+            A
+        </div>
 
-                <strong>
-                    Public User
-                </strong>
+        <div class="sidebar-user-info">
 
-                <span>
-                    Student
-                </span>
+            <strong id="sidebarUserName">
+                Demo Alumni
+            </strong>
 
-            </div>
-
-            <button type="button"
-                    class="dashboard-logout"
-                    id="logoutButton">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-
-            </button>
+            <span id="sidebarUserEmail">
+                student@atcrs.com
+            </span>
 
         </div>
 
     </div>
 
-</header>
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html">
+            <span>📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="profile.html">
+            <span>👤</span>
+            <span>My Profile</span>
+        </a>
+
+        <a href="documents.html" class="active">
+            <span>📁</span>
+            <span>My Documents</span>
+        </a>
+
+        <a href="request.html">
+            <span>📝</span>
+            <span>Request Document</span>
+        </a>
+
+        <a href="requests.html">
+            <span>📋</span>
+            <span>My Requests</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <a href="../index.html">
+            <span>🏠</span>
+            <span>ATCRS Home</span>
+        </a>
+
+        <a href="#" id="logoutBtn">
+            <span>🚪</span>
+            <span>Logout</span>
+        </a>
+
+    </nav>
+
+</aside>
 
 
-<div class="dashboard-layout">
+<!-- SIDEBAR OVERLAY -->
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 
-    <!-- SIDEBAR -->
+<!-- =========================================
+     MAIN CONTENT
+     ========================================= -->
 
-    <aside class="dashboard-sidebar">
-
-        <nav class="dashboard-nav">
-
-            <a href="dashboard.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-gauge-high"></i>
-                <span>Dashboard</span>
-
-            </a>
-
-            <a href="request.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-                <span>Request Document</span>
-
-            </a>
-
-            <a href="requests.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>My Requests</span>
-
-            </a>
-
-            <a href="documents.html"
-               class="dashboard-nav-link active">
-
-                <i class="fa-solid fa-folder-open"></i>
-                <span>My Documents</span>
-
-            </a>
-
-            <a href="profile.html"
-               class="dashboard-nav-link">
-
-                <i class="fa-solid fa-user-gear"></i>
-                <span>My Profile</span>
-
-            </a>
-
-        </nav>
-
-    </aside>
+<main class="main-content documents-page">
 
 
-    <!-- MAIN -->
+    <!-- TOP HEADER -->
 
-    <main class="dashboard-main">
+    <header class="dashboard-header">
 
+        <div>
 
-        <section class="dashboard-welcome">
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button"
+                aria-label="Open menu">
+                ☰
+            </button>
 
-            <div>
-
-                <span class="dashboard-label">
-                    DIGITAL CREDENTIALS
-                </span>
+            <div class="documents-header">
 
                 <h1>
-                    My
-                    <strong>Documents</strong>
+                    My Documents
                 </h1>
 
                 <p>
-                    Access your officially released
-                    academic credentials.
+                    View and manage your available academic records and credentials.
                 </p>
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- DOCUMENT AREA -->
+        <div class="header-user">
 
-        <section class="documents-user-grid"
-                 id="userDocuments">
+            <span id="headerUserName">
+                Demo Alumni
+            </span>
 
-            <div class="user-document-card">
+        </div>
 
-                <div class="user-document-icon">
+    </header>
 
-                    <i class="fa-solid fa-file-circle-check"></i>
 
+    <!-- =========================================
+         DOCUMENT SUMMARY
+         ========================================= -->
+
+    <section class="document-summary">
+
+
+        <div class="document-summary-card">
+
+            <div class="summary-icon">
+                📄
+            </div>
+
+            <h3 id="totalDocuments">
+                4
+            </h3>
+
+            <p>
+                Total Documents
+            </p>
+
+        </div>
+
+
+        <div class="document-summary-card">
+
+            <div class="summary-icon">
+                ✅
+            </div>
+
+            <h3 id="verifiedDocuments">
+                4
+            </h3>
+
+            <p>
+                Verified Documents
+            </p>
+
+        </div>
+
+
+        <div class="document-summary-card">
+
+            <div class="summary-icon">
+                🔐
+            </div>
+
+            <h3 id="secureDocuments">
+                4
+            </h3>
+
+            <p>
+                Secure Records
+            </p>
+
+        </div>
+
+
+        <div class="document-summary-card">
+
+            <div class="summary-icon">
+                🆕
+            </div>
+
+            <h3 id="recentDocuments">
+                2
+            </h3>
+
+            <p>
+                Recently Added
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         DOCUMENT TOOLS
+         ========================================= -->
+
+    <section class="document-tools">
+
+        <div class="document-search">
+
+            <input
+                type="text"
+                id="documentSearch"
+                placeholder="Search documents..."
+                autocomplete="off">
+
+        </div>
+
+
+        <div class="document-filter">
+
+            <select id="documentFilter">
+
+                <option value="all">
+                    All Documents
+                </option>
+
+                <option value="transcript">
+                    Transcript
+                </option>
+
+                <option value="diploma">
+                    Diploma
+                </option>
+
+                <option value="certificate">
+                    Certificate
+                </option>
+
+                <option value="verification">
+                    Verification
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+    <!-- =========================================
+     DOCUMENT LIST
+     ========================================= -->
+
+<section class="documents-section">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Available Documents</h2>
+
+            <p>
+                Your digital academic records and credentials.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="documents-grid" id="documentsGrid">
+
+        <!-- TRANSCRIPT OF RECORDS -->
+
+        <article
+            class="document-card"
+            data-type="transcript"
+            data-title="Transcript of Records">
+
+            ...
+            <!-- =========================================
+     DOCUMENT LIST
+     ========================================= -->
+
+<section class="documents-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>Available Documents</h2>
+
+            <p>
+                Your digital academic records and credentials.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         DOCUMENT GRID
+         ===================================== -->
+
+    <div class="documents-grid" id="documentsGrid">
+
+
+        <!-- =====================================
+             DOCUMENT 1 — TRANSCRIPT OF RECORDS
+             ===================================== -->
+
+        <article
+            class="document-card"
+            data-type="transcript"
+            data-title="Transcript of Records">
+
+            <div class="document-card-top">
+
+                <div class="document-icon transcript-icon">
+                    📄
                 </div>
 
-                <div>
-
-                    <span class="document-status">
-                        RELEASED DOCUMENTS
-                    </span>
-
-                    <h3>
-                        No Documents Available
-                    </h3>
-
-                    <p>
-                        Your released academic credentials
-                        will appear here after your request
-                        has been completed by the Registrar.
-                    </p>
-
-                </div>
+                <span class="document-status verified">
+                    ✓ Verified
+                </span>
 
             </div>
 
-        </section>
 
+            <div class="document-card-body">
 
-        <!-- SECURITY -->
-
-        <section class="dashboard-information">
-
-            <div class="information-icon">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-            </div>
-
-            <div>
+                <span class="document-category">
+                    Academic Record
+                </span>
 
                 <h3>
-                    Credential Security
+                    Transcript of Records
                 </h3>
 
                 <p>
-                    Digital credentials released through
-                    ATCRS should only be accessed through
-                    your authorized account. Credential
-                    verification may be performed using
-                    the official verification system.
+                    Official academic record containing
+                    your subjects, grades, units, and
+                    academic history.
                 </p>
+
+
+                <div class="document-details">
+
+                    <div>
+
+                        <span>
+                            Document ID
+                        </span>
+
+                        <strong>
+                            ATCRS-TOR-001
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+                            Digitally Verified
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Security
+                        </span>
+
+                        <strong>
+                            QR Protected
+                        </strong>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="document-card-actions">
+
+                <button
+                    type="button"
+                    class="document-btn primary"
+                    onclick="viewDocument('Transcript of Records')">
+
+                    👁 View
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="document-btn secondary"
+                    onclick="downloadDocument('Transcript of Records')">
+
+                    ⬇ Download
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================================
+             DOCUMENT 2 — DIPLOMA
+             ===================================== -->
+
+        <article
+            class="document-card"
+            data-type="diploma"
+            data-title="Diploma">
+
+            <div class="document-card-top">
+
+                <div class="document-icon diploma-icon">
+                    🎓
+                </div>
+
+                <span class="document-status verified">
+                    ✓ Verified
+                </span>
+
+            </div>
+
+
+            <div class="document-card-body">
+
+                <span class="document-category">
+                    Academic Credential
+                </span>
+
+                <h3>
+                    Diploma
+                </h3>
+
+                <p>
+                    Digitally recorded academic diploma
+                    issued by the institution and secured
+                    through ATCRS.
+                </p>
+
+
+                <div class="document-details">
+
+                    <div>
+
+                        <span>
+                            Document ID
+                        </span>
+
+                        <strong>
+                            ATCRS-DIP-001
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+                            Digitally Verified
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Security
+                        </span>
+
+                        <strong>
+                            QR Protected
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="document-card-actions">
+
+                <button
+                    type="button"
+                    class="document-btn primary"
+                    onclick="viewDocument('Diploma')">
+
+                    👁 View
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="document-btn secondary"
+                    onclick="downloadDocument('Diploma')">
+
+                    ⬇ Download
+
+                </button>
+
+            </div>
+
+        </article>
+                <!-- =====================================
+             DOCUMENT 3 — CERTIFICATE
+             ===================================== -->
+
+        <article
+            class="document-card"
+            data-type="certificate"
+            data-title="Certificate">
+
+            <div class="document-card-top">
+
+                <div class="document-icon certificate-icon">
+                    🏆
+                </div>
+
+                <span class="document-status verified">
+                    ✓ Verified
+                </span>
+
+            </div>
+
+
+            <div class="document-card-body">
+
+                <span class="document-category">
+                    Certification
+                </span>
+
+                <h3>
+                    Certificate
+                </h3>
+
+                <p>
+                    Official digital certificate issued
+                    through the academic records system.
+                </p>
+
+
+                <div class="document-details">
+
+                    <div>
+
+                        <span>
+                            Document ID
+                        </span>
+
+                        <strong>
+                            ATCRS-CER-001
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+                            Digitally Verified
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Security
+                        </span>
+
+                        <strong>
+                            QR Protected
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="document-card-actions">
+
+                <button
+                    type="button"
+                    class="document-btn primary"
+                    onclick="viewDocument('Certificate')">
+
+                    👁 View
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="document-btn secondary"
+                    onclick="downloadDocument('Certificate')">
+
+                    ⬇ Download
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================================
+             DOCUMENT 4 — CREDENTIAL VERIFICATION
+             ===================================== -->
+
+        <article
+            class="document-card"
+            data-type="verification"
+            data-title="Credential Verification">
+
+            <div class="document-card-top">
+
+                <div class="document-icon verification-icon">
+                    🔐
+                </div>
+
+                <span class="document-status verified">
+                    ✓ Verified
+                </span>
+
+            </div>
+
+
+            <div class="document-card-body">
+
+                <span class="document-category">
+                    Digital Verification
+                </span>
+
+                <h3>
+                    Credential Verification
+                </h3>
+
+                <p>
+                    Secure credential information that
+                    can be used to verify your academic
+                    records with authorized parties.
+                </p>
+
+
+                <div class="document-details">
+
+                    <div>
+
+                        <span>
+                            Verification ID
+                        </span>
+
+                        <strong>
+                            ATCRS-VER-001
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+                            Active
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Security
+                        </span>
+
+                        <strong>
+                            Encrypted
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="document-card-actions">
+
+                <button
+                    type="button"
+                    class="document-btn primary"
+                    onclick="viewDocument('Credential Verification')">
+
+                    🔍 Verify
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="document-btn secondary"
+                    onclick="shareCredential()">
+
+                    🔗 Share
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- =========================================
+         NO DOCUMENTS FOUND
+         ========================================= -->
+
+    <div
+        id="noDocuments"
+        class="no-documents"
+        style="display: none;">
+
+        <div class="no-documents-icon">
+            🔎
+        </div>
+
+        <h3>
+            No Documents Found
+        </h3>
+
+        <p>
+            We couldn't find a document matching
+            your search or selected category.
+        </p>
+
+        <button
+            type="button"
+            class="document-btn primary"
+            onclick="clearDocumentSearch()">
+
+            Clear Search
+
+        </button>
+
+    </div>
+
+</section>
+<!-- =========================================
+     SECURITY NOTICE
+     ========================================= -->
+
+<section class="document-security-card">
+
+    <div class="security-icon">
+        🔐
+    </div>
+
+
+    <div class="security-content">
+
+        <h3>
+            Your Documents Are Secure
+        </h3>
+
+        <p>
+            ATCRS protects your academic records using
+            secure digital storage, document verification,
+            and controlled access. Only authorized users
+            can access protected academic documents.
+        </p>
+
+
+        <div class="security-points">
+
+            <span>
+                ✓ Secure Digital Records
+            </span>
+
+            <span>
+                ✓ Verified Credentials
+            </span>
+
+            <span>
+                ✓ Protected Access
+            </span>
+
+            <span>
+                ✓ QR-Based Verification
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     DOCUMENT VIEW MODAL
+     ========================================= -->
+
+<div
+    class="document-modal"
+    id="documentModal">
+
+
+    <!-- MODAL OVERLAY -->
+
+    <div
+        class="document-modal-overlay"
+        onclick="closeDocumentModal()">
+    </div>
+
+
+    <!-- MODAL CONTENT -->
+
+    <div class="document-modal-content">
+
+
+        <!-- CLOSE BUTTON -->
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closeDocumentModal()">
+
+            ×
+
+        </button>
+
+
+        <!-- DOCUMENT ICON -->
+
+        <div class="modal-document-icon">
+            📄
+        </div>
+
+
+        <!-- LABEL -->
+
+        <span class="modal-label">
+            ATCRS DIGITAL DOCUMENT
+        </span>
+
+
+        <!-- DOCUMENT TITLE -->
+
+        <h2 id="modalDocumentTitle">
+            Document
+        </h2>
+
+
+        <!-- VERIFICATION STATUS -->
+
+        <div class="modal-verification">
+
+            <span class="verification-check">
+                ✓
+            </span>
+
+
+            <div>
+
+                <strong>
+                    Digitally Verified
+                </strong>
+
+                <small>
+                    This is a prototype document record.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOCUMENT INFORMATION -->
+
+        <div class="modal-document-info">
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    Student
+                </span>
+
+                <strong id="modalStudentName">
+                    Demo Alumni
+                </strong>
+
+            </div>
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    Student ID
+                </span>
+
+                <strong id="modalStudentId">
+                    1234567
+                </strong>
+
+            </div>
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    Document Status
+                </span>
+
+                <strong>
+                    Verified
+                </strong>
+
+            </div>
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    Security
+                </span>
+
+                <strong>
+                    QR Protected
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             QR VERIFICATION
+             ===================================== -->
+
+        <div class="modal-qr">
+
+            <div class="fake-qr">
+
+                <span>
+                    ▦
+                </span>
+
+            </div>
+
+            <p>
+                Scan to verify document authenticity
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             MODAL BUTTONS
+             ===================================== -->
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="document-btn secondary"
+                onclick="closeDocumentModal()">
+
+                Close
+
+            </button>
+
+
+            <button
+                type="button"
+                class="document-btn primary"
+                id="modalDownloadBtn">
+
+                ⬇ Download
+
+            </button>
+
+        </div>
+
+
+    </div>
 
 </div>
 
 
+
+<!-- =========================================
+     DOCUMENT MESSAGE NOTIFICATION
+     ========================================= -->
+
+<div
+    id="documentMessage"
+    class="document-message">
+
+    <span id="documentMessageText">
+        Message
+    </span>
+
+</div>
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
 <footer class="dashboard-footer">
 
-    <p>
-        © 2026 De La Salle John Bosco College.
-        Automated Transcript and Credential Retrieval System.
-    </p>
+    <div class="footer-content">
+
+
+        <!-- FOOTER BRAND -->
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                AT
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Automated Transcript and
+                    Credential Retrieval System
+                </h3>
+
+                <p>
+                    Secure • Digital • Accessible
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER LINKS -->
+
+        <div class="footer-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="documents.html">
+                Documents
+            </a>
+
+            <a href="requests.html">
+                Requests
+            </a>
+
+        </div>
+
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-copy">
+
+            <p>
+                © 2026 ATCRS. All Rights Reserved.
+            </p>
+
+            <p>
+                Academic Records Management System
+            </p>
+
+        </div>
+
+
+    </div>
 
 </footer>
 
 
-<script src="../js/script.js"></script>
+<!-- =========================================
+     CLOSE MAIN CONTENT
+     ========================================= -->
 
-</body>
-</html>
+</main>
+
+
+<!-- =========================================
+     SHARED JAVASCRIPT
+     ========================================= -->
+
+<script src="../js/script.js"></script>
+<script>
+
+/* =========================================
+   SESSION CHECK
+   ========================================= */
+
+const loggedIn =
+    localStorage.getItem("atcrsLoggedIn");
+
+const currentRole =
+    localStorage.getItem("atcrsRole");
+
+
+if (
+    loggedIn !== "true" ||
+    currentRole !== "student"
+) {
+
+    window.location.href =
+        "../login.html";
+
+}
+
+
+/* =========================================
+   DEFAULT STUDENT ACCOUNT
+   ========================================= */
+
+let studentAccount =
+    JSON.parse(
+        localStorage.getItem(
+            "atcrsStudentAccount"
+        )
+    );
+
+
+if (!studentAccount) {
+
+    studentAccount = {
+
+        studentId: "1234567",
+
+        fullName: "Demo Alumni",
+
+        email: "student@atcrs.com"
+
+    };
+
+}
+
+
+/* =========================================
+   LOAD USER INFORMATION
+   ========================================= */
+
+function loadUserInformation() {
+
+    const name =
+        studentAccount.fullName ||
+        "Demo Alumni";
+
+    const email =
+        studentAccount.email ||
+        "student@atcrs.com";
+
+
+    const sidebarName =
+        document.getElementById(
+            "sidebarUserName"
+        );
+
+    const sidebarEmail =
+        document.getElementById(
+            "sidebarUserEmail"
+        );
+
+    const headerName =
+        document.getElementById(
+            "headerUserName"
+        );
+
+    const avatar =
+        document.getElementById(
+            "sidebarAvatar"
+        );
+
+
+    if (sidebarName) {
+
+        sidebarName.textContent =
+            name;
+
+    }
+
+
+    if (sidebarEmail) {
+
+        sidebarEmail.textContent =
+            email;
+
+    }
+
+
+    if (headerName) {
+
+        headerName.textContent =
+            name;
+
+    }
+
+
+    if (avatar) {
+
+        avatar.textContent =
+            name
+                .charAt(0)
+                .toUpperCase();
+
+    }
+
+}
+
+
+loadUserInformation();
+
+
+/* =========================================
+   DOCUMENT SEARCH ELEMENTS
+   ========================================= */
+
+const searchInput =
+    document.getElementById(
+        "documentSearch"
+    );
+
+
+const filterSelect =
+    document.getElementById(
+        "documentFilter"
+    );
+
+
+/* =========================================
+   FILTER DOCUMENTS
+   ========================================= */
+
+function filterDocuments() {
+
+    const searchValue =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+    const filterValue =
+        filterSelect.value;
+
+
+    const cards =
+        document.querySelectorAll(
+            ".document-card"
+        );
+
+
+    let visibleCount = 0;
+
+
+    cards.forEach(function(card) {
+
+        const title =
+            card.dataset.title
+                .toLowerCase();
+
+
+        const type =
+            card.dataset.type
+                .toLowerCase();
+
+
+        const matchesSearch =
+            title.includes(
+                searchValue
+            );
+
+
+        const matchesFilter =
+            filterValue === "all" ||
+            type === filterValue;
+
+
+        if (
+            matchesSearch &&
+            matchesFilter
+        ) {
+
+            card.style.display =
+                "flex";
+
+            visibleCount++;
+
+        } else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    const noDocuments =
+        document.getElementById(
+            "noDocuments"
+        );
+
+
+    if (visibleCount === 0) {
+
+        noDocuments.style.display =
+            "block";
+
+    } else {
+
+        noDocuments.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================================
+   SEARCH EVENT
+   ========================================= */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        filterDocuments
+    );
+
+}
+
+
+/* =========================================
+   FILTER EVENT
+   ========================================= */
+
+if (filterSelect) {
+
+    filterSelect.addEventListener(
+        "change",
+        filterDocuments
+    );
+
+}
+
+
+/* =========================================
+   CLEAR SEARCH
+   ========================================= */
+
+function clearDocumentSearch() {
+
+    if (searchInput) {
+
+        searchInput.value = "";
+
+    }
+
+
+    if (filterSelect) {
+
+        filterSelect.value = "all";
+
+    }
+
+
+    filterDocuments();
+
+}
+
+                /* =========================================
+           VIEW DOCUMENT
+           ========================================= */
+
+        function viewDocument(documentName) {
+
+            const modal =
+                document.getElementById("documentModal");
+
+            const title =
+                document.getElementById("modalDocumentTitle");
+
+            const studentName =
+                document.getElementById("modalStudentName");
+
+            const studentId =
+                document.getElementById("modalStudentId");
+
+            const downloadBtn =
+                document.getElementById("modalDownloadBtn");
+
+
+            title.textContent = documentName;
+
+            studentName.textContent =
+                studentAccount.fullName;
+
+            studentId.textContent =
+                studentAccount.studentId;
+
+
+            downloadBtn.onclick = function () {
+
+                downloadDocument(documentName);
+
+            };
+
+
+            modal.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        /* =========================================
+           CLOSE DOCUMENT MODAL
+           ========================================= */
+
+        function closeDocumentModal() {
+
+            const modal =
+                document.getElementById("documentModal");
+
+            modal.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+    : 
+             /* =========================================
+           DOWNLOAD DOCUMENT
+           ========================================= */
+
+        function downloadDocument(documentName) {
+
+            const verificationId =
+                "ATCRS-VER-" + studentAccount.studentId;
+
+
+            const documentContent =
+`AUTOMATED TRANSCRIPT AND CREDENTIAL
+RETRIEVAL SYSTEM (ATCRS)
+
+DOCUMENT
+${documentName}
+
+STUDENT INFORMATION
+--------------------------------
+Full Name: ${studentAccount.fullName}
+Student ID: ${studentAccount.studentId}
+Email: ${studentAccount.email}
+
+DOCUMENT STATUS
+--------------------------------
+Status: VERIFIED
+Security: QR Protected
+Verification ID: ${verificationId}
+
+This is a prototype digital document
+generated by the ATCRS system.
+
+All academic records should be verified
+through the authorized ATCRS verification
+process.
+`;
+
+
+            const blob = new Blob(
+                [documentContent],
+                {
+                    type: "text/plain"
+                }
+            );
+
+
+            const url =
+                URL.createObjectURL(blob);
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href = url;
+
+
+            link.download =
+                documentName
+                    .replace(/\s+/g, "_")
+                    .toLowerCase() +
+                "_ATCRS.txt";
+
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+
+
+            URL.revokeObjectURL(url);
+
+
+            showDocumentMessage(
+                documentName +
+                " downloaded successfully."
+            );
+        }
+    
+            /* =========================================
+           SHARE CREDENTIAL
+           ========================================= */
+
+        function shareCredential() {
+
+            const verificationId =
+                "ATCRS-VER-" +
+                studentAccount.studentId;
+
+
+            const shareText =
+`ATCRS Credential Verification
+
+Student Name: ${studentAccount.fullName}
+Student ID: ${studentAccount.studentId}
+
+Verification ID: ${verificationId}
+
+Status: VERIFIED
+Security: Encrypted
+`;
+
+
+            if (
+                navigator.clipboard &&
+                navigator.clipboard.writeText
+            ) {
+
+                navigator.clipboard.writeText(shareText)
+
+                    .then(function () {
+
+                        showDocumentMessage(
+                            "Credential verification details copied."
+                        );
+
+                    })
+
+                    .catch(function () {
+
+                        showDocumentMessage(
+                            "Unable to copy verification details."
+                        );
+
+                    });
+
+            } else {
+
+                showDocumentMessage(
+                    "Credential details are ready to share."
+                );
+
+            }
+    }
+            /* =========================================
+           DOCUMENT NOTIFICATION
+           ========================================= */
+
+        function showDocumentMessage(message) {
+
+            const messageBox =
+                document.getElementById("documentMessage");
+
+            const messageText =
+                document.getElementById(
+                    "documentMessageText"
+                );
+
+
+            messageText.textContent = message;
+
+            messageBox.classList.add("show");
+
+
+            setTimeout(function () {
+
+                messageBox.classList.remove("show");
+
+            }, 3500);
+        }
+            /* =========================================
+           MOBILE SIDEBAR
+           ========================================= */
+
+        const mobileMenuBtn =
+            document.getElementById("mobileMenuBtn");
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const sidebarOverlay =
+            document.getElementById("sidebarOverlay");
+
+
+        /* =========================================
+           OPEN SIDEBAR
+           ========================================= */
+
+        function openSidebar() {
+
+            if (sidebar) {
+
+                sidebar.classList.add("active");
+
+            }
+
+            if (sidebarOverlay) {
+
+                sidebarOverlay.classList.add("active");
+
+            }
+        }
+
+
+        /* =========================================
+           CLOSE SIDEBAR
+           ========================================= */
+
+        function closeSidebar() {
+
+            if (sidebar) {
+
+                sidebar.classList.remove("active");
+
+            }
+
+            if (sidebarOverlay) {
+
+                sidebarOverlay.classList.remove("active");
+
+            }
+        }
+
+
+        /* =========================================
+           MENU BUTTON
+           ========================================= */
+
+        if (mobileMenuBtn) {
+
+            mobileMenuBtn.addEventListener(
+                "click",
+                openSidebar
+            );
+        }
+
+
+        /* =========================================
+           OVERLAY CLICK
+           ========================================= */
+
+        if (sidebarOverlay) {
+
+            sidebarOverlay.addEventListener(
+                "click",
+                closeSidebar
+            );
+        }
+            /* =========================================
+           LOGOUT
+           ========================================= */
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    localStorage.removeItem(
+                        "atcrsLoggedIn"
+                    );
+
+                    localStorage.removeItem(
+                        "atcrsRole"
+                    );
+
+                    localStorage.removeItem(
+                        "atcrsEmail"
+                    );
+
+
+                    window.location.href =
+                        "../login.html";
+                }
+            );
+        }
+            /* =========================================
+           ESCAPE KEY
+           ========================================= */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    closeDocumentModal();
+
+                    closeSidebar();
+
+                }
+            }
+        );
+
+    </script>
+        <style>
+
+        /* =========================================
+           DOCUMENT SECTION
+           ========================================= */
+
+        .documents-section {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .section-heading {
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 5px;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           DOCUMENT GRID
+           ========================================= */
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+
+        /* =========================================
+           DOCUMENT CARD
+           ========================================= */
+
+        .document-card {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.05);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .document-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 28px rgba(0, 0, 0, 0.09);
+        }
+
+        .document-card-top {
+            padding: 20px 20px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* =========================================
+           DOCUMENT ICONS
+           ========================================= */
+
+        .document-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            background:
+                rgba(11, 93, 63, 0.10);
+        }
+
+        .diploma-icon {
+            background:
+                rgba(212, 175, 55, 0.15);
+        }
+
+        .certificate-icon {
+            background:
+                rgba(212, 175, 55, 0.12);
+        }
+
+        .verification-icon {
+            background:
+                rgba(11, 93, 63, 0.10);
+        }
+
+
+        /* =========================================
+           STATUS
+           ========================================= */
+
+        .document-status {
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .document-status.verified {
+            background:
+                rgba(11, 93, 63, 0.10);
+            color: #0b5d3f;
+        }
+
+
+        /* =========================================
+           DOCUMENT BODY
+           ========================================= */
+
+        .document-card-body {
+            padding: 10px 20px 20px;
+            flex: 1;
+        }
+
+        .document-category {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #a17d18;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .document-card-body h3 {
+            margin: 0 0 10px;
+            color: #222;
+            font-size: 21px;
+        }
+
+        .document-card-body p {
+            margin: 0 0 18px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           DOCUMENT DETAILS
+           ========================================= */
+
+        .document-details {
+            border-top: 1px solid #eeeeee;
+            padding-top: 14px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .document-details div {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .document-details span {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .document-details strong {
+            color: #333;
+            font-size: 12px;
+            text-align: right;
+        }
+
+
+        /* =========================================
+           DOCUMENT ACTIONS
+           ========================================= */
+
+        .document-card-actions {
+            border-top: 1px solid #eeeeee;
+            padding: 14px 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .document-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .document-btn.primary {
+            background: #0b5d3f;
+            color: #ffffff;
+        }
+
+        .document-btn.primary:hover {
+            background: #063927;
+        }
+
+        .document-btn.secondary {
+            background: #f1f1f1;
+            color: #333;
+        }
+
+        .document-btn.secondary:hover {
+            background: #e4e4e4;
+        }
+
+        </style>
+            <style>
+
+        /* =========================================
+           NO DOCUMENTS MESSAGE
+           ========================================= */
+
+        .no-documents {
+            text-align: center;
+            padding: 50px 20px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 15px;
+        }
+
+        .no-documents-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .no-documents h3 {
+            margin: 0 0 8px;
+        }
+
+        .no-documents p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================
+           DOCUMENT SECURITY CARD
+           ========================================= */
+
+        .document-security-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(11, 93, 63, 0.08),
+                    rgba(212, 175, 55, 0.08)
+                );
+
+            border: 1px solid
+                rgba(11, 93, 63, 0.14);
+
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================================
+           SECURITY ICON
+           ========================================= */
+
+        .security-icon {
+            width: 58px;
+            height: 58px;
+            min-width: 58px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 5px 15px
+                rgba(0, 0, 0, 0.06);
+        }
+
+
+        /* =========================================
+           SECURITY CONTENT
+           ========================================= */
+
+        .security-content h3 {
+            margin: 0 0 8px;
+            color: #0b5d3f;
+        }
+
+        .security-content p {
+            margin: 0 0 15px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           SECURITY POINTS
+           ========================================= */
+
+        .security-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+        }
+
+        .security-points span {
+            font-size: 12px;
+            color: #0b5d3f;
+            font-weight: 600;
+        }
+
+            </style>
+                <style>
+
+        /* =========================================
+           DOCUMENT MODAL
+           ========================================= */
+
+        .document-modal {
+            position: fixed;
+            inset: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 3000;
+
+            visibility: hidden;
+            opacity: 0;
+
+            transition: 0.25s ease;
+        }
+
+
+        .document-modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           MODAL OVERLAY
+           ========================================= */
+
+        .document-modal-overlay {
+            position: absolute;
+            inset: 0;
+
+            background:
+                rgba(0, 0, 0, 0.55);
+
+            backdrop-filter: blur(4px);
+        }
+
+
+        /* =========================================
+           MODAL CONTENT
+           ========================================= */
+
+        .document-modal-content {
+            position: relative;
+
+            width: min(520px, 100%);
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.25);
+
+            z-index: 1;
+        }
+
+
+        /* =========================================
+           CLOSE BUTTON
+           ========================================= */
+
+        .modal-close {
+            position: absolute;
+
+            top: 15px;
+            right: 18px;
+
+            width: 36px;
+            height: 36px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #f2f2f2;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            color: #555;
+
+            transition: 0.2s ease;
+        }
+
+
+        .modal-close:hover {
+            background: #e5e5e5;
+            color: #0b5d3f;
+        }
+
+
+        /* =========================================
+           MODAL DOCUMENT ICON
+           ========================================= */
+
+        .modal-document-icon {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(11, 93, 63, 0.10);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 32px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================================
+           MODAL TITLE
+           ========================================= */
+
+        .modal-label {
+            color: #a17d18;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .document-modal-content h2 {
+            margin: 7px 0 20px;
+
+            color: #222;
+        }
+
+
+        /* =========================================
+           VERIFICATION STATUS
+           ========================================= */
+
+        .modal-verification {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(11, 93, 63, 0.08);
+
+            margin-bottom: 20px;
+        }
+
+
+        .verification-check {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #0b5d3f;
+
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+
+        .modal-verification strong {
+            display: block;
+
+            color: #0b5d3f;
+        }
+
+
+        .modal-verification small {
+            display: block;
+
+            color: #777;
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================================
+           MODAL INFORMATION
+           ========================================= */
+
+        .modal-document-info {
+            border: 1px solid #eeeeee;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+
+        .modal-info-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 13px 15px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .modal-info-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .modal-info-row span {
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        .modal-info-row strong {
+            color: #333;
+
+            font-size: 13px;
+
+            text-align: right;
+        }
+
+                </style>
+                    <style>
+
+        /* =========================================
+           QR CODE AREA
+           ========================================= */
+
+        .modal-qr {
+            text-align: center;
+            padding: 20px 0 5px;
+        }
+
+        .fake-qr {
+            width: 95px;
+            height: 95px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 6px solid #222;
+
+            background: #ffffff;
+        }
+
+        .fake-qr span {
+            font-size: 70px;
+
+            line-height: 1;
+
+            color: #222;
+        }
+
+        .modal-qr p {
+            color: #888;
+
+            font-size: 11px;
+
+            margin: 8px 0 0;
+        }
+
+
+        /* =========================================
+           MODAL ACTIONS
+           ========================================= */
+
+        .modal-actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        /* =========================================
+           DOCUMENT NOTIFICATION
+           ========================================= */
+
+        .document-message {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            max-width: 350px;
+
+            padding: 14px 18px;
+
+            border-radius: 10px;
+
+            background: #0b5d3f;
+
+            color: #ffffff;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.18);
+
+            z-index: 4000;
+
+            transform: translateY(30px);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: 0.3s ease;
+
+            font-size: 13px;
+        }
+
+
+        .document-message.show {
+            transform: translateY(0);
+
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        .dashboard-footer {
+            margin-top: 40px;
+
+            padding: 30px 0;
+
+            border-top:
+                1px solid #e5e5e5;
+        }
+
+
+        .footer-content {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================================
+           FOOTER BRAND
+           ========================================= */
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .footer-logo {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 10px;
+
+            background: #0b5d3f;
+
+            color: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+        }
+
+
+        .footer-brand h3 {
+            margin: 0 0 4px;
+
+            color: #333;
+
+            font-size: 14px;
+        }
+
+
+        .footer-brand p {
+            margin: 0;
+
+            color: #a17d18;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================
+           FOOTER LINKS
+           ========================================= */
+
+        .footer-links {
+            display: flex;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .footer-links a {
+            text-decoration: none;
+
+            color: #666;
+
+            font-size: 13px;
+
+            transition: 0.2s ease;
+        }
+
+
+        .footer-links a:hover {
+            color: #0b5d3f;
+        }
+
+
+        /* =========================================
+           FOOTER COPYRIGHT
+           ========================================= */
+
+        .footer-copy {
+            text-align: right;
+        }
+
+
+        .footer-copy p {
+            margin: 2px 0;
+
+            color: #888;
+
+            font-size: 11px;
+        }
+
+                    </style>
+                    
